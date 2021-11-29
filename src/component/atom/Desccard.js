@@ -1,12 +1,12 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 export default function Desccard({title,kota,kabupaten}) {
   return (
     <View style={styles.container}>
       <View style={styles.wrap}>
         <Text style={styles.title}>{title}</Text>
-        <Text>{kota, kabupaten}</Text>
+        <Text>{kota}, {kabupaten}</Text>
       </View>
     </View>
   );
