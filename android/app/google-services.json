@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "630789254968",
+    "project_id": "niastrip-26adf",
+    "storage_bucket": "niastrip-26adf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630789254968:android:20fbb1e6100172943ddbcd",
+        "android_client_info": {
+          "package_name": "com.niastrip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630789254968-alt2l5urfsdppbp3qhlo91l6hljhqegf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.niastrip",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "630789254968-g8e5nijq82eird2ifitcokvis3o1luv9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5XWimbhan8mN0-wVAIG87RvBDA13fdy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630789254968-g8e5nijq82eird2ifitcokvis3o1luv9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
