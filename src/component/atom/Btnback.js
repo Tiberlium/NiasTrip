@@ -8,7 +8,7 @@ export default function Btnback({onPress}) {
       <TouchableOpacity onPress={onPress}>
         <Icon
           name="arrow-back-outline"
-          size={35}
+          size={30}
           color="black"
           style={styles.icon}
         />
@@ -19,12 +19,12 @@ export default function Btnback({onPress}) {
 
 const styles = StyleSheet.create({
   wrap: {
-    height: 60,
-    width: 60,
+    height: 50,
+    width: 50,
     backgroundColor: 'white',
     elevation: 10,
     borderRadius: 30,
     margin: 10,
   },
-  icon: {alignSelf: 'center', marginTop: 10},
+  icon: {alignSelf: 'center', marginTop: 7},
 });
