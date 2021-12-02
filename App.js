@@ -3,7 +3,7 @@ import {View} from 'react-native';
 import Navigator from './src/navigator';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Login,Detail,Map} from './src/screen';
+import {Login,Detail,Map,Recovery} from './src/screen';
 
 const Tab = createNativeStackNavigator();
 
@@ -24,7 +24,7 @@ export default function App() {
     //   </Tab.Navigator>
     // </NavigationContainer>
     <View>
-      <Map/>
+      <Login/>
     </View>
   );
 }
