@@ -15,6 +15,7 @@ import Btntext from './atom/Btntext';
 import Mapcard from './template/Mapcard'
 import Mapheadercard from './template/Mapheadercard';
 import Bookmarkcard from './template/Bookmarkcard';
+import Accountprofile from './atom/Accountprofile';
 
 
-export {BtnNext,Txtinput,Btnsubmit,Btnsocial,Searchbtn,Searchbar,Btnback,Btnbookmark,Profilehead,Listcategory,Thumbcard,Allcard,Btnnearby,Btntext,Mapcard,Mapheadercard,Bookmarkcard};
+export {BtnNext,Txtinput,Btnsubmit,Btnsocial,Searchbtn,Searchbar,Btnback,Btnbookmark,Profilehead,Listcategory,Thumbcard,Allcard,Btnnearby,Btntext,Mapcard,Mapheadercard,Bookmarkcard,Accountprofile};

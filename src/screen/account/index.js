@@ -1,10 +1,14 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import Profile from '../../component/atom/Profile';
+import {firebase} from '@react-native-firebase/auth';
 
 export default function Account() {
-    return (
-        <View>
-            <Text>Account</Text>
-        </View>
-    )
+  return <Text>Hallo bangasat</Text>;
 }
+
+const styles = StyleSheet.create({
+  imageWrap: {
+    alignSelf: 'center',
+  },
+});

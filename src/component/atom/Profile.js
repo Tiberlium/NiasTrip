@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, Text,Image,StyleSheet } from 'react-native'
 
-export default function Profile({uri}) {
+export default function Profile({source}) {
     return (
         <View>
-            <Image source={{uri:uri}} style={styles.img}/>
+            <Image source={source} style={styles.img}/>
         </View>
     )
 }

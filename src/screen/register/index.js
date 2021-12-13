@@ -28,7 +28,7 @@ export default function Register({navigation}) {
   });
 
   const onGooglePress = async () => {
-    const idToken = await GoogleSignin.signIn();
+    const {idToken} = await GoogleSignin.signIn();
     const googleCredential = Auth.GoogleAuthProvider.credential(idToken);
     return Auth().signInWithCredential(googleCredential);
   };
@@ -49,7 +49,7 @@ export default function Register({navigation}) {
         onChangeText={setPassword}
         value={Password}
       />
-      <Btnsubmit title="Daftar" />
+      <Btnsubmit title="Daftar" onPress={Submit} />
       <Text style={styles.txtor}>Atau Daftar dengan</Text>
       <View style={styles.wrap}>
         <Btnsocial

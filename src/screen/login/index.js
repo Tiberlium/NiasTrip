@@ -31,9 +31,13 @@ export default function Login({navigation}) {
   });
 
   const onGooglePress = async () => {
-    const idToken = await GoogleSignin.signIn();
-    const googleCredential = Auth.GoogleAuthProvider.credential(idToken);
-    return Auth().signInWithCredential(googleCredential);
+    try {
+      const {idToken} = await GoogleSignin.signIn();
+      const googleCredential = Auth.GoogleAuthProvider.credential(idToken);
+      return Auth().signInWithCredential(googleCredential);
+    } catch (error) {
+      console.log({error});
+    }
   };
 
   return (
