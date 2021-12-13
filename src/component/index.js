@@ -16,6 +16,8 @@ import Mapcard from './template/Mapcard'
 import Mapheadercard from './template/Mapheadercard';
 import Bookmarkcard from './template/Bookmarkcard';
 import Accountprofile from './atom/Accountprofile';
+import Cardoptions from './atom/Cardoptions';
+import Btnlogout from './atom/Btnlogout';
 
 
-export {BtnNext,Txtinput,Btnsubmit,Btnsocial,Searchbtn,Searchbar,Btnback,Btnbookmark,Profilehead,Listcategory,Thumbcard,Allcard,Btnnearby,Btntext,Mapcard,Mapheadercard,Bookmarkcard,Accountprofile};
+export {BtnNext,Txtinput,Btnsubmit,Btnsocial,Searchbtn,Searchbar,Btnback,Btnbookmark,Profilehead,Listcategory,Thumbcard,Allcard,Btnnearby,Btntext,Mapcard,Mapheadercard,Bookmarkcard,Accountprofile,Cardoptions,Btnlogout};

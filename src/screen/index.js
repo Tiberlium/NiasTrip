@@ -9,6 +9,10 @@ import Account from './account';
 import Detail from './detail';
 import Map from './map';
 import Recovery from './recovery';
+import Personinfo from './PersonInfo';
+import About from './about';
+
+
 export {
   Splash,
   Intro,
@@ -21,4 +25,6 @@ export {
   Detail,
   Map,
   Recovery,
+  Personinfo,
+  About
 };
