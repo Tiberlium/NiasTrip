@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     alignSelf: 'center',
     backgroundColor: 'white',
-    marginTop: 65,
+    marginTop: 40,
   },
   icon: {marginTop: 10, marginHorizontal: 10},
   txt: {fontSize: 20, color: 'black', marginTop: 10, marginLeft: 10},

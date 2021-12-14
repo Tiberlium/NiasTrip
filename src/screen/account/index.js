@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import {firebase} from '@react-native-firebase/auth';
 import {Accountprofile, Btnlogout} from '../../component';
 import {Cardoptions} from '../../component';
@@ -24,12 +24,15 @@ export default function Account() {
         icon="person"
         label="Info Akun"
         onPress={() => navigation.navigate('Personinfo')}
+        left={10}
       />
-      <Cardoptions icon="help" label="Bantuan" />
+      <Cardoptions icon="shield" label="Keamanan" />
+      <Cardoptions icon="help-circle" label="Bantuan" left={20} />
       <Cardoptions
-        icon="information"
+        icon="information-circle"
         label="Tentang"
         onPress={() => navigation.navigate('About')}
+        left={20}
       />
       <Btnlogout onPress={() => signOut()} />
     </View>

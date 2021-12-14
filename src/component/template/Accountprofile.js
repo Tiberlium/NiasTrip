@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function Accountprofile({uri, name}) {
   return (
@@ -18,6 +17,7 @@ const styles = StyleSheet.create({
     borderRadius: 75,
     alignSelf: 'center',
     marginTop: 50,
+    position:'absolute',
   },
   icon: {alignSelf: 'center', marginTop: 130, marginLeft: 90},
   txt: {
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black',
     textAlign: 'center',
-    marginTop: 5,
+    marginTop: 160,
     marginBottom: 50,
   },
 });
