@@ -11,6 +11,7 @@ import Map from './map';
 import Recovery from './recovery';
 import About from './about';
 import Personinfo from './personinfo';
+import Updateprofile from './updateprofie';
 
 
 export {
@@ -27,4 +28,5 @@ export {
   Recovery,
   About,
   Personinfo,
+  Updateprofile,
 };

@@ -1,17 +1,39 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Ionicons'
 
-export default function Cardinfo() {
+export default function Cardinfo({onPress}) {
   return (
     <View style={styles.container}>
-      <Text style={styles.txtnama}>Wibu,Pria</Text>
-      <Text style={styles.caption}>082242525225</Text>
-      <Text style={styles.caption}>Wibu.nolep@gmail.com</Text>
-      <Text style={styles.caption}>
-        Jl.hililaza baru,Kabupaten Nias selatan,Sumatera utara,8940
-      </Text>
-      <TouchableOpacity style={styles.btn}>
+      <View style={styles.wrap}>
+        <Text style={styles.txtProperty}>Nama</Text>
+        <Text style={styles.txtValue}>Wibu</Text>
+      </View>
+      <View style={styles.wrap}>
+        <Text style={styles.txtProperty}>Jenis Kelamin</Text>
+        <Text style={styles.txtValue}>Pria</Text>
+      </View>
+      <View style={styles.wrap}>
+        <Text style={styles.txtProperty}>Email</Text>
+        <Text style={styles.txtValue}>Wibu.nolep47@gmail.com</Text>
+      </View>
+      <View style={styles.wrap}>
+        <Text style={styles.txtProperty}>No HP</Text>
+        <Text style={styles.txtValue}>0823242522</Text>
+      </View>
+      <View style={styles.wrap}>
+        <Text style={styles.txtProperty}>Alamat</Text>
+        <Text style={styles.txtValue}>Jl.sei belumai</Text>
+      </View>
+      <View style={styles.wrap}>
+        <Text style={styles.txtProperty}>Kota</Text>
+        <Text style={styles.txtValue}>Medan</Text>
+      </View>
+      <View style={styles.wrap}>
+        <Text style={styles.txtProperty}>Kode Pos</Text>
+        <Text style={styles.txtValue}>22324</Text>
+      </View>
+      <TouchableOpacity style={styles.btn} onPress={onPress}>
         <Icon name="create-outline" size={30} style={styles.btnicon} />
         <Text style={styles.txtbtn}>Perbarui informasi</Text>
       </TouchableOpacity>
@@ -29,25 +51,20 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     padding: 20,
   },
-  txtnama: {
-    fontWeight: 'bold',
-    fontSize: 25,
-    color: 'black',
+  wrap: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
-  caption: {
-    fontSize: 15,
-    color: 'black',
-    marginVertical: 2,
-    fontWeight: '400',
-  },
+  txtProperty: {fontSize: 15,color:'black'},
+  txtValue: {fontSize: 15, fontWeight: 'bold',color:'black'},
   btn: {
     width: 300,
     height: 50,
     borderWidth: 0.5,
     borderRadius: 10,
     borderColor: 'black',
-    marginTop:20,
-    marginHorizontal:10,
+    marginTop: 20,
     display: 'flex',
     flexDirection: 'row',
   },

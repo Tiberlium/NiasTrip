@@ -16,7 +16,7 @@ export default function Personinfo({navigation}) {
       <View style={styles.btntext}>
         <Btntext title="Ubah foto profil" color="blue" />
       </View>
-      <Cardinfo />
+      <Cardinfo onPress={() => navigation.navigate('Update profile')} />
     </View>
   );
 }

@@ -2,7 +2,16 @@ import React from 'react';
 import Navigator from './src/navigator';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {About, Intro, Login, Personinfo, Register, Splash} from './src/screen';
+import {
+  About,
+  Intro,
+  Login,
+  Personinfo,
+  Register,
+  Splash,
+  Recovery,
+  Updateprofile,
+} from './src/screen';
 
 const Tab = createNativeStackNavigator();
 
@@ -29,6 +38,15 @@ export default function App() {
           name="Register"
           component={Register}
           options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="Recovery"
+          component={Recovery}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="Update profile"
+          component={Updateprofile}
         />
         <Tab.Screen
           name="Personinfo"
