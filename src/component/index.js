@@ -18,6 +18,7 @@ import Bookmarkcard from './template/Bookmarkcard';
 import Accountprofile from './atom/Accountprofile';
 import Cardoptions from './atom/Cardoptions';
 import Btnlogout from './atom/Btnlogout';
+import Cardinfo from './template/Cardinfo';
 
 
-export {BtnNext,Txtinput,Btnsubmit,Btnsocial,Searchbtn,Searchbar,Btnback,Btnbookmark,Profilehead,Listcategory,Thumbcard,Allcard,Btnnearby,Btntext,Mapcard,Mapheadercard,Bookmarkcard,Accountprofile,Cardoptions,Btnlogout};
+export {BtnNext,Txtinput,Btnsubmit,Btnsocial,Searchbtn,Searchbar,Btnback,Btnbookmark,Profilehead,Listcategory,Thumbcard,Allcard,Btnnearby,Btntext,Mapcard,Mapheadercard,Bookmarkcard,Accountprofile,Cardoptions,Btnlogout,Cardinfo};

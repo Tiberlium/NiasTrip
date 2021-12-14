@@ -20,16 +20,18 @@ export default function Account() {
   return (
     <View>
       <Accountprofile uri={user.photoURL} name={user.displayName} />
-      <Cardoptions icon="person" label="Info Akun" />
+      <Cardoptions
+        icon="person"
+        label="Info Akun"
+        onPress={() => navigation.navigate('Personinfo')}
+      />
       <Cardoptions icon="help" label="Bantuan" />
-      <Cardoptions icon="information" label="Tentang" onPress={()=>navigation.navigate('About')} />
+      <Cardoptions
+        icon="information"
+        label="Tentang"
+        onPress={() => navigation.navigate('About')}
+      />
       <Btnlogout onPress={() => signOut()} />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  imageWrap: {
-    alignSelf: 'center',
-  },
-});

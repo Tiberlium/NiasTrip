@@ -1,10 +1,13 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { Btnback, Cardinfo } from '../../component';
+
 
 export default function Personinfo() {
   return (
     <View>
-      <Text>Halo</Text>
+      <Btnback/>
+      <Cardinfo/>
     </View>
   );
 }

@@ -9,8 +9,8 @@ import Account from './account';
 import Detail from './detail';
 import Map from './map';
 import Recovery from './recovery';
-import Personinfo from './PersonInfo';
 import About from './about';
+import Personinfo from './personinfo';
 
 
 export {
@@ -25,6 +25,6 @@ export {
   Detail,
   Map,
   Recovery,
+  About,
   Personinfo,
-  About
 };
