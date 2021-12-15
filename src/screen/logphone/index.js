@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, TextInput} from 'react-native';
 import {Btnback} from '../../component';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { Btnicon } from '../../component';
 
 
 const Chip = () => {
@@ -28,6 +29,7 @@ export default function Logphone({navigation}) {
           <TextInput placeholder="12345678" />
         </View>
       </View>
+      <Btnicon/>
     </View>
   );
 }
