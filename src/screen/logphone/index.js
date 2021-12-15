@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet, TextInput} from 'react-native';
 import {Btnback} from '../../component';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -13,6 +13,16 @@ const Chip = () => {
 };
 
 export default function Logphone({navigation}) {
+  const [Phone, setPhone] = useState('+44');
+
+  function Submit() {
+    if (Phone && Phone.length >= 9) {
+      navigation.navigate('Otp', {Phone});
+    } else {
+      alert('Nomor hp kurang dari 10 digit');
+    }
+  }
+
   return (
     <View>
       <Btnback onPress={() => navigation.goBack()} />
@@ -24,10 +34,10 @@ export default function Logphone({navigation}) {
         <Text style={styles.label}>Nomor HP</Text>
         <View style={styles.inlineWrap}>
           <Chip />
-          <TextInput placeholder="12345678" />
+          <TextInput placeholder="12345678" onChangeText={setPhone} />
         </View>
       </View>
-      <Btnicon />
+      <Btnicon onPress={() => Submit()} />
     </View>
   );
 }

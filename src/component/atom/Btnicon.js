@@ -2,10 +2,10 @@ import React from 'react';
 import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function Btnicon() {
+export default function Btnicon({onPress}) {
   return (
     <View>
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity style={styles.container} onPress={onPress}>
         <Icon
           name="arrow-forward"
           size={30}
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF5F7E',
     alignSelf: 'center',
     borderRadius: 15,
-    marginTop: 15,
+    marginTop: 20,
   },
   icon: {alignSelf: 'center', marginTop: 5},
 });

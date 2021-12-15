@@ -14,7 +14,6 @@ export default function Updateprofile() {
           defaultButtonText="Pilih jenis kelamin"
           buttonStyle={styles.dropDown}
         />
-        <Txtinput label="Email" placeholder="Masukkan email disini" />
         <Txtinput label="No HP" placeholder="Masukkan no HP disini" />
         <Txtinput label="Alamat" placeholder="Masukkan alamat disini" />
         <Txtinput label="Kota" placeholder="Masukkan Kota disini" />
