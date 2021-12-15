@@ -2,8 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, TextInput} from 'react-native';
 import {Btnback} from '../../component';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { Btnicon } from '../../component';
-
+import {Btnicon} from '../../component';
 
 const Chip = () => {
   return (
@@ -12,7 +11,6 @@ const Chip = () => {
     </View>
   );
 };
-
 
 export default function Logphone({navigation}) {
   return (
@@ -29,13 +27,13 @@ export default function Logphone({navigation}) {
           <TextInput placeholder="12345678" />
         </View>
       </View>
-      <Btnicon/>
+      <Btnicon />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  wrap: {margin: 15},
+  wrap: {margin: 20},
   title: {fontWeight: 'bold', color: 'black', fontSize: 25, marginTop: 15},
   caption: {fontSize: 20, fontWeight: '300'},
   wrap2: {

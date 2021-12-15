@@ -21,12 +21,10 @@ const styles = StyleSheet.create({
   container: {
     width: 300,
     height: 50,
-    backgroundColor: 'blue',
+    backgroundColor: '#FF5F7E',
     alignSelf: 'center',
     borderRadius: 15,
     marginTop: 15,
   },
   icon: {alignSelf: 'center', marginTop: 5},
 });
-
-
