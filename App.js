@@ -11,6 +11,8 @@ import {
   Splash,
   Recovery,
   Updateprofile,
+  Logphone,
+  Otp,
 } from './src/screen';
 
 const Tab = createNativeStackNavigator();
@@ -45,6 +47,16 @@ export default function App() {
         <Tab.Screen
           name="Register"
           component={Register}
+          options={{headerShown: false}}
+        />
+         <Tab.Screen
+          name="Logphone"
+          component={Logphone}
+          options={{headerShown: false}}
+        />
+         <Tab.Screen
+          name="Otp"
+          component={Otp}
           options={{headerShown: false}}
         />
         <Tab.Screen

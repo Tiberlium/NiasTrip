@@ -12,7 +12,8 @@ import Recovery from './recovery';
 import About from './about';
 import Personinfo from './personinfo';
 import Updateprofile from './updateprofie';
-
+import Logphone from './logphone';
+import Otp from './otp';
 
 export {
   Splash,
@@ -29,4 +30,6 @@ export {
   About,
   Personinfo,
   Updateprofile,
+  Logphone,
+  Otp,
 };

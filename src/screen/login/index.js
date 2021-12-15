@@ -72,7 +72,7 @@ export default function Login({navigation}) {
             onGooglePress().then(() => navigation.navigate('Navigator'))
           }
         />
-        <Btnsocial source={require('../../asset/facebook.png')} />
+        <Btnsocial source={require('../../asset/phone.png')} />
       </View>
       <View style={styles.wrapunregister}>
         <Text style={styles.unregister}>Belum terdaftar ?</Text>
