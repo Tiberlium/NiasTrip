@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
-import {Txtinput, Btnsubmit} from '../../component';
+import {Txtinput, Btnsubmit, Btnback} from '../../component';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Auth from '@react-native-firebase/auth';
 
@@ -21,26 +21,32 @@ export default function Recovery({navigation}) {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.wrap}>
-        <Image source={require('../../asset/keyLogo.png')} style={styles.img} />
+    <View>
+      <Btnback onPress={() => navigation.goBack()} />
+      <View style={styles.container}>
+        <View style={styles.wrap}>
+          <Image
+            source={require('../../asset/keyLogo.png')}
+            style={styles.img}
+          />
+        </View>
+        <Text style={styles.txt}>
+          Silahkan Masukkan Email Anda Untuk Melakukan Perubahan Password
+        </Text>
+        <Txtinput
+          label="Email"
+          placeholder="masukkan email anda"
+          onChangeText={setEmail}
+          value={Email}
+        />
+        <Btnsubmit title="Submit" onPress={Submit} />
       </View>
-      <Text style={styles.txt}>
-        Silahkan Masukkan Email Anda Untuk Melakukan Perubahan Password
-      </Text>
-      <Txtinput
-        label="Email"
-        placeholder="masukkan email anda"
-        onChangeText={setEmail}
-        value={Email}
-      />
-      <Btnsubmit title="Submit" onPress={Submit} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {marginTop: hp(10)},
+  container: {marginTop: hp(5)},
   wrap: {
     height: 150,
     width: 150,

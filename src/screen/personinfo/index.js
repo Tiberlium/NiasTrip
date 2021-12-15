@@ -24,5 +24,5 @@ export default function Personinfo({navigation}) {
 const styles = StyleSheet.create({
   wrap: {display: 'flex', flexDirection: 'row'},
   btntext: {alignSelf: 'center', marginTop: 10, marginBottom: 30},
-  title: {fontWeight: 'bold', fontSize: 30, color: 'black', marginTop: 10},
+  title: {fontWeight: 'bold', fontSize: 25, color: 'black', marginTop: 15},
 });

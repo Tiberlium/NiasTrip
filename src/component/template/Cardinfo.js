@@ -29,10 +29,6 @@ export default function Cardinfo({onPress}) {
         <Text style={styles.txtProperty}>Kota</Text>
         <Text style={styles.txtValue}>Medan</Text>
       </View>
-      <View style={styles.wrap}>
-        <Text style={styles.txtProperty}>Kode Pos</Text>
-        <Text style={styles.txtValue}>22324</Text>
-      </View>
       <TouchableOpacity style={styles.btn} onPress={onPress}>
         <Icon name="create-outline" size={30} style={styles.btnicon} />
         <Text style={styles.txtbtn}>Perbarui informasi</Text>
@@ -55,9 +51,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginTop:10,
   },
-  txtProperty: {fontSize: 15,color:'black'},
-  txtValue: {fontSize: 15, fontWeight: 'bold',color:'black'},
+  txtProperty: {fontSize: 16,color:'black'},
+  txtValue: {fontSize: 16, fontWeight: 'bold',color:'black'},
   btn: {
     width: 300,
     height: 50,

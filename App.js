@@ -1,6 +1,6 @@
 import React from 'react';
 import Navigator from './src/navigator';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer,DefaultTheme} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   About,
@@ -15,9 +15,17 @@ import {
 
 const Tab = createNativeStackNavigator();
 
+const myTheme = {
+  ...DefaultTheme,
+  colors:{
+    ...DefaultTheme.colors,
+    primary:'white',
+  }
+}
+
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={myTheme}>
       <Tab.Navigator>
         <Tab.Screen
           name="Splash"
