@@ -20,7 +20,7 @@ export default function Updateprofile() {
     name: nama,
     gender: kelamin,
     phoneNumber: hp,
-    addres: address,
+    address: address,
     city: kota,
   };
 
@@ -35,8 +35,8 @@ export default function Updateprofile() {
 
   async function handleUpdateProfile() {
     await firestore()
-      .collection('Document')
-      .doc('Users')
+      .collection('Users')
+      .doc(user.uid)
       .set(optionalData)
       .then(() => console.log('user update'))
       .catch(e => console.log(e));

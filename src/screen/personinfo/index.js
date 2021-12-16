@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {
   Imageprofile,
@@ -7,10 +7,12 @@ import {
   Cardinfo,
   Blankavatar,
 } from '../../component';
-import {firebase} from '@react-native-firebase/auth';
+import Auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 export default function Personinfo({navigation}) {
-  const user = firebase.auth().currentUser;
+  const user = Auth().currentUser;
+  const [profile, setprofile] = useState({});
 
   const Avatar = () => {
     return (
@@ -24,6 +26,22 @@ export default function Personinfo({navigation}) {
     );
   };
 
+  async function loadData() {
+    await firestore()
+      .collection('Users')
+      .doc(user.uid)
+      .get()
+      .then(doc => {
+        setprofile(doc.data());
+      });
+  }
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  console.log(profile);
+
   return (
     <View>
       <View style={styles.wrap}>
@@ -36,11 +54,11 @@ export default function Personinfo({navigation}) {
       </View>
       <Cardinfo
         displayName={user.displayName || 'kosong'}
-        gender={user.gender || 'kosong'}
+        gender={profile.gender || 'kosong'}
         email={user.email || 'kosong'}
-        phone={user.phoneNumber || 'kosong'}
-        address={user.address || 'kosong'}
-        city={user.city || 'kosong'}
+        phone={profile.phoneNumber || 'kosong'}
+        address={profile.addres || 'kosong'}
+        city={profile.city || 'kosong'}
         onPress={() => navigation.navigate('Update profile')}
       />
     </View>
