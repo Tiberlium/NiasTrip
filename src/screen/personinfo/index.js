@@ -1,6 +1,12 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {Imageprofile, Btnback, Btntext, Cardinfo} from '../../component';
+import {View, Text, StyleSheet} from 'react-native';
+import {
+  Imageprofile,
+  Btnback,
+  Btntext,
+  Cardinfo,
+  Blankavatar,
+} from '../../component';
 import {firebase} from '@react-native-firebase/auth';
 
 export default function Personinfo({navigation}) {
@@ -12,7 +18,11 @@ export default function Personinfo({navigation}) {
         <Btnback onPress={() => navigation.goBack()} />
         <Text style={styles.title}>Profil</Text>
       </View>
-      <Imageprofile uri={user.photoURL} />
+      {user.photoURL ? (
+        <Imageprofile uri={user.photoURL} />
+      ) : (
+        <Blankavatar height={100} width={100} upDown={10} />
+      )}
       <View style={styles.btntext}>
         <Btntext title="Ubah foto profil" color="blue" />
       </View>
