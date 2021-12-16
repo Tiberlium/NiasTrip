@@ -31,7 +31,7 @@ export default function Account() {
         onPress={() => navigation.navigate('Personinfo')}
         left={10}
       />
-      <Cardoptions icon="shield" label="Keamanan" />
+      <Cardoptions icon="shield" label="Keamanan" onPress={()=>navigation.navigate('Change Security')}/>
       <Cardoptions icon="help-circle" label="Bantuan" left={20} />
       <Cardoptions
         icon="information-circle"

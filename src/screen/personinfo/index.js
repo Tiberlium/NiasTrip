@@ -12,17 +12,25 @@ import {firebase} from '@react-native-firebase/auth';
 export default function Personinfo({navigation}) {
   const user = firebase.auth().currentUser;
 
+  const Avatar = () => {
+    return (
+      <View>
+        {user.photoURL ? (
+          <Imageprofile uri={user.photoURL} />
+        ) : (
+          <Blankavatar height={100} width={100} upDown={10} />
+        )}
+      </View>
+    );
+  };
+
   return (
     <View>
       <View style={styles.wrap}>
         <Btnback onPress={() => navigation.goBack()} />
         <Text style={styles.title}>Profil</Text>
       </View>
-      {user.photoURL ? (
-        <Imageprofile uri={user.photoURL} />
-      ) : (
-        <Blankavatar height={100} width={100} upDown={10} />
-      )}
+      <Avatar/>
       <View style={styles.btntext}>
         <Btntext title="Ubah foto profil" color="blue" />
       </View>

@@ -13,6 +13,7 @@ import {
   Updateprofile,
   Logphone,
   Otp,
+  Changesecurity,
 } from './src/screen';
 
 const Tab = createNativeStackNavigator();
@@ -72,6 +73,10 @@ export default function App() {
           name="Personinfo"
           component={Personinfo}
           options={{headerShown: false}}
+        />
+         <Tab.Screen
+          name="Change Security"
+          component={Changesecurity}
         />
         <Tab.Screen
           name="About"

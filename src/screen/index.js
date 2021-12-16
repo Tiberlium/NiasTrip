@@ -14,6 +14,7 @@ import Personinfo from './personinfo';
 import Updateprofile from './updateprofie';
 import Logphone from './logphone';
 import Otp from './otp';
+import Changesecurity from './changesecurity';
 
 export {
   Splash,
@@ -32,4 +33,5 @@ export {
   Updateprofile,
   Logphone,
   Otp,
+  Changesecurity,
 };
