@@ -21,9 +21,17 @@ export default function Account() {
   return (
     <View>
       {user.photoURL ? (
-        <Accountprofile uri={user.photoURL} name={user.displayName} />
+        <Accountprofile
+          uri={user.photoURL}
+          name={user.displayName || 'Anonim'}
+        />
       ) : (
-        <Blankavatar width={100} height={100} upDown={50} />
+        <Blankavatar
+          width={100}
+          height={100}
+          upDown={50}
+          label={user.displayName || 'Anonim'}
+        />
       )}
       <Cardoptions
         icon="person"
@@ -31,7 +39,11 @@ export default function Account() {
         onPress={() => navigation.navigate('Personinfo')}
         left={10}
       />
-      <Cardoptions icon="shield" label="Keamanan" onPress={()=>navigation.navigate('Change Security')}/>
+      <Cardoptions
+        icon="shield"
+        label="Keamanan"
+        onPress={() => navigation.navigate('Change Security')}
+      />
       <Cardoptions icon="help-circle" label="Bantuan" left={20} />
       <Cardoptions
         icon="information-circle"

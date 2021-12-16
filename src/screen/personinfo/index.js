@@ -30,11 +30,19 @@ export default function Personinfo({navigation}) {
         <Btnback onPress={() => navigation.goBack()} />
         <Text style={styles.title}>Profil</Text>
       </View>
-      <Avatar/>
+      <Avatar />
       <View style={styles.btntext}>
         <Btntext title="Ubah foto profil" color="blue" />
       </View>
-      <Cardinfo onPress={() => navigation.navigate('Update profile')} />
+      <Cardinfo
+        displayName={user.displayName || 'kosong'}
+        gender={user.gender || 'kosong'}
+        email={user.email || 'kosong'}
+        phone={user.phoneNumber || 'kosong'}
+        address={user.address || 'kosong'}
+        city={user.city || 'kosong'}
+        onPress={() => navigation.navigate('Update profile')}
+      />
     </View>
   );
 }
