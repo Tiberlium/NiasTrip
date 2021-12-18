@@ -53,6 +53,7 @@ export default function Personinfo({navigation}) {
       compressImageQuality: 0.7,
     })
       .then(image => {
+        actionSheetRef.current?.hide();
         const imageUri = image.path;
         let filename = imageUri.substring(imageUri.lastIndexOf('/' + 1));
         const storageRef = Storage().ref(`Profile/${filename}`);
@@ -64,13 +65,11 @@ export default function Personinfo({navigation}) {
           );
         });
 
-        try {
-          const url = storageRef.getDownloadURL();
-          return url;
-        } catch (e) {
-          console.log(e);
-        }
-        actionSheetRef.current?.hide();
+        task.then(async () => {
+          await task;
+          let uri = await storageRef.getDownloadURL();
+          console.log(uri);
+        });
       })
       .catch(e => {
         console.log(e);
