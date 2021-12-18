@@ -105,12 +105,12 @@ export default function Personinfo({navigation}) {
                 `${taskSnapshot.bytesTransferred} transferred out of ${taskSnapshot.totalBytes}`,
               );
             });
-            try {
-              const uri = storageRef.getDownloadURL();
-              return uri;
-            } catch (e) {
-              console.log(e);
-            }
+
+            task.then(async () => {
+              await task;
+              let uri = await storageRef.getDownloadURL();
+              console.log(uri);
+            });
           })
           .catch(e => console.log(e));
       } else {
