@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Modal} from 'react-native';
 import {Cardoptions} from '../../component';
+import Auth from '@react-native-firebase/auth';
 
 export default function Changesecurity() {
   return (

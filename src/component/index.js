@@ -22,7 +22,7 @@ import Cardinfo from './template/Cardinfo';
 import Imageprofile from './atom/Imageprofile';
 import Btnicon from './atom/Btnicon';
 import Blankavatar from './atom/Blankavatar';
-
+import Widebtntext from './atom/Widebtntext';
 export {
   BtnNext,
   Txtinput,
@@ -47,5 +47,6 @@ export {
   Cardinfo,
   Imageprofile,
   Btnicon,
-  Blankavatar
+  Blankavatar,
+  Widebtntext,
 };

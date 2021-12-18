@@ -2,12 +2,12 @@ import React from 'react';
 import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function Btnicon({onPress}) {
+export default function Btnicon({onPress,name}) {
   return (
     <View>
       <TouchableOpacity style={styles.container} onPress={onPress}>
         <Icon
-          name="arrow-forward"
+          name={name}
           size={30}
           color="white"
           style={styles.icon}

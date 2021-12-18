@@ -48,6 +48,7 @@ export default function Register({navigation}) {
         placeholder="Masukkan Password"
         onChangeText={setPassword}
         value={Password}
+        secure={true}
       />
       <Btnsubmit title="Daftar" onPress={Submit} />
       <Text style={styles.txtor}>Atau Daftar dengan</Text>

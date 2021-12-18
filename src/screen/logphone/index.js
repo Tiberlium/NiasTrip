@@ -13,7 +13,7 @@ const Chip = () => {
 };
 
 export default function Logphone({navigation}) {
-  const [Phone, setPhone] = useState('+44');
+  const [Phone, setPhone] = useState('');
 
   function Submit() {
     if (Phone && Phone.length >= 9) {
@@ -37,7 +37,7 @@ export default function Logphone({navigation}) {
           <TextInput placeholder="12345678" onChangeText={setPhone} />
         </View>
       </View>
-      <Btnicon onPress={() => Submit()} />
+      <Btnicon name="arrow-forward" onPress={() => Submit()} />
     </View>
   );
 }

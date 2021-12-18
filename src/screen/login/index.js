@@ -55,6 +55,7 @@ export default function Login({navigation}) {
         placeholder="Masukkan Password"
         onChangeText={setPassword}
         value={Password}
+        secure={true}
       />
       <View style={styles.forget}>
         <Btntext

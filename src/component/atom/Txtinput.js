@@ -1,8 +1,14 @@
 import React from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-export default function Txtinput({label, onChangeText, placeholder, value}) {
+export default function Txtinput({
+  label,
+  onChangeText,
+  placeholder,
+  value,
+  secure,
+}) {
   return (
     <View style={styles.wrap}>
       <Text style={styles.label}>{label}</Text>
@@ -10,6 +16,7 @@ export default function Txtinput({label, onChangeText, placeholder, value}) {
         placeholder={placeholder}
         onChangeText={onChangeText}
         value={value}
+        secureTextEntry={secure}
       />
     </View>
   );
