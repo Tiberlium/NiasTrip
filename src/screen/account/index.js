@@ -3,13 +3,13 @@ import {View, Image} from 'react-native';
 import {firebase} from '@react-native-firebase/auth';
 import {Accountprofile, Blankavatar, Btnlogout} from '../../component';
 import {Cardoptions} from '../../component';
-import {useNavigation} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 import Auth from '@react-native-firebase/auth';
 
 export default function Account() {
   const user = firebase.auth().currentUser;
   const navigation = useNavigation();
-  let image = '';
+  const isfocus = useIsFocused();
 
   async function signOut() {
     return await Auth()
@@ -20,7 +20,7 @@ export default function Account() {
 
   return (
     <View>
-      {user.photoURL ? (
+      {isfocus && user.photoURL ? (
         <Accountprofile
           uri={user.photoURL}
           name={user.displayName || 'Anonim'}

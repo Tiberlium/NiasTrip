@@ -45,6 +45,12 @@ export default function Personinfo({navigation}) {
     loadData();
   }, []);
 
+  async function changeImageProfile(uri) {
+    user.updateProfile({
+      photoURL: uri,
+    });
+  }
+
   async function choosePhotofromLibrary() {
     ImagePicker.openPicker({
       width: 100,
@@ -68,11 +74,11 @@ export default function Personinfo({navigation}) {
         task.then(async () => {
           await task;
           let uri = await storageRef.getDownloadURL();
-          console.log(uri);
+          changeImageProfile(uri);
         });
       })
       .catch(e => {
-        console.log(e);
+        return null;
       });
   }
 
@@ -108,7 +114,7 @@ export default function Personinfo({navigation}) {
             task.then(async () => {
               await task;
               let uri = await storageRef.getDownloadURL();
-              console.log(uri);
+              changeImageProfile(uri);
             });
           })
           .catch(e => console.log(e));
@@ -116,7 +122,7 @@ export default function Personinfo({navigation}) {
         console.log('location Permisson denied');
       }
     } catch (e) {
-      console.log(e);
+      return null;
     }
   }
 
