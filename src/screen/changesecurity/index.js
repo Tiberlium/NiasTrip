@@ -4,9 +4,24 @@ import {Cardoptions} from '../../component';
 import Auth from '@react-native-firebase/auth';
 import ActionSheet from 'react-native-actions-sheet';
 
+async function Reauthenticate(current) {
+  const user = Auth().currentUser;
+  const emailCred = Auth.EmailAuthProvider.credential(user.email, current);
+
+  return user.reauthenticateWithCredential(emailCred);
+}
+
 const ChangeEmail = ({s}) => {
   const [currentPass, setcurrentPass] = useState('');
   const [Email, setEmail] = useState('');
+
+  async function onChangeEmail() {
+    await Reauthenticate(currentPass)
+      .then(async () => {
+        await Auth().currentUser.updateEmail(Email);
+      })
+      .catch(e => console.log(e));
+  }
   return (
     <ActionSheet ref={s}>
       <Text style={styles.title}>Ubah Email</Text>
@@ -27,7 +42,7 @@ const ChangeEmail = ({s}) => {
         value={Email}
         onChangeText={setEmail}
       />
-      <Pressable style={styles.btn}>
+      <Pressable style={styles.btn} onPress={() => onChangeEmail()}>
         <Text style={styles.btntxt}>Ubah Email</Text>
       </Pressable>
     </ActionSheet>
@@ -37,6 +52,14 @@ const ChangeEmail = ({s}) => {
 const ChangePass = ({s}) => {
   const [currentPass, setcurrentPass] = useState('');
   const [newPass, setnewPass] = useState('');
+
+  async function onChangePass() {
+    await Reauthenticate(currentPass)
+      .then(async () => {
+        await Auth().currentUser.updatePassword(newPass);
+      })
+      .catch(e => console.log(e));
+  }
   return (
     <ActionSheet ref={s}>
       <Text style={styles.title}>Ubah Sandi</Text>
@@ -58,7 +81,7 @@ const ChangePass = ({s}) => {
         value={newPass}
         onChangeText={setnewPass}
       />
-      <Pressable style={styles.btn}>
+      <Pressable style={styles.btn} onPress={() => onChangePass()}>
         <Text style={styles.btntxt}>Ubah Sandi</Text>
       </Pressable>
     </ActionSheet>
@@ -110,7 +133,7 @@ const styles = StyleSheet.create({
     margin: 10,
     border: 1,
     borderColor: 'black',
-    backgroundColor: 'blue',
+    backgroundColor: '#FF5F7E',
     height: 50,
     width: 200,
     borderRadius: 15,
