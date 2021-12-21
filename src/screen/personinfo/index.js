@@ -18,6 +18,7 @@ export default function Personinfo({navigation}) {
   const user = Auth().currentUser;
   const [profile, setprofile] = useState({});
   const actionSheetRef = useRef();
+  const isMounted = useRef();
 
   const Avatar = () => {
     return (
@@ -37,12 +38,14 @@ export default function Personinfo({navigation}) {
       .doc(user.uid)
       .get()
       .then(doc => {
-        setprofile(doc.data());
+        if (isMounted.current) return setprofile(doc.data());
       });
   }
 
   useEffect(() => {
+    isMounted.current = true;
     loadData();
+    return () => (isMounted.current = false);
   }, []);
 
   async function changeImageProfile(uri) {
