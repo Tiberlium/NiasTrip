@@ -16,12 +16,16 @@ const ChangeEmail = ({s}) => {
         placeholderTextColor="black"
         secureTextEntry={true}
         style={styles.txtI}
+        value={currentPass}
+        onChangeText={setcurrentPass}
       />
       <Text style={styles.subtitle}>Email Baru</Text>
       <TextInput
         placeholder="Masukkan Email Baru"
         placeholderTextColor="black"
         style={styles.txtI}
+        value={Email}
+        onChangeText={setEmail}
       />
       <Pressable style={styles.btn}>
         <Text style={styles.btntxt}>Ubah Email</Text>
@@ -42,12 +46,17 @@ const ChangePass = ({s}) => {
         placeholderTextColor="black"
         secureTextEntry={true}
         style={styles.txtI}
+        value={currentPass}
+        onChangeText={setcurrentPass}
       />
       <Text style={styles.subtitle}>Sandi Baru</Text>
       <TextInput
         placeholder="Masukkan Sandi Baru"
         placeholderTextColor="black"
+        secureTextEntry={true}
         style={styles.txtI}
+        value={newPass}
+        onChangeText={setnewPass}
       />
       <Pressable style={styles.btn}>
         <Text style={styles.btntxt}>Ubah Sandi</Text>
