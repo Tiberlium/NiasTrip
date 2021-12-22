@@ -63,4 +63,5 @@ const styles = {
   width: 400,
   paddingBottom: hp(3),
   borderTopWidth:1,
+  backgroundColor:'#38393E',
 };
