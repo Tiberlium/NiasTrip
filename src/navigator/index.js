@@ -62,4 +62,5 @@ const styles = {
   height: hp(10),
   width: 400,
   paddingBottom: hp(3),
+  borderTopWidth:1,
 };

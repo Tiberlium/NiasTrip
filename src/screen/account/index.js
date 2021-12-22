@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Image} from 'react-native';
 import {firebase} from '@react-native-firebase/auth';
-import {Accountprofile, Blankavatar, Btnlogout} from '../../component';
+import {Accountprofile, Blankavatar, Btnlogout,Btntext} from '../../component';
 import {Cardoptions} from '../../component';
 import {useNavigation} from '@react-navigation/native';
 import Auth from '@react-native-firebase/auth';
@@ -45,7 +45,7 @@ export default function Account() {
         label="Keamanan"
         onPress={() => navigation.navigate('Change Security')}
       />
-      <Cardoptions icon="help-circle" label="Bantuan" left={20} />
+      <Cardoptions icon="help-circle" label="Bantuan" left={20} onPress={()=>navigation.navigate('Help')}/>
       <Cardoptions
         icon="information-circle"
         label="Tentang"

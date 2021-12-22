@@ -4,6 +4,7 @@ import {Btnsubmit, Txtinput} from '../../component';
 import SelectDropdown from 'react-native-select-dropdown';
 import Auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function Updateprofile() {
   const user = Auth().currentUser;
@@ -43,7 +44,7 @@ export default function Updateprofile() {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <ScrollView>
         <Txtinput
           label="Nama"
@@ -56,6 +57,9 @@ export default function Updateprofile() {
           defaultButtonText="Pilih jenis kelamin"
           buttonStyle={styles.dropDown}
           onSelect={selectedItem => setkelamin(selectedItem)}
+          renderDropdownIcon={()=>(
+            <Icon name="chevron-down" size={25}/>
+          )}
         />
         <Txtinput
           label="HP"
@@ -86,12 +90,14 @@ export default function Updateprofile() {
 }
 
 const styles = StyleSheet.create({
+  container:{backgroundColor:'white'},
   dropDown: {
     borderWidth: 0.5,
     borderColor: 'black',
-    width: 300,
+    width: 250,
     marginTop: 15,
     alignSelf: 'center',
     borderRadius: 10,
+    backgroundColor:'white',
   },
 });

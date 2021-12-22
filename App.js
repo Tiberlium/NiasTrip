@@ -14,6 +14,7 @@ import {
   Logphone,
   Otp,
   Changesecurity,
+  Help,
 } from './src/screen';
 
 const Tab = createNativeStackNavigator();
@@ -22,7 +23,7 @@ const myTheme = {
   ...DefaultTheme,
   colors:{
     ...DefaultTheme.colors,
-    primary:'white',
+    background:'white',
   }
 }
 
@@ -77,6 +78,10 @@ export default function App() {
          <Tab.Screen
           name="Change Security"
           component={Changesecurity}
+        />
+         <Tab.Screen
+          name="Help"
+          component={Help}
         />
         <Tab.Screen
           name="About"

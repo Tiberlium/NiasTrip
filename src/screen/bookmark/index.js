@@ -20,16 +20,16 @@ export default function Bookmark() {
 
 const styles = StyleSheet.create({
   img: {
-    height: 200,
-    width: 200,
+    height: 250,
+    width: 250,
     alignSelf: 'center',
     marginTop: 150,
   },
   txt: {
     textAlign: 'center',
     fontSize: 20,
-    fontWeight: 'bold',
     color: 'black',
     marginTop: 10,
+    fontStyle:'italic'
   },
 });
