@@ -1,12 +1,18 @@
 import React from 'react';
 import {View, Image, StyleSheet, Text} from 'react-native';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 import {Btnback} from '../../component';
 
 export default function About({navigation}) {
   return (
     <View>
-      <Btnback onPress={() => navigation.goBack()} />
+      <View style={styles.wrap}>
+        <Btnback onPress={() => navigation.goBack()} />
+        <Text style={styles.title}>Tentang</Text>
+      </View>
       <Image source={require('../../asset/Logo.png')} style={styles.image} />
       <Text style={styles.txt}>Tentang</Text>
       <Text style={styles.caption}>Nias trip v1.0 (Beta)</Text>
@@ -15,6 +21,14 @@ export default function About({navigation}) {
 }
 
 const styles = StyleSheet.create({
+  wrap: {display: 'flex', flexDirection: 'row'},
+  title: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: 'black',
+    marginTop: hp(2.5),
+    marginHorizontal: wp(23),
+  },
   image: {
     height: 150,
     width: 150,

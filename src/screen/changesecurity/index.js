@@ -1,8 +1,12 @@
 import React, {useState, useRef} from 'react';
 import {View, Text, TextInput, StyleSheet, Pressable} from 'react-native';
-import {Cardoptions} from '../../component';
+import {Btnback, Cardoptions} from '../../component';
 import Auth from '@react-native-firebase/auth';
 import ActionSheet from 'react-native-actions-sheet';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 async function Reauthenticate(current) {
   const user = Auth().currentUser;
@@ -88,11 +92,15 @@ const ChangePass = ({s}) => {
   );
 };
 
-export default function Changesecurity() {
+export default function Changesecurity({navigation}) {
   const actionRef = useRef();
 
   return (
     <View>
+      <View style={styles.wrap}>
+        <Btnback onPress={() => navigation.goBack()} />
+        <Text style={styles.headline}>Keamanan</Text>
+      </View>
       <Cardoptions
         icon="mail"
         label="Ubah Email"
@@ -110,6 +118,14 @@ export default function Changesecurity() {
 }
 
 const styles = StyleSheet.create({
+  wrap: {display: 'flex', flexDirection: 'row', marginBottom: hp(3)},
+  headline: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: 'black',
+    marginTop: hp(2.5),
+    marginHorizontal: wp(23),
+  },
   title: {
     fontWeight: 'bold',
     fontSize: 20,

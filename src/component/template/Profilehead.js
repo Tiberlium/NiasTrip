@@ -5,7 +5,7 @@ import Profile from '../atom/Profile';
 export default function Profilehead({source,name}) {
   return (
     <View style={styles.wrap}>
-      <Profile uri={source}/>
+      <Profile source={source}/>
       <View style={styles.inlineWrap}>
         <Text style={styles.txt1}>Hai, {name}</Text>
         <Text style={styles.txt2}>Semoga harimu menyenangkan</Text>

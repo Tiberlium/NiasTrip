@@ -1,10 +1,18 @@
 import React from 'react';
 import {View, Linking, Image, StyleSheet, Text} from 'react-native';
-import {Cardoptions} from '../../component';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
+import {Btnback, Cardoptions} from '../../component';
 
-export default function Help() {
+export default function Help({navigation}) {
   return (
     <View>
+      <View style={styles.wrap}>
+        <Btnback onPress={() => navigation.goBack()} />
+        <Text style={styles.headline}>Bantuan</Text>
+      </View>
       <Image source={require('../../asset/help.png')} style={styles.img} />
       <Text style={styles.title}>Butuh Bantuan?</Text>
       <Text style={styles.caption}>
@@ -32,6 +40,14 @@ export default function Help() {
 }
 
 const styles = StyleSheet.create({
+  wrap: {display: 'flex', flexDirection: 'row'},
+  headline: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: 'black',
+    marginTop: hp(2.5),
+    marginHorizontal: wp(23),
+  },
   img: {
     height: 150,
     width: 150,

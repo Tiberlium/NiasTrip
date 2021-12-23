@@ -20,9 +20,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding:5,
-    borderRadius:15,
-    backgroundColor:'#C4C4C4'
+    padding: 5,
+    borderRadius: 15,
+    backgroundColor: '#E5E5E5',
   },
-  label:{fontSize:15,marginTop:10,color:'#3E3338',marginLeft:5}
+  label: {fontSize: 15, marginTop: 10, color: '#3E3338', marginLeft: 5},
 });

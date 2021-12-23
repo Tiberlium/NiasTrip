@@ -1,6 +1,6 @@
 import React from 'react';
 import Navigator from './src/navigator';
-import {NavigationContainer,DefaultTheme} from '@react-navigation/native';
+import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   About,
@@ -15,17 +15,18 @@ import {
   Otp,
   Changesecurity,
   Help,
+  Search,
 } from './src/screen';
 
 const Tab = createNativeStackNavigator();
 
 const myTheme = {
   ...DefaultTheme,
-  colors:{
+  colors: {
     ...DefaultTheme.colors,
-    background:'white',
-  }
-}
+    background: 'white',
+  },
+};
 
 export default function App() {
   return (
@@ -51,37 +52,32 @@ export default function App() {
           component={Register}
           options={{headerShown: false}}
         />
-         <Tab.Screen
+        <Tab.Screen
           name="Logphone"
           component={Logphone}
           options={{headerShown: false}}
         />
-         <Tab.Screen
-          name="Otp"
-          component={Otp}
-          options={{headerShown: false}}
-        />
+        <Tab.Screen name="Otp" component={Otp} options={{headerShown: false}} />
         <Tab.Screen
           name="Recovery"
           component={Recovery}
           options={{headerShown: false}}
         />
-        <Tab.Screen
-          name="Update profile"
-          component={Updateprofile}
-        />
+        <Tab.Screen name="Update profile" component={Updateprofile} />
         <Tab.Screen
           name="Personinfo"
           component={Personinfo}
           options={{headerShown: false}}
         />
-         <Tab.Screen
+        <Tab.Screen
           name="Change Security"
           component={Changesecurity}
+          options={{headerShown: false}}
         />
-         <Tab.Screen
+        <Tab.Screen
           name="Help"
           component={Help}
+          options={{headerShown: false}}
         />
         <Tab.Screen
           name="About"
@@ -91,6 +87,11 @@ export default function App() {
         <Tab.Screen
           name="Navigator"
           component={Navigator}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="Search"
+          component={Search}
           options={{headerShown: false}}
         />
       </Tab.Navigator>

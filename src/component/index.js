@@ -23,6 +23,8 @@ import Imageprofile from './atom/Imageprofile';
 import Btnicon from './atom/Btnicon';
 import Blankavatar from './atom/Blankavatar';
 import Widebtntext from './atom/Widebtntext';
+import Subtitle from './atom/Subtitle';
+import Subhead from './template/Subhead';
 export {
   BtnNext,
   Txtinput,
@@ -49,4 +51,6 @@ export {
   Btnicon,
   Blankavatar,
   Widebtntext,
+  Subtitle,
+  Subhead,
 };

@@ -1,6 +1,7 @@
 import React from 'react'
 import { View,TextInput,StyleSheet } from 'react-native'
 import SearchLogoBtn from '../atom/SearchLogoBtn'
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen'
 
 export default function Searchbar({onChangeText,value}) {
     return (
@@ -13,7 +14,7 @@ export default function Searchbar({onChangeText,value}) {
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor:'#C4C4C4',
+        backgroundColor:'#E5E5E5',
         display:'flex',
         flexDirection:'row',
         justifyContent:'space-between',
@@ -21,5 +22,6 @@ const styles = StyleSheet.create({
         alignSelf:'center',
         borderRadius:15,
         padding:5,
+        marginTop:hp(3),
     }
 })

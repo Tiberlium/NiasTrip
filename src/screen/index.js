@@ -15,7 +15,8 @@ import Updateprofile from './updateprofie';
 import Logphone from './logphone';
 import Otp from './otp';
 import Changesecurity from './changesecurity';
-import Help from './help'
+import Help from './help';
+import Search from './search';
 
 export {
   Splash,
@@ -36,4 +37,5 @@ export {
   Otp,
   Changesecurity,
   Help,
+  Search,
 };
