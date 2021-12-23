@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {Btnback, Searchbar} from '../../component';
+import {Btnback, Chip, Searchbar} from '../../component';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -15,6 +15,11 @@ export default function Search({navigation}) {
       </View>
       <Searchbar />
       <Text style={styles.subtitle}>Rekomendasi</Text>
+      <View style={styles.chipWrap}>
+        <Chip title="Lagundri" onPress={data => console.log(null)} />
+        <Chip title="Ya'ahowu" onPress={data => console.log(null)} />
+        <Chip title="Gado" onPress={data => console.log(null)} />
+      </View>
     </View>
   );
 }
@@ -33,5 +38,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: 'black',
     margin: 20,
+  },
+  chipWrap: {
+    display: 'flex',
+    flexDirection: 'row',
   },
 });

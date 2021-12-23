@@ -25,6 +25,7 @@ import Blankavatar from './atom/Blankavatar';
 import Widebtntext from './atom/Widebtntext';
 import Subtitle from './atom/Subtitle';
 import Subhead from './template/Subhead';
+import Chip from './atom/Chip';
 export {
   BtnNext,
   Txtinput,
@@ -53,4 +54,5 @@ export {
   Widebtntext,
   Subtitle,
   Subhead,
+  Chip,
 };
