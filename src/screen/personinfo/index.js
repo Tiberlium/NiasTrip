@@ -13,7 +13,10 @@ import firestore from '@react-native-firebase/firestore';
 import ActionSheet from 'react-native-actions-sheet';
 import ImagePicker from 'react-native-image-crop-picker';
 import Storage from '@react-native-firebase/storage';
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 export default function Personinfo({navigation}) {
   const user = Auth().currentUser;
@@ -165,7 +168,7 @@ export default function Personinfo({navigation}) {
         />
       </View>
       <Cardinfo
-        displayName={user.displayName || 'kosong'}
+        displayName={user.displayName || user.email || user.phoneNumber}
         gender={profile.gender || 'kosong'}
         email={user.email || 'kosong'}
         phone={profile.phoneNumber || 'kosong'}
@@ -185,7 +188,13 @@ export default function Personinfo({navigation}) {
 const styles = StyleSheet.create({
   wrap: {display: 'flex', flexDirection: 'row'},
   btntext: {alignSelf: 'center', marginTop: 10, marginBottom: 30},
-  title: {fontWeight: 'bold', fontSize: 25, color: 'black', marginTop: hp(2),marginHorizontal:wp(25)},
+  title: {
+    fontWeight: 'bold',
+    fontSize: 25,
+    color: 'black',
+    marginTop: hp(2),
+    marginHorizontal: wp(25),
+  },
   sheetTitle: {
     textAlign: 'center',
     fontWeight: 'bold',

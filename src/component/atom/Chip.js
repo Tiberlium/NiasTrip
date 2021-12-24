@@ -9,6 +9,10 @@ export default function Chip({onPress, title}) {
     onPress(title);
     setbackground('grey');
     settext('white');
+    if (background === 'grey') {
+      setbackground('white');
+      settext('black');
+    }
   }
 
   return (

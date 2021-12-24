@@ -19,7 +19,10 @@ export default function Home() {
   const navigation = useNavigation();
   return (
     <View>
-      <Profilehead source={{uri: user.photoURL}} name={user.displayName} />
+      <Profilehead
+        source={{uri: user.photoURL}}
+        name={user.displayName || user.email || user.phoneNumber}
+      />
       <Text style={styles.title}>Mau kemana hari ini?</Text>
       <Searchbtn onPress={() => navigation.navigate('Search')} />
       <Subtitle text1="Pengalaman" text2="Lain" />
