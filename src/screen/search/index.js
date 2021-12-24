@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Btnback, Chip, Searchbar} from '../../component';
 import {
@@ -16,9 +16,9 @@ export default function Search({navigation}) {
       <Searchbar />
       <Text style={styles.subtitle}>Rekomendasi</Text>
       <View style={styles.chipWrap}>
-        <Chip title="Lagundri" onPress={data => console.log(null)} />
-        <Chip title="Ya'ahowu" onPress={data => console.log(null)} />
-        <Chip title="Gado" onPress={data => console.log(null)} />
+        <Chip title="Lagundri" onPress={data => console.log(data)} />
+        <Chip title="Ya'ahowu" onPress={data => console.log(data)} />
+        <Chip title="Gado" onPress={data => console.log(data)} />
       </View>
     </View>
   );
