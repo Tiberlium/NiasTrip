@@ -17,6 +17,7 @@ import Otp from './otp';
 import Changesecurity from './changesecurity';
 import Help from './help';
 import Search from './search';
+import Hoteldetail from './hoteldetail';
 
 export {
   Splash,
@@ -38,4 +39,5 @@ export {
   Changesecurity,
   Help,
   Search,
+  Hoteldetail,
 };
