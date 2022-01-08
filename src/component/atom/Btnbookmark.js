@@ -1,18 +1,26 @@
-import React from 'react'
-import { View,StyleSheet,TouchableOpacity } from 'react-native'
+import React from 'react';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function Btnbookmark({onPress}) {
-    return (
-        <View style={styles.wrap}>
-            <TouchableOpacity onPress={onPress}>
-                <Icon name="bookmark" size={30} style={styles.icon}/>
-            </TouchableOpacity>
-        </View>
-    )
+export default function Btnbookmark({onPress, color}) {
+  return (
+    <View style={styles.wrap}>
+      <TouchableOpacity onPress={onPress}>
+        <Icon name="bookmark" size={30} style={styles.icon} color={color} />
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    wrap:{height:60,width:60,backgroundColor:'white',elevation:10,borderRadius:30},
-    icon:{alignSelf:'center',marginTop:10},
-})
+  wrap: {
+    height: 60,
+    width: 60,
+    backgroundColor: 'transparent',
+    borderRadius: 10,
+    alignSelf: 'center',
+    marginHorizontal: 10,
+    marginTop: 10,
+  },
+  icon: {alignSelf: 'center', marginTop: 10},
+});

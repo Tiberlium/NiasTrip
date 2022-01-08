@@ -26,6 +26,9 @@ import Widebtntext from './atom/Widebtntext';
 import Subtitle from './atom/Subtitle';
 import Subhead from './template/Subhead';
 import Chip from './atom/Chip';
+import Thumbgallery from './atom/Thumbgallery';
+import Facilitychip from './atom/Facilitychip';
+import Btnbooking from './atom/Btnbooking';
 export {
   BtnNext,
   Txtinput,
@@ -55,4 +58,7 @@ export {
   Subtitle,
   Subhead,
   Chip,
+  Thumbgallery,
+  Facilitychip,
+  Btnbooking,
 };
