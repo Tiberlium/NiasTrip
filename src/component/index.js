@@ -29,6 +29,8 @@ import Chip from './atom/Chip';
 import Thumbgallery from './atom/Thumbgallery';
 import Facilitychip from './atom/Facilitychip';
 import Btnbooking from './atom/Btnbooking';
+import Btnlocation from './atom/Btnlocation';
+import Placecard from './template/Placecard';
 export {
   BtnNext,
   Txtinput,
@@ -61,4 +63,6 @@ export {
   Thumbgallery,
   Facilitychip,
   Btnbooking,
+  Btnlocation,
+  Placecard,
 };

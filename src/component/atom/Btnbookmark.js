@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderRadius: 10,
     alignSelf: 'center',
-    marginHorizontal: 10,
     marginTop: 10,
   },
   icon: {alignSelf: 'center', marginTop: 10},

@@ -15,7 +15,9 @@ import {
 import {
   Btnback,
   Btnbookmark,
+  Btnlocation,
   Facilitychip,
+  Placecard,
   Thumbgallery,
 } from '../../component';
 import ActionSheet from 'react-native-actions-sheet';
@@ -75,9 +77,9 @@ export default function Hoteldetail({navigation}) {
         <Btnback onPress={() => navigation.goBack()} />
         <Btnbookmark color="white" />
       </View>
-      <View style={styles.inlineWrap}>
-        <Text style={styles.title}>Doraemon stanza</Text>
-        <Text style={styles.caption}>Teluk Dalam,Nias Selatan</Text>
+      <View style={styles.headerContainer2}>
+        <Placecard title="Kasima" kota="teluk dalam" kabupaten="nias selatan" />
+        <Btnlocation />
       </View>
       <View style={styles.containerPrice}>
         <Text style={styles.pricetext}>Rp.100.000/</Text>
@@ -138,24 +140,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  headerContainer2: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop:hp(18),
+  },
   img: {
     height: 250,
     width: wp(100),
     alignSelf: 'center',
     position: 'absolute',
   },
-  inlineWrap: {
-    width: 280,
-    height: 80,
-    backgroundColor: 'white',
-    padding: 10,
-    borderRadius: 10,
-    marginLeft: 10,
-    marginTop: hp(20),
-    elevation: 5,
-  },
-  title: {color: 'black', fontWeight: 'bold', fontSize: 25},
-  caption: {color: 'black', fontWeight: '300'},
   containerPrice: {
     display: 'flex',
     flexDirection: 'row',
