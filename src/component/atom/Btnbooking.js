@@ -1,19 +1,19 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-export default function Btnbooking() {
+export default function Btnbooking({onPress}) {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <Text style={styles.text}>Pesan Sekarang</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     height: 60,
-    width: 200,
-    backgroundColor: 'gray',
+    width: 250,
+    backgroundColor: '#425EF9',
     borderRadius: 10,
     alignSelf: 'center',
   },

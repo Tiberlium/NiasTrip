@@ -19,9 +19,11 @@ import {
   Facilitychip,
   Placecard,
   Thumbgallery,
+  Btnbooking,
+  Btndate,
 } from '../../component';
 import ActionSheet from 'react-native-actions-sheet';
-
+import DateTimePicker from '@react-native-community/datetimepicker';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const images = [
@@ -46,6 +48,22 @@ const images = [
 const Facility = ['tv', 'utensils', 'bed', 'wifi', 'bath', 'fan'];
 
 const Action = ({refs}) => {
+  const [inshow, setinshow] = useState(false);
+  const [outshow, setoutshow] = useState(false);
+  const [checkin, setcheckin] = useState(new Date());
+  const [checkout, setcheckout] = useState(new Date());
+
+  function onChange(event, value) {
+    if (inshow && event.type === 'set') {
+      setcheckin(value);
+    } else if (outshow && event.type === 'set') {
+      setcheckout(value);
+    } else {
+      setinshow(false);
+      setoutshow(false);
+    }
+  }
+
   return (
     <ActionSheet
       ref={refs}
@@ -53,10 +71,42 @@ const Action = ({refs}) => {
       bounceOnOpen={true}
       drawUnderStatusBar={true}
       bounciness={4}
-      gestureEnabled={true}
-      defaultOverlayOpacity={0.3}>
+      gestureEnabled={true}>
       <View>
-        <Text>Hallo bangsat</Text>
+        <Text style={actionStyles.title}>Pemesanan</Text>
+        <View style={actionStyles.inlineContainer}>
+          <View>
+            <Text style={actionStyles.txt}>Check In</Text>
+            <Btndate
+              onPress={() => setinshow(true)}
+              value={checkin.toLocaleString('id-ID', {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric',
+              })}
+            />
+          </View>
+          <View style={actionStyles.checkIcon}>
+            <Icon name="swap-horizontal-outline" size={30} color="black" />
+          </View>
+          <View>
+            <Text style={actionStyles.txt}>Check Out</Text>
+            <Btndate
+              onPress={() => setoutshow(true)}
+              value={checkout.toLocaleString('id-ID', {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric',
+              })}
+            />
+          </View>
+        </View>
+        <Text style={actionStyles.txt}>Jumlah</Text>
+        <Btnbooking />
+      </View>
+      <View>
+        {(inshow && <DateTimePicker value={checkin} onChange={onChange} />) ||
+          (outshow && <DateTimePicker value={checkout} onChange={onChange} />)}
       </View>
     </ActionSheet>
   );
@@ -122,10 +172,27 @@ export default function Hoteldetail({navigation}) {
           <Icon name="chevron-up-circle" size={30} color="black" />
         </TouchableOpacity>
       </View>
+
       <Action refs={Actionref} />
     </View>
   );
 }
+
+const actionStyles = StyleSheet.create({
+  title: {
+    fontWeight: 'bold',
+    fontSize: 25,
+    color: 'black',
+    textAlign: 'center',
+  },
+  txt: {fontWeight: 'bold', fontSize: 20, color: 'black', paddingVertical: 20},
+  checkIcon: {marginTop: hp(9)},
+  inlineContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+});
 
 const styles = StyleSheet.create({
   containerImage: {
@@ -144,7 +211,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop:hp(18),
+    marginTop: hp(18),
   },
   img: {
     height: 250,

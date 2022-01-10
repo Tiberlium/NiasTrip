@@ -4,8 +4,8 @@ import Icon from 'react-native-vector-icons/Feather';
 
 export default function Btnlocation({onPress}) {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={onPress}>
+    <View>
+      <TouchableOpacity onPress={onPress} style={styles.container}>
         <Icon name="map" color="blue" size={30} />
       </TouchableOpacity>
     </View>
@@ -20,6 +20,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     elevation: 5,
     padding: 15,
-    margin:10,
+    margin: 10,
   },
 });

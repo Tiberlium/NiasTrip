@@ -31,6 +31,7 @@ import Facilitychip from './atom/Facilitychip';
 import Btnbooking from './atom/Btnbooking';
 import Btnlocation from './atom/Btnlocation';
 import Placecard from './template/Placecard';
+import Btndate from './atom/Btndate';
 export {
   BtnNext,
   Txtinput,
@@ -65,4 +66,5 @@ export {
   Btnbooking,
   Btnlocation,
   Placecard,
+  Btndate,
 };
