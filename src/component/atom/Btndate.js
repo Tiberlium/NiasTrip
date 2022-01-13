@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   txt: {
-    FontWeight: '300',
+    fontWeight: '300',
     color: 'black',
     marginTop: 4,
   },

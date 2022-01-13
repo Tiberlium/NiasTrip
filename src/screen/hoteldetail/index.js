@@ -25,6 +25,7 @@ import {
 import ActionSheet from 'react-native-actions-sheet';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Icon from 'react-native-vector-icons/Ionicons';
+import NumericInput from 'react-native-numeric-input';
 
 const images = [
   {
@@ -52,6 +53,8 @@ const Action = ({refs}) => {
   const [outshow, setoutshow] = useState(false);
   const [checkin, setcheckin] = useState(new Date());
   const [checkout, setcheckout] = useState(new Date());
+
+  const [jmlhOrg, setjmlhOrg] = useState(0);
 
   function onChange(event, value) {
     if (inshow && event.type === 'set') {
@@ -101,7 +104,17 @@ const Action = ({refs}) => {
             />
           </View>
         </View>
-        <Text style={actionStyles.txt}>Jumlah</Text>
+        <Text style={actionStyles.txt3}>Jumlah</Text>
+        <View style={actionStyles.inlineContainer2}>
+          <NumericInput
+            onChange={value => setjmlhOrg(value)}
+            value={jmlhOrg}
+            totalHeight={40}
+            rounded
+            maxValue={4}
+          />
+          <Text style={actionStyles.txt2}>Orang</Text>
+        </View>
         <Btnbooking />
       </View>
       <View>
@@ -186,11 +199,31 @@ const actionStyles = StyleSheet.create({
     textAlign: 'center',
   },
   txt: {fontWeight: 'bold', fontSize: 20, color: 'black', paddingVertical: 20},
+  txt2: {
+    fontWeight: '300',
+    fontSize: 15,
+    color: 'black',
+    paddingTop: 10,
+    marginHorizontal: 10,
+  },
+  txt3: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: 'black',
+    paddingVertical: 20,
+    marginLeft: 10,
+  },
   checkIcon: {marginTop: hp(9)},
   inlineContainer: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
+  },
+  inlineContainer2: {
+    display: 'flex',
+    flexDirection: 'row',
+    paddingLeft: 10,
+    paddingBottom: 20,
   },
 });
 
