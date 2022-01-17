@@ -5,12 +5,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {
-  Btnback,
-  Btnbookmark,
-  Btnnearby,
-  Thumbgallery,
-} from '../../component';
+import {Btnback, Btnbookmark, Btnnearby, Thumbgallery} from '../../component';
 
 const images = [
   {
@@ -31,7 +26,7 @@ const images = [
   },
 ];
 
-export default function Detail({navigation}) {
+export default function Otherdetail({navigation}) {
   const [visible, setvisible] = useState(false);
   const [index, setindex] = useState(0);
 
@@ -74,7 +69,7 @@ export default function Detail({navigation}) {
         onRequestClose={() => setvisible(false)}
       />
       <View style={styles.wrapBtn}>
-        <Btnnearby title="Lihat Sekitar" />
+        <Btnnearby title="Cari Penyedia" />
         <Btnbookmark />
       </View>
     </View>

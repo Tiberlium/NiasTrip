@@ -3,11 +3,11 @@ import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-export default function Btnnearby({onPress}) {
+export default function Btnnearby({onPress,title}) {
   return (
     <View>
       <TouchableOpacity style={styles.container} onPress={onPress}>
-        <Text style={styles.txt}>Lihat Sekitar</Text>
+        <Text style={styles.txt}>{title}</Text>
         <View style={styles.wrap}>
           <Icon
             name="arrow-forward"

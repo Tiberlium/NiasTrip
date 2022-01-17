@@ -19,6 +19,7 @@ import {
   Search,
   Detail,
   Hoteldetail,
+  Otherdetail,
 } from './src/screen';
 import { Listimage } from './src/component';
 
@@ -106,7 +107,7 @@ export default function App() {
     //   </Tab.Navigator>
     // </NavigationContainer>
     <View>
-      <Hoteldetail/>
+      <Otherdetail/>
     </View>
   );
 }
