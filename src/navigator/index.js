@@ -59,9 +59,8 @@ export default function Navigator() {
 }
 
 const styles = {
-  height: hp(10),
+  height: hp(7),
   width: 400,
-  paddingBottom: hp(3),
   borderTopWidth:1,
   backgroundColor:'#38393E',
 };

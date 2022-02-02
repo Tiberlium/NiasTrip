@@ -26,6 +26,7 @@ const images = [
   },
 ];
 
+
 export default function Otherdetail({navigation}) {
   const [visible, setvisible] = useState(false);
   const [index, setindex] = useState(0);
