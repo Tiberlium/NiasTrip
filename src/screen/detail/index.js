@@ -40,7 +40,9 @@ export default function Detail({route, navigation}) {
   function addBookmark() {
     const value = {
       id: route.params.id,
-      Data,
+      title: Data['nama'],
+      gambar: Data['gambar'],
+      kategori : Data['kategori'],
     };
 
     AsyncStorage.getItem('Book').then(doc => {
