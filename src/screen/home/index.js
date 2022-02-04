@@ -55,7 +55,7 @@ export default function Home() {
       <Searchbtn onPress={() => navigation.navigate('Search')} />
       <Subtitle text1="Pengalaman" text2="Lain" />
       <Listcategory />
-      <Subhead />
+      <Subhead onPress={() => navigation.navigate('Fullview')} />
       <FlatList
         horizontal={true}
         data={Data}
@@ -64,6 +64,7 @@ export default function Home() {
             title={item.data.nama}
             lokasi={item.data.kecamatan}
             gambar={item.data.gambar}
+            onPress={() => navigation.navigate('Detail', {id: item.id})}
           />
         )}
       />

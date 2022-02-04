@@ -167,7 +167,7 @@ export default function Hoteldetail({navigation}) {
         data={images}
         renderItem={({item, index}) => (
           <Thumbgallery
-            source={{uri: item.uri}}
+            source={item.uri}
             onPress={() => {
               setvisible(true), setindex(index);
             }}

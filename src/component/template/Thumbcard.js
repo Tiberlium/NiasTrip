@@ -1,11 +1,17 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity,ImageBackground} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function Thumbcard({title, lokasi, gambar}) {
+export default function Thumbcard({title, lokasi, gambar, onPress}) {
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPress}>
         <Image source={{uri: gambar}} style={styles.img} />
         <Text style={styles.title}>{title}</Text>
         <View style={styles.inlineWrap}>
@@ -30,7 +36,7 @@ const styles = StyleSheet.create({
     color: 'white',
     marginLeft: 10,
     marginTop: 150,
-    position:'absolute',
+    position: 'absolute',
   },
   inlineWrap: {
     display: 'flex',
@@ -38,7 +44,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     marginLeft: 10,
     marginTop: 180,
-    position:'absolute',
+    position: 'absolute',
   },
   caption: {marginLeft: 5, color: 'white', fontSize: 15, fontWeight: '300'},
 });

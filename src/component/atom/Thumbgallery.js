@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 
-export default function Thumbgallery({source, onPress}) {
+export default function Thumbgallery({uri, onPress}) {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
-      <Image source={source} style={styles.img} />
+      <Image source={{uri: uri}} style={styles.img} />
     </TouchableOpacity>
   );
 }

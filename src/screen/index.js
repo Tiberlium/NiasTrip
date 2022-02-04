@@ -19,6 +19,7 @@ import Help from './help';
 import Search from './search';
 import Hoteldetail from './hoteldetail';
 import Otherdetail from './otherdetail';
+import Fullview from './fullview';
 
 export {
   Splash,
@@ -42,4 +43,5 @@ export {
   Search,
   Hoteldetail,
   Otherdetail,
+  Fullview,
 };

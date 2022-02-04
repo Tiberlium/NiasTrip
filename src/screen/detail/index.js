@@ -1,66 +1,86 @@
-import React, {useState, useRef} from 'react';
-import {View, Text, Image, StyleSheet, FlatList} from 'react-native';
+import React, {useState, useRef, useEffect} from 'react';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  FlatList,
+  ToastAndroid,
+} from 'react-native';
 import ImageView from 'react-native-image-viewing';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {
-  Btnback,
-  Btnbookmark,
-  Btnnearby,
-  Thumbgallery,
-} from '../../component';
+import {Btnback, Btnbookmark, Btnnearby, Thumbgallery} from '../../component';
+import firestore from '@react-native-firebase/firestore';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const images = [
-  {
-    id: 1,
-    uri: 'https://placeimg.com/640/480/any',
-  },
-  {
-    id: 2,
-    uri: 'https://placeimg.com/640/480/nature',
-  },
-  {
-    id: 3,
-    uri: 'https://placeimg.com/640/480/people',
-  },
-  {
-    id: 4,
-    uri: 'https://placeimg.com/640/480/tech',
-  },
-];
-
-export default function Detail({navigation}) {
+export default function Detail({route, navigation}) {
   const [visible, setvisible] = useState(false);
+  const [Data, setData] = useState('');
   const [index, setindex] = useState(0);
+  const isMounted = useRef();
+
+  async function Get() {
+    const docRef = await firestore()
+      .collection('Wisata')
+      .doc(route.params.id)
+      .get();
+
+    if (isMounted.current) return setData(docRef.data());
+  }
+
+  useEffect(() => {
+    isMounted.current = true;
+    Get();
+    return () => (isMounted.current = false);
+  }, []);
+
+  function addBookmark() {
+    const value = {
+      id: route.params.id,
+      Data,
+    };
+
+    AsyncStorage.getItem('Book').then(doc => {
+      doc = doc === null ? [] : JSON.parse(doc);
+      doc.push(value);
+      return AsyncStorage.setItem('Book', JSON.stringify(doc));
+    });
+    ToastAndroid.show('Ditambahkan ke Bookmark', ToastAndroid.SHORT);
+  }
+
+  const galery = {...Data['galery ']};
+  const images = [];
+  Object.keys(galery).map(x => {
+    images.push({
+      id: x,
+      uri: galery[x],
+    });
+  });
 
   return (
     <View>
+      <Image source={{uri: Data.gambar}} style={styles.img} />
       <Btnback onPress={() => navigation.goBack()} />
-      <Image
-        source={{uri: 'https://placeimg.com/640/480/any'}}
-        style={styles.img}
-      />
       <View style={styles.inlineWrap}>
-        <Text style={styles.title}>Lagundri</Text>
-        <Text style={styles.caption}>Teluk Dalam,Nias Selatan</Text>
+        <Text style={styles.title}>{Data.nama}</Text>
+        <Text style={styles.caption}>
+          {Data.kecamatan}, {Data.kabupaten}
+        </Text>
       </View>
       <Text style={styles.headline}>Deskripsi</Text>
       <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-        facilisis ac urna ac porttitor. Morbi semper felis id urna ornare
-        facilisis nec ut sem. Morbi id ultrices nisl. Ut dapibus eleifend metus,
-        et lobortis urna accumsan quis.
+        {Data.deskripsi}
       </Text>
       <Text style={styles.headline}>Gallery</Text>
       <FlatList
         horizontal={true}
-        data={images}
-        keyExtractor={item => item.id}
-        renderItem={({item, index}) => (
+        data={Data['galery ']}
+        renderItem={({item}) => (
           <Thumbgallery
-            source={{uri: item.uri}}
+            uri={item}
             onPress={() => {
               setvisible(true), setindex(index);
             }}
@@ -71,11 +91,12 @@ export default function Detail({navigation}) {
         images={images}
         visible={visible}
         imageIndex={index}
+        keyExtractor={item => item.id}
         onRequestClose={() => setvisible(false)}
       />
       <View style={styles.wrapBtn}>
         <Btnnearby title="Lihat Sekitar" />
-        <Btnbookmark />
+        <Btnbookmark onPress={addBookmark} />
       </View>
     </View>
   );

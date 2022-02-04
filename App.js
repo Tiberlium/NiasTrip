@@ -19,6 +19,7 @@ import {
   Detail,
   Hoteldetail,
   Otherdetail,
+  Fullview,
 } from './src/screen';
 
 const Tab = createNativeStackNavigator();
@@ -58,6 +59,11 @@ export default function App() {
         <Tab.Screen
           name="Logphone"
           component={Logphone}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="Fullview"
+          component={Fullview}
           options={{headerShown: false}}
         />
         <Tab.Screen name="Otp" component={Otp} options={{headerShown: false}} />
@@ -100,6 +106,11 @@ export default function App() {
         <Tab.Screen
           name="Detail"
           component={Detail}
+          options={{headerShown: false}}
+        />
+         <Tab.Screen
+          name="Hoteldetail"
+          component={Hoteldetail}
           options={{headerShown: false}}
         />
       </Tab.Navigator>
