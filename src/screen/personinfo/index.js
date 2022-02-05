@@ -42,7 +42,9 @@ export default function Personinfo({navigation}) {
       .doc(user.uid)
       .get()
       .then(doc => {
-        if (isMounted.current) return setprofile(doc.data());
+        if (isMounted.current) {
+          doc.exists ? setprofile(doc.data()) : {};
+        }
       });
   }
 
