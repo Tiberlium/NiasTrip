@@ -25,7 +25,6 @@ export default function Hotelgroup({navigation}) {
     return () => (isMounted.current = false);
   }, []);
 
-
   return (
     <View>
       <View style={styles.wrap}>
@@ -33,7 +32,7 @@ export default function Hotelgroup({navigation}) {
         <Text style={styles.txt}>Homestay</Text>
       </View>
       <FlatList
-        keyExtractor ={item => item.id}
+        keyExtractor={item => item.id}
         data={Data}
         renderItem={({item, index}) => (
           <Allcard
@@ -41,6 +40,7 @@ export default function Hotelgroup({navigation}) {
             kota={item.data.Kabupaten}
             kabupaten={item.data.Kategori}
             gambar={item.data.Gambar}
+            onPress={() => navigation.navigate('Hoteldetail', {id: item.id})}
           />
         )}
       />

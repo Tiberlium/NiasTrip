@@ -34,12 +34,13 @@ export default function Fullview({navigation}) {
       </View>
       <FlatList
         data={Data}
-        renderItem={({item, index}) => (
+        renderItem={({item}) => (
           <Allcard
-            title={item.data.nama}
-            kota={item.data.kecamatan}
-            kabupaten={item.data.kabupaten}
-            gambar={item.data.gambar}
+            title={item.data.Nama}
+            kota={item.data.Kecamatan}
+            kabupaten={item.data.Kabupaten}
+            gambar={item.data.Gambar}
+            onPress={() => navigation.navigate('Detail', {id: item.id})}
           />
         )}
       />

@@ -74,12 +74,12 @@ export default function App() {
           component={Hotelgroup}
           options={{headerShown: false}}
         />
-          <Tab.Screen
+        <Tab.Screen
           name="Makanangroup"
           component={Makanangroup}
           options={{headerShown: false}}
         />
-          <Tab.Screen
+        <Tab.Screen
           name="Eventgroup"
           component={Eventgroup}
           options={{headerShown: false}}
@@ -126,7 +126,7 @@ export default function App() {
           component={Detail}
           options={{headerShown: false}}
         />
-         <Tab.Screen
+        <Tab.Screen
           name="Hoteldetail"
           component={Hoteldetail}
           options={{headerShown: false}}

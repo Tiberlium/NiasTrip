@@ -40,9 +40,9 @@ export default function Detail({route, navigation}) {
   function addBookmark() {
     const value = {
       id: route.params.id,
-      title: Data['nama'],
-      gambar: Data['gambar'],
-      kategori : Data['kategori'],
+      title: Data['Nama'],
+      gambar: Data['Gambar'],
+      kategori : Data['Kategori'],
     };
 
     AsyncStorage.getItem('Book').then(doc => {
@@ -53,7 +53,7 @@ export default function Detail({route, navigation}) {
     ToastAndroid.show('Ditambahkan ke Bookmark', ToastAndroid.SHORT);
   }
 
-  const galery = {...Data['galery ']};
+  const galery = {...Data['galery']};
   const images = [];
   Object.keys(galery).map(x => {
     images.push({
@@ -64,22 +64,22 @@ export default function Detail({route, navigation}) {
 
   return (
     <View>
-      <Image source={{uri: Data.gambar}} style={styles.img} />
+      <Image source={{uri: Data.Gambar}} style={styles.img} />
       <Btnback onPress={() => navigation.goBack()} />
       <View style={styles.inlineWrap}>
-        <Text style={styles.title}>{Data.nama}</Text>
+        <Text style={styles.title}>{Data.Nama}</Text>
         <Text style={styles.caption}>
-          {Data.kecamatan}, {Data.kabupaten}
+          {Data.kecamatan}, {Data.Kabupaten}
         </Text>
       </View>
       <Text style={styles.headline}>Deskripsi</Text>
       <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
-        {Data.deskripsi}
+        {Data.Deskripsi}
       </Text>
       <Text style={styles.headline}>Gallery</Text>
       <FlatList
         horizontal={true}
-        data={Data['galery ']}
+        data={Data['Galery']}
         renderItem={({item}) => (
           <Thumbgallery
             uri={item}

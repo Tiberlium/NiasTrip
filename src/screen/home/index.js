@@ -61,9 +61,9 @@ export default function Home() {
         data={Data}
         renderItem={({item}) => (
           <Thumbcard
-            title={item.data.nama}
-            lokasi={item.data.kecamatan}
-            gambar={item.data.gambar}
+            title={item.data.Nama}
+            lokasi={item.data.Kecamatan}
+            gambar={item.data.Gambar}
             onPress={() => navigation.navigate('Detail', {id: item.id})}
           />
         )}
