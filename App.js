@@ -20,7 +20,10 @@ import {
   Hoteldetail,
   Otherdetail,
   Fullview,
+  Makanangroup,
+  Eventgroup,
 } from './src/screen';
+import Hotelgroup from './src/screen/hotelgroup';
 
 const Tab = createNativeStackNavigator();
 
@@ -64,6 +67,21 @@ export default function App() {
         <Tab.Screen
           name="Fullview"
           component={Fullview}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="Hotelgroup"
+          component={Hotelgroup}
+          options={{headerShown: false}}
+        />
+          <Tab.Screen
+          name="Makanangroup"
+          component={Makanangroup}
+          options={{headerShown: false}}
+        />
+          <Tab.Screen
+          name="Eventgroup"
+          component={Eventgroup}
           options={{headerShown: false}}
         />
         <Tab.Screen name="Otp" component={Otp} options={{headerShown: false}} />

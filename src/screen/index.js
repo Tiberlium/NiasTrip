@@ -20,6 +20,10 @@ import Search from './search';
 import Hoteldetail from './hoteldetail';
 import Otherdetail from './otherdetail';
 import Fullview from './fullview';
+import Hotelview from './hoteldetail';
+import Makanangroup from './makanangroup';
+import Eventgroup from './eventgroup';
+
 
 export {
   Splash,
@@ -44,4 +48,7 @@ export {
   Hoteldetail,
   Otherdetail,
   Fullview,
+  Hotelview,
+  Makanangroup,
+  Eventgroup,
 };
