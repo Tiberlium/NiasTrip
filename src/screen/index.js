@@ -18,7 +18,7 @@ import Changesecurity from './changesecurity';
 import Help from './help';
 import Search from './search';
 import Hoteldetail from './hoteldetail';
-import Otherdetail from './otherdetail';
+import Fooddetail from './fooddetail';
 import Fullview from './fullview';
 import Hotelview from './hoteldetail';
 import Makanangroup from './makanangroup';
@@ -46,7 +46,7 @@ export {
   Help,
   Search,
   Hoteldetail,
-  Otherdetail,
+  Fooddetail,
   Fullview,
   Hotelview,
   Makanangroup,

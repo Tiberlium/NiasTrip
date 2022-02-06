@@ -22,6 +22,7 @@ import {
   Fullview,
   Makanangroup,
   Eventgroup,
+  Fooddetail,
 } from './src/screen';
 import Hotelgroup from './src/screen/hotelgroup';
 
@@ -129,6 +130,11 @@ export default function App() {
         <Tab.Screen
           name="Hoteldetail"
           component={Hoteldetail}
+          options={{headerShown: false}}
+        />
+           <Tab.Screen
+          name="Fooddetail"
+          component={Fooddetail}
           options={{headerShown: false}}
         />
       </Tab.Navigator>

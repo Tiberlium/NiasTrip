@@ -39,6 +39,7 @@ export default function Makanangroup({navigation}) {
             title={item.data.Nama}
             gambar={item.data.Gambar}
             kota={item.data.Kategori}
+            onPress={() => navigation.navigate('Fooddetail', {id: item.id})}
           />
         )}
       />

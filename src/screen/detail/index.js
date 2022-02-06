@@ -42,7 +42,7 @@ export default function Detail({route, navigation}) {
       id: route.params.id,
       title: Data['Nama'],
       gambar: Data['Gambar'],
-      kategori : Data['Kategori'],
+      kategori: Data['Kategori'],
     };
 
     AsyncStorage.getItem('Book').then(doc => {
@@ -53,7 +53,7 @@ export default function Detail({route, navigation}) {
     ToastAndroid.show('Ditambahkan ke Bookmark', ToastAndroid.SHORT);
   }
 
-  const galery = {...Data['galery']};
+  const galery = {...Data['Galery']};
   const images = [];
   Object.keys(galery).map(x => {
     images.push({

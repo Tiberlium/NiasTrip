@@ -31,7 +31,9 @@ export default function Bookmark({navigation}) {
   }
 
   function MoveAway(id, category) {
-    navigation.navigate('Detail', {id});
+    category === 'tempat wisata'
+      ? navigation.navigate('Detail', {id})
+      : navigation.navigate('Hoteldetail', {id});
   }
 
   useEffect(() => {
