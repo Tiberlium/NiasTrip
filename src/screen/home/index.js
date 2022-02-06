@@ -48,7 +48,6 @@ export default function Home() {
   return (
     <View>
       <Profilehead
-        source={{uri: user.photoURL}}
         name={user.displayName || user.email || user.phoneNumber}
       />
       <Text style={styles.title}>Mau kemana hari ini?</Text>
