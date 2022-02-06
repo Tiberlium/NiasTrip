@@ -31,11 +31,15 @@ export default function Bookmark({navigation}) {
   }
 
   function MoveAway(id, category) {
-    category === 'tempat wisata'
-      ? navigation.navigate('Detail', {id})
-      : 'Makanan'
-      ? navigation.navigate('Fooddetail', {id})
-      : navigation.navigate('Hoteldetail', {id});
+    if (category === 'tempat wisata') {
+      navigation.navigate('Detail', {id});
+    } else if (category === 'Makanan') {
+      navigation.navigate('Fooddetail', {id});
+    } else if (category === 'Penginapan') {
+      navigation.navigate('Hoteldetail', {id});
+    } else {
+      navigation.navigate('Eventdetail', {id});
+    }
   }
 
   useEffect(() => {

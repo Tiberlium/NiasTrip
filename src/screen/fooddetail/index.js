@@ -23,7 +23,7 @@ export default function Fooddetail({navigation, route}) {
     if (isMounted.current) return setData(docRefFood.data());
   }
 
-  const galery = {...Data['Galery ']};
+  const galery = {...Data['Galery']};
   let images = [];
   Object.keys(galery).map(doc => {
     images.push({
@@ -81,7 +81,6 @@ export default function Fooddetail({navigation, route}) {
       />
       <ImageView
         images={images}
-        keyExtractor={item => item.toString()}
         visible={visible}
         imageIndex={index}
         onRequestClose={() => setvisible(false)}

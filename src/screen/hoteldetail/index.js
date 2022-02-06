@@ -157,7 +157,7 @@ export default function Hoteldetail({navigation, route}) {
   return (
     <View>
       <Image
-        source={{uri: 'https://placeimg.com/640/480/any'}}
+        source={{uri: Data['Gambar']}}
         style={styles.img}
       />
       <View style={styles.headerContainer}>
