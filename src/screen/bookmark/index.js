@@ -33,6 +33,8 @@ export default function Bookmark({navigation}) {
   function MoveAway(id, category) {
     category === 'tempat wisata'
       ? navigation.navigate('Detail', {id})
+      : 'Makanan'
+      ? navigation.navigate('Fooddetail', {id})
       : navigation.navigate('Hoteldetail', {id});
   }
 
