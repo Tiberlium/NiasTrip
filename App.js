@@ -18,7 +18,7 @@ import {
   Search,
   Detail,
   Hoteldetail,
-  Otherdetail,
+  Eventdetail,
   Fullview,
   Makanangroup,
   Eventgroup,
@@ -132,9 +132,14 @@ export default function App() {
           component={Hoteldetail}
           options={{headerShown: false}}
         />
-           <Tab.Screen
+        <Tab.Screen
           name="Fooddetail"
           component={Fooddetail}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="Eventdetail"
+          component={Eventdetail}
           options={{headerShown: false}}
         />
       </Tab.Navigator>

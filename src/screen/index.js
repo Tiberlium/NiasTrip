@@ -23,7 +23,7 @@ import Fullview from './fullview';
 import Hotelview from './hoteldetail';
 import Makanangroup from './makanangroup';
 import Eventgroup from './eventgroup';
-
+import Eventdetail from './eventdetail';
 
 export {
   Splash,
@@ -51,4 +51,5 @@ export {
   Hotelview,
   Makanangroup,
   Eventgroup,
+  Eventdetail,
 };

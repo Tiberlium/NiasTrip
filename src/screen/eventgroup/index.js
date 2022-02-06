@@ -39,6 +39,7 @@ export default function Eventgroup({navigation}) {
             gambar={item.data.Gambar}
             kota={item.data.Kategori}
             kabupaten={item.data.Kabupaten}
+            onPress={() => navigation.navigate('Eventdetail', {id: item.id})}
           />
         )}
       />
