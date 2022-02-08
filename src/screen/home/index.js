@@ -43,6 +43,7 @@ export default function Home() {
     return () => (isMounted.current = false);
   }, []);
 
+
   const user = auth().currentUser;
   const navigation = useNavigation();
   return (

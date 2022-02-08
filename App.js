@@ -25,7 +25,6 @@ import {
   Fooddetail,
 } from './src/screen';
 import Hotelgroup from './src/screen/hotelgroup';
-
 const Tab = createNativeStackNavigator();
 
 const myTheme = {
