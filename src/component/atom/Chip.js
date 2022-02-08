@@ -6,13 +6,14 @@ export default function Chip({onPress, title}) {
   const [text, settext] = useState('black');
 
   function press() {
-    onPress(title);
-    setbackground('grey');
-    settext('white');
     if (background === 'grey') {
+      onPress('');
       setbackground('white');
       settext('black');
-      onPress(null);
+    } else {
+      onPress(title);
+      setbackground('grey');
+      settext('white');
     }
   }
 

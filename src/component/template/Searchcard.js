@@ -1,8 +1,7 @@
 import {View, Text, Image, StyleSheet, Pressable} from 'react-native';
 import React from 'react';
 
-export default function Searchcard({img, text}) {
-
+function Searchcard({img, text}) {
   return (
     <View>
       <View>
@@ -15,6 +14,9 @@ export default function Searchcard({img, text}) {
   );
 }
 
+export default React.memo(Searchcard);
+
+
 const styles = StyleSheet.create({
   img: {
     height: 240,
@@ -26,8 +28,6 @@ const styles = StyleSheet.create({
   txt: {
     textAlign: 'center',
     width: 180,
-    color:'black',
+    color: 'black',
   },
 });
-
-

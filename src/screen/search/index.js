@@ -94,7 +94,10 @@ export default function Search({navigation}) {
     doc.data.Nama.toLowerCase().match(Query.toLowerCase()),
   );
 
-  
+  const render = ({item}) => (
+    <Searchcard img={item.data.Gambar} text={item.data.Nama} />
+  );
+
   return (
     <View>
       <View style={styles.inlineWrap}>
@@ -104,16 +107,15 @@ export default function Search({navigation}) {
       <Searchbar onChangeText={setQuery} value={Query} />
       <Text style={styles.subtitle}>Rekomendasi</Text>
       <View style={styles.chipWrap}>
-        <Chip title="Lagundri" onPress={data => console.log(data)} />
-        <Chip title="Ya'ahowu" onPress={data => console.log(data)} />
-        <Chip title="Gado" onPress={data => console.log(data)} />
+        <Chip title="Lagundri" onPress={data => setQuery(data)} />
+        <Chip title="Surf" onPress={data => setQuery(data)} />
+        <Chip title="nititi" onPress={data => setQuery(data)} />
       </View>
       <FlatList
         data={filtered}
         numColumns={2}
-        renderItem={({item}) => (
-          <Searchcard img={item.data.Gambar} text={item.data.Nama} />
-        )}
+        keyExtractor={item => item.id}
+        renderItem={render}
       />
     </View>
   );
