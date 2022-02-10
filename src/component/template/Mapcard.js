@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import Btndetail from '../atom/Btndetail';
 
-export default function Mapcard() {
+function Mapcard() {
   return (
     <View style={styles.container}>
       <Image
@@ -12,11 +12,12 @@ export default function Mapcard() {
       <View style={styles.wrap}>
         <Text style={styles.title}>Lagundri</Text>
         <Text style={styles.caption}>Teluk dalam, Nias Selatan</Text>
-        <Btndetail/>
+        <Btndetail />
       </View>
     </View>
   );
 }
+export default React.memo(Mapcard);
 
 const styles = StyleSheet.create({
   container: {
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   img: {height: 120, width: 120, borderRadius: 15, margin: 10},
-  wrap:{marginTop:10,marginLeft:5},
+  wrap: {marginTop: 10, marginLeft: 5},
   title: {fontWeight: 'bold', fontSize: 25, color: 'black'},
   caption: {fontWeight: '200', fontSize: 15, color: 'black'},
 });
