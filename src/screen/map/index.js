@@ -1,5 +1,12 @@
 import React, {useRef, useState, useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Animated,
+  Dimensions,
+  FlatList,
+} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -8,6 +15,7 @@ import MapView, {Marker} from 'react-native-maps';
 import firestore from '@react-native-firebase/firestore';
 
 import {Mapheadercard, Mapcard} from '../../component';
+
 
 function nearby(lat1, lon1, lat2, lon2, unit) {
   var radlat1 = (Math.PI * lat1) / 180;
@@ -119,6 +127,8 @@ export default function Map({navigation, route}) {
   const lat = Number(latitude);
   const long = Number(longitude);
 
+  let Near = [];
+
   Data.map(doc => {
     if (
       nearby(
@@ -129,14 +139,18 @@ export default function Map({navigation, route}) {
         'K',
       ) <= 5
     ) {
-      console.log(`${doc.data.Kategori}`);
+      Near.push({
+        id: doc.id,
+        data: doc.data,
+      });
     }
   });
 
+
+  
   return (
     <>
       <View style={styles.container}>
-        <Mapheadercard onPress={() => navigation.goBack()} />
         <MapView
           region={{
             latitude: Number(latitude),
@@ -145,7 +159,7 @@ export default function Map({navigation, route}) {
             longitudeDelta: 0.0421,
           }}
           style={{height: hp(100), width: wp(100)}}>
-          {Data.map((doc, index) => (
+          {Near.map((doc, index) => (
             <Marker
               key={index}
               coordinate={{
@@ -155,6 +169,20 @@ export default function Map({navigation, route}) {
             />
           ))}
         </MapView>
+      </View>
+      <View>
+        <Mapheadercard onPress={() => navigation.goBack()} />
+        <Animated.FlatList
+          data={Near}
+          horizontal={true}
+          renderItem={({item}) => (
+            <Mapcard
+              img={item.data.Gambar}
+              nama={item.data.Nama}
+              kota={item.data.Kabupaten}
+            />
+          )}
+        />
       </View>
     </>
   );
