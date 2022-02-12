@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import {heightPercentageToDP} from 'react-native-responsive-screen';
 import Btndetail from '../atom/Btndetail';
 
-export default function Mapcard({img, nama, kota}) {
+function Mapcard({img, nama, kota}) {
   return (
     <View style={styles.container}>
       <Image source={{uri: img}} style={styles.img} />
@@ -17,6 +17,8 @@ export default function Mapcard({img, nama, kota}) {
     </View>
   );
 }
+
+export default React.memo(Mapcard);
 
 const styles = StyleSheet.create({
   container: {
@@ -41,5 +43,5 @@ const styles = StyleSheet.create({
     width: 200,
   },
   title: {fontWeight: 'bold', fontSize: 25, color: 'black', width: 180},
-  caption: {fontWeight: '200', fontSize: 15, color: 'black'},
+  caption: {fontWeight: '200', fontSize: 15, color: 'black', marginTop: 5},
 });

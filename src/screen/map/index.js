@@ -1,21 +1,14 @@
 import React, {useRef, useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Animated,
-  Dimensions,
-  FlatList,
-} from 'react-native';
+import {View, StyleSheet, Dimensions} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import MapView, {Marker} from 'react-native-maps';
 import firestore from '@react-native-firebase/firestore';
+import Carousel from 'react-native-snap-carousel';
 
 import {Mapheadercard, Mapcard} from '../../component';
-
 
 function nearby(lat1, lon1, lat2, lon2, unit) {
   var radlat1 = (Math.PI * lat1) / 180;
@@ -45,10 +38,11 @@ export default function Map({navigation, route}) {
   const [Homestay, setHomestay] = useState([]);
   const [Event, setEvent] = useState([]);
   const [Resto, setResto] = useState([]);
-
   const isMounted = useRef();
-
   const {id, latitude, longitude} = route.params;
+
+  const _carousel = useRef();
+  const _map = useRef();
 
   async function getWisata() {
     let x = [];
@@ -146,8 +140,6 @@ export default function Map({navigation, route}) {
     }
   });
 
-
-  
   return (
     <>
       <View style={styles.container}>
@@ -166,15 +158,18 @@ export default function Map({navigation, route}) {
                 latitude: Number(doc.data.Latitude),
                 longitude: Number(doc.data.Longitude),
               }}
+              pinColor="navy"
             />
           ))}
         </MapView>
       </View>
       <View>
         <Mapheadercard onPress={() => navigation.goBack()} />
-        <Animated.FlatList
+        <Carousel
+          ref={c => (_carousel.current = c)}
           data={Near}
-          horizontal={true}
+          itemWidth={370}
+          sliderWidth={Dimensions.get('window').width}
           renderItem={({item}) => (
             <Mapcard
               img={item.data.Gambar}

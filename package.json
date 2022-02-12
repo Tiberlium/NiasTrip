@@ -33,6 +33,7 @@
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.9.0",
     "react-native-select-dropdown": "^1.5.0",
+    "react-native-snap-carousel": "^3.9.1",
     "react-native-vector-icons": "^9.0.0"
   },
   "devDependencies": {
