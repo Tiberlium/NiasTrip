@@ -41,9 +41,6 @@ export default function Map({navigation, route}) {
   const isMounted = useRef();
   const {id, latitude, longitude} = route.params;
 
-  const _carousel = useRef();
-  const _map = useRef();
-
   async function getWisata() {
     let x = [];
     const docRef = await firestore().collection('Wisata').get();
@@ -140,10 +137,39 @@ export default function Map({navigation, route}) {
     }
   });
 
+  let mapRef = useRef(null);
+  let carousel = useRef(null);
+
+  function onCarouselItemChange(index) {
+    let location = Near[index].data;
+    mapRef.current.animateToRegion(
+      {
+        latitude: Number(location.Latitude),
+        longitude: Number(location.Longitude),
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      },
+      300,
+    );
+  }
+
+  function onMarkerPressed(doc) {
+    // map.current.AnimateToRegion({
+    //   latitude: location.Latitude,
+    //   longitude: location.Longitude,
+    //   latitudeDelta: 0.0922,
+    //   longitudeDelta: 0.0421,
+    // });
+
+    // carousel.current.snapToItem(index);
+    console.log(doc);
+  }
+
   return (
     <>
       <View style={styles.container}>
         <MapView
+          ref={mapRef}
           region={{
             latitude: Number(latitude),
             longitude: Number(longitude),
@@ -153,6 +179,7 @@ export default function Map({navigation, route}) {
           style={{height: hp(100), width: wp(100)}}>
           {Near.map((doc, index) => (
             <Marker
+              onPress={e => console.log(e.nativeEvent)}
               key={index}
               coordinate={{
                 latitude: Number(doc.data.Latitude),
@@ -166,10 +193,11 @@ export default function Map({navigation, route}) {
       <View>
         <Mapheadercard onPress={() => navigation.goBack()} />
         <Carousel
-          ref={c => (_carousel.current = c)}
+          ref={carousel}
           data={Near}
           itemWidth={370}
           sliderWidth={Dimensions.get('window').width}
+          onSnapToItem={index => onCarouselItemChange(index)}
           renderItem={({item}) => (
             <Mapcard
               img={item.data.Gambar}
