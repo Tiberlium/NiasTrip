@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react';
-import {View, StyleSheet, Dimensions} from 'react-native';
+import {View, StyleSheet, Dimensions, Image} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -176,7 +176,7 @@ export default function Map({navigation, route}) {
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
-          style={{height: hp(100), width: wp(100)}}>
+          style={styles.container}>
           {Near.map((doc, index) => (
             <Marker
               onPress={e => console.log(e.nativeEvent)}
@@ -184,9 +184,12 @@ export default function Map({navigation, route}) {
               coordinate={{
                 latitude: Number(doc.data.Latitude),
                 longitude: Number(doc.data.Longitude),
-              }}
-              pinColor="navy"
-            />
+              }}>
+              <Image
+                source={require('../../asset/location.png')}
+                style={styles.marker}
+              />
+            </Marker>
           ))}
         </MapView>
       </View>
@@ -213,4 +216,8 @@ export default function Map({navigation, route}) {
 
 const styles = StyleSheet.create({
   container: {...StyleSheet.absoluteFillObject, position: 'absolute'},
+  marker: {
+    height: 30,
+    width: 30,
+  },
 });
