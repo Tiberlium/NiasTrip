@@ -1,14 +1,8 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function Thumbcard({title, lokasi, gambar, onPress}) {
+function Thumbcard({title, lokasi, gambar, onPress}) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
@@ -22,6 +16,8 @@ export default function Thumbcard({title, lokasi, gambar, onPress}) {
     </View>
   );
 }
+
+export default React.memo(Thumbcard);
 
 const styles = StyleSheet.create({
   container: {padding: 5},

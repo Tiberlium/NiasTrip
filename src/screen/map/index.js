@@ -4,7 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import MapView, {Marker} from 'react-native-maps';
+import MapView, {Callout, Marker} from 'react-native-maps';
 import firestore from '@react-native-firebase/firestore';
 import Carousel from 'react-native-snap-carousel';
 
@@ -138,7 +138,6 @@ export default function Map({navigation, route}) {
   });
 
   let mapRef = useRef(null);
-  let carousel = useRef(null);
 
   function onCarouselItemChange(index) {
     let location = Near[index].data;
@@ -153,16 +152,16 @@ export default function Map({navigation, route}) {
     );
   }
 
-  function onMarkerPressed(doc) {
-    // map.current.AnimateToRegion({
-    //   latitude: location.Latitude,
-    //   longitude: location.Longitude,
-    //   latitudeDelta: 0.0922,
-    //   longitudeDelta: 0.0421,
-    // });
-
-    // carousel.current.snapToItem(index);
-    console.log(doc);
+  function MoveAway(id, category) {
+    if (category === 'tempat wisata') {
+      navigation.navigate('Detail', {id});
+    } else if (category === 'Makanan') {
+      navigation.navigate('Fooddetail', {id});
+    } else if (category === 'Penginapan') {
+      navigation.navigate('Hoteldetail', {id});
+    } else {
+      navigation.navigate('Eventdetail', {id});
+    }
   }
 
   return (
@@ -179,7 +178,6 @@ export default function Map({navigation, route}) {
           style={styles.container}>
           {Near.map((doc, index) => (
             <Marker
-              onPress={e => console.log(e.nativeEvent)}
               key={index}
               coordinate={{
                 latitude: Number(doc.data.Latitude),
@@ -196,7 +194,6 @@ export default function Map({navigation, route}) {
       <View>
         <Mapheadercard onPress={() => navigation.goBack()} />
         <Carousel
-          ref={carousel}
           data={Near}
           itemWidth={370}
           sliderWidth={Dimensions.get('window').width}
@@ -206,6 +203,7 @@ export default function Map({navigation, route}) {
               img={item.data.Gambar}
               nama={item.data.Nama}
               kota={item.data.Kabupaten}
+              onPress={() => MoveAway(item.id, item.data.Kategori)}
             />
           )}
         />
