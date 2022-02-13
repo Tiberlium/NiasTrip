@@ -55,7 +55,16 @@ export default function Eventdetail({navigation, route}) {
         {Data.Deskripsi}
       </Text>
       <View style={styles.wrapBtn}>
-        <Btnnearby title="Lihat Sekitar" />
+        <Btnnearby
+          title="Lihat Sekitar"
+          onPress={() =>
+            navigation.navigate('Map', {
+              id: route.params.id,
+              latitude: Data['Latitude'],
+              longitude: Data['Longitude'],
+            })
+          }
+        />
         <Btnbookmark onPress={addBookmark} />
       </View>
     </View>

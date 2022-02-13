@@ -8,7 +8,7 @@ export default function Mapheadercard({onPress}) {
       <Pressable onPress={onPress} style={styles.btn}>
         <Icon name="arrow-back-outline" size={25} />
       </Pressable>
-      <Text style={styles.txt}>200 km dari Lagundri</Text>
+      <Text style={styles.txt}>Lokasi terdekat</Text>
     </View>
   );
 }

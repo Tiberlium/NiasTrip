@@ -156,17 +156,22 @@ export default function Hoteldetail({navigation, route}) {
 
   return (
     <View>
-      <Image
-        source={{uri: Data['Gambar']}}
-        style={styles.img}
-      />
+      <Image source={{uri: Data['Gambar']}} style={styles.img} />
       <View style={styles.headerContainer}>
         <Btnback onPress={() => navigation.goBack()} />
         <Btnbookmark color="white" onPress={addBookmark} />
       </View>
       <View style={styles.headerContainer2}>
         <Placecard title={Data['Nama']} kota={Data['Kabupaten']} />
-        <Btnlocation />
+        <Btnlocation
+          onPress={() =>
+            navigation.navigate('Map', {
+              id: route.params.id,
+              latitude: Data['Latitude'],
+              longitude: Data['Longitude'],
+            })
+          }
+        />
       </View>
       <View style={styles.containerPrice}>
         <Text style={styles.pricetext}>{Data['Harga']}/</Text>
