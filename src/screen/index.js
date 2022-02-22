@@ -24,6 +24,8 @@ import Hotelview from './hoteldetail';
 import Makanangroup from './makanangroup';
 import Eventgroup from './eventgroup';
 import Eventdetail from './eventdetail';
+import Payment from './payment';
+
 
 export {
   Splash,
@@ -52,4 +54,5 @@ export {
   Makanangroup,
   Eventgroup,
   Eventdetail,
+  Payment,
 };

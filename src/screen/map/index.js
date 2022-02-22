@@ -1,14 +1,14 @@
 import React, {useRef, useState, useEffect} from 'react';
-import {View, StyleSheet, Dimensions, Image} from 'react-native';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+import {View, StyleSheet, Dimensions, Image, Animated} from 'react-native';
 import MapView, {Callout, Marker} from 'react-native-maps';
 import firestore from '@react-native-firebase/firestore';
 import Carousel from 'react-native-snap-carousel';
+import {useTheme} from '@react-navigation/native';
+import darkMap from './darkMap.json';
 
 import {Mapheadercard, Mapcard} from '../../component';
+
+const animation = new Animated.Value(0);
 
 function nearby(lat1, lon1, lat2, lon2, unit) {
   var radlat1 = (Math.PI * lat1) / 180;
@@ -39,6 +39,7 @@ export default function Map({navigation, route}) {
   const [Event, setEvent] = useState([]);
   const [Resto, setResto] = useState([]);
   const isMounted = useRef();
+  const [Theme, setTheme] = useState(false);
   const {id, latitude, longitude} = route.params;
 
   async function getWisata() {
@@ -164,11 +165,14 @@ export default function Map({navigation, route}) {
     }
   }
 
+  const theme = useTheme();
+
   return (
     <>
       <View style={styles.container}>
         <MapView
           ref={mapRef}
+          customMapStyle={theme.dark === Theme ? [] : darkMap}
           region={{
             latitude: Number(latitude),
             longitude: Number(longitude),
@@ -192,7 +196,11 @@ export default function Map({navigation, route}) {
         </MapView>
       </View>
       <View>
-        <Mapheadercard onPress={() => navigation.goBack()} />
+        <Mapheadercard
+          onPress={() => navigation.goBack()}
+          value={Theme}
+          onChange={() => (Theme ? setTheme(false) : setTheme(true))}
+        />
         <Carousel
           data={Near}
           itemWidth={370}
