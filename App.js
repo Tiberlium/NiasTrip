@@ -28,6 +28,7 @@ import {
   Payment
 } from './src/screen';
 import Hotelgroup from './src/screen/hotelgroup';
+import { Reservecard } from './src/component';
 const Tab = createNativeStackNavigator();
 
 

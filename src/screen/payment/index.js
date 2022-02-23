@@ -11,6 +11,9 @@ import axios from 'axios';
 import base64 from 'base-64';
 import {WebView} from 'react-native-webview';
 
+const height = Dimensions.get('window').height;
+const width = Dimensions.get('window').width;
+
 export default function Payment() {
   // const [data, setdata] = React.useState({});
   // const serverKey = 'SB-Mid-server-aOZTMq7MMpj0rwb4130chMv5:';
@@ -50,13 +53,15 @@ export default function Payment() {
 
   return (
     <View style={styles.container}>
-      <WebView source={{uri: 'https://google.com/'}} />
+      <WebView source={{uri: 'https://infinite.red'}} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    alignContent:'center',
+    height: height,
+    width: width,
   },
 });

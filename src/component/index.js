@@ -33,6 +33,7 @@ import Btnlocation from './atom/Btnlocation';
 import Placecard from './template/Placecard';
 import Btndate from './atom/Btndate';
 import Searchcard from './template/Searchcard';
+import Reservecard from './template/Reservecard';
 export {
   BtnNext,
   Txtinput,
@@ -69,4 +70,5 @@ export {
   Placecard,
   Btndate,
   Searchcard,
+  Reservecard,
 };
