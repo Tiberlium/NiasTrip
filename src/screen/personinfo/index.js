@@ -174,7 +174,7 @@ export default function Personinfo({navigation}) {
         gender={profile.gender || 'kosong'}
         email={user.email || 'kosong'}
         phone={profile.phoneNumber || 'kosong'}
-        address={profile.addres || 'kosong'}
+        address={profile.address || 'kosong'}
         city={profile.city || 'kosong'}
         onPress={() => navigation.navigate('Update profile')}
       />

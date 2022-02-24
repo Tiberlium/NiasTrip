@@ -1,4 +1,4 @@
-import {View, StyleSheet, Dimensions} from 'react-native';
+import {View, StyleSheet, Dimensions, Button} from 'react-native';
 import React, {useEffect} from 'react';
 import axios from 'axios';
 import base64 from 'base-64';
@@ -12,9 +12,11 @@ export default function Payment() {
   const serverKey = 'SB-Mid-server-aOZTMq7MMpj0rwb4130chMv5:';
   const encodedKey = base64.encode(serverKey);
 
+  const orderId = 'order-csb-2';
+
   const params = {
     transaction_details: {
-      order_id: 'order-csb-2',
+      order_id: orderId,
       gross_amount: 10000,
     },
     credit_card: {
@@ -43,12 +45,15 @@ export default function Payment() {
         let snapToken = snapResponse.data;
         setdata(snapToken);
       })
+      .then(() => {
+        checkstatus();
+      })
       .catch(err => console.log(err));
   }
 
   function checkstatus() {
     axios({
-      url: `https://api.sandbox.midtrans.com/v2/${params.transaction_details.order_id}/status`,
+      url: `https://api.sandbox.midtrans.com/v2/${orderId}/status`,
       method: 'get',
       headers: {
         Accept: 'application/json',
@@ -56,17 +61,18 @@ export default function Payment() {
         Authorization: 'Basic ' + encodedKey,
       },
     })
-      .then(result => console.log(result))
+      .then(result => console.log(result.data.transaction_status))
       .catch(error => console.log(error));
   }
 
-  useEffect(() => {
-    midtrans();
-  }, []);
+  // useEffect(() => {
+  //   midtrans();
+  // }, []);
 
   return (
     <View style={styles.container}>
-      <WebView source={{uri: data.redirect_url}} nestedScrollEnabled={true} />
+      {/* <WebView source={{uri: 'https://google.com'}} nestedScrollEnabled={true} /> */}
+      <Button title="halo" onPress={checkstatus} />
     </View>
   );
 }

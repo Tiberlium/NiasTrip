@@ -7,6 +7,8 @@ import {
   FlatList,
   TouchableOpacity,
   ToastAndroid,
+  ActivityIndicator,
+  Alert,
 } from 'react-native';
 import ImageView from 'react-native-image-viewing';
 import {
@@ -29,12 +31,17 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import NumericInput from 'react-native-numeric-input';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Auth from '@react-native-firebase/auth';
 
 const Action = ({refs}) => {
   const [inshow, setinshow] = useState(false);
   const [outshow, setoutshow] = useState(false);
   const [checkin, setcheckin] = useState(new Date());
   const [checkout, setcheckout] = useState(new Date());
+  const [Profile, setProfile] = useState({});
+  const currentUser = Auth().currentUser;
+
+  const isMounted = useRef();
 
   const [jmlhOrg, setjmlhOrg] = useState(0);
 
@@ -47,6 +54,57 @@ const Action = ({refs}) => {
       setinshow(false);
       setoutshow(false);
     }
+  }
+
+  async function getUserData() {
+    let docRef = await firestore()
+      .collection('Users')
+      .doc(currentUser.uid)
+      .get();
+    isMounted.current && docRef.exists ? setProfile(docRef.data()) : {};
+  }
+
+  useEffect(() => {
+    isMounted.current = true;
+    getUserData();
+    return () => (isMounted.current = false);
+  }, []);
+
+  function checkstatus() {
+    axios({
+      url: `https://api.sandbox.midtrans.com/v2/${orderId}/status`,
+      method: 'get',
+      headers: {
+        Accept: 'application/json',
+        'content-type': 'application/json',
+        Authorization: 'Basic ' + encodedKey,
+      },
+    })
+      .then(result => {
+        console.log(result.data.transaction_status);
+        if (
+          (result.status === 200 &&
+            result.data.transaction_status === 'capture') ||
+          (result.status === 200 &&
+            result.data.transaction_status === 'settlement')
+        ) {
+          Alert.alert(
+            'Pemberitahuan',
+            'Tempat ini telah selesai anda reservasi',
+          );
+          return false;
+        } else {
+          navigation.navigate('Payment');
+        }
+      })
+      .catch(error => console.log(error));
+  }
+
+  function Book() {
+    if (Profile.gender && Profile.city === null) {
+      Alert.alert('Pemberitahuan', 'Perbarui data diri anda');
+    }
+    checkstatus();
   }
 
   return (
@@ -97,7 +155,7 @@ const Action = ({refs}) => {
           />
           <Text style={actionStyles.txt2}>Orang</Text>
         </View>
-        <Btnbooking />
+        <Btnbooking onPress={Book} />
       </View>
       <View>
         {(inshow && <DateTimePicker value={checkin} onChange={onChange} />) ||
