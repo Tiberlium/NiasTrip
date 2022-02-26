@@ -194,26 +194,28 @@ export default function Map({navigation, route}) {
           />
         ))}
       </MapView>
-      <View style={{position: 'absolute'}}>
+      <View>
         <Mapheadercard
           onPress={() => navigation.goBack()}
           value={Theme}
           onChange={() => (Theme ? setTheme(false) : setTheme(true))}
         />
-        <Carousel
-          data={Near}
-          itemWidth={370}
-          sliderWidth={Dimensions.get('window').width}
-          onSnapToItem={index => onCarouselItemChange(index)}
-          renderItem={({item}) => (
-            <Mapcard
-              img={item.data.Gambar}
-              nama={item.data.Nama}
-              kota={item.data.Kabupaten}
-              onPress={() => MoveAway(item.id, item.data.Kategori)}
-            />
-          )}
-        />
+        <View style={styles.itemSlider}>
+          <Carousel
+            data={Near}
+            itemWidth={370}
+            sliderWidth={Dimensions.get('window').width}
+            onSnapToItem={index => onCarouselItemChange(index)}
+            renderItem={({item}) => (
+              <Mapcard
+                img={item.data.Gambar}
+                nama={item.data.Nama}
+                kota={item.data.Kabupaten}
+                onPress={() => MoveAway(item.id, item.data.Kategori)}
+              />
+            )}
+          />
+        </View>
       </View>
     </View>
   );
@@ -221,7 +223,9 @@ export default function Map({navigation, route}) {
 
 const styles = StyleSheet.create({
   container: {
-    elevation: 1,
-    flex: 1,
+    ...StyleSheet.absoluteFillObject,
+  },
+  itemSlider: {
+    marginTop: hp(65),
   },
 });

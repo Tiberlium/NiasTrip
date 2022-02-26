@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     marginHorizontal: 10,
-    marginTop: heightPercentageToDP(63),
     elevation: 5,
     padding: 5,
   },

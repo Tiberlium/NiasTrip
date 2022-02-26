@@ -1,6 +1,10 @@
 import React from 'react';
 import {View, Text, Pressable, StyleSheet, Switch} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 export default function Mapheadercard({onPress, onChange, value}) {
   const color = {true: 'blue', false: 'black'};
@@ -42,7 +46,7 @@ const styles = StyleSheet.create({
   wrap: {
     display: 'flex',
     flexDirection: 'row',
-    marginRight:10,
+    marginRight: 10,
   },
   icon: {
     marginTop: 13,
