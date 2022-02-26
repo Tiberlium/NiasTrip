@@ -34,6 +34,7 @@ import Placecard from './template/Placecard';
 import Btndate from './atom/Btndate';
 import Searchcard from './template/Searchcard';
 import Reservecard from './template/Reservecard';
+import Actionsheet from './template/Actionsheet';
 export {
   BtnNext,
   Txtinput,
@@ -71,4 +72,5 @@ export {
   Btndate,
   Searchcard,
   Reservecard,
+  Actionsheet,
 };

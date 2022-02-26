@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import {heightPercentageToDP} from 'react-native-responsive-screen';
 import Btndetail from '../atom/Btndetail';
 
-function Mapcard({img, nama, kota,onPress}) {
+function Mapcard({img, nama, kota, onPress}) {
   return (
     <View style={styles.container}>
       <Image source={{uri: img}} style={styles.img} />

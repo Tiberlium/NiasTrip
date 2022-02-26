@@ -1,14 +1,16 @@
 import React, {useRef, useState, useEffect} from 'react';
-import {View, StyleSheet, Dimensions, Image, Animated} from 'react-native';
+import {View, StyleSheet, Dimensions} from 'react-native';
 import MapView, {Callout, Marker} from 'react-native-maps';
 import firestore from '@react-native-firebase/firestore';
 import Carousel from 'react-native-snap-carousel';
 import {useTheme} from '@react-navigation/native';
 import darkMap from './darkMap.json';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 import {Mapheadercard, Mapcard} from '../../component';
-
-const animation = new Animated.Value(0);
 
 function nearby(lat1, lon1, lat2, lon2, unit) {
   var radlat1 = (Math.PI * lat1) / 180;
@@ -168,34 +170,31 @@ export default function Map({navigation, route}) {
   const theme = useTheme();
 
   return (
-    <>
-      <View style={styles.container}>
-        <MapView
-          ref={mapRef}
-          customMapStyle={theme.dark === Theme ? [] : darkMap}
-          region={{
-            latitude: Number(latitude),
-            longitude: Number(longitude),
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-          style={styles.container}>
-          {Near.map((doc, index) => (
-            <Marker
-              key={index}
-              coordinate={{
-                latitude: Number(doc.data.Latitude),
-                longitude: Number(doc.data.Longitude),
-              }}>
-              <Image
-                source={require('../../asset/location.png')}
-                style={styles.marker}
-              />
-            </Marker>
-          ))}
-        </MapView>
-      </View>
-      <View>
+    <View style={styles.container}>
+      <MapView
+        ref={mapRef}
+        customMapStyle={theme.dark === Theme ? [] : darkMap}
+        region={{
+          latitude: Number(latitude),
+          longitude: Number(longitude),
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+        style={styles.container}>
+        {Near.map((doc, index) => (
+          <Marker
+            key={index}
+            coordinate={{
+              latitude: Number(doc.data.Latitude),
+              longitude: Number(doc.data.Longitude),
+            }}
+            title="halo"
+            description="bangke"
+            icon={require('../../asset/location.png')}
+          />
+        ))}
+      </MapView>
+      <View style={{position: 'absolute'}}>
         <Mapheadercard
           onPress={() => navigation.goBack()}
           value={Theme}
@@ -216,14 +215,13 @@ export default function Map({navigation, route}) {
           )}
         />
       </View>
-    </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {...StyleSheet.absoluteFillObject, position: 'absolute'},
-  marker: {
-    height: 30,
-    width: 30,
+  container: {
+    elevation: 1,
+    flex: 1,
   },
 });

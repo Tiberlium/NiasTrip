@@ -7,8 +7,6 @@ import {
   FlatList,
   TouchableOpacity,
   ToastAndroid,
-  ActivityIndicator,
-  Alert,
 } from 'react-native';
 import ImageView from 'react-native-image-viewing';
 import {
@@ -22,148 +20,12 @@ import {
   Facilitychip,
   Placecard,
   Thumbgallery,
-  Btnbooking,
-  Btndate,
+  Actionsheet,
 } from '../../component';
-import ActionSheet from 'react-native-actions-sheet';
-import DateTimePicker from '@react-native-community/datetimepicker';
+
 import Icon from 'react-native-vector-icons/Ionicons';
-import NumericInput from 'react-native-numeric-input';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Auth from '@react-native-firebase/auth';
-
-const Action = ({refs}) => {
-  const [inshow, setinshow] = useState(false);
-  const [outshow, setoutshow] = useState(false);
-  const [checkin, setcheckin] = useState(new Date());
-  const [checkout, setcheckout] = useState(new Date());
-  const [Profile, setProfile] = useState({});
-  const currentUser = Auth().currentUser;
-
-  const isMounted = useRef();
-
-  const [jmlhOrg, setjmlhOrg] = useState(0);
-
-  function onChange(event, value) {
-    if (inshow && event.type === 'set') {
-      setcheckin(value);
-    } else if (outshow && event.type === 'set') {
-      setcheckout(value);
-    } else {
-      setinshow(false);
-      setoutshow(false);
-    }
-  }
-
-  async function getUserData() {
-    let docRef = await firestore()
-      .collection('Users')
-      .doc(currentUser.uid)
-      .get();
-    isMounted.current && docRef.exists ? setProfile(docRef.data()) : {};
-  }
-
-  useEffect(() => {
-    isMounted.current = true;
-    getUserData();
-    return () => (isMounted.current = false);
-  }, []);
-
-  function checkstatus() {
-    axios({
-      url: `https://api.sandbox.midtrans.com/v2/${orderId}/status`,
-      method: 'get',
-      headers: {
-        Accept: 'application/json',
-        'content-type': 'application/json',
-        Authorization: 'Basic ' + encodedKey,
-      },
-    })
-      .then(result => {
-        console.log(result.data.transaction_status);
-        if (
-          (result.status === 200 &&
-            result.data.transaction_status === 'capture') ||
-          (result.status === 200 &&
-            result.data.transaction_status === 'settlement')
-        ) {
-          Alert.alert(
-            'Pemberitahuan',
-            'Tempat ini telah selesai anda reservasi',
-          );
-          return false;
-        } else {
-          navigation.navigate('Payment');
-        }
-      })
-      .catch(error => console.log(error));
-  }
-
-  function Book() {
-    if (Profile.gender && Profile.city === null) {
-      Alert.alert('Pemberitahuan', 'Perbarui data diri anda');
-    }
-    checkstatus();
-  }
-
-  return (
-    <ActionSheet
-      ref={refs}
-      indicatorColor="black"
-      bounceOnOpen={true}
-      drawUnderStatusBar={true}
-      bounciness={4}
-      gestureEnabled={true}>
-      <View>
-        <Text style={actionStyles.title}>Pemesanan</Text>
-        <View style={actionStyles.inlineContainer}>
-          <View>
-            <Text style={actionStyles.txt}>Check In</Text>
-            <Btndate
-              onPress={() => setinshow(true)}
-              value={checkin.toLocaleString('id-ID', {
-                year: 'numeric',
-                month: 'numeric',
-                day: 'numeric',
-              })}
-            />
-          </View>
-          <View style={actionStyles.checkIcon}>
-            <Icon name="swap-horizontal-outline" size={30} color="black" />
-          </View>
-          <View>
-            <Text style={actionStyles.txt}>Check Out</Text>
-            <Btndate
-              onPress={() => setoutshow(true)}
-              value={checkout.toLocaleString('id-ID', {
-                year: 'numeric',
-                month: 'numeric',
-                day: 'numeric',
-              })}
-            />
-          </View>
-        </View>
-        <Text style={actionStyles.txt3}>Jumlah</Text>
-        <View style={actionStyles.inlineContainer2}>
-          <NumericInput
-            onChange={value => setjmlhOrg(value)}
-            value={jmlhOrg}
-            totalHeight={40}
-            rounded
-            maxValue={4}
-          />
-          <Text style={actionStyles.txt2}>Orang</Text>
-        </View>
-        <Btnbooking onPress={Book} />
-      </View>
-      <View>
-        {(inshow && <DateTimePicker value={checkin} onChange={onChange} />) ||
-          (outshow && <DateTimePicker value={checkout} onChange={onChange} />)}
-      </View>
-    </ActionSheet>
-  );
-};
 
 export default function Hoteldetail({navigation, route}) {
   const [visible, setvisible] = useState(false);
@@ -270,46 +132,10 @@ export default function Hoteldetail({navigation, route}) {
         </TouchableOpacity>
       </View>
 
-      <Action refs={Actionref} />
+      <Actionsheet refs={Actionref} data={Data} />
     </View>
   );
 }
-
-const actionStyles = StyleSheet.create({
-  title: {
-    fontWeight: 'bold',
-    fontSize: 25,
-    color: 'black',
-    textAlign: 'center',
-  },
-  txt: {fontWeight: 'bold', fontSize: 20, color: 'black', paddingVertical: 20},
-  txt2: {
-    fontWeight: '300',
-    fontSize: 15,
-    color: 'black',
-    paddingTop: 10,
-    marginHorizontal: 10,
-  },
-  txt3: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    color: 'black',
-    paddingVertical: 20,
-    marginLeft: 10,
-  },
-  checkIcon: {marginTop: hp(9)},
-  inlineContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  inlineContainer2: {
-    display: 'flex',
-    flexDirection: 'row',
-    paddingLeft: 10,
-    paddingBottom: 20,
-  },
-});
 
 const styles = StyleSheet.create({
   containerImage: {

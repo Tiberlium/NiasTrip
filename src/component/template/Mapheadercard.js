@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     display: 'flex',
     flexDirection: 'row',
-    positon: 'absolute',
     justifyContent: 'space-between',
   },
   btn: {margin: 10, width: 50, height: 30},
