@@ -1,4 +1,4 @@
-import {View, StyleSheet, Dimensions} from 'react-native';
+import {View, StyleSheet, Dimensions, LogBox} from 'react-native';
 import React, {useEffect} from 'react';
 import axios from 'axios';
 import base64 from 'base-64';
@@ -13,20 +13,25 @@ export default function Payment({route, navigation}) {
   const serverKey = 'SB-Mid-server-aOZTMq7MMpj0rwb4130chMv5:';
   const encodedKey = base64.encode(serverKey);
 
+  LogBox.ignoreLogs([
+    'Non-serializable values were found in the navigation state',
+  ]);
+
   const Data = route.params.paramsdata;
+  
 
   const params = {
     transaction_details: {
-      order_id: orderId,
-      gross_amount: Data.Harga,
+      order_id: Data.orderId,
+      gross_amount: Data.data.Harga,
     },
     credit_card: {
       secure: true,
     },
     customer_details: {
-      first_name: Profile.name,
-      email: Profile.email,
-      phone: Profile.PhoneNumber,
+      first_name: Data.Profile.name,
+      email: Data.Profile.email,
+      phone: Data.Profile.PhoneNumber,
     },
   };
 
