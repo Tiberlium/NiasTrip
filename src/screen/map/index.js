@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react';
-import {View, StyleSheet, Dimensions} from 'react-native';
+import {View, StyleSheet, Dimensions, Text} from 'react-native';
 import MapView, {Callout, Marker} from 'react-native-maps';
 import firestore from '@react-native-firebase/firestore';
 import Carousel from 'react-native-snap-carousel';
@@ -42,7 +42,11 @@ export default function Map({navigation, route}) {
   const [Resto, setResto] = useState([]);
   const isMounted = useRef();
   const [Theme, setTheme] = useState(false);
-  const {id, latitude, longitude} = route.params;
+  const {latitude, longitude} = route.params;
+
+  let mapRef = useRef(null);
+  let Markers = useRef();
+  let carousel = useRef();
 
   async function getWisata() {
     let x = [];
@@ -140,8 +144,6 @@ export default function Map({navigation, route}) {
     }
   });
 
-  let mapRef = useRef(null);
-
   function onCarouselItemChange(index) {
     let location = Near[index].data;
     mapRef.current.animateToRegion(
@@ -153,6 +155,18 @@ export default function Map({navigation, route}) {
       },
       300,
     );
+
+    Markers[index].showCallout();
+  }
+
+  function onMarkerSelect(location, index) {
+    mapRef.current.animateToRegion({
+      latitude: Number(location.data.Latitude),
+      Longitude: Number(location.data.Longitude),
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    });
+    carousel.snapToItem(index);
   }
 
   function MoveAway(id, category) {
@@ -183,15 +197,26 @@ export default function Map({navigation, route}) {
         style={styles.container}>
         {Near.map((doc, index) => (
           <Marker
+            ref={ref => {
+              Markers[index] = ref;
+            }}
             key={index}
             coordinate={{
               latitude: Number(doc.data.Latitude),
               longitude: Number(doc.data.Longitude),
             }}
-            title="halo"
-            description="bangke"
-            icon={require('../../asset/location.png')}
-          />
+            onPress={() => onMarkerSelect(doc, index)}
+            icon={require('../../asset/location.png')}>
+            <Callout tooltip>
+              <>
+                <View style={styles.calloutStyle}>
+                  <Text style={styles.name}>{doc.data.Nama}</Text>
+                </View>
+                <View style={styles.arrowBorder} />
+                <View style={styles.arrow} />
+              </>
+            </Callout>
+          </Marker>
         ))}
       </MapView>
       <View>
@@ -202,10 +227,12 @@ export default function Map({navigation, route}) {
         />
         <View style={styles.itemSlider}>
           <Carousel
+            ref={c => (carousel = c)}
             data={Near}
             itemWidth={370}
             sliderWidth={Dimensions.get('window').width}
             onSnapToItem={index => onCarouselItemChange(index)}
+            layout={'tinder'}
             renderItem={({item}) => (
               <Mapcard
                 img={item.data.Gambar}
@@ -227,5 +254,38 @@ const styles = StyleSheet.create({
   },
   itemSlider: {
     marginTop: hp(65),
+  },
+  calloutStyle: {
+    flexDirection: 'column',
+    alignSelf: 'flex-start',
+    backgroundColor: '#fff',
+    borderRadius: 6,
+    borderColor: '#ccc',
+    borderWidth: 0.5,
+    padding: 15,
+    width: 150,
+    marginTop: 10,
+  },
+  arrow: {
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    borderTopColor: '#fff',
+    borderWidth: 16,
+    alignSelf: 'center',
+    marginTop: -32,
+  },
+  arrowBorder: {
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    borderTopColor: '#007a87',
+    borderWidth: 16,
+    alignSelf: 'center',
+    marginTop: 0.5,
+  },
+  name: {
+    fontSize: 15,
+    marginBottom: 5,
+    color: 'black',
+    textAlign: 'center',
   },
 });

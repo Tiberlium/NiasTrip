@@ -1,32 +1,32 @@
-import {View, StyleSheet, Dimensions, Button} from 'react-native';
+import {View, StyleSheet, Dimensions} from 'react-native';
 import React, {useEffect} from 'react';
 import axios from 'axios';
 import base64 from 'base-64';
 import {WebView} from 'react-native-webview';
+import {Btncheckpayment} from '../../component';
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
-export default function Payment() {
+export default function Payment({route, navigation}) {
   const [data, setdata] = React.useState({});
   const serverKey = 'SB-Mid-server-aOZTMq7MMpj0rwb4130chMv5:';
   const encodedKey = base64.encode(serverKey);
 
-  const orderId = 'order-csb-2';
+  const Data = route.params.paramsdata;
 
   const params = {
     transaction_details: {
       order_id: orderId,
-      gross_amount: 10000,
+      gross_amount: Data.Harga,
     },
     credit_card: {
       secure: true,
     },
     customer_details: {
-      first_name: 'Johny',
-      last_name: 'Kane',
-      email: 'testmidtrans@mailnesia.com',
-      phone: '08111222333',
+      first_name: Profile.name,
+      email: Profile.email,
+      phone: Profile.PhoneNumber,
     },
   };
 
@@ -71,8 +71,11 @@ export default function Payment() {
 
   return (
     <View style={styles.container}>
-      {/* <WebView source={{uri: 'https://google.com'}} nestedScrollEnabled={true} /> */}
-      <Button title="halo" onPress={checkstatus} />
+      <WebView
+        source={{uri: 'https://google.com'}}
+        nestedScrollEnabled={true}
+      />
+      <Btncheckpayment onPress={checkstatus} />
     </View>
   );
 }
@@ -82,5 +85,6 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     height: height,
     width: width,
+    flex: 1,
   },
 });

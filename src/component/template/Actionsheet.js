@@ -10,13 +10,16 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
 import axios from 'axios';
 import base64 from 'base-64';
+import {useNavigation} from '@react-navigation/native';
 
 export default function Actionsheet({refs, data}) {
+  const navigation = useNavigation();
   const [inshow, setinshow] = useState(false);
   const [outshow, setoutshow] = useState(false);
   const [checkin, setcheckin] = useState(new Date());
   const [checkout, setcheckout] = useState(new Date());
   const [Profile, setProfile] = useState({});
+  const [jmlhOrg, setjmlhOrg] = useState(0);
   const currentUser = Auth().currentUser;
 
   const serverKey = 'SB-Mid-server-aOZTMq7MMpj0rwb4130chMv5:';
@@ -24,16 +27,22 @@ export default function Actionsheet({refs, data}) {
 
   const isMounted = useRef();
 
-  const [jmlhOrg, setjmlhOrg] = useState(0);
-
   let Today = new Date();
   let current = Today.getMonth() + Today.getDay() + Today.getHours();
 
-  const Data = data;
+  let orderId = 'Orderid' + currentUser.uid + current;
 
-  // let orderId = 'Orderid' + currentUser.uid + current;
+  const paramsdata = {
+    data,
+    Profile,
+    orderId,
+    checkin,
+    checkout,
+    jmlhOrg,
+  };
 
-  let orderId = 'order-csb-2';
+  console.log(paramsdata);
+
   function onChange(event, value) {
     if (inshow && event.type === 'set') {
       setcheckin(value);
@@ -77,13 +86,10 @@ export default function Actionsheet({refs, data}) {
           (result.status === 200 &&
             result.data.transaction_status === 'settlement')
         ) {
-          Alert.alert(
-            'Pemberitahuan',
-            'Tempat ini telah selesai anda reservasi',
-          );
+          Alert.alert('Pemberitahuan', 'Tempat ini telah selesai reservasi');
           return false;
         } else {
-          navigation.navigate('Payment');
+          navigation.navigate('Payment', {paramsdata});
         }
       })
       .catch(error => console.log(error));

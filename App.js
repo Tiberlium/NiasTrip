@@ -1,5 +1,4 @@
 import React from 'react';
-import {View} from 'react-native';
 import Navigator from './src/navigator';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -28,7 +27,6 @@ import {
   Payment,
 } from './src/screen';
 import Hotelgroup from './src/screen/hotelgroup';
-import {Reservecard} from './src/component';
 const Tab = createNativeStackNavigator();
 
 const myTheme = {
@@ -95,6 +93,7 @@ export default function App() {
           options={{headerShown: false}}
         />
         <Tab.Screen name="Update profile" component={Updateprofile} />
+        <Tab.Screen name="Payment" component={Payment} />
         <Tab.Screen
           name="Personinfo"
           component={Personinfo}
@@ -148,8 +147,5 @@ export default function App() {
         <Tab.Screen name="Map" component={Map} options={{headerShown: false}} />
       </Tab.Navigator>
     </NavigationContainer>
-    // <View>
-    //   <Payment/>
-    // </View>
   );
 }

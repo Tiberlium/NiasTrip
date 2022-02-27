@@ -43,14 +43,11 @@ export default function Home() {
     return () => (isMounted.current = false);
   }, []);
 
-
   const user = auth().currentUser;
   const navigation = useNavigation();
   return (
     <View>
-      <Profilehead
-        name={user.displayName || user.email || user.phoneNumber}
-      />
+      <Profilehead name={user.displayName || user.email || user.phoneNumber} />
       <Text style={styles.title}>Mau kemana hari ini?</Text>
       <Searchbtn onPress={() => navigation.navigate('Search')} />
       <Subtitle text1="Pengalaman" text2="Lain" />
@@ -58,6 +55,7 @@ export default function Home() {
       <Subhead onPress={() => navigation.navigate('Fullview')} />
       <FlatList
         horizontal={true}
+        showsHorizontalScrollIndicator={false}
         data={Data}
         renderItem={({item}) => (
           <Thumbcard

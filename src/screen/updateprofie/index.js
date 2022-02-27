@@ -23,6 +23,7 @@ export default function Updateprofile() {
     phoneNumber: hp,
     address: address,
     city: kota,
+    email: user.email,
   };
 
   async function handleChangeName() {
@@ -57,9 +58,7 @@ export default function Updateprofile() {
           defaultButtonText="Pilih jenis kelamin"
           buttonStyle={styles.dropDown}
           onSelect={selectedItem => setkelamin(selectedItem)}
-          renderDropdownIcon={()=>(
-            <Icon name="chevron-down" size={25}/>
-          )}
+          renderDropdownIcon={() => <Icon name="chevron-down" size={25} />}
         />
         <Txtinput
           label="HP"
@@ -90,7 +89,7 @@ export default function Updateprofile() {
 }
 
 const styles = StyleSheet.create({
-  container:{backgroundColor:'white'},
+  container: {backgroundColor: 'white'},
   dropDown: {
     borderWidth: 0.5,
     borderColor: 'black',
@@ -98,6 +97,6 @@ const styles = StyleSheet.create({
     marginTop: 15,
     alignSelf: 'center',
     borderRadius: 10,
-    backgroundColor:'white',
+    backgroundColor: 'white',
   },
 });
