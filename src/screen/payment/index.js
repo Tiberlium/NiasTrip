@@ -64,7 +64,7 @@ export default function Payment({route, navigation}) {
 
   function checkstatus() {
     axios({
-      url: `https://api.sandbox.midtrans.com/v2/order-csb-2/status`,
+      url: `https://api.sandbox.midtrans.com/v2/${Data.orderId}/status`,
       method: 'get',
       headers: {
         Accept: 'application/json',

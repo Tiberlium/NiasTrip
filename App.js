@@ -1,7 +1,8 @@
 import React from 'react';
 import Navigator from './src/navigator';
-import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
+import {NavigationContainer, DefaultTheme, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Btnhome} from './src/component';
 import {
   About,
   Intro,
@@ -39,6 +40,7 @@ const myTheme = {
 };
 
 import {View} from 'react-native';
+
 
 export default function App() {
   return (
@@ -97,7 +99,15 @@ export default function App() {
         />
         <Tab.Screen name="Update profile" component={Updateprofile} />
         <Tab.Screen name="Payment" component={Payment} />
-        <Tab.Screen name="Receipt" component={Receipt} />
+        <Tab.Screen
+          name="Receipt"
+          component={Receipt}
+          options={{
+            headerRight: () => (
+              <Btnhome/>
+            ),
+          }}
+        />
         <Tab.Screen
           name="Personinfo"
           component={Personinfo}

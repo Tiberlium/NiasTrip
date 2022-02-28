@@ -24,11 +24,11 @@ export default function Receipt({navigation, route}) {
         </View>
         <View style={styles.wrap2}>
           <Text style={styles.caption}>Check In</Text>
-          <Text style={styles.caption}>20</Text>
+          <Text style={styles.caption}>{Data.checkIN}</Text>
         </View>
         <View style={styles.wrap2}>
           <Text style={styles.caption}>Check Out</Text>
-          <Text style={styles.caption}>1 april 2022</Text>
+          <Text style={styles.caption}>{Data.checkOUT}</Text>
         </View>
         <View style={styles.wrap2}>
           <Text style={styles.priceText}>Total</Text>

@@ -32,12 +32,17 @@ export default function Actionsheet({refs, data}) {
 
   let orderId = 'Orderid' + currentUser.uid + current;
 
+
+  let checkIN = checkin.toISOString().split('T')[0];
+  let checkOUT = checkout.toISOString().split('T')[0];
+
+
   const paramsdata = {
     data,
     Profile,
     orderId,
-    checkin,
-    checkout,
+    checkIN,
+    checkOUT,
     jmlhOrg,
   };
 

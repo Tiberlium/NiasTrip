@@ -36,6 +36,7 @@ import Searchcard from './template/Searchcard';
 import Reservecard from './template/Reservecard';
 import Actionsheet from './template/Actionsheet';
 import Btncheckpayment from './atom/Btncheckpayment';
+import Btnhome from './atom/Btnhome';
 export {
   BtnNext,
   Txtinput,
@@ -75,4 +76,5 @@ export {
   Reservecard,
   Actionsheet,
   Btncheckpayment,
+  Btnhome,
 };
