@@ -25,6 +25,7 @@ import Makanangroup from './makanangroup';
 import Eventgroup from './eventgroup';
 import Eventdetail from './eventdetail';
 import Payment from './payment';
+import Receipt from './receipt';
 
 
 export {
@@ -55,4 +56,5 @@ export {
   Eventgroup,
   Eventdetail,
   Payment,
+  Receipt,
 };

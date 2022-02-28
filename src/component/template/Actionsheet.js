@@ -41,12 +41,12 @@ export default function Actionsheet({refs, data}) {
     jmlhOrg,
   };
 
-  console.log(paramsdata);
-
   function onChange(event, value) {
     if (inshow && event.type === 'set') {
+      setinshow(false);
       setcheckin(value);
     } else if (outshow && event.type === 'set') {
+      setoutshow(false);
       setcheckout(value);
     } else {
       setinshow(false);

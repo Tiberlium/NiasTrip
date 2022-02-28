@@ -25,6 +25,7 @@ import {
   Fooddetail,
   Map,
   Payment,
+  Receipt,
 } from './src/screen';
 import Hotelgroup from './src/screen/hotelgroup';
 const Tab = createNativeStackNavigator();
@@ -36,6 +37,8 @@ const myTheme = {
     background: 'white',
   },
 };
+
+import {View} from 'react-native';
 
 export default function App() {
   return (
@@ -94,6 +97,7 @@ export default function App() {
         />
         <Tab.Screen name="Update profile" component={Updateprofile} />
         <Tab.Screen name="Payment" component={Payment} />
+        <Tab.Screen name="Receipt" component={Receipt} />
         <Tab.Screen
           name="Personinfo"
           component={Personinfo}
@@ -147,5 +151,8 @@ export default function App() {
         <Tab.Screen name="Map" component={Map} options={{headerShown: false}} />
       </Tab.Navigator>
     </NavigationContainer>
+    // <View>
+    //   <Payment/>
+    // </View>
   );
 }

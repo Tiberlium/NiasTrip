@@ -1,4 +1,4 @@
-import {View, StyleSheet, Dimensions, LogBox} from 'react-native';
+import {View, StyleSheet, Dimensions, LogBox, ToastAndroid} from 'react-native';
 import React, {useEffect} from 'react';
 import axios from 'axios';
 import base64 from 'base-64';
@@ -18,7 +18,6 @@ export default function Payment({route, navigation}) {
   ]);
 
   const Data = route.params.paramsdata;
-  
 
   const params = {
     transaction_details: {
@@ -33,6 +32,13 @@ export default function Payment({route, navigation}) {
       email: Data.Profile.email,
       phone: Data.Profile.PhoneNumber,
     },
+    item_details: [
+      {
+        name: Data.data.Nama,
+        quantity: Data.jmlhOrg,
+        price: Data.data.Harga,
+      },
+    ],
   };
 
   function midtrans() {
@@ -58,7 +64,7 @@ export default function Payment({route, navigation}) {
 
   function checkstatus() {
     axios({
-      url: `https://api.sandbox.midtrans.com/v2/${orderId}/status`,
+      url: `https://api.sandbox.midtrans.com/v2/order-csb-2/status`,
       method: 'get',
       headers: {
         Accept: 'application/json',
@@ -66,7 +72,16 @@ export default function Payment({route, navigation}) {
         Authorization: 'Basic ' + encodedKey,
       },
     })
-      .then(result => console.log(result.data.transaction_status))
+      .then(result => {
+        if (result.status === 200) {
+          navigation.navigate('Receipt', {
+            Data,
+            time: result.data.settlement_time,
+          });
+        } else {
+          ToastAndroid.show('Belum di bayar', ToastAndroid.SHORT);
+        }
+      })
       .catch(error => console.log(error));
   }
 
@@ -77,7 +92,7 @@ export default function Payment({route, navigation}) {
   return (
     <View style={styles.container}>
       <WebView
-        source={{uri: 'https://google.com'}}
+        source={{uri: 'https://youtube.com'}}
         nestedScrollEnabled={true}
       />
       <Btncheckpayment onPress={checkstatus} />
