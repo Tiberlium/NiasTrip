@@ -4,9 +4,14 @@ import axios from 'axios';
 import base64 from 'base-64';
 import {WebView} from 'react-native-webview';
 import {Btncheckpayment} from '../../component';
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
+
+const user = auth().currentUser;
 
 export default function Payment({route, navigation}) {
   const [data, setdata] = React.useState({});
@@ -62,9 +67,68 @@ export default function Payment({route, navigation}) {
       .catch(err => console.log(err));
   }
 
+  async function updateToUser(time) {
+    let docRef = await firestore().collection('Users').doc(user.uid);
+
+    docRef
+      .get()
+      .then(doc => {
+        if (doc.get('order') != null) {
+          docRef.update({
+            reservation: firestore.FieldValue.arrayUnion({
+              orderId: Data.orderId,
+              nama: Data.data.Nama,
+              harga: Data.data.Harga,
+              checkIN: Data.checkIN,
+              checkOUT: Data.checkOUT,
+              jumlah: Data.jmlhOrg,
+              reservationTime: time,
+            }),
+          });
+        } else {
+          docRef.set(
+            {
+              reservation: [
+                {
+                  orderId: Data.orderId,
+                  nama: Data.data.Nama,
+                  harga: Data.data.Harga,
+                  checkIN: Data.checkIN,
+                  checkOUT: Data.checkOUT,
+                  jumlah: Data.jmlhOrg,
+                  reservationTime: time,
+                },
+              ],
+            },
+            {merge: true},
+          );
+        }
+      })
+      .then(() => console.log('berhasil'))
+      .catch(error => console.log(error));
+  }
+
+  function addOrder(time) {
+    const value = {
+      orderId: Data.orderId,
+      nama: Data.data.Nama,
+      harga: Data.data.Harga,
+      checkIN: Data.checkIN,
+      checkOUT: Data.checkOUT,
+      jumlah: Data.jmlhOrg,
+      reservationTime: time,
+    };
+
+    AsyncStorage.getItem('Order').then(doc => {
+      doc = doc === null ? [] : JSON.parse(doc);
+      doc.push(value);
+      return AsyncStorage.setItem('Book', JSON.stringify(doc));
+    });
+  }
+
   function checkstatus() {
     axios({
-      url: `https://api.sandbox.midtrans.com/v2/${Data.orderId}/status`,
+      url: `https://api.sandbox.midtrans.com/v2/order-csb-2/status`,
       method: 'get',
       headers: {
         Accept: 'application/json',
@@ -78,6 +142,8 @@ export default function Payment({route, navigation}) {
             Data,
             time: result.data.settlement_time,
           });
+          updateToUser(result.data.settlement_time);
+          addOrder(result.data.settlement_time);
         } else {
           ToastAndroid.show('Belum di bayar', ToastAndroid.SHORT);
         }

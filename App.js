@@ -39,7 +39,9 @@ const myTheme = {
   },
 };
 
+
 import {View} from 'react-native';
+import Test from './Test';
 
 
 export default function App() {
@@ -162,7 +164,7 @@ export default function App() {
       </Tab.Navigator>
     </NavigationContainer>
     // <View>
-    //   <Payment/>
+    //   <Test/>
     // </View>
   );
 }
