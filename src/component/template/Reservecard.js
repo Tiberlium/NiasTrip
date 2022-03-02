@@ -12,14 +12,10 @@ export default function Reservecard({
   return (
     <View>
       <TouchableOpacity style={styles.container}>
-        <View style={styles.inlineWrap}>
-          <Image source={{uri: img}} style={styles.img} />
-          <Text style={styles.title}>{title}</Text>
-        </View>
+        <Text style={styles.title}>hallo</Text>
         <Text>{`${checkIn} - ${CheckOut}`}</Text>
-        <Text>{jumlah} orang</Text>
-        <Text style={styles.price}>Rp.{total}</Text>
-        <Text style={styles.footer}>Selesai</Text>
+        <Text>2 orang</Text>
+        <Text style={styles.price}>Rp.8593</Text>
       </TouchableOpacity>
     </View>
   );

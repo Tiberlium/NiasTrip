@@ -26,7 +26,7 @@ export default function Payment({route, navigation}) {
 
   const fixedPrice = Data.total.toFixed(3);
 
-  const price = Data.total + "000";
+  const price = Data.total + '000';
 
   const params = {
     transaction_details: {
@@ -106,6 +106,7 @@ export default function Payment({route, navigation}) {
       checkOUT: Data.checkOUT,
       jumlah: Data.jmlhOrg,
       reservationTime: time,
+      gambar: Data.data.Gambar,
     };
 
     AsyncStorage.getItem('Order').then(doc => {
@@ -126,7 +127,10 @@ export default function Payment({route, navigation}) {
       },
     })
       .then(result => {
-        if (result.status === 200) {
+        if (result.data.status_code != 200) {
+          ToastAndroid.show('Belum di bayar', ToastAndroid.SHORT);
+          return false;
+        } else {
           navigation.navigate('Receipt', {
             Data,
             time: result.data.settlement_time,
@@ -134,8 +138,6 @@ export default function Payment({route, navigation}) {
           });
           updateToUser(result.data.settlement_time);
           addOrder(result.data.settlement_time);
-        } else {
-          ToastAndroid.show('Belum di bayar', ToastAndroid.SHORT);
         }
       })
       .catch(error => console.log(error));

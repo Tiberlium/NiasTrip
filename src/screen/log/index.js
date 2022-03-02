@@ -30,9 +30,11 @@ export default function Log() {
       .catch(e => console.log(e));
   }
 
-  const Exist =() =>(
-    <Reservecard />
-  )
+  React.useEffect(() => {
+    Get();
+  }, [isFocus]);
+
+  const Exist = () => <Reservecard />;
 
   return (
     <View>

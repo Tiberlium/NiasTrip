@@ -1,8 +1,12 @@
 import React from 'react';
 import Navigator from './src/navigator';
-import {NavigationContainer, DefaultTheme, useNavigation} from '@react-navigation/native';
+import {
+  NavigationContainer,
+  DefaultTheme,
+  useNavigation,
+} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Btnhome} from './src/component';
+import {Btnhome, Reservecard} from './src/component';
 import {
   About,
   Intro,
@@ -39,9 +43,6 @@ const myTheme = {
   },
 };
 
-
-import {View} from 'react-native';
-import Test from './Test';
 
 
 export default function App() {
@@ -105,9 +106,7 @@ export default function App() {
           name="Receipt"
           component={Receipt}
           options={{
-            headerRight: () => (
-              <Btnhome/>
-            ),
+            headerRight: () => <Btnhome />,
           }}
         />
         <Tab.Screen
@@ -163,8 +162,5 @@ export default function App() {
         <Tab.Screen name="Map" component={Map} options={{headerShown: false}} />
       </Tab.Navigator>
     </NavigationContainer>
-    // <View>
-    //   <Test/>
-    // </View>
   );
 }

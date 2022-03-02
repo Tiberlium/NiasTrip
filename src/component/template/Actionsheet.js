@@ -32,7 +32,7 @@ export default function Actionsheet({refs, data}) {
   const isMounted = useRef();
 
   let Today = new Date();
-  let current = Today.getMonth() + Today.getDay() + Today.getHours();
+  let current = Today.getMonth() + Today.getDay() + Today.getHours() + Today.getSeconds();
 
   let orderId = 'Orderid' + currentUser.uid + current;
 
