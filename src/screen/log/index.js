@@ -34,6 +34,8 @@ export default function Log() {
     Get();
   }, [isFocus]);
 
+  console.log(data);
+
   const Exist = () => <Reservecard />;
 
   return (

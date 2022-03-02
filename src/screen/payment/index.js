@@ -112,7 +112,7 @@ export default function Payment({route, navigation}) {
     AsyncStorage.getItem('Order').then(doc => {
       doc = doc === null ? [] : JSON.parse(doc);
       doc.push(value);
-      return AsyncStorage.setItem('Book', JSON.stringify(doc));
+      return AsyncStorage.setItem('Order', JSON.stringify(doc));
     });
   }
 
