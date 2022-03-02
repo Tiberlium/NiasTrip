@@ -26,18 +26,15 @@ export default function Payment({route, navigation}) {
 
   const fixedPrice = Data.total.toFixed(3);
 
+  const price = Data.total + "000";
+
   const params = {
     transaction_details: {
       order_id: Data.orderId,
-      gross_amount: fixedPrice,
+      gross_amount: price,
     },
     credit_card: {
       secure: true,
-    },
-    customer_details: {
-      first_name: Data.Profile.name,
-      email: Data.Profile.email,
-      phone: Data.Profile.PhoneNumber,
     },
   };
 
@@ -55,9 +52,6 @@ export default function Payment({route, navigation}) {
       .then(snapResponse => {
         let snapToken = snapResponse.data;
         setdata(snapToken);
-      })
-      .then(() => {
-        checkstatus();
       })
       .catch(err => console.log(err));
   }
@@ -123,7 +117,7 @@ export default function Payment({route, navigation}) {
 
   function checkstatus() {
     axios({
-      url: `https://api.sandbox.midtrans.com/v2/order-csb-2/status`,
+      url: `https://api.sandbox.midtrans.com/v2/${Data.orderId}/status`,
       method: 'get',
       headers: {
         Accept: 'application/json',
@@ -136,7 +130,7 @@ export default function Payment({route, navigation}) {
           navigation.navigate('Receipt', {
             Data,
             time: result.data.settlement_time,
-            total : fixedPrice,
+            total: fixedPrice,
           });
           updateToUser(result.data.settlement_time);
           addOrder(result.data.settlement_time);
@@ -147,16 +141,13 @@ export default function Payment({route, navigation}) {
       .catch(error => console.log(error));
   }
 
-  // useEffect(() => {
-  //   midtrans();
-  // }, []);
+  useEffect(() => {
+    midtrans();
+  }, []);
 
   return (
     <View style={styles.container}>
-      <WebView
-        source={{uri: 'https://youtube.com'}}
-        nestedScrollEnabled={true}
-      />
+      <WebView source={{uri: data.redirect_url}} nestedScrollEnabled={true} />
       <Btncheckpayment onPress={checkstatus} />
     </View>
   );

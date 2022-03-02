@@ -91,7 +91,6 @@ export default function Actionsheet({refs, data}) {
       },
     })
       .then(result => {
-        console.log(result.data.transaction_status);
         if (
           (result.status === 200 &&
             result.data.transaction_status === 'capture') ||
