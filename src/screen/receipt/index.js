@@ -4,7 +4,7 @@ import ZigzagView from 'react-native-zigzag-view';
 import QRCode from 'react-native-qrcode-svg';
 
 export default function Receipt({navigation, route}) {
-  const {Data, time} = route.params;
+  const {Data, time, total} = route.params;
 
   return (
     <View>
@@ -32,7 +32,7 @@ export default function Receipt({navigation, route}) {
         </View>
         <View style={styles.wrap2}>
           <Text style={styles.priceText}>Total</Text>
-          <Text style={styles.priceText}>{Data.data.Harga}</Text>
+          <Text style={styles.priceText}>{total}</Text>
         </View>
         <View style={styles.barcode}>
           <QRCode value={Data.orderId} size={120} />

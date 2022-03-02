@@ -1,20 +1,24 @@
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 
-export default function Reservecard() {
+export default function Reservecard({
+  img,
+  title,
+  checkIn,
+  CheckOut,
+  jumlah,
+  total,
+}) {
   return (
     <View>
       <TouchableOpacity style={styles.container}>
         <View style={styles.inlineWrap}>
-          <Image
-            source={{uri: 'https://placeimg.com/640/480/any'}}
-            style={styles.img}
-          />
-          <Text style={styles.title}>Hotel Kaliki</Text>
+          <Image source={{uri: img}} style={styles.img} />
+          <Text style={styles.title}>{title}</Text>
         </View>
-        <Text>25 november-24 november 2021</Text>
-        <Text>2 orang</Text>
-        <Text style={styles.price}>Rp.82.000</Text>
+        <Text>{`${checkIn} - ${CheckOut}`}</Text>
+        <Text>{jumlah} orang</Text>
+        <Text style={styles.price}>Rp.{total}</Text>
         <Text style={styles.footer}>Selesai</Text>
       </TouchableOpacity>
     </View>

@@ -1,5 +1,8 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useIsFocused} from '@react-navigation/native';
+import {Reservecard} from '../../component';
 
 const Empty = () => {
   return (
@@ -11,6 +14,26 @@ const Empty = () => {
 };
 
 export default function Log() {
+  const [data, setData] = React.useState({});
+  const isFocus = useIsFocused();
+
+  async function Get() {
+    await AsyncStorage.getItem('Order')
+      .then(docs => (docs != null ? setData(JSON.parse(docs)) : null))
+      .catch(e => console.log(e));
+  }
+
+  async function Delete(id) {
+    const arr = data.filter(e => e.id != id);
+    await AsyncStorage.setItem('Order', JSON.stringify(arr))
+      .then(() => Get())
+      .catch(e => console.log(e));
+  }
+
+  const Exist =() =>(
+    <Reservecard />
+  )
+
   return (
     <View>
       <Empty />

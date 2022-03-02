@@ -94,7 +94,7 @@ export default function Hoteldetail({navigation, route}) {
         />
       </View>
       <View style={styles.containerPrice}>
-        <Text style={styles.pricetext}>{Data['Harga']}/</Text>
+        <Text style={styles.pricetext}>Rp {Data['Harga']}/</Text>
         <Text style={styles.pricetext2}>malam</Text>
       </View>
       <Text style={styles.headline1}>Deskripsi</Text>

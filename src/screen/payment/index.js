@@ -24,10 +24,12 @@ export default function Payment({route, navigation}) {
 
   const Data = route.params.paramsdata;
 
+  const fixedPrice = Data.total.toFixed(3);
+
   const params = {
     transaction_details: {
       order_id: Data.orderId,
-      gross_amount: Data.data.Harga,
+      gross_amount: fixedPrice,
     },
     credit_card: {
       secure: true,
@@ -37,13 +39,6 @@ export default function Payment({route, navigation}) {
       email: Data.Profile.email,
       phone: Data.Profile.PhoneNumber,
     },
-    item_details: [
-      {
-        name: Data.data.Nama,
-        quantity: Data.jmlhOrg,
-        price: Data.data.Harga,
-      },
-    ],
   };
 
   function midtrans() {
@@ -78,7 +73,7 @@ export default function Payment({route, navigation}) {
             reservation: firestore.FieldValue.arrayUnion({
               orderId: Data.orderId,
               nama: Data.data.Nama,
-              harga: Data.data.Harga,
+              harga: fixedPrice,
               checkIN: Data.checkIN,
               checkOUT: Data.checkOUT,
               jumlah: Data.jmlhOrg,
@@ -92,7 +87,7 @@ export default function Payment({route, navigation}) {
                 {
                   orderId: Data.orderId,
                   nama: Data.data.Nama,
-                  harga: Data.data.Harga,
+                  harga: fixedPrice,
                   checkIN: Data.checkIN,
                   checkOUT: Data.checkOUT,
                   jumlah: Data.jmlhOrg,
@@ -112,7 +107,7 @@ export default function Payment({route, navigation}) {
     const value = {
       orderId: Data.orderId,
       nama: Data.data.Nama,
-      harga: Data.data.Harga,
+      harga: fixedPrice,
       checkIN: Data.checkIN,
       checkOUT: Data.checkOUT,
       jumlah: Data.jmlhOrg,
@@ -141,6 +136,7 @@ export default function Payment({route, navigation}) {
           navigation.navigate('Receipt', {
             Data,
             time: result.data.settlement_time,
+            total : fixedPrice,
           });
           updateToUser(result.data.settlement_time);
           addOrder(result.data.settlement_time);

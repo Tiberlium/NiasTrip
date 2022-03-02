@@ -12,6 +12,10 @@ import axios from 'axios';
 import base64 from 'base-64';
 import {useNavigation} from '@react-navigation/native';
 
+function countDays(days1, days2) {
+  return Math.ceil((days2 - days1) / 8.64e7);
+}
+
 export default function Actionsheet({refs, data}) {
   const navigation = useNavigation();
   const [inshow, setinshow] = useState(false);
@@ -32,10 +36,12 @@ export default function Actionsheet({refs, data}) {
 
   let orderId = 'Orderid' + currentUser.uid + current;
 
-
   let checkIN = checkin.toISOString().split('T')[0];
   let checkOUT = checkout.toISOString().split('T')[0];
 
+  let countday = countDays(checkin, checkout);
+
+  let total = countday * data['Harga'];
 
   const paramsdata = {
     data,
@@ -44,6 +50,7 @@ export default function Actionsheet({refs, data}) {
     checkIN,
     checkOUT,
     jmlhOrg,
+    total,
   };
 
   function onChange(event, value) {
@@ -145,15 +152,18 @@ export default function Actionsheet({refs, data}) {
           </View>
         </View>
         <Text style={actionStyles.txt3}>Jumlah</Text>
-        <View style={actionStyles.inlineContainer2}>
-          <NumericInput
-            onChange={value => setjmlhOrg(value)}
-            value={jmlhOrg}
-            totalHeight={40}
-            rounded
-            maxValue={4}
-          />
-          <Text style={actionStyles.txt2}>Orang</Text>
+        <View style={actionStyles.parentcontainer}>
+          <View style={actionStyles.inlineContainer2}>
+            <NumericInput
+              onChange={value => setjmlhOrg(value)}
+              value={jmlhOrg}
+              totalHeight={40}
+              rounded
+              maxValue={4}
+            />
+            <Text style={actionStyles.txt2}>Orang</Text>
+          </View>
+          <Text style={actionStyles.totalTxt}>Rp {total.toFixed(3)}</Text>
         </View>
         <Btnbooking onPress={Book} />
       </View>
@@ -198,5 +208,17 @@ const actionStyles = StyleSheet.create({
     flexDirection: 'row',
     paddingLeft: 10,
     paddingBottom: 20,
+  },
+  parentcontainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  totalTxt: {
+    fontWeight: 'bold',
+    color:'black',
+    fontSize: 15,
+    marginRight: 20,
+    marginTop:10
   },
 });
