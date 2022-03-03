@@ -6,6 +6,13 @@ import {Reservecard} from '../../component';
 import {useNavigation} from '@react-navigation/native';
 import Auth from '@react-native-firebase/auth';
 
+function currencyFormater(harga) {
+  harga.toLocaleString('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+  });
+}
+
 const Empty = () => {
   return (
     <View>
@@ -31,19 +38,22 @@ export default function Log() {
     Get();
   }, [isFocus]);
 
+  console.log(data);
   const Exist = () => (
     <FlatList
       data={data}
-      renderItems={({item, index}) => (
+      renderItem={({item, index}) => (
         <Reservecard
-          img={item.gambar}
-          title={item.nama}
-          checkIn={item.checkIN}
-          CheckOut={item.CheckOUT}
-          jumlah={item.jumlah}
-          total={item.harga}
+          img={item.Data.data.Gambar}
+          title={item.Data.data.Nama}
+          checkIn={item.Data.checkIN}
+          CheckOut={item.Data.checkOUT}
+          jumlah={item.Data.jmlhOrg}
+          total={item.Data.total}
           onPress={() => {
-            navigation.navigate('Receipt', {data, nama: user.displayName});
+            navigation.navigate('Receipt', {
+              Data: item,
+            });
           }}
         />
       )}

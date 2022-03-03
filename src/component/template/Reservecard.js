@@ -18,10 +18,10 @@ export default function Reservecard({
           <Text style={styles.title}>{title}</Text>
         </View>
         <Text>
-          {checkIn} - {CheckOut}
+          {checkIn} / {CheckOut}
         </Text>
         <Text>{jumlah} orang</Text>
-        <Text style={styles.price}>Rp {total}</Text>
+        <Text style={styles.price}>Rp {total}.000</Text>
         <Text style={styles.footer}>Selesai</Text>
       </TouchableOpacity>
     </View>

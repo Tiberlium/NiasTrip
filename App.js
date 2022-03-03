@@ -31,6 +31,9 @@ import {
 } from './src/screen';
 const Tab = createNativeStackNavigator();
 
+import { Btnhome } from './src/component';
+
+
 const myTheme = {
   ...DefaultTheme,
   colors: {

@@ -99,14 +99,9 @@ export default function Payment({route, navigation}) {
 
   function addOrder(time) {
     const value = {
-      orderId: Data.orderId,
-      nama: Data.data.Nama,
-      harga: fixedPrice,
-      checkIN: Data.checkIN,
-      checkOUT: Data.checkOUT,
-      jumlah: Data.jmlhOrg,
-      reservationTime: time,
-      gambar: Data.data.Gambar,
+      Data,
+      time: time,
+      total: fixedPrice,
     };
 
     AsyncStorage.getItem('Order').then(doc => {

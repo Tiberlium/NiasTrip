@@ -4,40 +4,40 @@ import ZigzagView from 'react-native-zigzag-view';
 import QRCode from 'react-native-qrcode-svg';
 
 export default function Receipt({route}) {
-  const {Data, time, total, data, nama} = route.params;
+  const {Data, time, total} = route.params;
+
+  console.log(Data);
 
   return (
     <View>
       <ZigzagView backgroundColor="#CCC" surfaceColor="#FFF">
         <Image source={require('../../asset/Logo.png')} style={styles.img} />
         <Text style={styles.title}>Nias Trip</Text>
-        <Text style={styles.time}>{time || data.reservationTime}</Text>
+        <Text style={styles.time}>{time || Data.time}</Text>
         <View style={styles.wrap}>
           <Text style={styles.nama}>Guest : </Text>
-          <Text style={styles.nama1}>{Data.Profile.name || nama}</Text>
+          <Text style={styles.nama1}>{Data.Profile.name}</Text>
         </View>
         <Text style={styles.subhead}>Receipt</Text>
-        <Text style={styles.caption}>{Data.data.Nama || data.nama}</Text>
+        <Text style={styles.caption}>{Data.data.Nama}</Text>
         <View style={styles.wrap2}>
           <Text style={styles.caption}>Jumlah</Text>
-          <Text style={styles.caption}>
-            {Data.jmlhOrg || data.jumlah} Orang
-          </Text>
+          <Text style={styles.caption}>{Data.jmlhOrg} Orang</Text>
         </View>
         <View style={styles.wrap2}>
           <Text style={styles.caption}>Check In</Text>
-          <Text style={styles.caption}>{Data.checkIN || data.checkIN}</Text>
+          <Text style={styles.caption}>{Data.checkIN}</Text>
         </View>
         <View style={styles.wrap2}>
           <Text style={styles.caption}>Check Out</Text>
-          <Text style={styles.caption}>{Data.checkOUT || data.checkOUT}</Text>
+          <Text style={styles.caption}>{Data.checkOUT}</Text>
         </View>
         <View style={styles.wrap2}>
           <Text style={styles.priceText}>Total</Text>
-          <Text style={styles.priceText}>{total || data.harga}</Text>
+          <Text style={styles.priceText}>{total || Data.total}000</Text>
         </View>
         <View style={styles.barcode}>
-          <QRCode value={Data.orderId || data.orderId} size={120} />
+          <QRCode value={Data.orderId} size={120} />
         </View>
       </ZigzagView>
     </View>
