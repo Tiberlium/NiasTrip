@@ -1,42 +1,35 @@
-import React, {useState, useRef, useEffect} from 'react';
 import {
   View,
   Text,
-  Image,
   StyleSheet,
-  FlatList,
   ToastAndroid,
+  Image,
+  FlatList,
 } from 'react-native';
-import ImageView from 'react-native-image-viewing';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
-import {Btnback, Btnbookmark, Btnnearby, Thumbgallery} from '../../component';
-import firestore from '@react-native-firebase/firestore';
+import React, {useState, useEffect, useRef} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import firestore from '@react-native-firebase/firestore';
+import {Btnback, Btnnearby, Btnbookmark, Thumbgallery} from '../../component';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
+import Icon from 'react-native-vector-icons/Ionicons';
+import ImageView from 'react-native-image-viewing';
 
-export default function Fooddetail({navigation, route}) {
-  const [visible, setvisible] = useState(false);
-  const [index, setindex] = useState(0);
+export default function Rm({navigation, route}) {
   const [Data, setData] = useState({});
   const isMounted = useRef();
+  const [index, setindex] = useState(0);
+  const [visible, setvisible] = useState(false);
 
   async function Get() {
-    const docRefFood = await firestore()
-      .collection('Makanan')
+    const docRef = await firestore()
+      .collection('Rm')
       .doc(route.params.id)
       .get();
-    if (isMounted.current) return setData(docRefFood.data());
+    if (isMounted.current) return setData(docRef.data());
   }
-
-  const galery = {...Data['Galery']};
-  let images = [];
-  Object.keys(galery).map(doc => {
-    images.push({
-      uri: galery[doc],
-    });
-  });
 
   useEffect(() => {
     isMounted.current = true;
@@ -60,23 +53,44 @@ export default function Fooddetail({navigation, route}) {
     ToastAndroid.show('Ditambahkan ke Bookmark', ToastAndroid.SHORT);
   }
 
+  const galery = {...Data['Galery']};
+  const images = [];
+  Object.keys(galery).map(x => {
+    images.push({
+      id: x,
+      uri: galery[x],
+    });
+  });
+
   return (
     <View>
-      <Image source={{uri: Data['Gambar']}} style={styles.img} />
+      <Image source={{uri: Data.Gambar}} style={styles.img} />
       <Btnback onPress={() => navigation.goBack()} />
       <View style={styles.inlineWrap}>
-        <Text style={styles.title}>{Data['Nama']}</Text>
-        <Text style={styles.caption}>{Data['Kategori']}</Text>
+        <Text style={styles.title}>{Data.Nama}</Text>
+        <Icon name="star-half" color="blue" size={20}>
+          {' '}
+          <Text style={styles.caption}>{Data.Rating}</Text>
+        </Icon>
       </View>
       <Text style={styles.headline}>Deskripsi</Text>
-      <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
-        {Data['Deskripsi']}
-      </Text>
-      <Text style={styles.headline}>Galery</Text>
+      <View style={styles.inlineWrap_1}>
+        <Icon name="compass" color="black" size={20} />
+        <Text style={styles.caption_1}>{Data.Lokasi}</Text>
+      </View>
+      <View style={styles.inlineWrap_1}>
+        <Icon name="call" color="black" size={20} />
+        <Text style={styles.caption_1}>{Data.Kontak || 'Tidak tersedia'}</Text>
+      </View>
+      <View style={styles.inlineWrap_1}>
+        <Icon name="time" color="black" size={20} />
+        <Text style={styles.caption_1}>{Data.Operasional}</Text>
+      </View>
+      <Text style={styles.headline}>Gallery</Text>
       <FlatList
         horizontal={true}
         data={Data['Galery']}
-        renderItem={({item, index}) => (
+        renderItem={({item}) => (
           <Thumbgallery
             uri={item}
             onPress={() => {
@@ -89,19 +103,21 @@ export default function Fooddetail({navigation, route}) {
         images={images}
         visible={visible}
         imageIndex={index}
+        keyExtractor={item => item.id}
         onRequestClose={() => setvisible(false)}
       />
       <View style={styles.wrapBtn}>
         <Btnnearby
-          title="Lokasi Penyedia"
+          title="Lihat Sekitar"
           onPress={() =>
             navigation.navigate('Map', {
-              latitude: Data['lat'],
-              longitude: Data['long'],
+              id: route.params.id,
+              latitude: Data['Latitude'],
+              longitude: Data['Longitude'],
             })
           }
         />
-        <Btnbookmark onPress={addBookmark} />
+        <Btnbookmark />
       </View>
     </View>
   );
@@ -132,13 +148,20 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   title: {color: 'black', fontWeight: 'bold', fontSize: 25},
-  caption: {color: 'black', fontWeight: '300'},
+  caption: {color: 'black', fontWeight: '300', fontSize: 15},
+  caption_1: {
+    color: 'black',
+    fontWeight: '300',
+    fontSize: 15,
+    marginLeft: 5,
+    width: wp(80),
+  },
   headline: {
     color: 'black',
     fontSize: 20,
     marginLeft: 20,
     fontWeight: 'bold',
-    marginTop: 10,
+    marginTop: 20,
   },
   subtitle: {
     padding: 20,
@@ -152,5 +175,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     position: 'absolute',
     alignSelf: 'center',
+  },
+  inlineWrap_1: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginLeft: 20,
+    marginTop: 10,
+  },
+  headline: {
+    color: 'black',
+    fontSize: 20,
+    marginLeft: 10,
+    fontWeight: 'bold',
+    marginTop: 25,
   },
 });

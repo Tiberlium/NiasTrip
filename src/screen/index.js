@@ -26,8 +26,8 @@ import Eventgroup from './eventgroup';
 import Eventdetail from './eventdetail';
 import Payment from './payment';
 import Receipt from './receipt';
-
-
+import Rm from './rm';
+import Hotelgroup from './hotelgroup';
 export {
   Splash,
   Intro,
@@ -57,4 +57,6 @@ export {
   Eventdetail,
   Payment,
   Receipt,
+  Rm,
+  Hotelgroup,
 };

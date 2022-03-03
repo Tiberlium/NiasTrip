@@ -1,8 +1,10 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, FlatList} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useIsFocused} from '@react-navigation/native';
 import {Reservecard} from '../../component';
+import {useNavigation} from '@react-navigation/native';
+import Auth from '@react-native-firebase/auth';
 
 const Empty = () => {
   return (
@@ -14,19 +16,14 @@ const Empty = () => {
 };
 
 export default function Log() {
-  const [data, setData] = React.useState({});
+  const [data, setdata] = React.useState({});
   const isFocus = useIsFocused();
+  const navigation = useNavigation();
+  const user = Auth().currentUser;
 
   async function Get() {
     await AsyncStorage.getItem('Order')
-      .then(docs => (docs != null ? setData(JSON.parse(docs)) : null))
-      .catch(e => console.log(e));
-  }
-
-  async function Delete(id) {
-    const arr = data.filter(e => e.id != id);
-    await AsyncStorage.setItem('Order', JSON.stringify(arr))
-      .then(() => Get())
+      .then(docs => (docs != null ? setdata(JSON.parse(docs)) : null))
       .catch(e => console.log(e));
   }
 
@@ -34,15 +31,26 @@ export default function Log() {
     Get();
   }, [isFocus]);
 
-  console.log(data);
-
-  const Exist = () => <Reservecard />;
-
-  return (
-    <View>
-      <Empty />
-    </View>
+  const Exist = () => (
+    <FlatList
+      data={data}
+      renderItems={({item, index}) => (
+        <Reservecard
+          img={item.gambar}
+          title={item.nama}
+          checkIn={item.checkIN}
+          CheckOut={item.CheckOUT}
+          jumlah={item.jumlah}
+          total={item.harga}
+          onPress={() => {
+            navigation.navigate('Receipt', {data, nama: user.displayName});
+          }}
+        />
+      )}
+    />
   );
+
+  return <View>{data && data.length ? <Exist /> : <Empty />}</View>;
 }
 
 const styles = StyleSheet.create({

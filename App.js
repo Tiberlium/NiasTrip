@@ -1,12 +1,7 @@
 import React from 'react';
 import Navigator from './src/navigator';
-import {
-  NavigationContainer,
-  DefaultTheme,
-  useNavigation,
-} from '@react-navigation/native';
+import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Btnhome, Reservecard} from './src/component';
 import {
   About,
   Intro,
@@ -31,8 +26,9 @@ import {
   Map,
   Payment,
   Receipt,
+  Rm,
+  Hotelgroup,
 } from './src/screen';
-import Hotelgroup from './src/screen/hotelgroup';
 const Tab = createNativeStackNavigator();
 
 const myTheme = {
@@ -42,8 +38,6 @@ const myTheme = {
     background: 'white',
   },
 };
-
-
 
 export default function App() {
   return (
@@ -159,6 +153,7 @@ export default function App() {
           component={Eventdetail}
           options={{headerShown: false}}
         />
+        <Tab.Screen name="Rm" component={Rm} options={{headerShown: false}} />
         <Tab.Screen name="Map" component={Map} options={{headerShown: false}} />
       </Tab.Navigator>
     </NavigationContainer>

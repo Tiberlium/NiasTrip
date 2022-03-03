@@ -8,14 +8,21 @@ export default function Reservecard({
   CheckOut,
   jumlah,
   total,
+  onPress,
 }) {
   return (
     <View>
-      <TouchableOpacity style={styles.container}>
-        <Text style={styles.title}>hallo</Text>
-        <Text>{`${checkIn} - ${CheckOut}`}</Text>
-        <Text>2 orang</Text>
-        <Text style={styles.price}>Rp.8593</Text>
+      <TouchableOpacity style={styles.container} onPress={onPress}>
+        <View style={styles.inlineWrap}>
+          <Image source={{uri: img}} style={styles.img} />
+          <Text style={styles.title}>{title}</Text>
+        </View>
+        <Text>
+          {checkIn} - {CheckOut}
+        </Text>
+        <Text>{jumlah} orang</Text>
+        <Text style={styles.price}>Rp {total}</Text>
+        <Text style={styles.footer}>Selesai</Text>
       </TouchableOpacity>
     </View>
   );
@@ -31,7 +38,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     padding: 15,
     margin: 10,
-    borderWidth: 0.4,
+    elevation: 5,
   },
   inlineWrap: {display: 'flex', flexDirection: 'row'},
   img: {

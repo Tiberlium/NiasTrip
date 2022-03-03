@@ -15,6 +15,7 @@ export default function Updateprofile() {
   const [hp, sethp] = useState(user.phoneNumber || '');
   const [address, setaddress] = useState('');
   const [kota, setkota] = useState('');
+  const [email, setEmail] = useState(user.email || '');
 
   const optionalData = {
     id: user.uid,
@@ -23,7 +24,7 @@ export default function Updateprofile() {
     phoneNumber: hp,
     address: address,
     city: kota,
-    email: user.email,
+    email: email,
   };
 
   async function handleChangeName() {
@@ -65,6 +66,12 @@ export default function Updateprofile() {
           placeholder="Masukkan HP disini"
           onChangeText={sethp}
           value={hp}
+        />
+        <Txtinput
+          label="Email"
+          placeholder="Masukkan Email disini"
+          onChangeText={setEmail}
+          value={email}
         />
         <Txtinput
           label="Alamat"

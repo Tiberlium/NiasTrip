@@ -176,6 +176,8 @@ export default function Map({navigation, route}) {
       navigation.navigate('Fooddetail', {id});
     } else if (category === 'Penginapan') {
       navigation.navigate('Hoteldetail', {id});
+    } else if (category === 'Tempat Makan') {
+      navigation.navigate('Rm', {id});
     } else {
       navigation.navigate('Eventdetail', {id});
     }
