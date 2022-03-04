@@ -68,7 +68,7 @@ export default function Log() {
 
   return (
     <View>
-      <Text style={styles.title}>Order History</Text>
+      <Text style={styles.title}>Reservation History</Text>
       {data && data.length ? <Exist /> : <Empty />}
     </View>
   );
