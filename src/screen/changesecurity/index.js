@@ -15,7 +15,7 @@ async function Reauthenticate(current) {
   return user.reauthenticateWithCredential(emailCred);
 }
 
-const ChangeEmail = ({s}) => {
+const ChangeEmail = ({Emailchange}) => {
   const [currentPass, setcurrentPass] = useState('');
   const [Email, setEmail] = useState('');
 
@@ -27,7 +27,7 @@ const ChangeEmail = ({s}) => {
       .catch(e => console.log(e));
   }
   return (
-    <ActionSheet ref={s}>
+    <ActionSheet ref={Emailchange}>
       <Text style={styles.title}>Ubah Email</Text>
       <Text style={styles.subtitle}>Password</Text>
       <TextInput
@@ -53,7 +53,7 @@ const ChangeEmail = ({s}) => {
   );
 };
 
-const ChangePass = ({s}) => {
+const ChangePass = ({passchange}) => {
   const [currentPass, setcurrentPass] = useState('');
   const [newPass, setnewPass] = useState('');
 
@@ -65,7 +65,7 @@ const ChangePass = ({s}) => {
       .catch(e => console.log(e));
   }
   return (
-    <ActionSheet ref={s}>
+    <ActionSheet ref={passchange}>
       <Text style={styles.title}>Ubah Sandi</Text>
       <Text style={styles.subtitle}>Sandi Lama</Text>
       <TextInput
@@ -94,6 +94,7 @@ const ChangePass = ({s}) => {
 
 export default function Changesecurity({navigation}) {
   const actionRef = useRef();
+  const actionRef_ = useRef();
 
   return (
     <View>
@@ -104,15 +105,15 @@ export default function Changesecurity({navigation}) {
       <Cardoptions
         icon="mail"
         label="Ubah Email"
-        onPress={() => actionRef.current?.show()}
+        onPress={() => actionRef_.current?.show()}
       />
       <Cardoptions
         icon="lock-closed"
         label="Ubah Sandi"
         onPress={() => actionRef.current?.show()}
       />
-      <ChangeEmail s={actionRef} />
-      <ChangePass s={actionRef} />
+      <ChangeEmail Emailchange={actionRef_} />
+      <ChangePass passchange={actionRef} />
     </View>
   );
 }

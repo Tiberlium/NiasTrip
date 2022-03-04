@@ -127,9 +127,14 @@ export default function Payment({route, navigation}) {
           return false;
         } else {
           navigation.navigate('Receipt', {
-            Data,
-            time: result.data.settlement_time,
+            guest: Data.Profile.name,
+            name: Data.data.Nama,
+            qty: Data.jmlhOrg,
+            checkin: Data.checkIN,
+            checkout: Data.checkOUT,
+            timetransaction: result.data.settlement_time,
             total: fixedPrice,
+            orderid: Data.orderId,
           });
           updateToUser(result.data.settlement_time);
           addOrder(result.data.settlement_time);

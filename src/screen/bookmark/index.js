@@ -63,10 +63,16 @@ export default function Bookmark({navigation}) {
     );
   };
 
-  return <View>{Data && Data.length ? <Exist /> : <Empty />}</View>;
+  return (
+    <View>
+      <Text style={styles.title}>Bookmark</Text>
+      {Data && Data.length ? <Exist /> : <Empty />}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
+  title: {fontWeight: 'bold', fontSize: 25, color: 'black', padding: 20},
   img: {
     height: 250,
     width: 250,

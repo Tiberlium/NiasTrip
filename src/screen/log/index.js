@@ -52,7 +52,7 @@ export default function Log() {
           total={item.Data.total}
           onPress={() => {
             navigation.navigate('Receipt', {
-              Data: item,
+              Item: item,
             });
           }}
         />
@@ -60,10 +60,16 @@ export default function Log() {
     />
   );
 
-  return <View>{data && data.length ? <Exist /> : <Empty />}</View>;
+  return (
+    <View>
+      <Text style={styles.title}>Order History</Text>
+      {data && data.length ? <Exist /> : <Empty />}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
+  title: {fontWeight: 'bold', fontSize: 25, color: 'black', padding: 20},
   img: {
     height: 250,
     width: 250,

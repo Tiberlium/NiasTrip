@@ -239,7 +239,7 @@ export default function Map({navigation, route}) {
               <Mapcard
                 img={item.data.Gambar}
                 nama={item.data.Nama}
-                kota={item.data.Kabupaten}
+                kota={item.data.Kategori}
                 onPress={() => MoveAway(item.id, item.data.Kategori)}
               />
             )}
