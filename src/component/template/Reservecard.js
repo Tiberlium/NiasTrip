@@ -21,7 +21,7 @@ export default function Reservecard({
           {checkIn} / {CheckOut}
         </Text>
         <Text>{jumlah} orang</Text>
-        <Text style={styles.price}>Rp {total}.000</Text>
+        <Text style={styles.price}>Rp {total}</Text>
         <Text style={styles.footer}>Selesai</Text>
       </TouchableOpacity>
     </View>

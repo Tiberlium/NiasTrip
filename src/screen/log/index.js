@@ -38,7 +38,6 @@ export default function Log() {
     Get();
   }, [isFocus]);
 
-  console.log(data);
   const Exist = () => (
     <FlatList
       data={data}
@@ -49,10 +48,17 @@ export default function Log() {
           checkIn={item.Data.checkIN}
           CheckOut={item.Data.checkOUT}
           jumlah={item.Data.jmlhOrg}
-          total={item.Data.total}
+          total={item.total}
           onPress={() => {
             navigation.navigate('Receipt', {
-              Item: item,
+              guest: item.Data.Profile.name,
+              name: item.Data.data.Nama,
+              qty: item.Data.jmlhOrg,
+              checkin: item.Data.checkOUT,
+              checkout: item.Data.checkOUT,
+              timetransaction: item.time,
+              total: item.total,
+              orderId: item.orderId,
             });
           }}
         />

@@ -33,7 +33,7 @@ export default function Receipt({route}) {
         </View>
         <View style={styles.wrap2}>
           <Text style={styles.priceText}>Total</Text>
-          <Text style={styles.priceText}>{total}000</Text>
+          <Text style={styles.priceText}>Rp.{total}</Text>
         </View>
         <View style={styles.barcode}>
           <QRCode value={orderId} size={120} />
