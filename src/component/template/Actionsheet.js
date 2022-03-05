@@ -163,6 +163,8 @@ export default function Actionsheet({refs, data}) {
               onLimitReached={() =>
                 ToastAndroid.show('Maksimal 4 orang', ToastAndroid.SHORT)
               }
+              rightButtonBackgroundColor="green"
+              leftButtonBackgroundColor="red"
             />
             <Text style={actionStyles.txt2}>Orang</Text>
           </View>

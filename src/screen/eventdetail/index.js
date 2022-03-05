@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   wrapBtn: {
-    marginTop: hp(89),
+    marginTop: hp(97),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',

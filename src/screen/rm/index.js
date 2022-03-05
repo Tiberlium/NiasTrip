@@ -108,7 +108,7 @@ export default function Rm({navigation, route}) {
       />
       <View style={styles.wrapBtn}>
         <Btnnearby
-          title="Lihat Sekitar"
+          title="Jelajahi Sekitar"
           onPress={() =>
             navigation.navigate('Map', {
               id: route.params.id,
@@ -117,7 +117,7 @@ export default function Rm({navigation, route}) {
             })
           }
         />
-        <Btnbookmark />
+        <Btnbookmark color="black"/>
       </View>
     </View>
   );
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   wrapBtn: {
-    marginTop: hp(87),
+    marginTop: hp(97),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',

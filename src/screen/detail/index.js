@@ -107,7 +107,7 @@ export default function Detail({route, navigation}) {
             })
           }
         />
-        <Btnbookmark onPress={addBookmark} />
+        <Btnbookmark onPress={addBookmark} color="black" />
       </View>
     </View>
   );
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   wrapBtn: {
-    marginTop: hp(89),
+    marginTop: hp(97),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
