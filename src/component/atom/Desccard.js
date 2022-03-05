@@ -6,7 +6,7 @@ export default function Desccard({title, kota, kabupaten}) {
     <View style={styles.container}>
       <View style={styles.wrap}>
         <Text style={styles.title}>{title}</Text>
-        <Text>
+        <Text style={styles.txt}>
           {kota}, {kabupaten}
         </Text>
       </View>
@@ -14,14 +14,12 @@ export default function Desccard({title, kota, kabupaten}) {
   );
 }
 
- function Desccard2({title, kategori}) {
+function Desccard2({title, kategori}) {
   return (
     <View style={styles.container}>
       <View style={styles.wrap}>
         <Text style={styles.title}>{title}</Text>
-        <Text>
-          {kategori}
-        </Text>
+        <Text style={styles.txt}>{kategori}</Text>
       </View>
     </View>
   );
@@ -51,6 +49,9 @@ const styles = StyleSheet.create({
   caption: {
     fontWeight: '200',
     fontSize: 15,
+    color: 'black',
+  },
+  txt: {
     color: 'black',
   },
 });

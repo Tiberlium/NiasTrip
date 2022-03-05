@@ -94,5 +94,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: hp(5),
   },
-  unregister: {fontWeight: '300'},
+  unregister: {fontWeight: '300',color:'black'},
 });

@@ -65,7 +65,7 @@ export default function Eventdetail({navigation, route}) {
             })
           }
         />
-        <Btnbookmark onPress={addBookmark} />
+        <Btnbookmark onPress={addBookmark} color="black" />
       </View>
     </View>
   );

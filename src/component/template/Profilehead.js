@@ -8,8 +8,8 @@ export default function Profilehead({name}) {
   const user = Auth().currentUser;
   return (
     <View style={styles.wrap}>
-      {user.photoURL ? (
-        <Profile source={user.photoURL} />
+      {user.photoURL != null ? (
+        <Profile source={{uri: user.photoURL}} />
       ) : (
         <Blankavatar width={70} height={70} bottom={-30} />
       )}

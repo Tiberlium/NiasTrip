@@ -138,7 +138,7 @@ export default function Hoteldetail({navigation, route}) {
 }
 
 const styles = StyleSheet.create({
-  container: {flex: 1},
+  container: {display:'flex',flexDirection:'column',justifyContent:'space-between'},
   containerImage: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginLeft: 20,
     fontWeight: 'bold',
-    marginTop: -25,
+    marginTop:hp(4)
   },
   subtitle: {
     paddingLeft: 20,
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   wrapBtn: {
-    marginTop: hp(91),
+    marginTop: hp(100),
     position: 'absolute',
     alignSelf: 'center',
     backgroundColor: 'white',
