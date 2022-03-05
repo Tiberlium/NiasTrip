@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react';
-import {View, StyleSheet, Dimensions, Text} from 'react-native';
+import {View, StyleSheet, Dimensions, Text, Image} from 'react-native';
 import MapView, {Callout, Marker} from 'react-native-maps';
 import firestore from '@react-native-firebase/firestore';
 import Carousel from 'react-native-snap-carousel';
@@ -207,8 +207,11 @@ export default function Map({navigation, route}) {
               latitude: Number(doc.data.Latitude),
               longitude: Number(doc.data.Longitude),
             }}
-            onPress={() => onMarkerSelect(doc, index)}
-            icon={require('../../asset/location.png')}>
+            onPress={() => onMarkerSelect(doc, index)}>
+            <Image
+              source={require('../../asset/location.png')}
+              style={styles.img}
+            />
             <Callout tooltip>
               <>
                 <View style={styles.calloutStyle}>
@@ -256,8 +259,9 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
   },
   itemSlider: {
-    marginTop: hp(65),
+    marginTop: hp(72),
   },
+  img: {height: 30, width: 30},
   calloutStyle: {
     flexDirection: 'column',
     alignSelf: 'flex-start',

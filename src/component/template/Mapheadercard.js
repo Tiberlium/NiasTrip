@@ -11,7 +11,7 @@ export default function Mapheadercard({onPress, onChange, value}) {
   return (
     <View style={styles.container}>
       <Pressable onPress={onPress} style={styles.btn}>
-        <Icon name="arrow-back-outline" size={25} />
+        <Icon name="arrow-back-outline" size={25} color="black"/>
       </Pressable>
       <Text style={styles.txt}>Lokasi Sekitar</Text>
       <View style={styles.wrap}>
