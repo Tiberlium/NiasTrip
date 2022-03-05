@@ -43,7 +43,7 @@ export default function Eventdetail({navigation, route}) {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <Image source={{uri: Data.Gambar}} style={styles.img} />
       <Btnback onPress={() => navigation.goBack()} />
       <View style={styles.inlineWrap}>
@@ -56,7 +56,7 @@ export default function Eventdetail({navigation, route}) {
       </Text>
       <View style={styles.wrapBtn}>
         <Btnnearby
-          title="Lihat Sekitar"
+          title="Jelajahi Sekitar"
           onPress={() =>
             navigation.navigate('Map', {
               id: route.params.id,
@@ -72,6 +72,7 @@ export default function Eventdetail({navigation, route}) {
 }
 
 const styles = StyleSheet.create({
+  container:{flex:1},
   containerImage: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -87,13 +88,14 @@ const styles = StyleSheet.create({
   },
   inlineWrap: {
     width: 250,
-    height: 80,
+    height: 100,
     backgroundColor: 'white',
     padding: 10,
     borderRadius: 10,
     marginLeft: 10,
-    marginTop: hp(25),
+    marginTop: hp(24),
     elevation: 5,
+    padding: 10,
   },
   title: {color: 'black', fontWeight: 'bold', fontSize: 25},
   caption: {color: 'black', fontWeight: '300'},
@@ -110,7 +112,7 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   wrapBtn: {
-    marginTop: hp(87),
+    marginTop: hp(89),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',

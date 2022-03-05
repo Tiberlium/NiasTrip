@@ -18,7 +18,7 @@ import {
   Btnbookmark,
   Btnlocation,
   Facilitychip,
-  Placecard,
+  Placecard2,
   Thumbgallery,
   Actionsheet,
 } from '../../component';
@@ -75,14 +75,14 @@ export default function Hoteldetail({navigation, route}) {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <Image source={{uri: Data['Gambar']}} style={styles.img} />
       <View style={styles.headerContainer}>
         <Btnback onPress={() => navigation.goBack()} />
         <Btnbookmark color="white" onPress={addBookmark} />
       </View>
       <View style={styles.headerContainer2}>
-        <Placecard title={Data['Nama']} kota={Data['Kabupaten']} />
+        <Placecard2 title={Data['Nama']} kota={Data['Kabupaten']} />
         <Btnlocation
           onPress={() =>
             navigation.navigate('Map', {
@@ -138,6 +138,7 @@ export default function Hoteldetail({navigation, route}) {
 }
 
 const styles = StyleSheet.create({
+  container: {flex: 1},
   containerImage: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -182,6 +183,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginLeft: 20,
     fontWeight: 'bold',
+    marginTop: -25,
   },
   subtitle: {
     paddingLeft: 20,
@@ -190,7 +192,7 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   wrapBtn: {
-    marginTop: hp(90),
+    marginTop: hp(91),
     position: 'absolute',
     alignSelf: 'center',
     backgroundColor: 'white',

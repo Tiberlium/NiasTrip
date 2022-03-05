@@ -77,6 +77,6 @@ const styles = StyleSheet.create({
     color: 'black',
     marginHorizontal: wp(5),
     marginBottom: hp(2),
-    marginTop: hp(2),
+    marginTop: hp(3),
   },
 });

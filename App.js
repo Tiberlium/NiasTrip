@@ -28,12 +28,11 @@ import {
   Receipt,
   Rm,
   Hotelgroup,
-  Souvenirgroup
+  Souvenirgroup,
 } from './src/screen';
 const Tab = createNativeStackNavigator();
 
-import { Btnhome } from './src/component';
-
+import {Btnhome,} from './src/component';
 
 const myTheme = {
   ...DefaultTheme,
@@ -99,12 +98,18 @@ export default function App() {
           options={{headerShown: false}}
         />
         <Tab.Screen name="Update profile" component={Updateprofile} />
-        <Tab.Screen name="Payment" component={Payment} />
+        <Tab.Screen
+          name="Payment"
+          component={Payment}
+          options={{
+            headerLeft: () => <Btnhome />,
+          }}
+        />
         <Tab.Screen
           name="Receipt"
           component={Receipt}
           options={{
-            headerRight: () => <Btnhome />,
+            headerLeft: () => <Btnhome />,
           }}
         />
         <Tab.Screen
@@ -157,7 +162,7 @@ export default function App() {
           component={Eventdetail}
           options={{headerShown: false}}
         />
-         <Tab.Screen
+        <Tab.Screen
           name="Souvenirgroup"
           component={Souvenirgroup}
           options={{headerShown: false}}

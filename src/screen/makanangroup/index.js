@@ -1,6 +1,6 @@
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList, SafeAreaView} from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
-import {Allcard, Btnback} from '../../component';
+import {Allcard2, Btnback} from '../../component';
 import firestore from '@react-native-firebase/firestore';
 
 export default function Makanangroup({navigation}) {
@@ -35,12 +35,14 @@ export default function Makanangroup({navigation}) {
       <FlatList
         data={Data}
         renderItem={({item, index}) => (
-          <Allcard
-            title={item.data.Nama}
-            gambar={item.data.Gambar}
-            kota={item.data.Kategori}
-            onPress={() => navigation.navigate('Fooddetail', {id: item.id})}
-          />
+          <SafeAreaView style={styles.container}>
+            <Allcard2
+              title={item.data.Nama}
+              gambar={item.data.Gambar}
+              kategori={item.data.Kategori}
+              onPress={() => navigation.navigate('Fooddetail', {id: item.id})}
+            />
+          </SafeAreaView>
         )}
       />
     </View>
@@ -50,4 +52,5 @@ export default function Makanangroup({navigation}) {
 const styles = StyleSheet.create({
   txt: {fontSize: 25, fontWeight: 'bold', color: 'black', marginTop: 15},
   inlineWrap: {display: 'flex', flexDirection: 'row'},
+  container:{},
 });

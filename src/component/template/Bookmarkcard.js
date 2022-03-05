@@ -12,17 +12,20 @@ export default function Bookmarkcard({
   return (
     <View>
       <TouchableOpacity onPress={onPress}>
-        <Image source={{uri: gambar}} style={styles.img} />
-        <View style={styles.wrapParent}>
-          <View style={styles.wraptxt}>
-            <Text style={styles.title}>{title}</Text>
-            <Text style={styles.caption}>{kategori}</Text>
-          </View>
-          <View style={styles.wrapBtn}>
-            <TouchableOpacity onPress={onDelete}>
-              <Icon name="bookmark-outline" size={20} style={styles.icon} />
-            </TouchableOpacity>
-          </View>
+        <Image
+          source={{
+            uri: gambar,
+          }}
+          style={styles.img}
+        />
+        <View style={styles.wrapBtn}>
+          <TouchableOpacity onPress={onDelete}>
+            <Icon name="bookmark" size={20} style={styles.icon} color="black" />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.wraptxt}>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.caption}>{kategori}</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -37,21 +40,15 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginVertical: 20,
   },
-  wrapParent: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 85,
-    position: 'absolute',
-  },
-  wraptxt: {marginLeft: 40},
+  wraptxt: {marginLeft: 40, position: 'absolute', marginTop: 90},
   wrapBtn: {
     width: 40,
     height: 40,
     backgroundColor: 'white',
     borderRadius: 25,
-    marginTop: 10,
-    marginLeft: 90,
+    position: 'absolute',
+    marginLeft: 40,
+    marginTop: 30,
   },
   icon: {alignSelf: 'center', marginTop: 10},
   title: {fontWeight: 'bold', color: 'white', fontSize: 25},

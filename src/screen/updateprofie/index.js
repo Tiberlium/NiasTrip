@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import {View, ScrollView, StyleSheet} from 'react-native';
+import {View, ScrollView, StyleSheet, ToastAndroid} from 'react-native';
 import {Btnsubmit, Txtinput} from '../../component';
 import SelectDropdown from 'react-native-select-dropdown';
 import Auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function Updateprofile() {
+export default function Updateprofile({navigation}) {
   const user = Auth().currentUser;
   const gender = ['Pria', 'Wanita'];
 
@@ -32,7 +32,9 @@ export default function Updateprofile() {
       .updateProfile({
         displayName: nama,
       })
-      .then(() => console.log('berhasil'))
+      .then(() => {
+        console.log('berhasil');
+      })
       .catch(e => console.log(e));
   }
 
@@ -41,7 +43,10 @@ export default function Updateprofile() {
       .collection('Users')
       .doc(user.uid)
       .set(optionalData)
-      .then(() => console.log('user update'))
+      .then(() => {
+        ToastAndroid.show('User di update', ToastAndroid.SHORT);
+        navigation.navigate('Personinfo');
+      })
       .catch(e => console.log(e));
   }
 

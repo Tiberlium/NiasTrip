@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import SearchLogoBtn from '../atom/SearchLogoBtn';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default function Searchbtn({onPress}) {
   return (

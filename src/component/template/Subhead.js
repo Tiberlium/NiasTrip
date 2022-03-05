@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginTop:hp(1),
   },
   wrap: {
     marginTop: hp(3.5),

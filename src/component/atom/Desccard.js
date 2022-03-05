@@ -14,6 +14,21 @@ export default function Desccard({title, kota, kabupaten}) {
   );
 }
 
+ function Desccard2({title, kategori}) {
+  return (
+    <View style={styles.container}>
+      <View style={styles.wrap}>
+        <Text style={styles.title}>{title}</Text>
+        <Text>
+          {kategori}
+        </Text>
+      </View>
+    </View>
+  );
+}
+
+export {Desccard2};
+
 const styles = StyleSheet.create({
   container: {
     height: 80,

@@ -42,7 +42,7 @@ export default function Map({navigation, route}) {
   const [Resto, setResto] = useState([]);
   const isMounted = useRef();
   const [Theme, setTheme] = useState(false);
-  const {latitude, longitude} = route.params;
+  const {latitude, longitude, id} = route.params;
 
   let mapRef = useRef(null);
   let Markers = useRef();
@@ -235,6 +235,7 @@ export default function Map({navigation, route}) {
             sliderWidth={Dimensions.get('window').width}
             onSnapToItem={index => onCarouselItemChange(index)}
             layout={'tinder'}
+            firstItem={1}
             renderItem={({item}) => (
               <Mapcard
                 img={item.data.Gambar}

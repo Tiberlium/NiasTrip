@@ -61,7 +61,7 @@ export default function Fooddetail({navigation, route}) {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <Image source={{uri: Data['Gambar']}} style={styles.img} />
       <Btnback onPress={() => navigation.goBack()} />
       <View style={styles.inlineWrap}>
@@ -108,6 +108,7 @@ export default function Fooddetail({navigation, route}) {
 }
 
 const styles = StyleSheet.create({
+  container: {flex: 1},
   containerImage: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   wrapBtn: {
-    marginTop: hp(87),
+    marginTop: hp(89),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',

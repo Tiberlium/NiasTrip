@@ -7,7 +7,7 @@ export default function Souvenirgroup({navigation}) {
     <View>
       <View style={styles.inlineWrap}>
         <Btnback onPress={() => navigation.goBack()} />
-        <Text style={styles.txt}>Makanan</Text>
+        <Text style={styles.txt}>Souvenir</Text>
       </View>
       <Image source={require('../../asset/under.png')} style={styles.img} />
       <Text style={styles.txt1}>Coming Soon !!!</Text>

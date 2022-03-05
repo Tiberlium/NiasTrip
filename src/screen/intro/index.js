@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   img: {
     alignSelf: 'center',
     width: wp(100),
-    height: hp(100),
+    height: hp(120),
     position: 'absolute',
   },
   inlinewrap: {marginTop: hp(55), paddingHorizontal: 15},

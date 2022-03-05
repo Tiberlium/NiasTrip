@@ -1,5 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 
 export default function Subtitle({text1, text2}) {
   return (
@@ -11,7 +15,13 @@ export default function Subtitle({text1, text2}) {
 }
 
 const styles = StyleSheet.create({
-  container: {display: 'flex', flexDirection: 'row', margin: 20},
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginLeft: wp(5),
+    marginTop: hp(3.2),
+    marginBottom: hp(2),
+  },
   txt1: {fontWeight: 'bold', fontSize: 20, color: 'black', marginRight: 5},
   txt2: {fontWeight: '300', fontSize: 20, color: 'black'},
 });

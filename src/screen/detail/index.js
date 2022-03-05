@@ -63,13 +63,13 @@ export default function Detail({route, navigation}) {
   });
 
   return (
-    <View>
+    <View style={styles.container}>
       <Image source={{uri: Data.Gambar}} style={styles.img} />
       <Btnback onPress={() => navigation.goBack()} />
       <View style={styles.inlineWrap}>
         <Text style={styles.title}>{Data.Nama}</Text>
         <Text style={styles.caption}>
-          {Data.kecamatan}, {Data.Kabupaten}
+          {Data.Kecamatan}, {Data.Kabupaten}
         </Text>
       </View>
       <Text style={styles.headline}>Deskripsi</Text>
@@ -98,7 +98,7 @@ export default function Detail({route, navigation}) {
       />
       <View style={styles.wrapBtn}>
         <Btnnearby
-          title="Lihat Sekitar"
+          title="Jelajahi sekitar"
           onPress={() =>
             navigation.navigate('Map', {
               id: route.params.id,
@@ -114,6 +114,7 @@ export default function Detail({route, navigation}) {
 }
 
 const styles = StyleSheet.create({
+  container: {flex: 1},
   containerImage: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -152,7 +153,7 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   wrapBtn: {
-    marginTop: hp(87),
+    marginTop: hp(89),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',

@@ -1,5 +1,12 @@
-import React, {useState, useRef} from 'react';
-import {View, Text, TextInput, StyleSheet, Pressable} from 'react-native';
+import React, {useState, useRef, useEffect} from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Pressable,
+  Alert,
+} from 'react-native';
 import {Btnback, Cardoptions} from '../../component';
 import Auth from '@react-native-firebase/auth';
 import ActionSheet from 'react-native-actions-sheet';
@@ -14,6 +21,7 @@ async function Reauthenticate(current) {
 
   return user.reauthenticateWithCredential(emailCred);
 }
+
 
 const ChangeEmail = ({Emailchange}) => {
   const [currentPass, setcurrentPass] = useState('');
@@ -95,6 +103,13 @@ const ChangePass = ({passchange}) => {
 export default function Changesecurity({navigation}) {
   const actionRef = useRef();
   const actionRef_ = useRef();
+
+  useEffect(() => {
+    Alert.alert(
+      'Perhatian',
+      'Opsi ini hanya berlaku dengan metode sign in menggunakan email dan password',
+    );
+  }, []);
 
   return (
     <View>

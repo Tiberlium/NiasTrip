@@ -1,4 +1,4 @@
-import {View, Text, Alert, ActivityIndicator, StyleSheet} from 'react-native';
+import {View, Text, Alert, ToastAndroid, StyleSheet} from 'react-native';
 import React, {useState, useRef, useEffect} from 'react';
 import Auth from '@react-native-firebase/auth';
 import NumericInput from 'react-native-numeric-input';
@@ -32,7 +32,8 @@ export default function Actionsheet({refs, data}) {
   const isMounted = useRef();
 
   let Today = new Date();
-  let current = Today.getMonth() + Today.getDay() + Today.getHours() + Today.getSeconds();
+  let current =
+    Today.getMonth() + Today.getDay() + Today.getHours() + Today.getSeconds();
 
   let orderId = 'Orderid' + currentUser.uid + current;
 
@@ -159,6 +160,9 @@ export default function Actionsheet({refs, data}) {
               totalHeight={40}
               rounded
               maxValue={4}
+              onLimitReached={() =>
+                ToastAndroid.show('Maksimal 4 orang', ToastAndroid.SHORT)
+              }
             />
             <Text style={actionStyles.txt2}>Orang</Text>
           </View>
@@ -215,9 +219,9 @@ const actionStyles = StyleSheet.create({
   },
   totalTxt: {
     fontWeight: 'bold',
-    color:'black',
+    color: 'black',
     fontSize: 15,
     marginRight: 20,
-    marginTop:10
+    marginTop: 10,
   },
 });

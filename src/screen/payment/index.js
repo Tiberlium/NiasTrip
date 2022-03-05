@@ -123,7 +123,10 @@ export default function Payment({route, navigation}) {
     })
       .then(result => {
         if (result.data.status_code != 200) {
-          ToastAndroid.show('Belum di bayar', ToastAndroid.SHORT);
+          ToastAndroid.show(
+            'Selesaikan terlebih dahulu pembayaran',
+            ToastAndroid.SHORT,
+          );
           return false;
         } else {
           navigation.navigate('Receipt', {
