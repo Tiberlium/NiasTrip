@@ -11,7 +11,7 @@ export default function Updateprofile({navigation}) {
   const gender = ['Pria', 'Wanita'];
 
   const [nama, setnama] = useState(user.displayName || '');
-  const [kelamin, setkelamin] = useState('');
+  const [kelamin, setkelamin] = useState('Pria');
   const [hp, sethp] = useState(user.phoneNumber || '');
   const [address, setaddress] = useState('');
   const [kota, setkota] = useState('');
