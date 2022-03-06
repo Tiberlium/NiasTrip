@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: 300,
     borderBottomColor: 'black',
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.5,
     marginTop: hp(5),
   },
   label: {fontSize: 15, fontWeight: 'bold', color: 'black'},

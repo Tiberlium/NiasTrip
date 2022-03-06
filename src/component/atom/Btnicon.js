@@ -26,5 +26,5 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginTop: 20,
   },
-  icon: {alignSelf: 'center', marginTop: 5},
+  icon: {alignSelf: 'center', marginTop: 8},
 });

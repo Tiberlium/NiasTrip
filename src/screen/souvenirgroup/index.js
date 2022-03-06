@@ -24,5 +24,5 @@ const styles = StyleSheet.create({
   },
   txt: {fontSize: 25, fontWeight: 'bold', color: 'black', marginTop: 15},
   inlineWrap: {display: 'flex', flexDirection: 'row'},
-  txt1: {fontSize: 25, fontWeight: 'bold', color: 'black', textAlign: 'center'},
+  txt1: {fontSize: 25, color: 'black', textAlign: 'center'},
 });

@@ -34,7 +34,7 @@ export default function Logphone({navigation}) {
         <Text style={styles.label}>Nomor HP</Text>
         <View style={styles.inlineWrap}>
           <Chip />
-          <TextInput placeholder="12345678" onChangeText={setPhone} />
+          <TextInput placeholder="12345678" onChangeText={setPhone} placeholderTextColor="#808080"/>
         </View>
       </View>
       <Btnicon name="arrow-forward" onPress={() => Submit()} />
@@ -45,7 +45,7 @@ export default function Logphone({navigation}) {
 const styles = StyleSheet.create({
   wrap: {margin: 20},
   title: {fontWeight: 'bold', color: 'black', fontSize: 25, marginTop: 15},
-  caption: {fontSize: 20, fontWeight: '300'},
+  caption: {fontSize: 20, fontWeight: '300',color:'black'},
   wrap2: {
     alignSelf: 'center',
     width: 300,
