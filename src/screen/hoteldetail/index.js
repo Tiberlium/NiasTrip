@@ -7,6 +7,7 @@ import {
   FlatList,
   TouchableOpacity,
   ToastAndroid,
+  Alert,
 } from 'react-native';
 import ImageView from 'react-native-image-viewing';
 import {
@@ -74,71 +75,86 @@ export default function Hoteldetail({navigation, route}) {
     ToastAndroid.show('Ditambahkan ke Bookmark', ToastAndroid.SHORT);
   }
 
+  function showFullDesc() {
+    Alert.alert('Deskripsi', Data['Deskripsi']);
+  }
+
   return (
     <View style={styles.container}>
-      <Image source={{uri: Data['Gambar']}} style={styles.img} />
-      <View style={styles.headerContainer}>
-        <Btnback onPress={() => navigation.goBack()} />
-        <Btnbookmark color="white" onPress={addBookmark} />
-      </View>
-      <View style={styles.headerContainer2}>
-        <Placecard2 title={Data['Nama']} kota={Data['Kabupaten']} />
-        <Btnlocation
-          onPress={() =>
-            navigation.navigate('Map', {
-              id: route.params.id,
-              latitude: Data['Latitude'],
-              longitude: Data['Longitude'],
-            })
-          }
-        />
-      </View>
-      <View style={styles.containerPrice}>
-        <Text style={styles.pricetext}>Rp {Data['Harga']}/</Text>
-        <Text style={styles.pricetext2}>malam</Text>
-      </View>
-      <Text style={styles.headline1}>Deskripsi</Text>
-      <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
-        {Data['Deskripsi']}
-      </Text>
-      <Text style={styles.headline1}>Fasilitas</Text>
-      <FlatList
-        horizontal={true}
-        data={Data['Fasilitas']}
-        renderItem={({item}) => <Facilitychip name={item} />}
-      />
-      <Text style={styles.headline2}>Gallery</Text>
-      <FlatList
-        horizontal={true}
-        data={Data['Galery']}
-        renderItem={({item, index}) => (
-          <Thumbgallery
-            uri={item}
-            onPress={() => {
-              setvisible(true), setindex(index);
-            }}
+      <>
+        <Image source={{uri: Data['Gambar']}} style={styles.img} />
+        <View style={styles.headerContainer}>
+          <Btnback onPress={() => navigation.goBack()} />
+          <Btnbookmark color="white" onPress={addBookmark} />
+        </View>
+        <View style={styles.headerContainer2}>
+          <Placecard2 title={Data['Nama']} kota={Data['Kabupaten']} />
+          <Btnlocation
+            onPress={() =>
+              navigation.navigate('Map', {
+                id: route.params.id,
+                latitude: Data['Latitude'],
+                longitude: Data['Longitude'],
+              })
+            }
           />
-        )}
-      />
-      <ImageView
-        images={images}
-        visible={visible}
-        imageIndex={index}
-        onRequestClose={() => setvisible(false)}
-      />
-      <View style={styles.wrapBtn}>
-        <TouchableOpacity onPress={() => Actionref.current?.setModalVisible()}>
-          <Icon name="chevron-up-circle" size={30} color="black" />
+        </View>
+        <View style={styles.containerPrice}>
+          <Text style={styles.pricetext}>Rp {Data['Harga']}/</Text>
+          <Text style={styles.pricetext2}>malam</Text>
+        </View>
+        <Text style={styles.headline1}>Deskripsi</Text>
+        <TouchableOpacity onPress={showFullDesc}>
+          <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
+            {Data['Deskripsi']}
+          </Text>
         </TouchableOpacity>
-      </View>
-
-      <Actionsheet refs={Actionref} data={Data} />
+        <Text style={styles.headline1}>Fasilitas</Text>
+        <FlatList
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          data={Data['Fasilitas']}
+          renderItem={({item}) => <Facilitychip name={item} />}
+        />
+        <Text style={styles.headline2}>Gallery</Text>
+        <FlatList
+          horizontal={true}
+          data={Data['Galery']}
+          renderItem={({item, index}) => (
+            <Thumbgallery
+              uri={item}
+              onPress={() => {
+                setvisible(true), setindex(index);
+              }}
+            />
+          )}
+        />
+        <ImageView
+          images={images}
+          visible={visible}
+          imageIndex={index}
+          onRequestClose={() => setvisible(false)}
+        />
+        <Actionsheet refs={Actionref} data={Data} />
+      </>
+      <>
+        <View style={styles.wrapBtn}>
+          <TouchableOpacity
+            onPress={() => Actionref.current?.setModalVisible()}>
+            <Icon name="chevron-up-circle" size={30} color="black" />
+          </TouchableOpacity>
+        </View>
+      </>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {display:'flex',flexDirection:'column',justifyContent:'space-between'},
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
   containerImage: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -183,7 +199,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginLeft: 20,
     fontWeight: 'bold',
-    marginTop:hp(4)
+    marginTop: hp(2),
   },
   subtitle: {
     paddingLeft: 20,
@@ -192,11 +208,10 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   wrapBtn: {
-    marginTop: hp(100),
-    position: 'absolute',
     alignSelf: 'center',
     backgroundColor: 'white',
     padding: 15,
     borderRadius: 30,
+    marginTop: hp(4),
   },
 });

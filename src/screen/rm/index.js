@@ -68,7 +68,7 @@ export default function Rm({navigation, route}) {
       <Btnback onPress={() => navigation.goBack()} />
       <View style={styles.inlineWrap}>
         <Text style={styles.title}>{Data.Nama}</Text>
-        <Icon name="star-half" color="blue" size={20}>
+        <Icon name="star-half" color="blue" size={18}>
           {' '}
           <Text style={styles.caption}>{Data.Rating}</Text>
         </Icon>

@@ -18,6 +18,7 @@ export default function Updateprofile({navigation}) {
   const [email, setEmail] = useState(user.email || '');
 
   const optionalData = {
+    img: user.photoURL,
     id: user.uid,
     name: nama,
     gender: kelamin,

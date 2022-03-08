@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
     borderTopColor: '#fff',
     borderWidth: 16,
     alignSelf: 'center',
-    marginTop: -32,
+    marginTop: -33,
   },
   arrowBorder: {
     backgroundColor: 'transparent',

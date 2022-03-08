@@ -6,6 +6,8 @@ import {
   StyleSheet,
   FlatList,
   ToastAndroid,
+  Pressable,
+  Alert,
 } from 'react-native';
 import ImageView from 'react-native-image-viewing';
 import {
@@ -62,53 +64,62 @@ export default function Detail({route, navigation}) {
     });
   });
 
+  function showFullDesc() {
+    Alert.alert('Deskripsi', Data['Deskripsi']);
+  }
   return (
     <View style={styles.container}>
-      <Image source={{uri: Data.Gambar}} style={styles.img} />
-      <Btnback onPress={() => navigation.goBack()} />
-      <View style={styles.inlineWrap}>
-        <Text style={styles.title}>{Data.Nama}</Text>
-        <Text style={styles.caption}>
-          {Data.Kecamatan}, {Data.Kabupaten}
-        </Text>
-      </View>
-      <Text style={styles.headline}>Deskripsi</Text>
-      <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
-        {Data.Deskripsi}
-      </Text>
-      <Text style={styles.headline}>Gallery</Text>
-      <FlatList
-        horizontal={true}
-        data={Data['Galery']}
-        renderItem={({item}) => (
-          <Thumbgallery
-            uri={item}
-            onPress={() => {
-              setvisible(true), setindex(index);
-            }}
-          />
-        )}
-      />
-      <ImageView
-        images={images}
-        visible={visible}
-        imageIndex={index}
-        keyExtractor={item => item.id}
-        onRequestClose={() => setvisible(false)}
-      />
-      <View style={styles.wrapBtn}>
-        <Btnnearby
-          title="Jelajahi sekitar"
-          onPress={() =>
-            navigation.navigate('Map', {
-              id: route.params.id,
-              latitude: Data['Latitude'],
-              longitude: Data['Longitude'],
-            })
-          }
+      <>
+        <Image source={{uri: Data.Gambar}} style={styles.img} />
+        <Btnback onPress={() => navigation.goBack()} />
+        <View style={styles.inlineWrap}>
+          <Text style={styles.title}>{Data.Nama}</Text>
+          <Text style={styles.caption}>
+            {Data.Kecamatan}, {Data.Kabupaten}
+          </Text>
+        </View>
+        <Text style={styles.headline}>Deskripsi</Text>
+        <Pressable onPress={showFullDesc}>
+          <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
+            {Data.Deskripsi}
+          </Text>
+        </Pressable>
+        <Text style={styles.headline}>Gallery</Text>
+        <FlatList
+          horizontal={true}
+          data={Data['Galery']}
+          renderItem={({item}) => (
+            <Thumbgallery
+              uri={item}
+              onPress={() => {
+                setvisible(true), setindex(index);
+              }}
+            />
+          )}
         />
-        <Btnbookmark onPress={addBookmark} color="black" />
-      </View>
+        <ImageView
+          images={images}
+          visible={visible}
+          imageIndex={index}
+          keyExtractor={item => item.id}
+          onRequestClose={() => setvisible(false)}
+        />
+      </>
+      <>
+        <View style={styles.wrapBtn}>
+          <Btnnearby
+            title="Jelajahi sekitar"
+            onPress={() =>
+              navigation.navigate('Map', {
+                id: route.params.id,
+                latitude: Data['Latitude'],
+                longitude: Data['Longitude'],
+              })
+            }
+          />
+          <Btnbookmark onPress={addBookmark} color="black" />
+        </View>
+      </>
     </View>
   );
 }
@@ -130,7 +141,7 @@ const styles = StyleSheet.create({
   },
   inlineWrap: {
     width: 250,
-    height: 80,
+    alignSelf: 'flex-start',
     backgroundColor: 'white',
     padding: 10,
     borderRadius: 10,
@@ -153,11 +164,9 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   wrapBtn: {
-    marginTop: hp(97),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    position: 'absolute',
     alignSelf: 'center',
   },
 });

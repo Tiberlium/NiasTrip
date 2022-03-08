@@ -43,5 +43,5 @@ export default function Splash({navigation}) {
 
 
 const styles = StyleSheet.create({
-    img:{height:200,width:200,alignSelf:'center',marginVertical:hp(30)}
+    img:{height:200,width:200,alignSelf:'center',marginVertical:hp(40)}
 })

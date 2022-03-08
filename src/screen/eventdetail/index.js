@@ -1,4 +1,12 @@
-import {View, Text, StyleSheet, ToastAndroid, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ToastAndroid,
+  Image,
+  Alert,
+  Pressable,
+} from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import firestore from '@react-native-firebase/firestore';
@@ -42,37 +50,51 @@ export default function Eventdetail({navigation, route}) {
     ToastAndroid.show('Ditambahkan ke Bookmark', ToastAndroid.SHORT);
   }
 
+  function showFullDesc() {
+    Alert.alert('Deskripsi', Data['Deskripsi']);
+  }
+
   return (
     <View style={styles.container}>
-      <Image source={{uri: Data.Gambar}} style={styles.img} />
-      <Btnback onPress={() => navigation.goBack()} />
-      <View style={styles.inlineWrap}>
-        <Text style={styles.title}>{Data.Nama}</Text>
-        <Text style={styles.caption}>{Data.Kabupaten}</Text>
-      </View>
-      <Text style={styles.headline}>Deskripsi</Text>
-      <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
-        {Data.Deskripsi}
-      </Text>
-      <View style={styles.wrapBtn}>
-        <Btnnearby
-          title="Jelajahi Sekitar"
-          onPress={() =>
-            navigation.navigate('Map', {
-              id: route.params.id,
-              latitude: Data['Latitude'],
-              longitude: Data['Longitude'],
-            })
-          }
-        />
-        <Btnbookmark onPress={addBookmark} color="black" />
-      </View>
+      <>
+        <Image source={{uri: Data.Gambar}} style={styles.img} />
+        <Btnback onPress={() => navigation.goBack()} />
+        <View style={styles.inlineWrap}>
+          <Text style={styles.title}>{Data.Nama}</Text>
+          <Text style={styles.caption}>{Data.Kabupaten}</Text>
+        </View>
+        <Text style={styles.headline}>Deskripsi</Text>
+        <Pressable onPress={showFullDesc}>
+          <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
+            {Data.Deskripsi}
+          </Text>
+        </Pressable>
+      </>
+      <>
+        <View style={styles.wrapBtn}>
+          <Btnnearby
+            title="Jelajahi Sekitar"
+            onPress={() =>
+              navigation.navigate('Map', {
+                id: route.params.id,
+                latitude: Data['Latitude'],
+                longitude: Data['Longitude'],
+              })
+            }
+          />
+          <Btnbookmark onPress={addBookmark} color="black" />
+        </View>
+      </>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container:{flex:1},
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
   containerImage: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -88,7 +110,7 @@ const styles = StyleSheet.create({
   },
   inlineWrap: {
     width: 250,
-    height: 100,
+    alignSelf: 'flex-start',
     backgroundColor: 'white',
     padding: 10,
     borderRadius: 10,
@@ -112,11 +134,10 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   wrapBtn: {
-    marginTop: hp(97),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    position: 'absolute',
     alignSelf: 'center',
+    marginTop: hp(25),
   },
 });

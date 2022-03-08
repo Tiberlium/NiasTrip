@@ -37,11 +37,10 @@ export default function Personinfo({navigation}) {
   };
 
   async function loadData() {
-    await firestore()
+    firestore()
       .collection('Users')
       .doc(user.uid)
-      .get()
-      .then(doc => {
+      .onSnapshot(doc => {
         if (isMounted.current) {
           doc.exists ? setprofile(doc.data()) : {};
         }
