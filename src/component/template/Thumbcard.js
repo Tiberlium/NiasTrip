@@ -23,16 +23,17 @@ const styles = StyleSheet.create({
   container: {padding: 5},
   img: {
     height: 215,
-    width: 160,
-    borderRadius: 20,
+    width: 150,
+    borderRadius: 15,
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 17,
     color: 'white',
     marginLeft: 10,
     marginTop: 150,
     position: 'absolute',
+    alignSelf:'flex-start'
   },
   inlineWrap: {
     display: 'flex',

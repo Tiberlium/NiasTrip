@@ -141,7 +141,7 @@ export default function Hoteldetail({navigation, route}) {
         <Actionsheet refs={Actionref} data={Data} />
       </>
       <>
-        <Btnpesanslide />
+        <Btnpesanslide onPress={() => Actionref.current?.show()} />
       </>
     </View>
   );

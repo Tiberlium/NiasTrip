@@ -137,7 +137,7 @@ export default function Actionsheet({refs, data}) {
             />
           </View>
           <View style={actionStyles.checkIcon}>
-            <Icon name="swap-horizontal-outline" size={30} color="black" />
+            <Icon name="swap-horizontal-outline" size={20} color="black" />
           </View>
           <View>
             <Text style={actionStyles.txt}>Check Out</Text>
@@ -186,7 +186,13 @@ const actionStyles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
   },
-  txt: {fontWeight: 'bold', fontSize: 20, color: 'black', paddingVertical: 20},
+  txt: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    color: '#808080',
+    paddingTop: 20,
+    paddingBottom: 10,
+  },
   txt2: {
     fontWeight: '300',
     fontSize: 15,
@@ -196,12 +202,13 @@ const actionStyles = StyleSheet.create({
   },
   txt3: {
     fontWeight: 'bold',
-    fontSize: 20,
-    color: 'black',
-    paddingVertical: 20,
+    fontSize: 15,
+    color: '#808080',
+    paddingTop: 20,
+    paddingBottom: 10,
     marginLeft: 10,
   },
-  checkIcon: {marginTop: hp(9)},
+  checkIcon: {marginTop: hp(8.5)},
   inlineContainer: {
     display: 'flex',
     flexDirection: 'row',
@@ -219,7 +226,7 @@ const actionStyles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   totalTxt: {
-    fontWeight: 'bold',
+    fontWeight: '500',
     color: 'black',
     fontSize: 15,
     marginRight: 20,

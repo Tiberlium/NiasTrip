@@ -30,11 +30,8 @@ import {
   Hotelgroup,
   Souvenirgroup,
 } from './src/screen';
+import {Btnhome} from './src/component';
 const Tab = createNativeStackNavigator();
-import {View} from 'react-native';
-
-import {Btnhome, Allcard} from './src/component';
-
 const myTheme = {
   ...DefaultTheme,
   colors: {
@@ -172,8 +169,5 @@ export default function App() {
         <Tab.Screen name="Map" component={Map} options={{headerShown: false}} />
       </Tab.Navigator>
     </NavigationContainer>
-    // <View>
-    //   <Allcard/>
-    // </View>
   );
 }

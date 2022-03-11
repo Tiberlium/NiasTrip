@@ -31,5 +31,5 @@ const styles = StyleSheet.create({
   },
   icon: {alignSelf: 'center', marginTop: 15},
   inlineWrap: {marginTop: 10, alignSelf: 'center'},
-  txt: {color: 'black'},
+  txt: {color: 'black',fontWeight:'300'},
 });

@@ -11,16 +11,17 @@ export default function Btnbooking({onPress}) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 60,
+    height: 50,
     width: 250,
-    backgroundColor: '#425EF9',
+    backgroundColor: '#FF5F7E',
     borderRadius: 10,
     alignSelf: 'center',
+    marginBottom: 10,
   },
   text: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 15,
     textAlign: 'center',
-    paddingTop: 12,
+    paddingTop: 15,
   },
 });

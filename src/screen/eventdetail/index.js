@@ -110,11 +110,12 @@ const styles = StyleSheet.create({
   title: {color: 'black', fontWeight: 'bold', fontSize: 25},
   caption: {color: 'black', fontWeight: '300'},
   headline: {
-    color: 'black',
-    fontSize: 20,
+    color: '#808080',
+    fontSize: 15,
     marginLeft: 20,
     fontWeight: 'bold',
     marginTop: 10,
+    marginBottom: -10,
   },
   subtitle: {
     padding: 20,
@@ -130,6 +131,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignSelf: 'center',
-    marginTop: hp(14),
+    marginTop: hp(17),
   },
 });

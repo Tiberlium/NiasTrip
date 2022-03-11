@@ -18,10 +18,7 @@ const styles = StyleSheet.create({
     width: wp(100),
     height: 50,
     backgroundColor: '#FF5F7E',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingTop: 8,
+    paddingTop: 12,
   },
-  text: {color: 'white', fontSize: 20, marginLeft: 100},
+  text: {color: 'white', textAlign: 'center',fontSize:15},
 });
