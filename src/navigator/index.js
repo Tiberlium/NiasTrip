@@ -17,7 +17,7 @@ export default function Navigator() {
           headerShown: false,
           tabBarIcon: ({focused}) => {
             let icon = focused ? 'home' : 'home-outline';
-            return <Icon name={icon} size={28} color="#FF5F7E" />;
+            return <Icon name={icon} size={25} color="#FF5F7E" />;
           },
         }}
       />
@@ -28,7 +28,7 @@ export default function Navigator() {
           headerShown: false,
           tabBarIcon: ({focused}) => {
             let icon = focused ? 'bookmarks' : 'bookmarks-outline';
-            return <Icon name={icon} size={28} color="#FF5F7E" />;
+            return <Icon name={icon} size={25} color="#FF5F7E" />;
           },
         }}
       />
@@ -39,7 +39,7 @@ export default function Navigator() {
           headerShown: false,
           tabBarIcon: ({focused}) => {
             let icon = focused ? 'list' : 'list-outline';
-            return <Icon name={icon} size={28} color="#FF5F7E" />;
+            return <Icon name={icon} size={25} color="#FF5F7E" />;
           },
         }}
       />
@@ -50,7 +50,7 @@ export default function Navigator() {
           headerShown: false,
           tabBarIcon: ({focused}) => {
             let icon = focused ? 'person' : 'person-outline';
-            return <Icon name={icon} size={28} color="#FF5F7E" />;
+            return <Icon name={icon} size={25} color="#FF5F7E" />;
           },
         }}
       />

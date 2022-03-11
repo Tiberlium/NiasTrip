@@ -14,15 +14,12 @@ export default function Placecard({title, kota, kabupaten}) {
   );
 }
 
-
 function Placecard2({title, kota}) {
   return (
     <View>
       <View style={styles.inlineWrap}>
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.caption}>
-          {kota}
-        </Text>
+        <Text style={styles.caption}>{kota}</Text>
       </View>
     </View>
   );
@@ -30,11 +27,10 @@ function Placecard2({title, kota}) {
 
 export {Placecard2};
 
-
 const styles = StyleSheet.create({
   inlineWrap: {
     width: 250,
-    height: 80,
+    alignSelf: 'flex-start',
     backgroundColor: 'white',
     padding: 10,
     borderRadius: 10,

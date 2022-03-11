@@ -20,7 +20,7 @@ export default function Bookmarkcard({
         />
         <View style={styles.wrapBtn}>
           <TouchableOpacity onPress={onDelete}>
-            <Icon name="bookmark" size={20} style={styles.icon} color="black" />
+            <Icon name="bookmark" size={20} style={styles.icon} color="#FF5F7E" />
           </TouchableOpacity>
         </View>
         <View style={styles.wraptxt}>
