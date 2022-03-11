@@ -31,8 +31,9 @@ import {
   Souvenirgroup,
 } from './src/screen';
 const Tab = createNativeStackNavigator();
+import {View} from 'react-native';
 
-import {Btnhome,} from './src/component';
+import {Btnhome, Allcard} from './src/component';
 
 const myTheme = {
   ...DefaultTheme,
@@ -171,5 +172,8 @@ export default function App() {
         <Tab.Screen name="Map" component={Map} options={{headerShown: false}} />
       </Tab.Navigator>
     </NavigationContainer>
+    // <View>
+    //   <Allcard/>
+    // </View>
   );
 }

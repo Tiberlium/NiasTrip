@@ -30,7 +30,7 @@ export {Desccard2};
 const styles = StyleSheet.create({
   container: {
     height: 80,
-    width: 320,
+    width: 350,
     alignSelf: 'center',
     backgroundColor: 'rgba(255,255,255,0.9)',
     borderRadius: 20,
