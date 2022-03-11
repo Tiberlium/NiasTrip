@@ -24,7 +24,7 @@ export default function Btnnearby({onPress, title}) {
 const styles = StyleSheet.create({
   container: {
     height: 50,
-    width: 270,
+    width: 250,
     backgroundColor: '#FF5F7E',
     alignSelf: 'center',
     borderRadius: 10,
