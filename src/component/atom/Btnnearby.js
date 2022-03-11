@@ -3,15 +3,15 @@ import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-export default function Btnnearby({onPress,title}) {
+export default function Btnnearby({onPress, title}) {
   return (
     <View>
       <TouchableOpacity style={styles.container} onPress={onPress}>
         <Text style={styles.txt}>{title}</Text>
         <View style={styles.wrap}>
           <Icon
-            name="arrow-forward"
-            size={30}
+            name="chevron-forward"
+            size={20}
             color="#FF5F7E"
             style={styles.icon}
           />
@@ -23,28 +23,28 @@ export default function Btnnearby({onPress,title}) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 60,
-    width: 280,
+    height: 50,
+    width: 270,
     backgroundColor: '#FF5F7E',
     alignSelf: 'center',
-    borderRadius: 15,
+    borderRadius: 10,
     display: 'flex',
     flexDirection: 'row',
     marginHorizontal: 10,
   },
   wrap: {
-    width: 40,
-    heigth: 40,
+    width: 30,
+    heigth: 30,
     backgroundColor: 'white',
-    margin: 10,
     borderRadius: 10,
-    marginLeft: 30,
+    marginVertical: 10,
+    marginLeft: 25,
   },
   txt: {
     color: 'white',
-    fontWeight: 'bold',
+    fontWeight: '300',
     fontSize: 20,
-    marginTop: 13,
+    marginTop: 11,
     marginLeft: 50,
   },
   icon: {alignSelf: 'center', marginTop: 3},

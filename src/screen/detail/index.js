@@ -168,5 +168,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignSelf: 'center',
+    marginBottom: 1,
   },
 });
