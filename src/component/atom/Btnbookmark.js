@@ -2,7 +2,7 @@ import React from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function Btnbookmark({onPress, color}) {
+export default function Btnbookmark({onPress}) {
   return (
     <View style={styles.wrap}>
       <TouchableOpacity onPress={onPress}>
@@ -12,15 +12,15 @@ export default function Btnbookmark({onPress, color}) {
   );
 }
 
-function Btnbookmark2({onPress, color}) {
+function Btnbookmark2({onPress}) {
   return (
     <TouchableOpacity onPress={onPress}>
-      <Icon name="bookmark" size={30} style={styles.icon} color="#FF5F7E" />
+      <Icon name="bookmark" size={30} style={styles.icon2} color="#FF5F7E" />
     </TouchableOpacity>
   );
 }
 
-export{Btnbookmark2};
+export {Btnbookmark2};
 
 const styles = StyleSheet.create({
   wrap: {
@@ -31,4 +31,5 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   icon: {alignSelf: 'center', marginTop: 10},
+  icon2: {alignSelf: 'center', marginTop: 20, marginRight: 20},
 });

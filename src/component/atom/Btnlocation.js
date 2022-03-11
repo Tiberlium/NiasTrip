@@ -6,7 +6,7 @@ export default function Btnlocation({onPress}) {
   return (
     <View>
       <TouchableOpacity onPress={onPress} style={styles.container}>
-        <Icon name="map" color="blue" size={30} />
+        <Icon name="map-pin" color="#FF5F7E" size={30} />
       </TouchableOpacity>
     </View>
   );

@@ -37,6 +37,7 @@ import Reservecard from './template/Reservecard';
 import Actionsheet from './template/Actionsheet';
 import Btncheckpayment from './atom/Btncheckpayment';
 import Btnhome from './atom/Btnhome';
+import Btnpesanslide from './atom/Btnpesanslide';
 import {Placecard2} from './template/Placecard';
 import {Desccard2} from './atom/Desccard';
 import {Allcard2} from './template/Allcard';
@@ -85,4 +86,5 @@ export {
   Desccard2,
   Allcard2,
   Btnbookmark2,
+  Btnpesanslide,
 };

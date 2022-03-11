@@ -16,15 +16,15 @@ import {
 } from 'react-native-responsive-screen';
 import {
   Btnback,
-  Btnbookmark,
+  Btnbookmark2,
   Btnlocation,
   Facilitychip,
   Placecard2,
   Thumbgallery,
   Actionsheet,
+  Btnpesanslide,
 } from '../../component';
 
-import Icon from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -85,10 +85,13 @@ export default function Hoteldetail({navigation, route}) {
         <Image source={{uri: Data['Gambar']}} style={styles.img} />
         <View style={styles.headerContainer}>
           <Btnback onPress={() => navigation.goBack()} />
-          <Btnbookmark color="white" onPress={addBookmark} />
+          <Btnbookmark2 onPress={addBookmark} />
         </View>
         <View style={styles.headerContainer2}>
-          <Placecard2 title={Data['Nama']} kota={Data['Kabupaten']} />
+          <View style={styles.inlineWrap}>
+            <Text style={styles.title}>{Data.Nama}</Text>
+            <Text style={styles.caption}>{Data.Kabupaten}</Text>
+          </View>
           <Btnlocation
             onPress={() =>
               navigation.navigate('Map', {
@@ -138,12 +141,7 @@ export default function Hoteldetail({navigation, route}) {
         <Actionsheet refs={Actionref} data={Data} />
       </>
       <>
-        <View style={styles.wrapBtn}>
-          <TouchableOpacity
-            onPress={() => Actionref.current?.setModalVisible()}>
-            <Icon name="chevron-up-circle" size={30} color="black" />
-          </TouchableOpacity>
-        </View>
+        <Btnpesanslide />
       </>
     </View>
   );
@@ -178,6 +176,8 @@ const styles = StyleSheet.create({
     width: wp(100),
     alignSelf: 'center',
     position: 'absolute',
+    borderBottomLeftRadius: 35,
+    borderBottomRightRadius: 35,
   },
   containerPrice: {
     display: 'flex',
@@ -185,33 +185,32 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingTop: 10,
   },
+  inlineWrap: {
+    marginTop: hp(8),
+    marginLeft: 20,
+  },
+  title: {color: 'black', fontWeight: 'bold', fontSize: 25},
+  caption: {color: 'black', fontWeight: '300'},
   pricetext: {fontSize: 20, fontWeight: 'bold', color: 'black'},
   pricetext2: {fontWeight: '300', fontSize: 15, color: 'black', marginTop: 5},
   headline1: {
-    color: 'black',
-    fontSize: 20,
+    color: '#808080',
+    fontSize: 15,
     marginLeft: 20,
     fontWeight: 'bold',
-    marginTop: hp(2),
+    marginTop: 10,
   },
   headline2: {
-    color: 'black',
-    fontSize: 20,
+    color: '#808080',
+    fontSize: 15,
     marginLeft: 20,
     fontWeight: 'bold',
-    marginTop: hp(2),
+    marginTop: 10,
   },
   subtitle: {
     paddingLeft: 20,
     paddingTop: 10,
     color: 'black',
     fontWeight: '300',
-  },
-  wrapBtn: {
-    alignSelf: 'center',
-    backgroundColor: 'white',
-    padding: 15,
-    borderRadius: 30,
-    marginTop: hp(4),
   },
 });

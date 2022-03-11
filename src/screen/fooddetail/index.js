@@ -75,7 +75,7 @@ export default function Fooddetail({navigation, route}) {
           <Text style={styles.title}>{Data['Nama']}</Text>
           <Text style={styles.caption}>{Data['Kategori']}</Text>
         </View>
-        <Text style={styles.headline}>Deskripsi</Text>
+        <Text style={styles.headline0}>Deskripsi</Text>
         <Pressable onPress={showFullDesc}>
           <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
             {Data['Deskripsi']}
@@ -125,34 +125,31 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
   },
-  containerImage: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    padding: 10,
-  },
   img: {
-    height: 300,
+    height: 370,
     width: wp(100),
     alignSelf: 'center',
     position: 'absolute',
+    borderBottomLeftRadius: 35,
+    borderBottomRightRadius: 35,
   },
   inlineWrap: {
-    width: 250,
-    alignSelf: 'flex-start',
-    backgroundColor: 'white',
-    padding: 10,
-    borderRadius: 10,
-    marginLeft: 10,
-    marginTop: hp(25),
-    elevation: 5,
+    marginTop: hp(42),
+    marginLeft: 20,
   },
   title: {color: 'black', fontWeight: 'bold', fontSize: 25},
   caption: {color: 'black', fontWeight: '300'},
+  headline0: {
+    color: '#808080',
+    fontSize: 15,
+    marginLeft: 20,
+    fontWeight: 'bold',
+    marginTop: 10,
+    marginBottom: -10,
+  },
   headline: {
-    color: 'black',
-    fontSize: 20,
+    color: '#808080',
+    fontSize: 15,
     marginLeft: 20,
     fontWeight: 'bold',
     marginTop: 10,
@@ -163,10 +160,14 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   wrapBtn: {
+    borderTopWidth: 1,
+    paddingTop: 7,
+    borderTopColor: '#C8C8C8',
+    width: wp(100),
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     alignSelf: 'center',
-    marginTop: hp(12),
+    marginTop: hp(2),
   },
 });

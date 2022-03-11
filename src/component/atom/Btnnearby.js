@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
     marginVertical: 10,
-    marginLeft: 25,
+    marginLeft: 20,
   },
   txt: {
     color: 'white',
