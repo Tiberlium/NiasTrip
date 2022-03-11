@@ -88,14 +88,30 @@ export default function Search({navigation}) {
     return () => (isMounted.current = false);
   }, []);
 
-  let data = [...DataEvent, ...DataHomestay, ...DataMakanan, ...DataWisata];
+  let data = [...DataMakanan, ...DataHomestay, ...DataWisata, ...DataEvent];
 
   let filtered = data.filter(doc =>
     doc.data.Nama.toLowerCase().match(Query.toLowerCase()),
   );
 
+  function MoveAway(id, category) {
+    if (category === 'tempat wisata') {
+      navigation.navigate('Detail', {id});
+    } else if (category === 'Makanan') {
+      navigation.navigate('Fooddetail', {id});
+    } else if (category === 'Penginapan') {
+      navigation.navigate('Hoteldetail', {id});
+    } else {
+      navigation.navigate('Eventdetail', {id});
+    }
+  }
+
   const render = ({item}) => (
-    <Searchcard img={item.data.Gambar} text={item.data.Nama} />
+    <Searchcard
+      img={item.data.Gambar}
+      text={item.data.Nama}
+      onPress={() => MoveAway(item.id, item.data.Kategori)}
+    />
   );
 
   return (

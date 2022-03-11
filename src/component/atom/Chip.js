@@ -33,8 +33,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginLeft: 20,
     marginTop: 5,
-    borderWidth: 0.5,
-    borderColor: 'black',
+    elevation:3,
   },
   txt: {
     textAlign: 'center',
