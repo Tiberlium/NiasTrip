@@ -164,7 +164,7 @@ export default function Personinfo({navigation}) {
       <View style={styles.btntext}>
         <Btntext
           title="Ubah foto profil"
-          color="blue"
+          color="#FF5F7E"
           onPress={() => actionSheetRef.current?.show()}
         />
       </View>
