@@ -37,9 +37,10 @@ import Reservecard from './template/Reservecard';
 import Actionsheet from './template/Actionsheet';
 import Btncheckpayment from './atom/Btncheckpayment';
 import Btnhome from './atom/Btnhome';
-import { Placecard2 } from './template/Placecard';
-import { Desccard2 } from './atom/Desccard';
-import { Allcard2 } from './template/Allcard';
+import {Placecard2} from './template/Placecard';
+import {Desccard2} from './atom/Desccard';
+import {Allcard2} from './template/Allcard';
+import {Btnbookmark2} from './atom/Btnbookmark';
 export {
   BtnNext,
   Txtinput,
@@ -83,4 +84,5 @@ export {
   Placecard2,
   Desccard2,
   Allcard2,
+  Btnbookmark2,
 };

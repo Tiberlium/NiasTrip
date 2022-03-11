@@ -20,6 +20,8 @@ function Btnbookmark2({onPress, color}) {
   );
 }
 
+export{Btnbookmark2};
+
 const styles = StyleSheet.create({
   wrap: {
     height: 50,
