@@ -25,11 +25,11 @@ const styles = StyleSheet.create({
     height: 60,
     width: 60,
     backgroundColor: 'white',
-    elevation: 10,
+    elevation: 5,
     borderRadius: 15,
     marginTop: 10,
   },
-  icon: {alignSelf: 'center', marginTop: 10},
+  icon: {alignSelf: 'center', marginTop: 15},
   inlineWrap: {marginTop: 10, alignSelf: 'center'},
   txt: {color: 'black'},
 });
