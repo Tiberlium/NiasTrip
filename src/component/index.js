@@ -30,7 +30,6 @@ import Thumbgallery from './atom/Thumbgallery';
 import Facilitychip from './atom/Facilitychip';
 import Btnbooking from './atom/Btnbooking';
 import Btnlocation from './atom/Btnlocation';
-import Placecard from './template/Placecard';
 import Btndate from './atom/Btndate';
 import Searchcard from './template/Searchcard';
 import Reservecard from './template/Reservecard';
@@ -38,11 +37,10 @@ import Actionsheet from './template/Actionsheet';
 import Btncheckpayment from './atom/Btncheckpayment';
 import Btnhome from './atom/Btnhome';
 import Btnpesanslide from './atom/Btnpesanslide';
-import {Placecard2} from './template/Placecard';
-import {Desccard2} from './atom/Desccard';
 import {Allcard2} from './template/Allcard';
 import {Btnbookmark2} from './atom/Btnbookmark';
 import Btnfocus from './atom/Btnfocus';
+import Cardsectionlist from './template/Cardsectionlist';
 export {
   BtnNext,
   Txtinput,
@@ -76,17 +74,15 @@ export {
   Facilitychip,
   Btnbooking,
   Btnlocation,
-  Placecard,
   Btndate,
   Searchcard,
   Reservecard,
   Actionsheet,
   Btncheckpayment,
   Btnhome,
-  Placecard2,
-  Desccard2,
   Allcard2,
   Btnbookmark2,
   Btnpesanslide,
   Btnfocus,
+  Cardsectionlist,
 };

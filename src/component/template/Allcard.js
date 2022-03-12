@@ -1,7 +1,5 @@
 import React from 'react';
 import {View, Image, TouchableOpacity, StyleSheet, Text} from 'react-native';
-import Desccard from '../atom/Desccard';
-import {Desccard2} from '../atom/Desccard';
 
 export default function Allcard({title, kota, kabupaten, gambar, onPress}) {
   return (
