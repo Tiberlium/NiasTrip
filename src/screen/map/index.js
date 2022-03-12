@@ -190,24 +190,16 @@ export default function Map({navigation, route}) {
     <Pagination
       dotsLength={Near.length}
       activeDotIndex={activeslide}
-      dotStyle={{
-        width: 40,
-        height: 10,
-        borderRadius: 5,
-        backgroundColor: 'white',
-        marginTop: -35,
-      }}
-      dotContainerStyle={{alignContent: 'flex-start', width: 10}}
+      dotStyle={paginationstyles.active}
+      dotContainerStyle={paginationstyles.container}
       inactiveDotOpacity={0.4}
       inactiveDotScale={0.6}
-      inactiveDotStyle={{
-        width: 10,
-        height: 10,
-        borderRadius: 5,
-        backgroundColor: '#808080',
-      }}
+      inactiveDotStyle={paginationstyles.inactive}
     />
   );
+
+  let firstitem = Near.findIndex(doc => doc.data.Latitude === latitude);
+
   return (
     <View style={styles.container}>
       <MapView
@@ -259,12 +251,13 @@ export default function Map({navigation, route}) {
             data={Near}
             itemWidth={315}
             sliderWidth={Dimensions.get('window').width}
+            initialNumToRender={Near.length}
+            firstItem={firstitem}
             onSnapToItem={index => {
               onCarouselItemChange(index);
               setactiveslide(index);
             }}
             inactiveSlideOpacity={100}
-            firstItem={1}
             renderItem={({item}) => (
               <Mapcard
                 img={item.data.Gambar}
@@ -279,6 +272,25 @@ export default function Map({navigation, route}) {
       </View>
     </View>
   );
+}
+
+
+const paginationstyles={
+  active:{
+    width: 20,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#484848',
+    marginTop: -35,
+    marginHorizontal:8,
+  },
+  container:{alignContent: 'flex-start', width: 10},
+  inactive:{
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#383838',
+  },
 }
 
 const styles = StyleSheet.create({

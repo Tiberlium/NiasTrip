@@ -107,6 +107,7 @@ export default function Fooddetail({navigation, route}) {
             title="Lokasi Penyedia"
             onPress={() =>
               navigation.navigate('Map', {
+                id: route.params.id,
                 latitude: Data['lat'],
                 longitude: Data['long'],
               })
