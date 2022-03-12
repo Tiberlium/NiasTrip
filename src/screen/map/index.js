@@ -49,6 +49,9 @@ export default function Map({navigation, route}) {
   let Markers = useRef();
   let carousel = useRef();
 
+  const lat = Number(latitude);
+  const long = Number(longitude);
+
   async function getWisata() {
     let x = [];
     const docRef = await firestore().collection('Wisata').get();
@@ -123,9 +126,6 @@ export default function Map({navigation, route}) {
 
   let Data = [...Homestay, ...Event, ...Resto, ...Wisata];
 
-  const lat = Number(latitude);
-  const long = Number(longitude);
-
   let Near = [];
 
   Data.map(doc => {
@@ -198,7 +198,15 @@ export default function Map({navigation, route}) {
     />
   );
 
-  const firstitem = Near.findIndex(doc => doc.id === id);
+  function focus() {
+    mapRef.current.animateToRegion({
+      latitude: lat,
+      longitude: long,
+    });
+    let index = Near.findIndex(doc => doc.id === id);
+    carousel.snapToItem(index);
+    Markers[index].showCallout();
+  }
 
   return (
     <View style={styles.container}>
@@ -244,6 +252,7 @@ export default function Map({navigation, route}) {
           onPress={() => navigation.goBack()}
           value={Theme}
           onChange={() => (Theme ? setTheme(false) : setTheme(true))}
+          onFocus={focus}
         />
         <View style={styles.itemSlider}>
           <Carousel
