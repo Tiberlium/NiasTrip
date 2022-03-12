@@ -198,7 +198,9 @@ export default function Map({navigation, route}) {
     />
   );
 
-  let firstitem = Near.findIndex(doc => doc.data.Latitude === latitude);
+  const firstitem = Near.findIndex(doc => doc.id === id);
+
+  console.log(firstitem);
 
   return (
     <View style={styles.container}>
@@ -274,24 +276,23 @@ export default function Map({navigation, route}) {
   );
 }
 
-
-const paginationstyles={
-  active:{
+const paginationstyles = {
+  active: {
     width: 20,
     height: 10,
     borderRadius: 5,
     backgroundColor: '#484848',
     marginTop: -35,
-    marginHorizontal:8,
+    marginHorizontal: 8,
   },
-  container:{alignContent: 'flex-start', width: 10},
-  inactive:{
+  container: {alignContent: 'flex-start', width: 10},
+  inactive: {
     width: 10,
     height: 10,
     borderRadius: 5,
     backgroundColor: '#383838',
   },
-}
+};
 
 const styles = StyleSheet.create({
   container: {

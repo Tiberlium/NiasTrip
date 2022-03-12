@@ -68,12 +68,12 @@ export default function Rm({navigation, route}) {
       <Btnback onPress={() => navigation.goBack()} />
       <View style={styles.inlineWrap}>
         <Text style={styles.title}>{Data.Nama}</Text>
-        <Icon name="star-half" color="blue" size={18}>
+        <Icon name="star" color="#FFD700" size={18}>
           {' '}
           <Text style={styles.caption}>{Data.Rating}</Text>
         </Icon>
       </View>
-      <Text style={styles.headline}>Deskripsi</Text>
+      <Text style={styles.headLine}>Deskripsi</Text>
       <View style={styles.inlineWrap_1}>
         <Icon name="compass" color="black" size={20} />
         <Text style={styles.caption_1}>{Data.Lokasi}</Text>
@@ -86,7 +86,7 @@ export default function Rm({navigation, route}) {
         <Icon name="time" color="black" size={20} />
         <Text style={styles.caption_1}>{Data.Operasional}</Text>
       </View>
-      <Text style={styles.headline}>Gallery</Text>
+      <Text style={styles.headLine}>Gallery</Text>
       <FlatList
         horizontal={true}
         data={Data['Galery']}
@@ -117,7 +117,7 @@ export default function Rm({navigation, route}) {
             })
           }
         />
-        <Btnbookmark color="black"/>
+        <Btnbookmark color="black" />
       </View>
     </View>
   );
@@ -132,20 +132,16 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   img: {
-    height: 300,
+    height: 370,
     width: wp(100),
     alignSelf: 'center',
     position: 'absolute',
+    borderBottomLeftRadius: 35,
+    borderBottomRightRadius: 35,
   },
   inlineWrap: {
-    width: 250,
-    height: 80,
-    backgroundColor: 'white',
-    padding: 10,
-    borderRadius: 10,
-    marginLeft: 10,
-    marginTop: hp(25),
-    elevation: 5,
+    marginTop: hp(42),
+    marginLeft: 20,
   },
   title: {color: 'black', fontWeight: 'bold', fontSize: 25},
   caption: {color: 'black', fontWeight: '300', fontSize: 15},
@@ -156,12 +152,13 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     width: wp(80),
   },
-  headline: {
-    color: 'black',
-    fontSize: 20,
+  headLine: {
+    color: '#808080',
+    fontSize: 15,
     marginLeft: 20,
     fontWeight: 'bold',
-    marginTop: 20,
+    marginTop: 10,
+    marginBottom: -5,
   },
   subtitle: {
     padding: 20,
@@ -169,24 +166,20 @@ const styles = StyleSheet.create({
     fontWeight: '300',
   },
   wrapBtn: {
-    marginTop: hp(97),
+    borderTopWidth: 1,
+    paddingTop: 7,
+    borderTopColor: '#C8C8C8',
+    width: wp(100),
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    position: 'absolute',
+    justifyContent: 'space-evenly',
     alignSelf: 'center',
+    marginTop: hp(3),
   },
   inlineWrap_1: {
     display: 'flex',
     flexDirection: 'row',
     marginLeft: 20,
     marginTop: 10,
-  },
-  headline: {
-    color: 'black',
-    fontSize: 20,
-    marginLeft: 10,
-    fontWeight: 'bold',
-    marginTop: 25,
   },
 });

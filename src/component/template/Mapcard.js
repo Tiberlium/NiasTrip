@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
     height: 100,
     width: 200,
   },
-  title: {fontWeight: 'bold', fontSize: 20, color: 'black', width: 180},
+  title: {fontWeight: 'bold', fontSize: 20, color: 'black', width: 150},
   caption: {fontWeight: '200', fontSize: 15, color: 'black', marginTop: 5},
 });
