@@ -72,7 +72,7 @@ export default function Bookmark({navigation}) {
 }
 
 const styles = StyleSheet.create({
-  title: {fontWeight: 'bold', fontSize: 25, color: 'black', padding: 20},
+  title: {fontWeight: '500', fontSize: 25, color: 'black', padding: 20},
   img: {
     height: 250,
     width: 250,

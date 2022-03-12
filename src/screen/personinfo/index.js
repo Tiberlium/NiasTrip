@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   wrap: {display: 'flex', flexDirection: 'row'},
   btntext: {alignSelf: 'center', marginTop: 10, marginBottom: 30},
   title: {
-    fontWeight: 'bold',
+    fontWeight: '500',
     fontSize: 25,
     color: 'black',
     marginTop: hp(2),
