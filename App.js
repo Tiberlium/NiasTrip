@@ -30,7 +30,8 @@ import {
   Hotelgroup,
   Souvenirgroup,
 } from './src/screen';
-import {Btnhome} from './src/component';
+import {Btnhome,Cardsectionlist} from './src/component';
+import {View} from 'react-native';
 const Tab = createNativeStackNavigator();
 const myTheme = {
   ...DefaultTheme,
@@ -42,132 +43,135 @@ const myTheme = {
 
 export default function App() {
   return (
-    <NavigationContainer theme={myTheme}>
-      <Tab.Navigator>
-        <Tab.Screen
-          name="Splash"
-          component={Splash}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Login"
-          component={Login}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Intro"
-          component={Intro}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Register"
-          component={Register}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Logphone"
-          component={Logphone}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Fullview"
-          component={Fullview}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Hotelgroup"
-          component={Hotelgroup}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Makanangroup"
-          component={Makanangroup}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Eventgroup"
-          component={Eventgroup}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen name="Otp" component={Otp} options={{headerShown: false}} />
-        <Tab.Screen
-          name="Recovery"
-          component={Recovery}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen name="Update profile" component={Updateprofile} />
-        <Tab.Screen
-          name="Payment"
-          component={Payment}
-          options={{
-            headerLeft: () => <Btnhome />,
-          }}
-        />
-        <Tab.Screen
-          name="Receipt"
-          component={Receipt}
-          options={{
-            headerLeft: () => <Btnhome />,
-          }}
-        />
-        <Tab.Screen
-          name="Personinfo"
-          component={Personinfo}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Change Security"
-          component={Changesecurity}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Help"
-          component={Help}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="About"
-          component={About}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Navigator"
-          component={Navigator}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Search"
-          component={Search}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Detail"
-          component={Detail}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Hoteldetail"
-          component={Hoteldetail}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Fooddetail"
-          component={Fooddetail}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Eventdetail"
-          component={Eventdetail}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
-          name="Souvenirgroup"
-          component={Souvenirgroup}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen name="Rm" component={Rm} options={{headerShown: false}} />
-        <Tab.Screen name="Map" component={Map} options={{headerShown: false}} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    // <NavigationContainer theme={myTheme}>
+    //   <Tab.Navigator>
+    //     <Tab.Screen
+    //       name="Splash"
+    //       component={Splash}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Login"
+    //       component={Login}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Intro"
+    //       component={Intro}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Register"
+    //       component={Register}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Logphone"
+    //       component={Logphone}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Fullview"
+    //       component={Fullview}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Hotelgroup"
+    //       component={Hotelgroup}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Makanangroup"
+    //       component={Makanangroup}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Eventgroup"
+    //       component={Eventgroup}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen name="Otp" component={Otp} options={{headerShown: false}} />
+    //     <Tab.Screen
+    //       name="Recovery"
+    //       component={Recovery}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen name="Update profile" component={Updateprofile} />
+    //     <Tab.Screen
+    //       name="Payment"
+    //       component={Payment}
+    //       options={{
+    //         headerLeft: () => <Btnhome />,
+    //       }}
+    //     />
+    //     <Tab.Screen
+    //       name="Receipt"
+    //       component={Receipt}
+    //       options={{
+    //         headerLeft: () => <Btnhome />,
+    //       }}
+    //     />
+    //     <Tab.Screen
+    //       name="Personinfo"
+    //       component={Personinfo}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Change Security"
+    //       component={Changesecurity}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Help"
+    //       component={Help}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="About"
+    //       component={About}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Navigator"
+    //       component={Navigator}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Search"
+    //       component={Search}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Detail"
+    //       component={Detail}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Hoteldetail"
+    //       component={Hoteldetail}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Fooddetail"
+    //       component={Fooddetail}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Eventdetail"
+    //       component={Eventdetail}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen
+    //       name="Souvenirgroup"
+    //       component={Souvenirgroup}
+    //       options={{headerShown: false}}
+    //     />
+    //     <Tab.Screen name="Rm" component={Rm} options={{headerShown: false}} />
+    //     <Tab.Screen name="Map" component={Map} options={{headerShown: false}} />
+    //   </Tab.Navigator>
+    // </NavigationContainer>
+    <View>
+      <Cardsectionlist/>
+    </View>
   );
 }

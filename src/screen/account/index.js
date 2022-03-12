@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Image} from 'react-native';
 import {firebase} from '@react-native-firebase/auth';
-import {Accountprofile, Blankavatar, Btnlogout, Btntext} from '../../component';
+import {Accountprofile, Blankavatar, Btnlogout} from '../../component';
 import {Cardoptions} from '../../component';
 import {useNavigation} from '@react-navigation/native';
 import Auth from '@react-native-firebase/auth';
