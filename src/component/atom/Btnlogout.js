@@ -13,13 +13,13 @@ export default function Btnlogout({onPress}) {
 
 const styles = StyleSheet.create({
   btn: {
-    width: 150,
+    width: 200,
     height: 50,
-    borderRadius: 10,
+    borderRadius: 5,
     alignSelf: 'center',
     backgroundColor: 'white',
     marginTop: 40,
-    elevation:5,
+    borderWidth:0.2,
   },
-  txt: {fontSize: 20, color: 'red', marginTop: 10,textAlign:'center'},
+  txt: {fontSize: 15, color: 'red', marginTop: 13,textAlign:'center'},
 });

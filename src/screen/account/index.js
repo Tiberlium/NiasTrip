@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Image} from 'react-native';
+import {View, StyleSheet, Text} from 'react-native';
 import {firebase} from '@react-native-firebase/auth';
 import {Accountprofile, Blankavatar, Btnlogout} from '../../component';
-import {Cardoptions} from '../../component';
+import {Cardsectionlist} from '../../component';
 import {useNavigation} from '@react-navigation/native';
 import Auth from '@react-native-firebase/auth';
 
@@ -32,30 +32,43 @@ export default function Account() {
           label={user.displayName || user.email || user.phoneNumber}
         />
       )}
-      <Cardoptions
-        icon="person"
-        label="Info Akun"
+      <Text style={styles.title}>Konfigurasi</Text>
+      <Cardsectionlist
+        icon="user"
+        title="Info Akun"
+        desc="Lihat dan Perbarui informasi akun"
         onPress={() => navigation.navigate('Personinfo')}
-        left={10}
       />
-      <Cardoptions
+      <Cardsectionlist
         icon="shield"
-        label="Keamanan"
+        title="Keamanan"
+        desc="Atur kembali sandi dan email anda"
         onPress={() => navigation.navigate('Change Security')}
       />
-      <Cardoptions
+      <Text style={styles.title}>Informasi</Text>
+      <Cardsectionlist
         icon="help-circle"
-        label="Bantuan"
-        left={20}
+        title="Bantuan"
+        desc="Dapatkan informasi seputar aplikasi"
         onPress={() => navigation.navigate('Help')}
       />
-      <Cardoptions
-        icon="information-circle"
-        label="Tentang"
+      <Cardsectionlist
+        icon="info"
+        title="Tentang"
+        desc="lihat versi aplikasi"
         onPress={() => navigation.navigate('About')}
-        left={20}
       />
       <Btnlogout onPress={() => signOut()} />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  title: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#808080',
+    marginLeft: 20,
+    marginBottom: 10,
+  },
+});

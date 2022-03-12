@@ -6,13 +6,13 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 
-export default function Cardsectionlist() {
+export default function Cardsectionlist({onPress, icon, title, desc}) {
   return (
-    <Pressable style={styles.container}>
-      <Icon name="info" size={30} color="black" style={styles.icon} />
+    <Pressable style={styles.container} onPress={onPress}>
+      <Icon name={icon} size={30} color="#FF5F7E" style={styles.icon} />
       <View style={styles.wrap}>
-        <Text style={styles.txt}>Cardsectionlist</Text>
-        <Text style={styles.caption}>lorem ipsum dolor charge</Text>
+        <Text style={styles.txt}>{title}</Text>
+        <Text style={styles.caption}>{desc}</Text>
       </View>
     </Pressable>
   );
@@ -26,10 +26,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
   },
-  icon: {padding: 15},
+  icon: {padding: 20},
   wrap: {
     marginTop: 10,
   },
-  txt: {color: 'black', fontWeight: 'bold', fontSize: 18},
+  txt: {color: 'black', fontWeight: '500', fontSize: 18},
   caption: {color: 'black', fontWeight: '300', fontSize: 14},
 });
