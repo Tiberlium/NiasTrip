@@ -9,12 +9,7 @@ Project Description
 
 ### In Progress
 
-- [ ] Kata kunci terakhir dalam pencarian  
 
 ### Done ✓
 
-- [x] Perbaikan ui options  
-- [x] perbaiki setting numToRender carousel  
-- [x] indikator swipe kiri kanan snap carousel  
-- [x] kewarganegaraan di tambahkan di informasi akun  
 

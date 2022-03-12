@@ -84,9 +84,8 @@ const styles = StyleSheet.create({
   },
   txt: {
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 15,
     color: 'black',
     marginTop: 10,
-    fontStyle: 'italic',
   },
 });
