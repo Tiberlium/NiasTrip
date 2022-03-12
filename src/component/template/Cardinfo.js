@@ -10,6 +10,7 @@ export default function Cardinfo({
   phone,
   address,
   city,
+  nation,
 }) {
   return (
     <View style={styles.container}>
@@ -37,8 +38,11 @@ export default function Cardinfo({
         <Text style={styles.txtProperty}>Kota</Text>
         <Text style={styles.txtValue}>{city}</Text>
       </View>
+      <View style={styles.wrap}>
+        <Text style={styles.txtProperty}>Kewarganegaraan</Text>
+        <Text style={styles.txtValue}>{nation}</Text>
+      </View>
       <TouchableOpacity style={styles.btn} onPress={onPress}>
-        <Icon name="create-outline" size={30} style={styles.btnicon} color="#FF5F7E" />
         <Text style={styles.txtbtn}>Perbarui informasi</Text>
       </TouchableOpacity>
     </View>
@@ -66,20 +70,15 @@ const styles = StyleSheet.create({
     width: 300,
     height: 50,
     borderRadius: 10,
-    borderColor:'#FF5F7E',
-    borderWidth:1,
-    marginTop: 20,
-    display: 'flex',
-    flexDirection: 'row',
-    backgroundColor:'white',
-    elevation:5,
+    borderColor: '#FF5F7E',
+    borderWidth: 1,
+    marginTop:20,
   },
   btnicon: {margin: 5},
   txtbtn: {
     textAlign: 'center',
     color: '#FF5F7E',
     fontSize: 15,
-    marginTop: 10,
-    marginLeft: 50,
+    marginTop:12,
   },
 });

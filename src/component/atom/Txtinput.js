@@ -30,5 +30,5 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     marginTop: hp(5),
   },
-  label: {fontSize: 15, fontWeight: 'bold', color: 'black'},
+  label: {fontSize: 15, fontWeight: 'bold', color: 'black',},
 });

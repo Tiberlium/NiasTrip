@@ -175,6 +175,7 @@ export default function Personinfo({navigation}) {
         phone={profile.phoneNumber || 'kosong'}
         address={profile.address || 'kosong'}
         city={profile.city || 'kosong'}
+        nation={profile.nation || 'kosong'}
         onPress={() => navigation.navigate('Update profile')}
       />
       <ActionSheet ref={actionSheetRef} bounceOnOpen={true}>

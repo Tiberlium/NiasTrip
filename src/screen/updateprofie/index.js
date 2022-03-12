@@ -5,6 +5,7 @@ import SelectDropdown from 'react-native-select-dropdown';
 import Auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {widthPercentageToDP} from 'react-native-responsive-screen';
 
 export default function Updateprofile({navigation}) {
   const user = Auth().currentUser;
@@ -13,9 +14,10 @@ export default function Updateprofile({navigation}) {
   const [nama, setnama] = useState(user.displayName || '');
   const [kelamin, setkelamin] = useState('Pria');
   const [hp, sethp] = useState(user.phoneNumber || '');
-  const [address, setaddress] = useState('');
-  const [kota, setkota] = useState('');
+  const [address, setaddress] = useState(user.address || '');
+  const [kota, setkota] = useState(user.city || '');
   const [email, setEmail] = useState(user.email || '');
+  const [Kewarganegaraan, setKewarganegaraan] = useState(user.nation || '');
 
   const optionalData = {
     img: user.photoURL,
@@ -26,6 +28,7 @@ export default function Updateprofile({navigation}) {
     address: address,
     city: kota,
     email: email,
+    nation: Kewarganegaraan,
   };
 
   async function handleChangeName() {
@@ -65,7 +68,10 @@ export default function Updateprofile({navigation}) {
           defaultButtonText="Pilih jenis kelamin"
           buttonStyle={styles.dropDown}
           onSelect={selectedItem => setkelamin(selectedItem)}
-          renderDropdownIcon={() => <Icon name="chevron-down" size={25} />}
+          renderDropdownIcon={() => (
+            <Icon name="chevron-down" size={25} color="#808080" />
+          )}
+          buttonTextStyle={styles.txtstyle}
         />
         <Txtinput
           label="HP"
@@ -89,6 +95,11 @@ export default function Updateprofile({navigation}) {
           placeholder="Masukkan Kota disini"
           onChangeText={setkota}
         />
+        <Txtinput
+          label="Kewarganegaraan"
+          placeholder="Masukkan Kewarganegaraan disini"
+          onChangeText={setKewarganegaraan}
+        />
         <Btnsubmit
           title="Update"
           onPress={() => {
@@ -105,11 +116,12 @@ const styles = StyleSheet.create({
   container: {backgroundColor: 'white'},
   dropDown: {
     borderWidth: 0.5,
-    borderColor: 'black',
-    width: 250,
+    borderColor: '#808080',
+    width: widthPercentageToDP(80),
     marginTop: 15,
     alignSelf: 'center',
     borderRadius: 10,
     backgroundColor: 'white',
   },
+  txtstyle:{fontWeight: '300', fontSize: 15}
 });
