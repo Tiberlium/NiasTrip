@@ -2,7 +2,7 @@ import React, {useRef, useState, useEffect} from 'react';
 import {View, StyleSheet, Dimensions, Text, Image} from 'react-native';
 import MapView, {Callout, Marker} from 'react-native-maps';
 import firestore from '@react-native-firebase/firestore';
-import Carousel from 'react-native-snap-carousel';
+import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {useTheme} from '@react-navigation/native';
 import darkMap from './darkMap.json';
 import {
@@ -40,6 +40,7 @@ export default function Map({navigation, route}) {
   const [Homestay, setHomestay] = useState([]);
   const [Event, setEvent] = useState([]);
   const [Resto, setResto] = useState([]);
+  const [activeslide, setactiveslide] = useState(0);
   const isMounted = useRef();
   const [Theme, setTheme] = useState(false);
   const {latitude, longitude, id} = route.params;
@@ -185,6 +186,28 @@ export default function Map({navigation, route}) {
 
   const theme = useTheme();
 
+  const Dot = () => (
+    <Pagination
+      dotsLength={Near.length}
+      activeDotIndex={activeslide}
+      dotStyle={{
+        width: 40,
+        height: 10,
+        borderRadius: 5,
+        backgroundColor: 'white',
+        marginTop: -35,
+      }}
+      dotContainerStyle={{alignContent: 'flex-start', width: 10}}
+      inactiveDotOpacity={0.4}
+      inactiveDotScale={0.6}
+      inactiveDotStyle={{
+        width: 10,
+        height: 10,
+        borderRadius: 5,
+        backgroundColor: '#808080',
+      }}
+    />
+  );
   return (
     <View style={styles.container}>
       <MapView
@@ -234,10 +257,13 @@ export default function Map({navigation, route}) {
           <Carousel
             ref={c => (carousel = c)}
             data={Near}
-            itemWidth={370}
+            itemWidth={315}
             sliderWidth={Dimensions.get('window').width}
-            onSnapToItem={index => onCarouselItemChange(index)}
-            layout={'tinder'}
+            onSnapToItem={index => {
+              onCarouselItemChange(index);
+              setactiveslide(index);
+            }}
+            inactiveSlideOpacity={100}
             firstItem={1}
             renderItem={({item}) => (
               <Mapcard
@@ -248,6 +274,7 @@ export default function Map({navigation, route}) {
               />
             )}
           />
+          <Dot />
         </View>
       </View>
     </View>

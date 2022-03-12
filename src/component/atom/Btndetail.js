@@ -9,8 +9,8 @@ export default function Btndetail({onPress}) {
         <Text style={styles.txt}>Detail</Text>
         <View style={styles.wrap}>
           <Icon
-            name="chevron-forward-outline"
-            size={25}
+            name="chevron-forward"
+            size={18}
             color="#FF5F7E"
             style={styles.icon}
           />
@@ -28,15 +28,21 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     borderRadius: 10,
+    marginTop: -5,
   },
   wrap: {
-    heigth: 25,
-    width: 30,
+    width: 27,
     backgroundColor: 'white',
-    margin: 5,
-    borderRadius: 5,
+    borderRadius: 10,
     marginLeft: 35,
+    marginVertical:6,
   },
-  icon: {alignSelf: 'center'},
-  txt: {color: 'white', fontSize: 15, marginTop: 8, marginLeft: 10},
+  icon: {alignSelf: 'center', marginTop: 3.5},
+  txt: {
+    color: 'white',
+    fontSize: 15,
+    marginTop: 8,
+    marginLeft: 10,
+    fontWeight: '400',
+  },
 });

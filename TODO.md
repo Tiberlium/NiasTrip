@@ -6,11 +6,11 @@ Project Description
 
 ### Todo
 
-- [ ] indikator swipe kiri kanan snap carousel  
 - [ ] Kata kunci pencarian terakhir di munculkan dalam pencarian  
 
 ### In Progress
 
+- [ ] indikator swipe kiri kanan snap carousel  
 
 ### Done ✓
 
