@@ -10,10 +10,10 @@ Project Description
 
 ### In Progress
 
-- [ ] perbaiki setting numToRender carousel  
 
 ### Done ✓
 
+- [x] perbaiki setting numToRender carousel  
 - [x] indikator swipe kiri kanan snap carousel  
 - [x] kewarganegaraan di tambahkan di informasi akun  
 

@@ -49,7 +49,7 @@ export default function Navigator() {
         options={{
           headerShown: false,
           tabBarIcon: ({focused}) => {
-            let icon = focused ? 'person' : 'person-outline';
+            let icon = focused ? 'settings' : 'settings-outline';
             return <Icon name={icon} size={25} color="#FF5F7E" />;
           },
         }}
@@ -62,5 +62,5 @@ const styles = {
   height: hp(9),
   width: 400,
   backgroundColor: '#38393E',
-  paddingBottom:15,
+  paddingBottom: 15,
 };

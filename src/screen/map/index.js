@@ -257,15 +257,15 @@ export default function Map({navigation, route}) {
         <View style={styles.itemSlider}>
           <Carousel
             ref={c => (carousel = c)}
-            data={Near.length ? Near : []}
+            data={Near}
             itemWidth={315}
             sliderWidth={Dimensions.get('window').width}
-            initialNumToRender={Near.length}
+            initialNumToRender={10}
+            inactiveSlideOpacity={0.7}
             onSnapToItem={index => {
               onCarouselItemChange(index);
               setactiveslide(index);
             }}
-            inactiveSlideOpacity={100}
             renderItem={({item}) => (
               <Mapcard
                 img={item.data.Gambar}
