@@ -23,7 +23,7 @@ export default function About({navigation}) {
 const styles = StyleSheet.create({
   wrap: {display: 'flex', flexDirection: 'row'},
   title: {
-    fontWeight: 'bold',
+    fontWeight: '500',
     fontSize: 20,
     color: 'black',
     marginTop: hp(2.5),

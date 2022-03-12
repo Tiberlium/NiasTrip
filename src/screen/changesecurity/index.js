@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     marginHorizontal: wp(23),
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: '500',
     fontSize: 20,
     color: 'black',
     margin: 10,

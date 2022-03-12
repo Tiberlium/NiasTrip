@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: '500',
     fontSize: 20,
     color: 'black',
     marginHorizontal: 20,

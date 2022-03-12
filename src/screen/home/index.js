@@ -72,7 +72,7 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   title: {
-    fontWeight: 'bold',
+    fontWeight: '500',
     fontSize: 30,
     color: 'black',
     marginHorizontal: wp(5),

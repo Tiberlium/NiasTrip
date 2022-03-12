@@ -52,6 +52,6 @@ export default function Hotelgroup({navigation}) {
 
 const styles = StyleSheet.create({
   wrap: {display: 'flex', flexDirection: 'row'},
-  txt: {fontSize: 25, fontWeight: 'bold', color: 'black', marginTop: 15},
+  txt: {fontSize: 25, fontWeight: '500', color: 'black', marginTop: 15},
   container: {flex: 1},
 });

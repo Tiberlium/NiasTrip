@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 150,
   },
-  txt: {fontSize: 25, fontWeight: 'bold', color: 'black', marginTop: 15},
+  txt: {fontSize: 25, fontWeight: '500', color: 'black', marginTop: 15},
   inlineWrap: {display: 'flex', flexDirection: 'row'},
   txt1: {fontSize: 20, color: 'black', textAlign: 'center', fontWeight: '300'},
 });

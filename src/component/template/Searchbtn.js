@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import SearchLogoBtn from '../atom/SearchLogoBtn';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default function Searchbtn({onPress}) {
   return (
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 5,
     borderRadius: 15,
-    backgroundColor: '#E5E5E5',
+    backgroundColor: '#e5e5e5',
   },
   label: {fontSize: 15, marginTop: 10, color: '#3E3338', marginLeft: 5},
 });

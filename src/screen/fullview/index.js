@@ -53,6 +53,6 @@ export default function Fullview({navigation}) {
 
 const styles = StyleSheet.create({
   container: {flex: 1},
-  txt: {fontSize: 25, fontWeight: 'bold', color: 'black', marginTop: 15},
+  txt: {fontSize: 25, fontWeight: '500', color: 'black', marginTop: 15},
   inlineWrap: {display: 'flex', flexDirection: 'row'},
 });

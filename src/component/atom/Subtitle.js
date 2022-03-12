@@ -22,6 +22,6 @@ const styles = StyleSheet.create({
     marginTop: hp(3.2),
     marginBottom: hp(2),
   },
-  txt1: {fontWeight: 'bold', fontSize: 20, color: 'black', marginRight: 5},
+  txt1: {fontWeight: '500', fontSize: 20, color: 'black', marginRight: 5},
   txt2: {fontWeight: '300', fontSize: 20, color: 'black'},
 });
