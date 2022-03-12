@@ -15,12 +15,12 @@ export default function Mapheadercard({onPress, onChange, value, onFocus}) {
         <View style={styles.wrap}>
           <Icon
             name="md-sunny-outline"
-            size={20}
+            size={15}
             style={styles.icon}
             color="#808080"
           />
           <Switch trackColor={color} onValueChange={onChange} value={value} />
-          <Icon name="md-moon" size={20} style={styles.icon} color="black" />
+          <Icon name="md-moon" size={15} style={styles.icon} color="black" />
         </View>
       </View>
       <Btnfocus onPress={onFocus} />
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    paddingHorizontal: 15,
+    paddingHorizontal: 20,
   },
   container: {
     width: 260,
@@ -60,6 +60,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   icon: {
-    marginTop: 13,
+    marginTop: 16,
   },
 });
