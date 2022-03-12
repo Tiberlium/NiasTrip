@@ -169,6 +169,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignSelf: 'center',
-    marginTop: hp(4),
+    marginTop: hp(2),
   },
 });

@@ -200,8 +200,6 @@ export default function Map({navigation, route}) {
 
   const firstitem = Near.findIndex(doc => doc.id === id);
 
-  console.log(firstitem);
-
   return (
     <View style={styles.container}>
       <MapView
@@ -250,11 +248,10 @@ export default function Map({navigation, route}) {
         <View style={styles.itemSlider}>
           <Carousel
             ref={c => (carousel = c)}
-            data={Near}
+            data={Near.length ? Near : []}
             itemWidth={315}
             sliderWidth={Dimensions.get('window').width}
             initialNumToRender={Near.length}
-            firstItem={firstitem}
             onSnapToItem={index => {
               onCarouselItemChange(index);
               setactiveslide(index);
