@@ -42,6 +42,7 @@ import {Placecard2} from './template/Placecard';
 import {Desccard2} from './atom/Desccard';
 import {Allcard2} from './template/Allcard';
 import {Btnbookmark2} from './atom/Btnbookmark';
+import Btnfocus from './atom/Btnfocus';
 export {
   BtnNext,
   Txtinput,
@@ -87,4 +88,5 @@ export {
   Allcard2,
   Btnbookmark2,
   Btnpesanslide,
+  Btnfocus,
 };
