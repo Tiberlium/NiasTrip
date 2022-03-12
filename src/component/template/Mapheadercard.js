@@ -15,9 +15,9 @@ export default function Mapheadercard({onPress, onChange, value}) {
       </Pressable>
       <Text style={styles.txt}>Lokasi Sekitar</Text>
       <View style={styles.wrap}>
-        <Icon name="md-sunny-outline" size={20} style={styles.icon} />
+        <Icon name="md-sunny-outline" size={20} style={styles.icon} color="#808080" />
         <Switch trackColor={color} onValueChange={onChange} value={value} />
-        <Icon name="md-moon" size={20} style={styles.icon} />
+        <Icon name="md-moon" size={20} style={styles.icon} color="black"/>
       </View>
     </View>
   );
@@ -25,7 +25,7 @@ export default function Mapheadercard({onPress, onChange, value}) {
 
 const styles = StyleSheet.create({
   container: {
-    width: 350,
+    width: 320,
     height: 50,
     backgroundColor: 'white',
     elevation: 10,
