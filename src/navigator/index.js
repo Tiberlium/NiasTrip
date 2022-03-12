@@ -49,7 +49,9 @@ export default function Navigator() {
         options={{
           headerShown: false,
           tabBarIcon: ({focused}) => {
-            let icon = focused ? 'person-circle' : 'person-circle-outline';
+            let icon = focused
+              ? 'ellipsis-horizontal'
+              : 'ellipsis-horizontal-outline';
             return <Icon name={icon} size={25} color="#FF5F7E" />;
           },
         }}

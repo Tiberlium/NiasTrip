@@ -10,6 +10,7 @@ Project Description
 
 ### In Progress
 
+- [ ] Perbaikan ui options  
 
 ### Done ✓
 
