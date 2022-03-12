@@ -32,7 +32,7 @@ export default function Account() {
           label={user.displayName || user.email || user.phoneNumber}
         />
       )}
-      <Text style={styles.title}>Konfigurasi</Text>
+      <Text style={styles.title}>Pembaruan</Text>
       <Cardsectionlist
         icon="user"
         title="Info Akun"

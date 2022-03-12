@@ -6,14 +6,14 @@ Project Description
 
 ### Todo
 
-- [ ] Kata kunci pencarian terakhir di munculkan dalam pencarian  
 
 ### In Progress
 
-- [ ] Perbaikan ui options  
+- [ ] Kata kunci terakhir dalam pencarian  
 
 ### Done ✓
 
+- [x] Perbaikan ui options  
 - [x] perbaiki setting numToRender carousel  
 - [x] indikator swipe kiri kanan snap carousel  
 - [x] kewarganegaraan di tambahkan di informasi akun  
