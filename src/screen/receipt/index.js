@@ -53,7 +53,7 @@ const styles = {
   title: {
     color: 'black',
     fontSize: 30,
-    fontWeight: 'bold',
+    fontWeight: '500',
     textAlign: 'center',
   },
   time: {
