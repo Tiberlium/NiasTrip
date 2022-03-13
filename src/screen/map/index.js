@@ -154,7 +154,7 @@ export default function Map({navigation, route}) {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       },
-      300,
+      10,
     );
 
     Markers[index].showCallout();
@@ -200,10 +200,13 @@ export default function Map({navigation, route}) {
 
   function focus() {
     let num = Near.findIndex(doc => Number(doc.data.Latitude) === lat);
-    mapRef.current.animateToRegion({
-      lat,
-      long,
-    });
+    mapRef.current.animateToRegion(
+      {
+        lat,
+        long,
+      },
+      10,
+    );
     carousel.snapToItem(num);
     Markers[num].showCallout();
   }
@@ -213,7 +216,7 @@ export default function Map({navigation, route}) {
       <MapView
         ref={mapRef}
         customMapStyle={theme.dark === Theme ? [] : darkMap}
-        region={{
+        initialRegion={{
           latitude: Number(latitude),
           longitude: Number(longitude),
           latitudeDelta: 0.0922,
