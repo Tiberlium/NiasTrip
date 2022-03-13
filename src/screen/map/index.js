@@ -199,13 +199,13 @@ export default function Map({navigation, route}) {
   );
 
   function focus() {
+    let num = Near.findIndex(doc => Number(doc.data.Latitude) === lat);
     mapRef.current.animateToRegion({
-      latitude: lat,
-      longitude: long,
+      lat,
+      long,
     });
-    let index = Near.findIndex(doc => doc.id === id);
-    carousel.snapToItem(index);
-    Markers[index].showCallout();
+    carousel.snapToItem(num);
+    Markers[num].showCallout();
   }
 
   return (
