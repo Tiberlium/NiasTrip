@@ -41,6 +41,7 @@ import {Allcard2} from './template/Allcard';
 import {Btnbookmark2} from './atom/Btnbookmark';
 import Btnfocus from './atom/Btnfocus';
 import Cardsectionlist from './template/Cardsectionlist';
+import Btnhredirect from './atom/Btnredirect';
 export {
   BtnNext,
   Txtinput,
@@ -85,4 +86,5 @@ export {
   Btnpesanslide,
   Btnfocus,
   Cardsectionlist,
+  Btnhredirect,
 };

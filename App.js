@@ -30,7 +30,7 @@ import {
   Hotelgroup,
   Souvenirgroup,
 } from './src/screen';
-import {Btnhome} from './src/component';
+import {Btnhome,Btnhredirect} from './src/component';
 const Tab = createNativeStackNavigator();
 const myTheme = {
   ...DefaultTheme,
@@ -107,7 +107,7 @@ export default function App() {
           name="Receipt"
           component={Receipt}
           options={{
-            headerLeft: () => <Btnhome />,
+            headerLeft: () => <Btnhredirect />,
           }}
         />
         <Tab.Screen
