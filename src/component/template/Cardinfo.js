@@ -64,8 +64,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 10,
   },
-  txtProperty: {fontSize: 16, color: 'black'},
-  txtValue: {fontSize: 16, fontWeight: 'bold', color: 'black'},
+  txtProperty: {fontSize: 15, color: 'black',fontWeight:'300'},
+  txtValue: {fontSize: 15, fontWeight: '500', color: 'black'},
   btn: {
     width: 300,
     height: 50,
