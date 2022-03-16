@@ -1,7 +1,10 @@
 import React from 'react';
 import {Home, Bookmark, Log, Account} from '../screen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {heightPercentageToDP as hp, widthPercentageToDP} from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP,
+} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Bottom = createBottomTabNavigator();
@@ -17,7 +20,7 @@ export default function Navigator() {
           headerShown: false,
           tabBarIcon: ({focused}) => {
             let icon = focused ? 'home' : 'home-outline';
-            return <Icon name={icon} size={25} color="#FF5F7E" />;
+            return <Icon name={icon} size={22} color="#FF5F7E" />;
           },
         }}
       />
@@ -28,7 +31,7 @@ export default function Navigator() {
           headerShown: false,
           tabBarIcon: ({focused}) => {
             let icon = focused ? 'bookmarks' : 'bookmarks-outline';
-            return <Icon name={icon} size={25} color="#FF5F7E" />;
+            return <Icon name={icon} size={22} color="#FF5F7E" />;
           },
         }}
       />
@@ -39,7 +42,7 @@ export default function Navigator() {
           headerShown: false,
           tabBarIcon: ({focused}) => {
             let icon = focused ? 'list' : 'list-outline';
-            return <Icon name={icon} size={25} color="#FF5F7E" />;
+            return <Icon name={icon} size={22} color="#FF5F7E" />;
           },
         }}
       />
@@ -52,7 +55,7 @@ export default function Navigator() {
             let icon = focused
               ? 'ellipsis-horizontal'
               : 'ellipsis-horizontal-outline';
-            return <Icon name={icon} size={25} color="#FF5F7E" />;
+            return <Icon name={icon} size={22} color="#FF5F7E" />;
           },
         }}
       />
@@ -61,7 +64,7 @@ export default function Navigator() {
 }
 
 const styles = {
-  height: hp(9),
+  height: hp(10),
   width: widthPercentageToDP(100),
   backgroundColor: '#38393E',
   paddingBottom: 15,
