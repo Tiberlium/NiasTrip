@@ -28,7 +28,6 @@ import Payment from './payment';
 import Receipt from './receipt';
 import Rm from './rm';
 import Hotelgroup from './hotelgroup';
-import Souvenirgroup from './souvenirgroup';
 export {
   Splash,
   Intro,
@@ -60,5 +59,4 @@ export {
   Receipt,
   Rm,
   Hotelgroup,
-  Souvenirgroup,
 };

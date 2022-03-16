@@ -25,5 +25,5 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     backgroundColor: '#e5e5e5',
   },
-  label: {fontSize: 15, marginTop: 10, color: '#3E3338', marginLeft: 5},
+  label: {fontSize: 15, marginTop: 10, color: '#636261', marginLeft: 5},
 });

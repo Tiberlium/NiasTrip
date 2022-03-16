@@ -1,15 +1,14 @@
-import React from 'react'
-import { View, Text,Image,StyleSheet } from 'react-native'
+import React from 'react';
+import {View, Text, Image, StyleSheet} from 'react-native';
 
 export default function Profile({source}) {
-    return (
-        <View>
-            <Image source={source} style={styles.img}/>
-        </View>
-    )
+  return (
+    <View>
+      <Image source={source} style={styles.img} />
+    </View>
+  );
 }
 
-
 const styles = StyleSheet.create({
-    img:{height:70,width:70,borderRadius:35},
-})
+  img: {height: 60, width: 60, borderRadius: 35},
+});

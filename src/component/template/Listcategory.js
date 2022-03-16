@@ -25,7 +25,6 @@ export default function ListCategory() {
         color="red"
         onPress={() => navigation.navigate('Eventgroup')}
       />
-      <Btncategory name="bucket-outline" label="Souvenir" color="chocolate" onPress={()=>navigation.navigate('Souvenirgroup')} />
     </View>
   );
 }
