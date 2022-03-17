@@ -64,10 +64,8 @@ export default function Navigator() {
 }
 
 const styles = {
-  height: hp(10),
+  height: hp(9.5),
   width: widthPercentageToDP(100),
   backgroundColor: '#38393E',
   paddingBottom: 15,
-  borderTopRightRadius: 25,
-  borderTopLeftRadius: 25,
 };
