@@ -68,4 +68,6 @@ const styles = {
   width: widthPercentageToDP(100),
   backgroundColor: '#38393E',
   paddingBottom: 15,
+  borderTopRightRadius: 25,
+  borderTopLeftRadius: 25,
 };
