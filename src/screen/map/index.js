@@ -216,7 +216,7 @@ export default function Map({navigation, route}) {
       <MapView
         ref={mapRef}
         customMapStyle={theme.dark === Theme ? [] : darkMap}
-        region={{
+        initialRegion={{
           latitude: Number(latitude),
           longitude: Number(longitude),
           latitudeDelta: 0.0922,
