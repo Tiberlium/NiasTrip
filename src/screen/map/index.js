@@ -120,7 +120,7 @@ export default function Map({navigation, route}) {
 
   useEffect(() => {
     isMounted.current = true;
-    getEvent();
+    getHomestay();
     return () => (isMounted.current = false);
   }, []);
 
@@ -216,7 +216,7 @@ export default function Map({navigation, route}) {
       <MapView
         ref={mapRef}
         customMapStyle={theme.dark === Theme ? [] : darkMap}
-        initialRegion={{
+        region={{
           latitude: Number(latitude),
           longitude: Number(longitude),
           latitudeDelta: 0.0922,
