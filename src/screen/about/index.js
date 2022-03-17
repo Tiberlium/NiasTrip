@@ -15,7 +15,7 @@ export default function About({navigation}) {
       </View>
       <Image source={require('../../asset/Logo.png')} style={styles.image} />
       <Text style={styles.txt}>Tentang</Text>
-      <Text style={styles.caption}>Nias trip v1.0 (Beta)</Text>
+      <Text style={styles.caption}>Nias trip v2.0 (Beta)</Text>
     </View>
   );
 }
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   txt: {
     fontSize: 20,
     color: 'black',
-    fontWeight: 'bold',
+    fontWeight: '500',
     textAlign: 'center',
     marginTop: 10,
   },
