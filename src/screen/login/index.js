@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, NativeModules} from 'react-native';
 import {Txtinput, Btntext, Btnsubmit, Btnsocial} from '../../component';
 import {
   heightPercentageToDP as hp,
@@ -7,10 +7,29 @@ import {
 } from 'react-native-responsive-screen';
 import Auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import RNTwitterSignIn from '@react-native-twitter-signin/twitter-signin';
 
 export default function Login({navigation}) {
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
+
+  async function onTwittersignin() {
+    RNTwitterSignIn.init(
+      '32n0ck9BVZ4KkBfFOeNoZPPbN',
+      'pPRdQtnjgYmaxyDyncQZNuZbktxTbXPVGrVxhlRQ8Eo7K5q2gp',
+    );
+
+    RNTwitterSignIn.logIn()
+      .then(loginData => {
+        const {authToken, authTokenSecret} = loginData;
+        const twitterCredential = Auth.TwitterAuthProvider.credential(
+          authToken,
+          authTokenSecret,
+        );
+        return Auth().signInWithCredential(twitterCredential);
+      })
+      .catch(error => console.log(error));
+  }
 
   const Submit = () => {
     Auth()
@@ -75,6 +94,7 @@ export default function Login({navigation}) {
         />
         <Btnsocial
           source={require('../../asset/twitter.png')}
+          onPress={() => onTwittersignin().then(res => console.log(res))}
         />
       </View>
       <View style={styles.wrapunregister}>
@@ -108,5 +128,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: hp(5),
   },
-  unregister: {fontWeight: '300',color:'black'},
+  unregister: {fontWeight: '300', color: 'black'},
 });
