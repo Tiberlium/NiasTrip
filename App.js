@@ -11,8 +11,6 @@ import {
   Splash,
   Recovery,
   Updateprofile,
-  Logphone,
-  Otp,
   Changesecurity,
   Help,
   Search,
@@ -64,11 +62,6 @@ export default function App() {
           options={{headerShown: false}}
         />
         <Tab.Screen
-          name="Logphone"
-          component={Logphone}
-          options={{headerShown: false}}
-        />
-        <Tab.Screen
           name="Fullview"
           component={Fullview}
           options={{headerShown: false}}
@@ -88,7 +81,6 @@ export default function App() {
           component={Eventgroup}
           options={{headerShown: false}}
         />
-        <Tab.Screen name="Otp" component={Otp} options={{headerShown: false}} />
         <Tab.Screen
           name="Recovery"
           component={Recovery}

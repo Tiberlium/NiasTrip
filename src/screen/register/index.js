@@ -59,10 +59,7 @@ export default function Register({navigation}) {
             onGooglePress().then(() => navigation.navigate('Navigator'))
           }
         />
-        <Btnsocial
-          source={require('../../asset/phone.png')}
-          onPress={() => navigation.navigate('Logphone')}
-        />
+        <Btnsocial source={require('../../asset/phone.png')} />
       </View>
       <View style={styles.wrapunregister}>
         <Text style={styles.unregister}>Sudah terdaftar ?</Text>
@@ -94,5 +91,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: hp(5),
   },
-  unregister: {fontWeight: '300',color:'black'},
+  unregister: {fontWeight: '300', color: 'black'},
 });

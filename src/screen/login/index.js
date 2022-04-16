@@ -75,7 +75,6 @@ export default function Login({navigation}) {
         />
         <Btnsocial
           source={require('../../asset/phone.png')}
-          onPress={() => navigation.navigate('Logphone')}
         />
       </View>
       <View style={styles.wrapunregister}>
