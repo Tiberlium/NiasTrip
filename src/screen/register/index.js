@@ -59,7 +59,7 @@ export default function Register({navigation}) {
             onGooglePress().then(() => navigation.navigate('Navigator'))
           }
         />
-        <Btnsocial source={require('../../asset/phone.png')} />
+        <Btnsocial source={require('../../asset/twitter.png')} />
       </View>
       <View style={styles.wrapunregister}>
         <Text style={styles.unregister}>Sudah terdaftar ?</Text>

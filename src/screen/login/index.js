@@ -74,7 +74,7 @@ export default function Login({navigation}) {
           }
         />
         <Btnsocial
-          source={require('../../asset/phone.png')}
+          source={require('../../asset/twitter.png')}
         />
       </View>
       <View style={styles.wrapunregister}>
