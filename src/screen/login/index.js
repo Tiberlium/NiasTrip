@@ -8,7 +8,6 @@ import {
 import Auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
-
 export default function Login({navigation}) {
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
