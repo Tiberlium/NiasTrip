@@ -7,26 +7,10 @@ import {
 } from 'react-native-responsive-screen';
 import Auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import RNTwitterSignIn from '@react-native-twitter-signin/twitter-signin';
 
 export default function Login({navigation}) {
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
-
-  async function onTwittersignin() {
-    RNTwitterSignIn.init(
-      'g3VsnsmZweKj2bEPRCHXd5Gh6',
-      'jwqNuUoRDsfQPx6YDHN86qpeoiVjlT4lGJueoCPP8uJEZTesT5',
-    );
-    const {authToken, authTokenSecret} = await RNTwitterSignIn.logIn();
-    // Create a Twitter credential with the tokens
-    const twitterCredential = Auth.TwitterAuthProvider.credential(
-      authToken,
-      authTokenSecret,
-    );
-    // Sign-in the user with the credential
-    return Auth().signInWithCredential(twitterCredential);
-  }
 
   const Submit = () => {
     Auth()
@@ -89,12 +73,7 @@ export default function Login({navigation}) {
             onGooglePress().then(() => navigation.navigate('Navigator'))
           }
         />
-        <Btnsocial
-          source={require('../../asset/twitter.png')}
-          onPress={() =>
-            onTwittersignin().then(() => navigation.navigate('Navigator'))
-          }
-        />
+        <Btnsocial source={require('../../asset/twitter.png')} />
       </View>
       <View style={styles.wrapunregister}>
         <Text style={styles.unregister}>Belum terdaftar ?</Text>
