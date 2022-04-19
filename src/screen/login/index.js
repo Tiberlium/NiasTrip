@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, Image, StyleSheet, NativeModules} from 'react-native';
+import {View, Text, Image, StyleSheet} from 'react-native';
 import {Txtinput, Btntext, Btnsubmit, Btnsocial} from '../../component';
 import {
   heightPercentageToDP as hp,
@@ -7,9 +7,6 @@ import {
 } from 'react-native-responsive-screen';
 import Auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {Settings} from 'react-native-fbsdk-next';
-
-Settings.initializeSDK();
 
 
 export default function Login({navigation}) {
