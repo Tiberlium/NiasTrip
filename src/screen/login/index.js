@@ -7,36 +7,11 @@ import {
 } from 'react-native-responsive-screen';
 import Auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-<<<<<<< HEAD
-=======
-import RNTwitterSignIn from '@react-native-twitter-signin/twitter-signin';
->>>>>>> 7531e24d4e799500c92586be0bca7529e1df20ec
 
 export default function Login({navigation}) {
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
 
-<<<<<<< HEAD
-=======
-  async function onTwittersignin() {
-    RNTwitterSignIn.init(
-      '32n0ck9BVZ4KkBfFOeNoZPPbN',
-      'pPRdQtnjgYmaxyDyncQZNuZbktxTbXPVGrVxhlRQ8Eo7K5q2gp',
-    );
-
-    RNTwitterSignIn.logIn()
-      .then(loginData => {
-        const {authToken, authTokenSecret} = loginData;
-        const twitterCredential = Auth.TwitterAuthProvider.credential(
-          authToken,
-          authTokenSecret,
-        );
-        return Auth().signInWithCredential(twitterCredential);
-      })
-      .catch(error => console.log(error));
-  }
-
->>>>>>> 7531e24d4e799500c92586be0bca7529e1df20ec
   const Submit = () => {
     Auth()
       .signInWithEmailAndPassword(Email, Password)
@@ -98,14 +73,7 @@ export default function Login({navigation}) {
             onGooglePress().then(() => navigation.navigate('Navigator'))
           }
         />
-<<<<<<< HEAD
-        <Btnsocial source={require('../../asset/twitter.png')} />
-=======
-        <Btnsocial
-          source={require('../../asset/twitter.png')}
-          onPress={() => onTwittersignin().then(res => console.log(res))}
-        />
->>>>>>> 7531e24d4e799500c92586be0bca7529e1df20ec
+        <Btnsocial source={require('../../asset/facebook.png')} />
       </View>
       <View style={styles.wrapunregister}>
         <Text style={styles.unregister}>Belum terdaftar ?</Text>
