@@ -7,6 +7,10 @@ import {
 } from 'react-native-responsive-screen';
 import Auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {Settings} from 'react-native-fbsdk-next';
+
+Settings.initializeSDK();
+
 
 export default function Login({navigation}) {
   const [Email, setEmail] = useState('');
