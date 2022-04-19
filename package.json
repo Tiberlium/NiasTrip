@@ -17,6 +17,10 @@
     "@react-native-firebase/firestore": "^13.0.1",
     "@react-native-firebase/storage": "^14.0.1",
     "@react-native-google-signin/google-signin": "^7.0.1",
+<<<<<<< HEAD
+=======
+    "@react-native-twitter-signin/twitter-signin": "^1.2.0",
+>>>>>>> 7531e24d4e799500c92586be0bca7529e1df20ec
     "@react-navigation/bottom-tabs": "^6.0.9",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
@@ -25,7 +29,10 @@
     "react": "17.0.2",
     "react-native": "0.67.3",
     "react-native-actions-sheet": "^0.5.8",
+<<<<<<< HEAD
     "react-native-fbsdk-next": "^8.0.0",
+=======
+>>>>>>> 7531e24d4e799500c92586be0bca7529e1df20ec
     "react-native-image-crop-picker": "^0.37.2",
     "react-native-image-viewing": "^0.2.1",
     "react-native-maps": "0.29.4",
