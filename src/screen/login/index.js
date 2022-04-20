@@ -1,12 +1,19 @@
 import React, {useState} from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, ToastAndroid} from 'react-native';
 import {Txtinput, Btntext, Btnsubmit, Btnsocial} from '../../component';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP,
 } from 'react-native-responsive-screen';
 import Auth from '@react-native-firebase/auth';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+
+import {Settings, LoginManager, AccessToken} from 'react-native-fbsdk-next';
+
+Settings.initializeSDK();
 
 export default function Login({navigation}) {
   const [Email, setEmail] = useState('');
@@ -25,18 +32,40 @@ export default function Login({navigation}) {
       });
   };
 
-  GoogleSignin.configure({
-    webClientId:
-      '630789254968-g8e5nijq82eird2ifitcokvis3o1luv9.apps.googleusercontent.com',
-  });
+  const onFacebookPress = async () => {
+    const result = await LoginManager.logInWithPermissions([
+      'public_profile',
+      'email',
+    ]);
+
+    if (result.isCancelled) {
+      throw 'User cancelled the login process';
+    }
+
+    const data = await AccessToken.getCurrentAccessToken();
+
+    if (!data) {
+      throw 'Something went wrong obtaining access token';
+    }
+
+    const facebookCredential = Auth.FacebookAuthProvider.credential(
+      data.accessToken,
+    );
+
+    return Auth().signInWithCredential(facebookCredential);
+  };
 
   const onGooglePress = async () => {
+    GoogleSignin.configure({
+      webClientId:
+        '630789254968-g8e5nijq82eird2ifitcokvis3o1luv9.apps.googleusercontent.com',
+    });
     try {
       const {idToken} = await GoogleSignin.signIn();
       const googleCredential = Auth.GoogleAuthProvider.credential(idToken);
       return Auth().signInWithCredential(googleCredential);
     } catch (error) {
-      console.log({error});
+      console.error(error);
     }
   };
 
@@ -70,10 +99,24 @@ export default function Login({navigation}) {
         <Btnsocial
           source={require('../../asset/google.png')}
           onPress={() =>
-            onGooglePress().then(() => navigation.navigate('Navigator'))
+            onGooglePress()
+              .then(() => navigation.navigate('Navigator'))
+              .catch(e => {
+                if (e === statusCodes.SIGN_IN_CANCELLED) {
+                  ToastAndroid.show('Canceled', ToastAndroid.SHORT);
+                  return false;
+                }
+              })
           }
         />
-        <Btnsocial source={require('../../asset/facebook.png')} />
+        <Btnsocial
+          source={require('../../asset/facebook.png')}
+          onPress={() =>
+            onFacebookPress()
+              .then(() => navigation.navigate('Navigator'))
+              .catch(e => console.error(e))
+          }
+        />
       </View>
       <View style={styles.wrapunregister}>
         <Text style={styles.unregister}>Belum terdaftar ?</Text>
