@@ -93,6 +93,10 @@ export default function Login({navigation}) {
       <Horizontalline />
       <Custinput />
       <CustinputPass />
+      <Btnsubmit title="Login" />
+      <View style={styles.forget}>
+        <Btntext title="Forgot Password ?" color="red" />
+      </View>
     </View>
   );
 }
@@ -112,7 +116,11 @@ const styles = StyleSheet.create({
     color: 'black',
     marginTop: hp(5),
   },
-  forget: {marginLeft: widthPercentageToDP(10), marginTop: hp(2)},
+  forget: {
+    marginRight: widthPercentageToDP(10),
+    marginTop: hp(2),
+    alignSelf: 'flex-end',
+  },
   txtor: {fontWeight: '300', textAlign: 'center', marginVertical: hp(4)},
   wrap: {display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'},
   wrapunregister: {
