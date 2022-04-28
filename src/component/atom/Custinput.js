@@ -1,11 +1,12 @@
-import {View, Text, TextInput, StyleSheet} from 'react-native';
-import React from 'react';
+import {View, TextInput, StyleSheet, Pressable} from 'react-native';
+import React, {useState} from 'react';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function Custinput({onChangeText, placeholder, value}) {
+export default function Custinput({onChangeText, value}) {
   return (
-    <View style={{backgroundColor: 'white', height: 100}}>
+    <View>
       <TextInput
-        placeholder={placeholder}
+        placeholder="Email"
         placeholderTextColor={'grey'}
         style={styles.txt}
         onChangeText={onChangeText}
@@ -15,13 +16,62 @@ export default function Custinput({onChangeText, placeholder, value}) {
   );
 }
 
+const CustinputPass = ({onChangeText, value}) => {
+  const [btn, setbtn] = useState('eye');
+  const [secure, setsecure] = useState(true);
+
+  function change() {
+    if (!secure) {
+      setsecure(true);
+      setbtn('eye');
+    } else {
+      setsecure(false);
+      setbtn('eye-off');
+    }
+  }
+  return (
+    <View>
+      <TextInput
+        placeholder="Password"
+        placeholderTextColor={'grey'}
+        style={stylesPass.txt}
+        onChangeText={onChangeText}
+        value={value}
+        secureTextEntry={secure}
+      />
+      <Pressable style={stylesPass.icon} onPress={change}>
+        <Icon name={btn} size={25} color="black" />
+      </Pressable>
+    </View>
+  );
+};
+
+export {CustinputPass};
+
 const styles = StyleSheet.create({
   txt: {
     borderColor: 'black',
     borderWidth: 0.2,
-    marginTop: 10,
+    marginTop: 30,
     width: 300,
     alignSelf: 'center',
     borderRadius: 7,
+  },
+});
+
+const stylesPass = StyleSheet.create({
+  txt: {
+    borderColor: 'black',
+    borderWidth: 0.2,
+    marginTop: 15,
+    width: 300,
+    alignSelf: 'center',
+    borderRadius: 7,
+    position: 'absolute',
+  },
+  icon: {
+    alignSelf: 'flex-end',
+    marginRight: 50,
+    marginTop: 25,
   },
 });

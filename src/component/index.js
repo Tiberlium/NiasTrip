@@ -44,6 +44,7 @@ import Cardsectionlist from './template/Cardsectionlist';
 import Btnhredirect from './atom/Btnredirect';
 import Custinput from './atom/Custinput';
 import Horizontalline from './atom/Horizontalline';
+import {CustinputPass} from './atom/Custinput';
 export {
   BtnNext,
   Txtinput,
@@ -91,4 +92,5 @@ export {
   Btnhredirect,
   Custinput,
   Horizontalline,
+  CustinputPass,
 };

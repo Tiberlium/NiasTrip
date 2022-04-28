@@ -20,17 +20,18 @@ export default function Btnsocial({
 
 const styles = StyleSheet.create({
   wrap: {
-    height: 40,
+    height: 50,
     width: 300,
     elevation: 10,
-    borderRadius: 40,
+    borderRadius: 15,
     alignSelf: 'center',
+    marginTop: 15,
+    paddingTop: 5,
   },
   wrap2: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
   },
-  txt: {marginRight: 55, marginTop: 8, fontSize: 15, fontWeight: 'bold'},
+  txt: {marginTop: 8, fontSize: 15, fontWeight: 'bold', marginHorizontal: 40},
   icon: {height: 20, width: 20, marginTop: 10, marginLeft: 10},
 });
