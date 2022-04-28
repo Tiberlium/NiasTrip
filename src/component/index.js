@@ -42,6 +42,7 @@ import {Btnbookmark2} from './atom/Btnbookmark';
 import Btnfocus from './atom/Btnfocus';
 import Cardsectionlist from './template/Cardsectionlist';
 import Btnhredirect from './atom/Btnredirect';
+import Custinput from './atom/Custinput';
 export {
   BtnNext,
   Txtinput,
@@ -87,4 +88,5 @@ export {
   Btnfocus,
   Cardsectionlist,
   Btnhredirect,
+  Custinput,
 };

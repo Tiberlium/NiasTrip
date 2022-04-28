@@ -1,11 +1,17 @@
 import React from 'react';
-import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Image, StyleSheet, TouchableOpacity, Text} from 'react-native';
 
 export default function Btnsocial({onPress, source}) {
   return (
     <View style={styles.wrap}>
-      <TouchableOpacity onPress={onPress}>
-        <Image source={source} style={styles.icon} />
+      <TouchableOpacity onPress={onPress} style={styles.wrap2}>
+        <Image
+          source={require('../../asset/facebook.png')}
+          style={styles.icon}
+        />
+        <Text style={[styles.txt, {color: 'white'}]}>
+          Continue With Facebook
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -13,11 +19,18 @@ export default function Btnsocial({onPress, source}) {
 
 const styles = StyleSheet.create({
   wrap: {
-    height: 60,
-    width: 60,
-    backgroundColor: 'white',
+    height: 40,
+    width: 300,
+    backgroundColor: 'blue',
     elevation: 10,
     borderRadius: 40,
+    alignSelf: 'center',
   },
-  icon: {height: 30, width: 30, alignSelf: 'center', marginTop: 15},
+  wrap2: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  txt: {marginRight: 55, marginTop: 8, fontSize: 15, fontWeight: 'bold'},
+  icon: {height: 20, width: 20, marginTop: 10, marginLeft: 10},
 });
