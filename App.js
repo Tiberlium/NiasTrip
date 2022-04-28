@@ -27,7 +27,7 @@ import {
   Rm,
   Hotelgroup,
 } from './src/screen';
-import {Btnhome, Btnhredirect, Btnicon, Btnsocial} from './src/component';
+import {Btnhome, Btnhredirect, Btnicon, Btnsocial, Horizontalline} from './src/component';
 const Tab = createNativeStackNavigator();
 const myTheme = {
   ...DefaultTheme,
@@ -159,7 +159,7 @@ export default function App() {
     //   </Tab.Navigator>
     // </NavigationContainer>
     <View>
-      <Btnsocial/>
+      <Horizontalline/>
     </View>
   );
 }

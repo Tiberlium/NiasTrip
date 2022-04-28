@@ -43,6 +43,7 @@ import Btnfocus from './atom/Btnfocus';
 import Cardsectionlist from './template/Cardsectionlist';
 import Btnhredirect from './atom/Btnredirect';
 import Custinput from './atom/Custinput';
+import Horizontalline from './atom/Horizontalline';
 export {
   BtnNext,
   Txtinput,
@@ -89,4 +90,5 @@ export {
   Cardsectionlist,
   Btnhredirect,
   Custinput,
+  Horizontalline,
 };
