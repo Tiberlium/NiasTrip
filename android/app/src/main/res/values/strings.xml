@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">NiasTrip</string>
     <string name="facebook_app_id">697652564993010</string>
+    <string name="facebook_client_token">ab8ad61359a1d9f3123c4c2bd292d4cc</string>
 </resources>

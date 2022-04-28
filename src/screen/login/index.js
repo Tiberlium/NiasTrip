@@ -11,9 +11,8 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 
-import {Settings, LoginManager, AccessToken} from 'react-native-fbsdk-next';
+import {LoginManager, AccessToken} from 'react-native-fbsdk-next';
 
-Settings.initializeSDK();
 
 export default function Login({navigation}) {
   const [Email, setEmail] = useState('');
