@@ -8,7 +8,7 @@ export default function BtnNext({onPress}) {
       <TouchableOpacity style={styles.wrap} onPress={onPress}>
         <Icon
           name="chevron-forward-outline"
-          size={50}
+          size={30}
           color="white"
           style={styles.icn}
         />
@@ -19,13 +19,13 @@ export default function BtnNext({onPress}) {
 
 const styles = StyleSheet.create({
   wrap: {
-    width: 70,
-    height: 70,
+    width: 60,
+    height: 60,
     backgroundColor: '#FF5F7E',
     borderRadius: 35,
     alignSelf: 'center',
     position: 'absolute',
     marginTop: 50,
   },
-  icn: {alignSelf: 'center', marginTop: 6},
+  icn: {marginHorizontal: 16, marginVertical: 14},
 });
