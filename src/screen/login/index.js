@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, Image, StyleSheet, ToastAndroid} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ToastAndroid,
+  KeyboardAvoidingView,
+} from 'react-native';
 import {
   Btntext,
   Btnsubmit,
@@ -7,6 +14,7 @@ import {
   Horizontalline,
   Custinput,
   CustinputPass,
+  Line,
 } from '../../component';
 import {
   heightPercentageToDP as hp,
@@ -75,7 +83,7 @@ export default function Login({navigation}) {
   };
 
   return (
-    <View>
+    <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={0}>
       <Text style={styles.title}>Sign In to NiasTrip</Text>
       <Image source={require('../../asset/Logo.png')} style={styles.logo} />
       <Btnsocial
@@ -97,7 +105,12 @@ export default function Login({navigation}) {
       <View style={styles.forget}>
         <Btntext title="Forgot Password ?" color="red" />
       </View>
-    </View>
+      <Line />
+      <View style={styles.wrapunregister}>
+        <Text>New Member ?</Text>
+        <Btntext title="Create Account" color="red" />
+      </View>
+    </KeyboardAvoidingView>
   );
 }
 
