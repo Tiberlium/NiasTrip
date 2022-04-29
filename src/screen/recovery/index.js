@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
-import {Txtinput, Btnsubmit, Btnback} from '../../component';
+import {Txtinput, Btnsubmit, Btnback, Custinput} from '../../component';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Auth from '@react-native-firebase/auth';
 
@@ -23,23 +23,14 @@ export default function Recovery({navigation}) {
   return (
     <View>
       <Btnback onPress={() => navigation.goBack()} />
+      <Text style={styles.title}>Lupa Password</Text>
       <View style={styles.container}>
-        <View style={styles.wrap}>
-          <Image
-            source={require('../../asset/keyLogo.png')}
-            style={styles.img}
-          />
-        </View>
+        <Image source={require('../../asset/Logo.png')} style={styles.img} />
+        <Custinput onChangeText={setEmail} value={Email} />
         <Text style={styles.txt}>
-          Silahkan Masukkan Email Anda Untuk Melakukan Perubahan Password
+          Your confirmation link will be sent to your email address.
         </Text>
-        <Txtinput
-          label="Email"
-          placeholder="masukkan email anda"
-          onChangeText={setEmail}
-          value={Email}
-        />
-        <Btnsubmit title="Submit" onPress={Submit} />
+        <Btnsubmit title="Send" onPress={Submit} />
       </View>
     </View>
   );
@@ -47,18 +38,10 @@ export default function Recovery({navigation}) {
 
 const styles = StyleSheet.create({
   container: {marginTop: hp(5)},
-  wrap: {
-    height: 150,
-    width: 150,
-    backgroundColor: 'white',
-    elevation: 10,
-    borderRadius: 100,
-    alignSelf: 'center',
-  },
-  img: {height: 100, width: 100, alignSelf: 'center', marginTop: 25},
+  title: {fontSize: 20, fontWeight: '500', textAlign: 'center', color: 'black'},
+  img: {height: 70, width: 70, alignSelf: 'center', marginTop: 25},
   txt: {
     fontWeight: '200',
-    fontSize: 18,
     textAlign: 'center',
     margin: 20,
     color: 'black',
