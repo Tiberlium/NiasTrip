@@ -103,7 +103,7 @@ export default function Register({navigation}) {
       <Btnsubmit title="Register" onPress={Submit} />
       <Line />
       <View style={styles.wrapunregister}>
-        <Text>Have an Account ?</Text>
+        <Text style={styles.register}>Have an Account ?</Text>
         <Btntext
           title="Sign in"
           color="red"
@@ -137,5 +137,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: hp(5),
+  },
+  register: {
+    color: 'grey',
   },
 });

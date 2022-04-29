@@ -116,7 +116,7 @@ export default function Login({navigation}) {
       </View>
       <Line />
       <View style={styles.wrapunregister}>
-        <Text>New Member ?</Text>
+        <Text style={styles.unregister}>New Member ?</Text>
         <Btntext
           title="Create Account"
           color="red"
@@ -155,5 +155,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: hp(5),
+  },
+  unregister: {
+    color: 'grey',
   },
 });

@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   wrap: {
     height: 50,
     width: 300,
-    elevation: 10,
+    elevation: 5,
     borderRadius: 10,
     alignSelf: 'center',
     marginTop: 15,
