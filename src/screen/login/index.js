@@ -21,10 +21,7 @@ import {
   widthPercentageToDP,
 } from 'react-native-responsive-screen';
 import Auth from '@react-native-firebase/auth';
-import {
-  GoogleSignin,
-  statusCodes,
-} from '@react-native-google-signin/google-signin';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 import {LoginManager, AccessToken} from 'react-native-fbsdk-next';
 
@@ -39,7 +36,7 @@ export default function Login({navigation}) {
         navigation.navigate('Navigator');
       })
       .catch(() => {
-        alert('Login gagal');
+        ToastAndroid.show('Login gagal', ToastAndroid.SHORT);
         setEmail('');
         setPassword('');
       });
@@ -91,24 +88,40 @@ export default function Login({navigation}) {
         background="#4267B2"
         txtcolor="white"
         label="Continue With Facebook"
+        onPress={() =>
+          onFacebookPress()
+            .then(() => navigation.navigate('Navigator'))
+            .catch(() => ToastAndroid.show('User canceled', ToastAndroid.SHORT))
+        }
       />
       <Btnsocial
         source={require('../../asset/google.png')}
         background="white"
         txtcolor="black"
         label="Continue With Google"
+        onPress={() =>
+          onGooglePress().then(() => navigation.navigate('Navigator'))
+        }
       />
       <Horizontalline />
-      <Custinput />
-      <CustinputPass />
-      <Btnsubmit title="Login" />
+      <Custinput onChangeText={setEmail} value={Email} />
+      <CustinputPass onChangeText={setPassword} value={Password} />
+      <Btnsubmit title="Login" onPress={Submit} />
       <View style={styles.forget}>
-        <Btntext title="Forgot Password ?" color="red" />
+        <Btntext
+          title="Forgot Password ?"
+          color="red"
+          onPress={() => navigation.navigate('Recovery')}
+        />
       </View>
       <Line />
       <View style={styles.wrapunregister}>
         <Text>New Member ?</Text>
-        <Btntext title="Create Account" color="red" />
+        <Btntext
+          title="Create Account"
+          color="red"
+          onPress={() => navigation.navigate('Register')}
+        />
       </View>
     </KeyboardAvoidingView>
   );

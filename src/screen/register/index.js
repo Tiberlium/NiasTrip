@@ -1,9 +1,25 @@
 import React, {useState} from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
-import {Txtinput, Btntext, Btnsubmit, Btnsocial} from '../../component';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  KeyboardAvoidingView,
+  ToastAndroid,
+} from 'react-native';
+import {
+  Custinput,
+  Btntext,
+  Btnsubmit,
+  Btnsocial,
+  CustinputPass,
+  Line,
+  Horizontalline,
+} from '../../component';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import Auth from '@react-native-firebase/auth';
+import {LoginManager, AccessToken} from 'react-native-fbsdk-next';
 
 export default function Register({navigation}) {
   const [Email, setEmail] = useState('');
@@ -16,71 +32,102 @@ export default function Register({navigation}) {
         navigation.navigate('Login');
       })
       .catch(() => {
-        alert('Register gagal');
+        ToastAndroid.show('Register gagal', ToastAndroid.SHORT);
         setEmail('');
         setPassword('');
       });
   };
 
-  GoogleSignin.configure({
-    webClientId:
-      '630789254968-g8e5nijq82eird2ifitcokvis3o1luv9.apps.googleusercontent.com',
-  });
+  const onFacebookPress = async () => {
+    const result = await LoginManager.logInWithPermissions([
+      'public_profile',
+      'email',
+    ]);
+
+    if (result.isCancelled) {
+      throw 'User cancelled the login process';
+    }
+
+    const data = await AccessToken.getCurrentAccessToken();
+
+    if (!data) {
+      throw 'Something went wrong obtaining access token';
+    }
+
+    const facebookCredential = Auth.FacebookAuthProvider.credential(
+      data.accessToken,
+    );
+
+    return Auth().signInWithCredential(facebookCredential);
+  };
 
   const onGooglePress = async () => {
+    GoogleSignin.configure({
+      webClientId:
+        '630789254968-g8e5nijq82eird2ifitcokvis3o1luv9.apps.googleusercontent.com',
+    });
     const {idToken} = await GoogleSignin.signIn();
     const googleCredential = Auth.GoogleAuthProvider.credential(idToken);
     return Auth().signInWithCredential(googleCredential);
   };
 
   return (
-    <View styles={styles.container}>
+    <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={0}>
+      <Text style={styles.title}>Join NiasTrip</Text>
       <Image source={require('../../asset/Logo.png')} style={styles.logo} />
-      <Text style={styles.title}>Daftar</Text>
-      <Txtinput
-        label="Email"
-        placeholder="Masukkan Email"
-        onChangeText={setEmail}
-        value={Email}
+      <Btnsocial
+        source={require('../../asset/facebook.png')}
+        background="#4267B2"
+        txtcolor="white"
+        label="Continue With Facebook"
+        onPress={() =>
+          onFacebookPress()
+            .then(() => navigation.navigate('Navigator'))
+            .catch(() => {
+              ToastAndroid.show('User Canceled', ToastAndroid.SHORT);
+            })
+        }
       />
-      <Txtinput
-        label="Password"
-        placeholder="Masukkan Password"
-        onChangeText={setPassword}
-        value={Password}
-        secure={true}
+      <Btnsocial
+        source={require('../../asset/google.png')}
+        background="white"
+        txtcolor="black"
+        label="Continue With Google"
+        onPress={() =>
+          onGooglePress().then(() => navigation.navigate('Navigator'))
+        }
       />
-      <Btnsubmit title="Daftar" onPress={Submit} />
-      <Text style={styles.txtor}>Atau Daftar dengan</Text>
-      <View style={styles.wrap}>
-        <Btnsocial
-          source={require('../../asset/google.png')}
-          onPress={() =>
-            onGooglePress().then(() => navigation.navigate('Navigator'))
-          }
-        />
-        <Btnsocial source={require('../../asset/facebook.png')} />
-      </View>
+      <Horizontalline />
+      <Custinput onChangeText={setEmail} value={Email} />
+      <CustinputPass onChangeText={setPassword} value={Password} />
+      <Btnsubmit title="Register" onPress={Submit} />
+      <Line />
       <View style={styles.wrapunregister}>
-        <Text style={styles.unregister}>Sudah terdaftar ?</Text>
+        <Text>Have an Account ?</Text>
         <Btntext
-          title="Masuk"
-          color="black"
+          title="Sign in"
+          color="red"
           onPress={() => navigation.navigate('Login')}
         />
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
-  logo: {height: 100, width: 100, alignSelf: 'center', marginTop: hp(5)},
+  logo: {
+    height: 70,
+    width: 70,
+    alignSelf: 'center',
+    marginTop: hp(5),
+    marginBottom: hp(2),
+  },
   title: {
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 20,
     color: 'black',
-    marginTop: hp(2),
+    marginTop: hp(5),
   },
   txtor: {fontWeight: '300', textAlign: 'center', marginVertical: hp(5)},
   wrap: {display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'},
@@ -91,5 +138,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: hp(5),
   },
-  unregister: {fontWeight: '300', color: 'black'},
 });
