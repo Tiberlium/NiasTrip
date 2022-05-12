@@ -37,6 +37,7 @@ const myTheme = {
   },
 };
 
+
 export default function App() {
   return (
     <NavigationContainer theme={myTheme}>

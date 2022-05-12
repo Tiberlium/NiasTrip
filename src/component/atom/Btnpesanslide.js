@@ -5,12 +5,11 @@ import {
   Animated,
   Easing,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {heightPercentageToDP} from 'react-native-responsive-screen';
 
 export default function Btnpesanslide({onPress}) {
-  let opacity = new Animated.Value(0);
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <Icon name="chevron-up-circle" size={30} color="#FF5F7E" />

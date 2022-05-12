@@ -45,8 +45,9 @@ export default function Home() {
 
   const user = auth().currentUser;
   const navigation = useNavigation();
+
   return (
-    <View>
+    <View style={styles.container}>
       <Profilehead name={user.displayName || user.email || user.phoneNumber} />
       <Text style={styles.title}>Mau kemana hari ini?</Text>
       <Searchbtn onPress={() => navigation.navigate('Search')} />
@@ -71,6 +72,9 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   title: {
     fontWeight: '500',
     fontSize: 30,
