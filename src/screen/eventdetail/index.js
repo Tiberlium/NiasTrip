@@ -10,7 +10,13 @@ import {
 import React, {useState, useEffect, useRef} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import firestore from '@react-native-firebase/firestore';
-import {Btnback, Btnnearby, Btnbookmark} from '../../component';
+import {
+  Btnback,
+  Btnnearby,
+  Btnbookmark,
+  Btntiket,
+  Tiketpricelabel,
+} from '../../component';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -72,7 +78,7 @@ export default function Eventdetail({navigation, route}) {
       </>
       <>
         <View style={styles.wrapBtn}>
-          <Btnnearby
+          {/* <Btnnearby
             title="Jelajahi Sekitar"
             onPress={() =>
               navigation.navigate('Map', {
@@ -82,7 +88,9 @@ export default function Eventdetail({navigation, route}) {
               })
             }
           />
-          <Btnbookmark onPress={addBookmark} color="black" />
+          <Btnbookmark onPress={addBookmark} color="black" /> */}
+          <Tiketpricelabel harga={Data.Harga} />
+          <Btntiket />
         </View>
       </>
     </View>
@@ -124,7 +132,7 @@ const styles = StyleSheet.create({
   },
   wrapBtn: {
     borderTopWidth: 1,
-    paddingTop: 7,
+    padding: 10,
     borderTopColor: '#C8C8C8',
     width: wp(100),
     display: 'flex',

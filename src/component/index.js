@@ -46,6 +46,8 @@ import Custinput from './atom/Custinput';
 import Horizontalline from './atom/Horizontalline';
 import {CustinputPass} from './atom/Custinput';
 import Line from './atom/Line';
+import Btntiket from './atom/Btntiket';
+import Tiketpricelabel from './atom/Tiketpricelabel';
 export {
   BtnNext,
   Txtinput,
@@ -95,4 +97,6 @@ export {
   Horizontalline,
   CustinputPass,
   Line,
+  Btntiket,
+  Tiketpricelabel,
 };
