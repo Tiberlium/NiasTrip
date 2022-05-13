@@ -67,7 +67,7 @@ export default function Detail({route, navigation}) {
   function showFullDesc() {
     Alert.alert('Deskripsi', Data['Deskripsi']);
   }
-  
+
   return (
     <View style={styles.container}>
       <>
@@ -170,6 +170,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignSelf: 'center',
-    marginBottom: 6,
+    padding: 5,
   },
 });
