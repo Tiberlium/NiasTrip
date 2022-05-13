@@ -108,8 +108,14 @@ export default function Actionsheet({refs, data}) {
   }
 
   function Book() {
-    if (Profile.gender && Profile.city === null) {
-      Alert.alert('Pemberitahuan', 'Perbarui data diri anda');
+    if (
+      !Profile.gender &&
+      !Profile.city &&
+      !Profile.nation &&
+      !Profile.email &&
+      !Profile.phoneNumber
+    ) {
+      Alert.alert('Pemberitahuan', 'Lengkapi data diri anda');
     }
     checkstatus();
   }

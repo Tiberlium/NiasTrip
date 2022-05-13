@@ -19,7 +19,6 @@ import {
   Btnbookmark2,
   Btnlocation,
   Facilitychip,
-  Placecard2,
   Thumbgallery,
   Actionsheet,
   Btnpesanslide,
