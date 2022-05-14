@@ -13,6 +13,7 @@ import firestore from '@react-native-firebase/firestore';
 import {
   Btnback,
   Btnnearby,
+  Btnlocation,
   Btnbookmark2,
   Btntiket,
   Tiketpricelabel,
@@ -21,6 +22,7 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import MapView, {Marker} from 'react-native-maps';
 
 export default function Eventdetail({navigation, route}) {
   const [Data, setData] = useState({});
@@ -68,17 +70,37 @@ export default function Eventdetail({navigation, route}) {
           <Btnback onPress={() => navigation.goBack()} />
           <Btnbookmark2 onPress={addBookmark} />
         </View>
-
         <View style={styles.inlineWrap}>
           <Text style={styles.title}>{Data.Nama}</Text>
           <Text style={styles.caption}>{Data.Kabupaten}</Text>
         </View>
         <Text style={styles.headline}>Deskripsi</Text>
         <Pressable onPress={showFullDesc}>
-          <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
+          <Text style={styles.subtitle} numberOfLines={3} ellipsizeMode="tail">
             {Data.Deskripsi}
           </Text>
         </Pressable>
+        <View>
+          <Text style={styles.mapTitle}>Lokasi</Text>
+          <View style={styles.mapContainer}>
+            <MapView
+              liteMode
+              style={styles.map}
+              region={{
+                latitude: Number(Data['Latitude']),
+                longitude: Number(Data['Longitude']),
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}>
+              <Marker
+                coordinate={{
+                  latitude: Number(Data['Latitude']),
+                  longitude: Number(Data['Longitude']),
+                }}
+              />
+            </MapView>
+          </View>
+        </View>
       </>
       <>
         <View style={styles.wrapBtn}>
@@ -108,12 +130,24 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   img: {
-    height: 370,
+    height: 350,
     width: wp(100),
     alignSelf: 'center',
     position: 'absolute',
     borderBottomLeftRadius: 35,
     borderBottomRightRadius: 35,
+  },
+  mapContainer: {overflow: 'hidden', borderRadius: 20, alignSelf: 'center'},
+  mapTitle: {
+    fontWeight: '500',
+    fontSize: 15,
+    color: 'grey',
+    marginLeft: 20,
+    marginBottom: 10,
+  },
+  map: {
+    height: hp(18),
+    width: wp(90),
   },
   wrapHeader: {
     display: 'flex',
@@ -121,7 +155,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   inlineWrap: {
-    marginTop: hp(42),
+    marginTop: hp(40),
     marginLeft: 20,
   },
   title: {color: 'black', fontWeight: 'bold', fontSize: 25},
@@ -148,6 +182,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignSelf: 'center',
-    marginTop: hp(17),
+    marginTop: hp(2),
   },
 });
