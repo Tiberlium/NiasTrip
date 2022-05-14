@@ -80,7 +80,15 @@ export default function Eventdetail({navigation, route}) {
         </Pressable>
         <View>
           <Text style={styles.mapTitle}>Lokasi</Text>
-          <Pressable style={styles.mapContainer} onPress={() => alert('hallo')}>
+          <Pressable
+            style={styles.mapContainer}
+            onPress={() =>
+              navigation.navigate('Map', {
+                id: route.params.id,
+                latitude: Data['Latitude'],
+                longitude: Data['Longitude'],
+              })
+            }>
             <MapView
               liteMode
               style={styles.map}
@@ -102,17 +110,6 @@ export default function Eventdetail({navigation, route}) {
       </>
       <>
         <View style={styles.wrapBtn}>
-          {/* <Btnnearby
-            title="Jelajahi Sekitar"
-            onPress={() =>
-              navigation.navigate('Map', {
-                id: route.params.id,
-                latitude: Data['Latitude'],
-                longitude: Data['Longitude'],
-              })
-            }
-          />
-          <Btnbookmark onPress={addBookmark} color="black" /> */}
           <Tiketpricelabel harga={Data.Harga} />
           <Btntiket />
         </View>
