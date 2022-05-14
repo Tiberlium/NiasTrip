@@ -12,8 +12,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import firestore from '@react-native-firebase/firestore';
 import {
   Btnback,
-  Btnnearby,
-  Btnlocation,
   Btnbookmark2,
   Btntiket,
   Tiketpricelabel,
@@ -82,7 +80,7 @@ export default function Eventdetail({navigation, route}) {
         </Pressable>
         <View>
           <Text style={styles.mapTitle}>Lokasi</Text>
-          <View style={styles.mapContainer}>
+          <Pressable style={styles.mapContainer} onPress={() => alert('hallo')}>
             <MapView
               liteMode
               style={styles.map}
@@ -99,7 +97,7 @@ export default function Eventdetail({navigation, route}) {
                 }}
               />
             </MapView>
-          </View>
+          </Pressable>
         </View>
       </>
       <>
