@@ -12,5 +12,5 @@ export default function Tiketpricelabel({harga}) {
 
 const styles = StyleSheet.create({
   caption: {color: 'grey', fontSize: 12},
-  mainFont: {color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 5},
+  mainFont: {color: 'black', fontSize: 20, fontWeight: 'bold', marginTop: 4},
 });

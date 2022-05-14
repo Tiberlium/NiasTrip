@@ -13,7 +13,7 @@ import firestore from '@react-native-firebase/firestore';
 import {
   Btnback,
   Btnnearby,
-  Btnbookmark,
+  Btnbookmark2,
   Btntiket,
   Tiketpricelabel,
 } from '../../component';
@@ -64,7 +64,11 @@ export default function Eventdetail({navigation, route}) {
     <View style={styles.container}>
       <>
         <Image source={{uri: Data.Gambar}} style={styles.img} />
-        <Btnback onPress={() => navigation.goBack()} />
+        <View style={styles.wrapHeader}>
+          <Btnback onPress={() => navigation.goBack()} />
+          <Btnbookmark2 onPress={addBookmark} />
+        </View>
+
         <View style={styles.inlineWrap}>
           <Text style={styles.title}>{Data.Nama}</Text>
           <Text style={styles.caption}>{Data.Kabupaten}</Text>
@@ -110,6 +114,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     borderBottomLeftRadius: 35,
     borderBottomRightRadius: 35,
+  },
+  wrapHeader: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   inlineWrap: {
     marginTop: hp(42),
