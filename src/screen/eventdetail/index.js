@@ -121,7 +121,7 @@ export default function Eventdetail({navigation, route}) {
       <>
         <View style={styles.wrapBtn}>
           <Tiketpricelabel harga={Data.Harga} />
-          <Btntiket />
+          <Btntiket onPress={() => alert('halo bangsat')} />
         </View>
       </>
     </View>
