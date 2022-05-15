@@ -24,6 +24,8 @@ import MapView, {Marker} from 'react-native-maps';
 
 export default function Eventdetail({navigation, route}) {
   const [Data, setData] = useState({});
+  const [Latitude, setLatitude] = useState(0);
+  const [Longitude, setLongitude] = useState(0);
   const isMounted = useRef();
 
   async function Get() {
@@ -31,7 +33,11 @@ export default function Eventdetail({navigation, route}) {
       .collection('Event')
       .doc(route.params.id)
       .get();
-    if (isMounted.current) return setData(docRef.data());
+    if (isMounted.current) {
+      setData(docRef.data());
+      setLatitude(docRef.data().Latitude);
+      setLongitude(docRef.data().Longitude);
+    }
   }
 
   useEffect(() => {
@@ -39,6 +45,9 @@ export default function Eventdetail({navigation, route}) {
     Get();
     return () => (isMounted.current = false);
   }, []);
+
+  console.log(Latitude);
+  console.log(Longitude);
 
   function addBookmark() {
     const value = {
@@ -59,7 +68,6 @@ export default function Eventdetail({navigation, route}) {
   function showFullDesc() {
     Alert.alert('Deskripsi', Data['Deskripsi']);
   }
-
   return (
     <View style={styles.container}>
       <>
@@ -91,17 +99,19 @@ export default function Eventdetail({navigation, route}) {
             }>
             <MapView
               liteMode
+              loadingEnabled
+              loadingIndicatorColor="black"
               style={styles.map}
               region={{
-                latitude: Number(Data['Latitude']),
-                longitude: Number(Data['Longitude']),
+                latitude: parseFloat(Latitude),
+                longitude: parseFloat(Longitude),
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421,
               }}>
               <Marker
                 coordinate={{
-                  latitude: Number(Data['Latitude']),
-                  longitude: Number(Data['Longitude']),
+                  latitude: parseFloat(Latitude) ? parseFloat(Latitude) : 0,
+                  longitude: parseFloat(Longitude) ? parseFloat(Longitude) : 0,
                 }}
               />
             </MapView>
@@ -120,7 +130,7 @@ export default function Eventdetail({navigation, route}) {
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-between',
   },
