@@ -1,22 +1,56 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground, Pressable} from 'react-native';
 import {Subtitle} from '..';
 import React from 'react';
 
-export default function EditorCard() {
+export default function EditorCard({children, onPress}) {
   return (
     <View>
       <Subtitle text1="Rekomendasi" text2="Editor" />
-      <View style={styles.inlineContainer}>
-        <Text>EditorCard</Text>
-      </View>
+      <ImageBackground
+        source={require('../../asset/Banner.png')}
+        style={styles.inlineContainer}>
+        <View style={{display: 'flex', flexDirection: 'row'}}>
+          <View style={styles.sideWrap}>
+            <Text style={styles.title}>By Editor</Text>
+            <Pressable style={styles.btnContainer} onPress={onPress}>
+              <Text style={styles.btntxt}>Lihat</Text>
+            </Pressable>
+          </View>
+          <View>
+            <Text>{children}</Text>
+          </View>
+        </View>
+      </ImageBackground>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   inlineContainer: {
-    backgroundColor: '#3A7AE3',
     padding: 20,
     marginTop: 10,
+  },
+  title: {
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: 20,
+    marginTop: 40,
+  },
+  sideWrap: {
+    marginRight: 10,
+    position: 'relative',
+  },
+  btnContainer: {
+    backgroundColor: 'white',
+    height: 35,
+    width: 90,
+    padding: 5,
+    borderRadius: 5,
+    marginTop: 50,
+  },
+  btntxt: {
+    textAlign: 'center',
+    color: 'black',
+    marginTop: 2,
   },
 });

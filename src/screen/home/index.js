@@ -68,7 +68,22 @@ export default function Home() {
           />
         )}
       />
-      <EditorCard />
+      <EditorCard>
+        <FlatList
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          data={Data}
+          contentContainerStyle={{marginRight:10}}
+          renderItem={({item}) => (
+            <Thumbcard
+              title={item.data.Nama}
+              lokasi={item.data.Kecamatan}
+              gambar={item.data.Gambar}
+              onPress={() => navigation.navigate('Detail', {id: item.id})}
+            />
+          )}
+        />
+      </EditorCard>
     </ScrollView>
   );
 }
