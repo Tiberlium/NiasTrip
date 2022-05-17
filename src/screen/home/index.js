@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: '500',
-    fontSize: 25,
+    fontSize: 20,
     color: 'black',
     marginHorizontal: wp(5),
     marginBottom: hp(2),
