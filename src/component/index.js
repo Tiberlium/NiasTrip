@@ -48,6 +48,7 @@ import {CustinputPass} from './atom/Custinput';
 import Line from './atom/Line';
 import Btntiket from './atom/Btntiket';
 import Tiketpricelabel from './atom/Tiketpricelabel';
+import ThumbRating from './atom/ThumbRating';
 export {
   BtnNext,
   Txtinput,
@@ -99,4 +100,5 @@ export {
   Line,
   Btntiket,
   Tiketpricelabel,
+  ThumbRating,
 };
