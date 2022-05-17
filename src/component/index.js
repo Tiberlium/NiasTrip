@@ -49,6 +49,7 @@ import Line from './atom/Line';
 import Btntiket from './atom/Btntiket';
 import Tiketpricelabel from './atom/Tiketpricelabel';
 import ThumbRating from './atom/ThumbRating';
+import EditorCard from './atom/EditorCard';
 export {
   BtnNext,
   Txtinput,
@@ -101,4 +102,5 @@ export {
   Btntiket,
   Tiketpricelabel,
   ThumbRating,
+  EditorCard,
 };
