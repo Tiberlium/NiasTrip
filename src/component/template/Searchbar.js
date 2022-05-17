@@ -33,6 +33,6 @@ const styles = StyleSheet.create({
   logoBtn: {
     alignSelf: 'flex-end',
     marginRight: 20,
-    marginTop: -52,
+    marginTop: -47,
   },
 });

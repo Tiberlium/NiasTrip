@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList, ScrollView} from 'react-native';
 import {
   Listcategory,
   Profilehead,
@@ -47,7 +47,7 @@ export default function Home() {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Profilehead name={user.displayName || user.email || user.phoneNumber} />
       <Text style={styles.title}>Mau kemana hari ini?</Text>
       <Searchbtn onPress={() => navigation.navigate('Search')} />
@@ -67,7 +67,7 @@ export default function Home() {
           />
         )}
       />
-    </View>
+    </ScrollView>
   );
 }
 
@@ -77,10 +77,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: '500',
-    fontSize: 30,
+    fontSize: 25,
     color: 'black',
     marginHorizontal: wp(5),
     marginBottom: hp(2),
-    marginTop: hp(5),
+    marginTop: hp(3),
   },
 });

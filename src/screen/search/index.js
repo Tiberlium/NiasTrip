@@ -132,6 +132,7 @@ export default function Search({navigation}) {
         numColumns={2}
         keyExtractor={item => item.id}
         renderItem={render}
+        contentContainerStyle={styles.contentContainer}
       />
     </View>
   );
@@ -157,4 +158,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 15,
   },
+  contentContainer: {paddingHorizontal: 5},
 });

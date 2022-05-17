@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 5,
-    borderRadius: 15,
+    borderRadius: 10,
     backgroundColor: '#e5e5e5',
   },
-  label: {fontSize: 15, marginTop: 10, color: '#636261', marginLeft: 5},
+  label: {fontSize: 13, marginTop: 9, color: '#636261', marginLeft: 5},
 });

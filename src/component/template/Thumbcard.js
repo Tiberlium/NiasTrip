@@ -7,7 +7,9 @@ function Thumbcard({title, lokasi, gambar, onPress}) {
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
         <Image source={{uri: gambar}} style={styles.img} />
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title} numberOfLines={1}>
+          {title}
+        </Text>
         <View style={styles.inlineWrap}>
           <Icon name="location" size={15} color="red" />
           <Text style={styles.caption}>{lokasi}</Text>
@@ -22,16 +24,16 @@ export default React.memo(Thumbcard);
 const styles = StyleSheet.create({
   container: {paddingLeft: 10, paddingTop: 10},
   img: {
-    height: 230,
-    width: 150,
-    borderRadius: 15,
+    height: 200,
+    width: 120,
+    borderRadius: 10,
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 14,
     color: 'white',
     marginLeft: 10,
-    marginTop: 170,
+    marginTop: 150,
     position: 'absolute',
     alignSelf: 'flex-start',
   },
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginLeft: 10,
-    marginTop: 190,
+    marginTop: 170,
     position: 'absolute',
   },
   caption: {marginLeft: 5, color: 'white', fontSize: 12, fontWeight: '300'},
