@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, Image, Pressable} from 'react-native';
+import {Text, StyleSheet, Image, Pressable, View} from 'react-native';
 import React from 'react';
 import {
   heightPercentageToDP as hp,
@@ -14,12 +14,14 @@ export default function Cardratingreview({onPress}) {
         style={styles.img}
       />
       <Text style={styles.txt}>Rating & Review</Text>
-      <Icon
-        name="chevron-forward-circle-outline"
-        size={25}
-        color="grey"
-        style={styles.icon}
-      />
+      <View style={styles.wrap}>
+        <Icon
+          name="chevron-forward"
+          size={20}
+          color="white"
+          style={styles.icon}
+        />
+      </View>
     </Pressable>
   );
 }
@@ -32,7 +34,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     margin: 5,
     borderRadius: 10,
-    backgroundColor: '#D4E0F2',
+    backgroundColor: '#E8EDF5',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -45,6 +47,16 @@ const styles = StyleSheet.create({
     marginTop: 7,
   },
   icon: {
+    alignSelf: 'center',
+    marginTop: 2.5,
+  },
+  wrap: {
+    width: 30,
+    heigth: 30,
+    backgroundColor: '#FF5F7E',
+    borderRadius: 10,
+    marginBottom: 15,
+    marginLeft: 20,
     marginTop: 5,
   },
 });

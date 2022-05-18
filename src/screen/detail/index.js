@@ -87,7 +87,7 @@ export default function Detail({route, navigation}) {
               {Data.Kecamatan}, {Data.Kabupaten}
             </Text>
           </View>
-          <Cardratingreview />
+          <Cardratingreview onPress={() => alert('hallo')} />
           <Text style={styles.headline0}>Deskripsi</Text>
           <Pressable onPress={showFullDesc}>
             <Text

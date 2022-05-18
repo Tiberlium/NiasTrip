@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default function Btnnearby({onPress, title}) {
   return (
