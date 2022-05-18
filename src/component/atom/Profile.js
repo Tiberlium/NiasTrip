@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 
 export default function Profile({source}) {
   return (
@@ -10,5 +10,5 @@ export default function Profile({source}) {
 }
 
 const styles = StyleSheet.create({
-  img: {height: 60, width: 60, borderRadius: 35},
+  img: {height: 50, width: 50, borderRadius: 35, marginTop: 5},
 });

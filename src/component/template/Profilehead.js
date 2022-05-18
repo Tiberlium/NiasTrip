@@ -24,6 +24,6 @@ export default function Profilehead({name}) {
 const styles = StyleSheet.create({
   wrap: {display: 'flex', flexDirection: 'row', marginLeft: 10, marginTop: 15},
   inlineWrap: {marginLeft: 10, marginTop: 7},
-  txt1: {fontWeight: '500', fontSize: 20, color: 'black'},
-  txt2: {fontWeight: '200', fontSize: 15, color: 'black'},
+  txt1: {fontWeight: '500', fontSize: 17, color: 'black'},
+  txt2: {fontWeight: '200', fontSize: 13, color: 'black'},
 });

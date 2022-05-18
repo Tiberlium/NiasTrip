@@ -12,13 +12,14 @@ export default function EditorCard({children, onPress}) {
         <View style={{display: 'flex', flexDirection: 'row'}}>
           <View style={styles.sideWrap}>
             <Text style={styles.title}>By Editor</Text>
+            <Text style={{width: 120, marginTop: 10}}>
+              Berbagai tempat yang di rekomendasikan oleh editor
+            </Text>
             <Pressable style={styles.btnContainer} onPress={onPress}>
-              <Text style={styles.btntxt}>Lihat</Text>
+              <Text style={styles.btntxt}>Lihat semua</Text>
             </Pressable>
           </View>
-          <View>
-            <Text>{children}</Text>
-          </View>
+          <View>{children}</View>
         </View>
       </ImageBackground>
     </View>
@@ -43,10 +44,10 @@ const styles = StyleSheet.create({
   btnContainer: {
     backgroundColor: 'white',
     height: 35,
-    width: 90,
+    width: 100,
     padding: 5,
     borderRadius: 5,
-    marginTop: 50,
+    marginTop: 20,
   },
   btntxt: {
     textAlign: 'center',

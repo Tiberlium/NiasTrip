@@ -8,7 +8,7 @@ export default function Btncategory({onPress, color, background, name, label}) {
       <TouchableOpacity onPress={onPress} style={styles.wrap}>
         <Icon
           name={name}
-          size={25}
+          size={20}
           style={[styles.icon, {backgroundColor: background}]}
           color={color}
         />
@@ -20,8 +20,8 @@ export default function Btncategory({onPress, color, background, name, label}) {
 
 const styles = StyleSheet.create({
   wrap: {
-    height: 50,
-    width: 50,
+    height: 45,
+    width: 45,
     backgroundColor: 'white',
     elevation: 5,
     borderRadius: 10,

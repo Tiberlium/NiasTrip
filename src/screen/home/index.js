@@ -73,7 +73,6 @@ export default function Home() {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           data={Data}
-          contentContainerStyle={{marginRight:10}}
           renderItem={({item}) => (
             <Thumbcard
               title={item.data.Nama}
