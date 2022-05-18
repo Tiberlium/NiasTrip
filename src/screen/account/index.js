@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, ScrollView} from 'react-native';
 import {firebase} from '@react-native-firebase/auth';
 import {Accountprofile, Blankavatar, Btnlogout} from '../../component';
 import {Cardsectionlist} from '../../component';
@@ -18,7 +18,7 @@ export default function Account() {
   }
 
   return (
-    <View>
+    <ScrollView>
       {user.photoURL ? (
         <Accountprofile
           uri={user.photoURL}
@@ -59,7 +59,7 @@ export default function Account() {
         onPress={() => navigation.navigate('About')}
       />
       <Btnlogout onPress={() => signOut()} />
-    </View>
+    </ScrollView>
   );
 }
 
