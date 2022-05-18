@@ -26,6 +26,8 @@ import {
   Receipt,
   Rm,
   Hotelgroup,
+  Rmgroup,
+  Byeditor,
 } from './src/screen';
 import {Btnhome, Btnhredirect} from './src/component';
 const Tab = createNativeStackNavigator();
@@ -36,7 +38,6 @@ const myTheme = {
     background: 'white',
   },
 };
-
 
 export default function App() {
   return (
@@ -150,6 +151,16 @@ export default function App() {
         <Tab.Screen
           name="Eventdetail"
           component={Eventdetail}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="Rmgroup"
+          component={Rmgroup}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="Byeditor"
+          component={Byeditor}
           options={{headerShown: false}}
         />
         <Tab.Screen name="Rm" component={Rm} options={{headerShown: false}} />

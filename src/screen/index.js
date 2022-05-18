@@ -26,6 +26,8 @@ import Payment from './payment';
 import Receipt from './receipt';
 import Rm from './rm';
 import Hotelgroup from './hotelgroup';
+import Rmgroup from './rmgroup';
+import Byeditor from './byeditor';
 export {
   Splash,
   Intro,
@@ -55,4 +57,6 @@ export {
   Receipt,
   Rm,
   Hotelgroup,
+  Rmgroup,
+  Byeditor,
 };

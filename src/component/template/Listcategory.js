@@ -29,6 +29,7 @@ export default function ListCategory() {
         name="silverware-fork-knife"
         label="Restoran"
         color="red"
+        onPress={() => navigation.navigate('Rmgroup')}
       />
     </View>
   );

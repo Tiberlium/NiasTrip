@@ -68,7 +68,7 @@ export default function Home() {
           />
         )}
       />
-      <EditorCard>
+      <EditorCard onPress={() => navigation.navigate('Byeditor')}>
         <FlatList
           horizontal={true}
           showsHorizontalScrollIndicator={false}
