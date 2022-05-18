@@ -22,8 +22,13 @@ export default function ListCategory() {
       <Btncategory
         name="calendar"
         label="Event"
-        color="red"
+        color="green"
         onPress={() => navigation.navigate('Eventgroup')}
+      />
+      <Btncategory
+        name="silverware-fork-knife"
+        label="Restoran"
+        color="red"
       />
     </View>
   );
