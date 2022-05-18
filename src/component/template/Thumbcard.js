@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ThumbRating from '../atom/ThumbRating';
 
@@ -9,7 +8,7 @@ function Thumbcard({title, lokasi, gambar, onPress}) {
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
         <Image source={{uri: gambar}} style={styles.img} />
-        <ThumbRating />
+        <ThumbRating colorText="white" colorIcon="yellow" marginTop={130} />
         <Text style={styles.title} numberOfLines={1}>
           {title}
         </Text>

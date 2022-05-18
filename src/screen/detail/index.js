@@ -21,6 +21,7 @@ import {
   Btnnearby,
   Thumbgallery,
   Cardratingreview,
+  ThumbRating,
 } from '../../component';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -87,6 +88,12 @@ export default function Detail({route, navigation}) {
               {Data.Kecamatan}, {Data.Kabupaten}
             </Text>
           </View>
+          <ThumbRating
+            colorText="black"
+            colorIcon="orange"
+            marginTop={hp(59.5)}
+            marginLeft={20}
+          />
           <Cardratingreview onPress={() => alert('hallo')} />
           <Text style={styles.headline0}>Deskripsi</Text>
           <Pressable onPress={showFullDesc}>
@@ -149,6 +156,7 @@ const styles = StyleSheet.create({
   inlineWrap: {
     marginTop: hp(42),
     marginLeft: 20,
+    marginBottom: 5,
   },
   title: {color: 'black', fontWeight: 'bold', fontSize: 25},
   caption: {color: 'black', fontWeight: '300'},

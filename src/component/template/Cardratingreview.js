@@ -28,7 +28,7 @@ export default function Cardratingreview({onPress}) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
+    marginTop: 20,
     height: hp(8),
     width: wp(90),
     alignSelf: 'center',
