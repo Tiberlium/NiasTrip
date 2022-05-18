@@ -50,6 +50,7 @@ import Btntiket from './atom/Btntiket';
 import Tiketpricelabel from './atom/Tiketpricelabel';
 import ThumbRating from './atom/ThumbRating';
 import EditorCard from './atom/EditorCard';
+import Cardratingreview from './template/Cardratingreview';
 export {
   BtnNext,
   Txtinput,
@@ -103,4 +104,5 @@ export {
   Tiketpricelabel,
   ThumbRating,
   EditorCard,
+  Cardratingreview,
 };

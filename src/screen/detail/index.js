@@ -8,13 +8,20 @@ import {
   ToastAndroid,
   Pressable,
   Alert,
+  ScrollView,
 } from 'react-native';
 import ImageView from 'react-native-image-viewing';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {Btnback, Btnbookmark, Btnnearby, Thumbgallery} from '../../component';
+import {
+  Btnback,
+  Btnbookmark,
+  Btnnearby,
+  Thumbgallery,
+  Cardratingreview,
+} from '../../component';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -71,42 +78,46 @@ export default function Detail({route, navigation}) {
   return (
     <View style={styles.container}>
       <>
-        <Image source={{uri: Data.Gambar}} style={styles.img} />
-        <Btnback onPress={() => navigation.goBack()} />
-        <View style={styles.inlineWrap}>
-          <Text style={styles.title}>{Data.Nama}</Text>
-          <Text style={styles.caption}>
-            {Data.Kecamatan}, {Data.Kabupaten}
-          </Text>
-        </View>
-        <Text style={styles.headline0}>Deskripsi</Text>
-        <Pressable onPress={showFullDesc}>
-          <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
-            {Data.Deskripsi}
-          </Text>
-        </Pressable>
-        <Text style={styles.headline}>Gallery</Text>
-        <FlatList
-          horizontal={true}
-          data={Data['Galery']}
-          renderItem={({item}) => (
-            <Thumbgallery
-              uri={item}
-              onPress={() => {
-                setvisible(true), setindex(index);
-              }}
-            />
-          )}
-        />
-        <ImageView
-          images={images}
-          visible={visible}
-          imageIndex={index}
-          keyExtractor={item => item.id}
-          onRequestClose={() => setvisible(false)}
-        />
-      </>
-      <>
+        <ScrollView>
+          <Image source={{uri: Data.Gambar}} style={styles.img} />
+          <Btnback onPress={() => navigation.goBack()} />
+          <View style={styles.inlineWrap}>
+            <Text style={styles.title}>{Data.Nama}</Text>
+            <Text style={styles.caption}>
+              {Data.Kecamatan}, {Data.Kabupaten}
+            </Text>
+          </View>
+          <Cardratingreview />
+          <Text style={styles.headline0}>Deskripsi</Text>
+          <Pressable onPress={showFullDesc}>
+            <Text
+              style={styles.subtitle}
+              numberOfLines={5}
+              ellipsizeMode="tail">
+              {Data.Deskripsi}
+            </Text>
+          </Pressable>
+          <Text style={styles.headline}>Gallery</Text>
+          <FlatList
+            horizontal={true}
+            data={Data['Galery']}
+            renderItem={({item}) => (
+              <Thumbgallery
+                uri={item}
+                onPress={() => {
+                  setvisible(true), setindex(index);
+                }}
+              />
+            )}
+          />
+          <ImageView
+            images={images}
+            visible={visible}
+            imageIndex={index}
+            keyExtractor={item => item.id}
+            onRequestClose={() => setvisible(false)}
+          />
+        </ScrollView>
         <View style={styles.wrapBtn}>
           <Btnnearby
             title="Jelajahi sekitar"
@@ -171,5 +182,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignSelf: 'center',
     padding: 5,
+    marginTop: 5,
   },
 });
