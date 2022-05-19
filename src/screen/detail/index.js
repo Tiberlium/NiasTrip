@@ -91,10 +91,11 @@ export default function Detail({route, navigation}) {
           <ThumbRating
             colorText="black"
             colorIcon="orange"
-            marginTop={hp(59.5)}
+            marginTop={hp(60)}
             marginLeft={20}
+            rating="4.3"
           />
-          <Cardratingreview onPress={() => alert('hallo')} />
+          <Cardratingreview onPress={() => alert('hallo')} marginTop={30} />
           <Text style={styles.headline0}>Deskripsi</Text>
           <Pressable onPress={showFullDesc}>
             <Text

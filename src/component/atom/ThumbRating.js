@@ -8,15 +8,21 @@ export default function ThumbRating({
   marginTop,
   colorIcon,
   marginLeft,
+  rating,
+  marginBottom,
 }) {
   return (
     <View
       style={[
         styles.container,
-        {marginTop: marginTop, marginLeft: marginLeft},
+        {
+          marginTop: marginTop,
+          marginLeft: marginLeft,
+          marginBottom: marginBottom,
+        },
       ]}>
       <Icon name="star" size={15} color={colorIcon} />
-      <Text style={[styles.txt, {color: colorText}]}>1/5</Text>
+      <Text style={[styles.txt, {color: colorText}]}>{rating}</Text>
     </View>
   );
 }

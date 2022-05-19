@@ -6,9 +6,9 @@ import {
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function Cardratingreview({onPress}) {
+export default function Cardratingreview({onPress,marginTop}) {
   return (
-    <Pressable style={styles.container} onPress={onPress}>
+    <Pressable style={[styles.container,{marginTop:marginTop}]} onPress={onPress}>
       <Image
         source={require('../../asset/peopleicon.png')}
         style={styles.img}
@@ -28,7 +28,6 @@ export default function Cardratingreview({onPress}) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
     height: hp(8),
     width: wp(90),
     alignSelf: 'center',

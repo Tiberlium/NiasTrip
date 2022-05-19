@@ -8,13 +8,21 @@ import {
   ToastAndroid,
   Alert,
   Pressable,
+  ScrollView,
 } from 'react-native';
 import ImageView from 'react-native-image-viewing';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {Btnback, Btnbookmark, Btnnearby, Thumbgallery} from '../../component';
+import {
+  Btnback,
+  Btnbookmark,
+  Btnnearby,
+  Thumbgallery,
+  ThumbRating,
+  Cardratingreview,
+} from '../../component';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -68,13 +76,21 @@ export default function Fooddetail({navigation, route}) {
 
   return (
     <View style={styles.container}>
-      <>
+      <ScrollView>
         <Image source={{uri: Data['Gambar']}} style={styles.img} />
         <Btnback onPress={() => navigation.goBack()} />
         <View style={styles.inlineWrap}>
           <Text style={styles.title}>{Data['Nama']}</Text>
           <Text style={styles.caption}>{Data['Kategori']}</Text>
         </View>
+        <ThumbRating
+          rating="5"
+          colorText="black"
+          colorIcon="orange"
+          marginLeft={20}
+          marginTop={hp(60)}
+        />
+        <Cardratingreview marginTop={30} />
         <Text style={styles.headline0}>Deskripsi</Text>
         <Pressable onPress={showFullDesc}>
           <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
@@ -100,7 +116,7 @@ export default function Fooddetail({navigation, route}) {
           imageIndex={index}
           onRequestClose={() => setvisible(false)}
         />
-      </>
+      </ScrollView>
       <>
         <View style={styles.wrapBtn}>
           <Btnnearby
@@ -122,9 +138,7 @@ export default function Fooddetail({navigation, route}) {
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
+    flex: 1,
   },
   img: {
     height: 370,
@@ -162,13 +176,13 @@ const styles = StyleSheet.create({
   },
   wrapBtn: {
     borderTopWidth: 1,
-    paddingTop: 7,
+    paddingVertical: 7,
     borderTopColor: '#C8C8C8',
     width: wp(100),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignSelf: 'center',
-    marginTop: hp(2),
+    marginTop: hp(1),
   },
 });

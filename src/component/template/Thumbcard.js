@@ -3,12 +3,18 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ThumbRating from '../atom/ThumbRating';
 
-function Thumbcard({title, lokasi, gambar, onPress}) {
+function Thumbcard({title, lokasi, gambar, onPress, rating}) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
         <Image source={{uri: gambar}} style={styles.img} />
-        <ThumbRating colorText="white" colorIcon="yellow" marginTop={130} />
+        <ThumbRating
+          colorText="white"
+          colorIcon="yellow"
+          marginTop={130}
+          marginLeft={10}
+          rating={rating}
+        />
         <Text style={styles.title} numberOfLines={1}>
           {title}
         </Text>

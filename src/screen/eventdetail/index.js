@@ -6,6 +6,7 @@ import {
   Image,
   Alert,
   Pressable,
+  ScrollView,
 } from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -15,6 +16,8 @@ import {
   Btnbookmark2,
   Btntiket,
   Tiketpricelabel,
+  ThumbRating,
+  Cardratingreview,
 } from '../../component';
 import {
   heightPercentageToDP as hp,
@@ -46,9 +49,6 @@ export default function Eventdetail({navigation, route}) {
     return () => (isMounted.current = false);
   }, []);
 
-  console.log(Latitude);
-  console.log(Longitude);
-
   function addBookmark() {
     const value = {
       id: route.params.id,
@@ -70,7 +70,7 @@ export default function Eventdetail({navigation, route}) {
   }
   return (
     <View style={styles.container}>
-      <>
+      <ScrollView>
         <Image source={{uri: Data.Gambar}} style={styles.img} />
         <View style={styles.wrapHeader}>
           <Btnback onPress={() => navigation.goBack()} />
@@ -80,6 +80,14 @@ export default function Eventdetail({navigation, route}) {
           <Text style={styles.title}>{Data.Nama}</Text>
           <Text style={styles.caption}>{Data.Kabupaten}</Text>
         </View>
+        <ThumbRating
+          marginTop={hp(58)}
+          colorIcon="orange"
+          colorText="black"
+          rating={5}
+          marginLeft={20}
+        />
+        <Cardratingreview marginTop={30} />
         <Text style={styles.headline}>Deskripsi</Text>
         <Pressable onPress={showFullDesc}>
           <Text style={styles.subtitle} numberOfLines={3} ellipsizeMode="tail">
@@ -117,7 +125,7 @@ export default function Eventdetail({navigation, route}) {
             </MapView>
           </Pressable>
         </View>
-      </>
+      </ScrollView>
       <>
         <View style={styles.wrapBtn}>
           <Tiketpricelabel harga={Data.Harga} />
@@ -131,8 +139,6 @@ export default function Eventdetail({navigation, route}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
   },
   img: {
     height: 350,
@@ -187,6 +193,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignSelf: 'center',
-    marginTop: hp(2),
   },
 });

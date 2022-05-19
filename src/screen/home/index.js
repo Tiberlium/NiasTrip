@@ -53,7 +53,7 @@ export default function Home() {
       <Text style={styles.title}>Mau kemana hari ini?</Text>
       <Searchbtn onPress={() => navigation.navigate('Search')} />
       <Subtitle text1="Pengalaman" text2="Lain" />
-      <Listcategory/>
+      <Listcategory />
       <Subhead onPress={() => navigation.navigate('Fullview')} />
       <FlatList
         horizontal={true}
@@ -65,6 +65,7 @@ export default function Home() {
             lokasi={item.data.Kecamatan}
             gambar={item.data.Gambar}
             onPress={() => navigation.navigate('Detail', {id: item.id})}
+            rating={3}
           />
         )}
       />
