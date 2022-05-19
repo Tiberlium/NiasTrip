@@ -17,20 +17,22 @@ export default function Btnpesanslide({onPress}) {
 const styles = StyleSheet.create({
   container: {
     height: 50,
-    width: 150,
-    elevation: 3,
-    backgroundColor: 'white',
-    alignSelf: 'center',
+    width: 180,
+    backgroundColor: '#5FD680',
     padding: 10,
-    borderRadius: 25,
-    marginBottom: 10,
+    borderRadius: 15,
+    margin: 5,
+    alignSelf: 'center',
+    alignItems: 'stretch',
+    borderColor:'grey'
   },
   inlineContainer: {
     display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   txt: {
-    color: '#808080',
+    color: 'white',
     marginTop: heightPercentageToDP(0.7),
   },
 });

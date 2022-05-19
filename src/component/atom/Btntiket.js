@@ -17,10 +17,11 @@ const styles = StyleSheet.create({
   container: {
     height: hp(6),
     width: wp(45),
-    backgroundColor: '#FF5F7E',
+    backgroundColor: '#5FD680',
     alignItems: 'center',
     borderRadius: 10,
     padding: 10,
+    marginTop: 5,
   },
   txt: {
     color: 'white',

@@ -111,11 +111,11 @@ export default function Hoteldetail({navigation, route}) {
         <ThumbRating
           colorIcon="orange"
           colorText="black"
-          marginTop={hp(50)}
+          marginTop={hp(48.5)}
           marginLeft={20}
           rating={5}
         />
-        <Cardratingreview marginTop={40} />
+        <Cardratingreview marginTop={37} />
         <Text style={styles.headline1}>Deskripsi</Text>
         <TouchableOpacity onPress={showFullDesc}>
           <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
@@ -199,8 +199,8 @@ const styles = StyleSheet.create({
   },
   title: {color: 'black', fontWeight: 'bold', fontSize: 25},
   caption: {color: 'black', fontWeight: '300'},
-  pricetext: {fontSize: 20, fontWeight: 'bold', color: 'black'},
-  pricetext2: {fontWeight: '300', fontSize: 15, color: 'black', marginTop: 5},
+  pricetext: {fontSize: 15, fontWeight: 'bold', color: 'black'},
+  pricetext2: {fontWeight: '300', fontSize: 13, color: 'black', marginTop: 2},
   headline1: {
     color: '#808080',
     fontSize: 15,
