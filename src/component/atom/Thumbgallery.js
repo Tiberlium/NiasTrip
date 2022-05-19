@@ -10,6 +10,6 @@ export default function Thumbgallery({uri, onPress}) {
 }
 
 const styles = StyleSheet.create({
-  container: {paddingLeft: 20, paddingTop: 10},
+  container: {paddingLeft: 20, paddingTop: 10, marginBottom: 10},
   img: {height: 70, width: 70, borderRadius: 10},
 });
