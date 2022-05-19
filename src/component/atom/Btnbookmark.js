@@ -6,7 +6,7 @@ export default function Btnbookmark({onPress}) {
   return (
     <View style={styles.wrap}>
       <TouchableOpacity onPress={onPress}>
-        <Icon name="bookmark" size={25} style={styles.icon} color={'white'} />
+        <Icon name="bookmark" size={18} style={styles.icon} color={'white'} />
       </TouchableOpacity>
     </View>
   );
@@ -24,8 +24,8 @@ export {Btnbookmark2};
 
 const styles = StyleSheet.create({
   wrap: {
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
     backgroundColor: '#FF5F7E',
     borderRadius: 10,
     alignSelf: 'center',

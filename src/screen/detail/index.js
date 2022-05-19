@@ -191,6 +191,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignSelf: 'center',
     padding: 5,
-    marginTop: 5,
   },
 });

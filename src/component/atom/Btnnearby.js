@@ -10,7 +10,7 @@ export default function Btnnearby({onPress, title}) {
         <View style={styles.wrap}>
           <Icon
             name="chevron-forward"
-            size={20}
+            size={15}
             color="#FF5F7E"
             style={styles.icon}
           />
@@ -22,29 +22,29 @@ export default function Btnnearby({onPress, title}) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 50,
+    height: 40,
     width: 250,
     backgroundColor: '#FF5F7E',
     alignSelf: 'center',
     borderRadius: 10,
     display: 'flex',
     flexDirection: 'row',
-    marginHorizontal: 10,
+    justifyContent: 'space-around',
   },
   wrap: {
-    width: 30,
-    heigth: 30,
+    width: 20,
+    heigth: 20,
     backgroundColor: 'white',
-    borderRadius: 10,
     marginVertical: 10,
     marginLeft: 20,
+    borderRadius: 5,
   },
   txt: {
     color: 'white',
     fontWeight: '300',
-    fontSize: 20,
-    marginTop: 11,
+    fontSize: 15,
+    marginTop: 8,
     marginLeft: 50,
   },
-  icon: {alignSelf: 'center', marginTop: 3},
+  icon: {alignSelf: 'center', marginTop: 2},
 });
