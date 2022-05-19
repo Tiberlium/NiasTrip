@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ToastAndroid,
   Alert,
+  ScrollView,
 } from 'react-native';
 import ImageView from 'react-native-image-viewing';
 import {
@@ -22,6 +23,8 @@ import {
   Thumbgallery,
   Actionsheet,
   Btnpesanslide,
+  ThumbRating,
+  Cardratingreview,
 } from '../../component';
 
 import firestore from '@react-native-firebase/firestore';
@@ -80,7 +83,7 @@ export default function Hoteldetail({navigation, route}) {
 
   return (
     <View style={styles.container}>
-      <>
+      <ScrollView>
         <Image source={{uri: Data['Gambar']}} style={styles.img} />
         <View style={styles.headerContainer}>
           <Btnback onPress={() => navigation.goBack()} />
@@ -105,6 +108,14 @@ export default function Hoteldetail({navigation, route}) {
           <Text style={styles.pricetext}>Rp {Data['Harga']}/</Text>
           <Text style={styles.pricetext2}>malam</Text>
         </View>
+        <ThumbRating
+          colorIcon="orange"
+          colorText="black"
+          marginTop={hp(50)}
+          marginLeft={20}
+          rating={5}
+        />
+        <Cardratingreview marginTop={40} />
         <Text style={styles.headline1}>Deskripsi</Text>
         <TouchableOpacity onPress={showFullDesc}>
           <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
@@ -138,19 +149,17 @@ export default function Hoteldetail({navigation, route}) {
           onRequestClose={() => setvisible(false)}
         />
         <Actionsheet refs={Actionref} data={Data} />
-      </>
-      <>
+      </ScrollView>
+      <View>
         <Btnpesanslide onPress={() => Actionref.current?.show()} />
-      </>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
+    flex: 1,
   },
   containerImage: {
     display: 'flex',

@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {View, Text, StyleSheet, FlatList, ScrollView} from 'react-native';
+import {Text, StyleSheet, FlatList, ScrollView} from 'react-native';
 import {
   EditorCard,
   Listcategory,
