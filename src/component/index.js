@@ -51,6 +51,7 @@ import Tiketpricelabel from './atom/Tiketpricelabel';
 import ThumbRating from './atom/ThumbRating';
 import EditorCard from './atom/EditorCard';
 import Cardratingreview from './template/Cardratingreview';
+import {Byeditorcard} from './template/Thumbcard';
 export {
   BtnNext,
   Txtinput,
@@ -105,4 +106,5 @@ export {
   ThumbRating,
   EditorCard,
   Cardratingreview,
+  Byeditorcard,
 };

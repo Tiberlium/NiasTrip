@@ -8,6 +8,7 @@ import {
   Subhead,
   Subtitle,
   Thumbcard,
+  Byeditorcard,
 } from '../../component';
 import auth from '@react-native-firebase/auth';
 import {useNavigation} from '@react-navigation/native';
@@ -75,7 +76,7 @@ export default function Home() {
           showsHorizontalScrollIndicator={false}
           data={Data}
           renderItem={({item}) => (
-            <Thumbcard
+            <Byeditorcard
               title={item.data.Nama}
               lokasi={item.data.Kecamatan}
               gambar={item.data.Gambar}
