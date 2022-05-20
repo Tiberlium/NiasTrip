@@ -19,7 +19,7 @@ function Thumbcard({title, lokasi, gambar, onPress, rating}) {
           {title}
         </Text>
         <View style={styles.inlineWrap}>
-          <Icon name="location" size={15} color="red" />
+          <Icon name="location" size={15} color="#CB4335" />
           <Text style={styles.caption}>{lokasi}</Text>
         </View>
       </TouchableOpacity>
@@ -33,7 +33,7 @@ function Byeditorcard({title, lokasi, gambar, onPress, rating}) {
       <TouchableOpacity onPress={onPress}>
         <Image source={{uri: gambar}} style={styles.img} />
         <View style={styles.badgeEditor}>
-          <Icon name="flash" color="black" size={14} />
+          <Icon name="flash" color="blue" size={14} />
           <Text style={styles.badgeText}>By editor</Text>
         </View>
         <ThumbRating
@@ -47,7 +47,7 @@ function Byeditorcard({title, lokasi, gambar, onPress, rating}) {
           {title}
         </Text>
         <View style={styles.inlineWrap}>
-          <Icon name="location" size={15} color="red" />
+          <Icon name="location" size={15} color="#CB4335" />
           <Text style={styles.caption}>{lokasi}</Text>
         </View>
       </TouchableOpacity>
