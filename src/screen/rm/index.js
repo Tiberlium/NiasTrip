@@ -167,14 +167,14 @@ const styles = StyleSheet.create({
   },
   wrapBtn: {
     borderTopWidth: 1,
-    paddingTop: 7,
+    paddingVertical: 5,
     borderTopColor: '#C8C8C8',
     width: wp(100),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignSelf: 'center',
-    marginTop: hp(3),
+    marginTop: hp(7),
   },
   inlineWrap_1: {
     display: 'flex',
