@@ -31,6 +31,7 @@
     "react-native-maps": "0.29.4",
     "react-native-numeric-input": "^1.9.0",
     "react-native-qrcode-svg": "^6.1.2",
+    "react-native-ratings": "^8.1.0",
     "react-native-responsive-screen": "^1.4.2",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.9.0",

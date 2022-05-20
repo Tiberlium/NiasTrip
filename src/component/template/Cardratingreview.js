@@ -6,14 +6,16 @@ import {
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function Cardratingreview({onPress,marginTop}) {
+export default function Cardratingreview({onPress, marginTop}) {
   return (
-    <Pressable style={[styles.container,{marginTop:marginTop}]} onPress={onPress}>
+    <Pressable
+      style={[styles.container, {marginTop: marginTop}]}
+      onPress={onPress}>
       <Image
         source={require('../../asset/peopleicon.png')}
         style={styles.img}
       />
-      <Text style={styles.txt}>Rating & Review</Text>
+      <Text style={styles.txt}>Rating & Ulasan</Text>
       <View style={styles.wrap}>
         <Icon
           name="chevron-forward"
@@ -25,7 +27,6 @@ export default function Cardratingreview({onPress,marginTop}) {
     </Pressable>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     height: hp(8),

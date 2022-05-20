@@ -18,6 +18,7 @@ import {
   Tiketpricelabel,
   ThumbRating,
   Cardratingreview,
+  Ratingreview,
 } from '../../component';
 import {
   heightPercentageToDP as hp,
@@ -30,6 +31,7 @@ export default function Eventdetail({navigation, route}) {
   const [Latitude, setLatitude] = useState(0);
   const [Longitude, setLongitude] = useState(0);
   const isMounted = useRef();
+  const isOpen = useRef();
 
   async function Get() {
     const docRef = await firestore()
@@ -87,7 +89,10 @@ export default function Eventdetail({navigation, route}) {
           rating={5}
           marginLeft={20}
         />
-        <Cardratingreview marginTop={30} />
+        <Cardratingreview
+          marginTop={30}
+          onPress={() => isOpen.current?.show()}
+        />
         <Text style={styles.headline}>Deskripsi</Text>
         <Pressable onPress={showFullDesc}>
           <Text style={styles.subtitle} numberOfLines={3} ellipsizeMode="tail">
@@ -131,6 +136,7 @@ export default function Eventdetail({navigation, route}) {
           <Tiketpricelabel harga={Data.Harga} />
           <Btntiket onPress={() => alert('halo bangsat')} />
         </View>
+        <Ratingreview refs={isOpen} />
       </>
     </View>
   );
