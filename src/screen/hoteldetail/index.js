@@ -17,7 +17,7 @@ import {
 } from 'react-native-responsive-screen';
 import {
   Btnback,
-  Btnbookmark2,
+  Btnbookmark,
   Btnlocation,
   Facilitychip,
   Thumbgallery,
@@ -85,10 +85,7 @@ export default function Hoteldetail({navigation, route}) {
     <View style={styles.container}>
       <ScrollView>
         <Image source={{uri: Data['Gambar']}} style={styles.img} />
-        <View style={styles.headerContainer}>
-          <Btnback onPress={() => navigation.goBack()} />
-          <Btnbookmark2 onPress={addBookmark} />
-        </View>
+        <Btnback onPress={() => navigation.goBack()} />
         <View style={styles.headerContainer2}>
           <View style={styles.inlineWrap}>
             <Text style={styles.title}>{Data.Nama}</Text>
@@ -150,7 +147,8 @@ export default function Hoteldetail({navigation, route}) {
         />
         <Actionsheet refs={Actionref} data={Data} />
       </ScrollView>
-      <View>
+      <View style={styles.footerContainer}>
+        <Btnbookmark onPress={addBookmark} />
         <Btnpesanslide onPress={() => Actionref.current?.show()} />
       </View>
     </View>
@@ -167,11 +165,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     padding: 10,
-  },
-  headerContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
   },
   headerContainer2: {
     display: 'flex',
@@ -220,5 +213,15 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     color: 'black',
     fontWeight: '300',
+  },
+  footerContainer: {
+    borderTopWidth: 1,
+    paddingVertical: 4,
+    borderTopColor: '#C8C8C8',
+    width: wp(100),
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignSelf: 'center',
   },
 });

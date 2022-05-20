@@ -7,7 +7,7 @@ export default function Btnpesanslide({onPress}) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress} style={styles.inlineContainer}>
-        <Icon name="chevron-up-circle" size={30} color="#FF5F7E" />
+        <Icon name="chevron-up-circle" size={21} color="#FF5F7E" />
         <Text style={styles.txt}>Pesan sekarang</Text>
       </TouchableOpacity>
     </View>
@@ -16,15 +16,14 @@ export default function Btnpesanslide({onPress}) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 50,
-    width: 180,
+    height: 40,
+    width: 200,
     backgroundColor: '#5FD680',
     padding: 10,
-    borderRadius: 15,
+    borderRadius: 10,
     margin: 5,
+    borderColor: 'grey',
     alignSelf: 'center',
-    alignItems: 'stretch',
-    borderColor:'grey'
   },
   inlineContainer: {
     display: 'flex',
@@ -33,6 +32,6 @@ const styles = StyleSheet.create({
   },
   txt: {
     color: 'white',
-    marginTop: heightPercentageToDP(0.7),
+    alignSelf:'center',
   },
 });
