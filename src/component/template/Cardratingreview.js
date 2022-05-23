@@ -40,15 +40,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     paddingTop: 10,
   },
-  img: {height: 40, width: 40},
+  img: {height: 40, width: 40, marginVertical: 5},
   txt: {
     color: 'grey',
     fontWeight: '400',
-    marginTop: 7,
+    marginVertical: 13,
   },
   icon: {
     alignSelf: 'center',
-    marginTop: 2.5,
+    marginTop: 4,
   },
   wrap: {
     width: 30,
@@ -57,6 +57,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 15,
     marginLeft: 20,
-    marginTop: 5,
+    marginVertical: 10,
   },
 });

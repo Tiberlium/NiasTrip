@@ -83,7 +83,7 @@ export default function Eventdetail({navigation, route}) {
           <Text style={styles.caption}>{Data.Kabupaten}</Text>
         </View>
         <ThumbRating
-          marginTop={hp(58)}
+          marginTop={hp(51)}
           colorIcon="orange"
           colorText="black"
           rating={5}
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   inlineWrap: {
-    marginTop: hp(40),
+    marginTop: hp(35),
     marginLeft: 20,
   },
   title: {color: 'black', fontWeight: 'bold', fontSize: 25},

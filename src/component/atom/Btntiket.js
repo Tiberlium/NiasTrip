@@ -20,10 +20,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#5FD680',
     alignItems: 'center',
     borderRadius: 10,
-    padding: 10,
     marginTop: 5,
   },
   txt: {
     color: 'white',
+    marginVertical: 15,
   },
 });
