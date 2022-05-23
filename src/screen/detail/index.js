@@ -91,7 +91,7 @@ export default function Detail({route, navigation}) {
           <ThumbRating
             colorText="black"
             colorIcon="orange"
-            marginTop={hp(60)}
+            marginTop={hp(53)}
             marginLeft={20}
             rating="4.3"
           />
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 35,
   },
   inlineWrap: {
-    marginTop: hp(42),
+    marginTop: hp(37),
     marginLeft: 20,
     marginBottom: 5,
   },
