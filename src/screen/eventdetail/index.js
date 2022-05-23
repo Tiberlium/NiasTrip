@@ -19,6 +19,7 @@ import {
   ThumbRating,
   Cardratingreview,
   Ratingreview,
+  Comment,
 } from '../../component';
 import {
   heightPercentageToDP as hp,

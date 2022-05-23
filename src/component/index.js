@@ -53,6 +53,7 @@ import EditorCard from './atom/EditorCard';
 import Cardratingreview from './template/Cardratingreview';
 import {Byeditorcard} from './template/Thumbcard';
 import Ratingreview from './template/Ratingreview';
+import Comment from './template/Comment';
 export {
   BtnNext,
   Txtinput,
@@ -109,4 +110,5 @@ export {
   Cardratingreview,
   Byeditorcard,
   Ratingreview,
+  Comment,
 };
