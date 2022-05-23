@@ -108,7 +108,7 @@ export default function Hoteldetail({navigation, route}) {
         <ThumbRating
           colorIcon="orange"
           colorText="black"
-          marginTop={hp(48.5)}
+          marginTop={hp(56)}
           marginLeft={20}
           rating={5}
         />
@@ -170,10 +170,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: hp(18),
+    marginTop: hp(29),
   },
   img: {
-    height: 250,
+    height: 350,
     width: wp(100),
     alignSelf: 'center',
     position: 'absolute',
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   inlineWrap: {
-    marginTop: hp(8),
+    marginTop: hp(7),
     marginLeft: 20,
   },
   title: {color: 'black', fontWeight: 'bold', fontSize: 25},

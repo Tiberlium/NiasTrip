@@ -158,5 +158,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 15,
   },
-  contentContainer: {paddingHorizontal: 5},
+  contentContainer: {alignSelf: 'center'},
 });

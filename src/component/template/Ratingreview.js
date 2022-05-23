@@ -16,7 +16,7 @@ export default function Ratingreview({refs}) {
         />
       </View>
       <Pressable style={styles.btn}>
-        <Text style={styles.btntxt}>Submit</Text>
+        <Text style={styles.btntxt}>Posting</Text>
       </Pressable>
     </ActionSheet>
   );
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   btn: {
     height: 40,
     width: 150,
-    backgroundColor: 'blue',
+    backgroundColor: '#339FFF',
     alignSelf: 'center',
     borderRadius: 10,
     margin: 10,

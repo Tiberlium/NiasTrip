@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   img: {
-    height: 370,
+    height: 390,
     width: wp(100),
     alignSelf: 'center',
     position: 'absolute',
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 35,
   },
   inlineWrap: {
-    marginTop: hp(42),
+    marginTop: hp(40),
     marginLeft: 20,
   },
   title: {color: 'black', fontWeight: 'bold', fontSize: 25},

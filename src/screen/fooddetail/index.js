@@ -88,7 +88,7 @@ export default function Fooddetail({navigation, route}) {
           colorText="black"
           colorIcon="orange"
           marginLeft={20}
-          marginTop={hp(60)}
+          marginTop={hp(54.5)}
         />
         <Cardratingreview marginTop={30} />
         <Text style={styles.headline0}>Deskripsi</Text>
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 35,
   },
   inlineWrap: {
-    marginTop: hp(42),
+    marginTop: hp(39),
     marginLeft: 20,
   },
   title: {color: 'black', fontWeight: 'bold', fontSize: 25},
