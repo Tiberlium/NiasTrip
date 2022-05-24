@@ -1,7 +1,6 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default function ThumbRating({
   colorText,

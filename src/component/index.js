@@ -54,6 +54,7 @@ import Cardratingreview from './template/Cardratingreview';
 import {Byeditorcard} from './template/Thumbcard';
 import Ratingreview from './template/Ratingreview';
 import Comment from './template/Comment';
+import Editordetail from './template/Editordetail';
 export {
   BtnNext,
   Txtinput,
@@ -111,4 +112,5 @@ export {
   Byeditorcard,
   Ratingreview,
   Comment,
+  Editordetail,
 };

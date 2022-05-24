@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import React from 'react';
-import {Btnback} from '../../component';
+import {Btnback, Editordetail} from '../../component';
 export default function Byeditor({navigation}) {
   return (
     <View>
@@ -8,6 +8,7 @@ export default function Byeditor({navigation}) {
         <Btnback onPress={() => navigation.goBack()} />
         <Text style={styles.txt}>Rekomendasi Editor</Text>
       </View>
+      <Editordetail/>
     </View>
   );
 }
