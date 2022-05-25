@@ -70,6 +70,7 @@ const stylesPass = StyleSheet.create({
     borderRadius: 7,
     position: 'absolute',
     color: 'black',
+    paddingLeft:20,
   },
   icon: {
     alignSelf: 'flex-end',

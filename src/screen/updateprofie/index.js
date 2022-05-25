@@ -199,6 +199,8 @@ export default function Updateprofile({navigation}) {
             data={gender}
             defaultButtonText="Pilih jenis kelamin"
             buttonStyle={styles.dropDown}
+            dropdownStyle={{borderRadius: 10}}
+            rowTextStyle={{fontSize: 15}}
             onSelect={selectedItem => setkelamin(selectedItem)}
             renderDropdownIcon={() => (
               <Icon name="chevron-down" size={25} color="#808080" />
