@@ -11,6 +11,7 @@ import SelectDropdown from 'react-native-select-dropdown';
 import Auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Storage from '@react-native-firebase/storage';
 import ActionSheet from 'react-native-actions-sheet';
 
 export default function Updateprofile({navigation}) {
@@ -44,10 +45,12 @@ export default function Updateprofile({navigation}) {
         <Text style={styles.sheetTitle}>Ubah foto profile</Text>
         <Widebtntext
           title="Buka dari Gallery"
+          iconname="image"
           onPress={() => choosePhotofromLibrary()}
         />
         <Widebtntext
           title="Buka dari Camera"
+          iconname="camera"
           onPress={() => takePhotofromCamera()}
         />
         <Widebtntext
