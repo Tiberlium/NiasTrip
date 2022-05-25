@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, ScrollView} from 'react-native';
+import {StyleSheet, Text, ScrollView} from 'react-native';
 import {firebase} from '@react-native-firebase/auth';
 import {Accountprofile, Blankavatar, Btnlogout} from '../../component';
 import {Cardsectionlist} from '../../component';
@@ -58,7 +58,13 @@ export default function Account() {
         desc="lihat versi aplikasi"
         onPress={() => navigation.navigate('About')}
       />
-      <Btnlogout onPress={() => signOut()} />
+      <Text style={styles.title}>Aksi</Text>
+      <Cardsectionlist
+        icon="log-out"
+        title="Log out"
+        desc="Keluarkan akun dari aplikasi"
+        onPress={() => signOut()}
+      />
     </ScrollView>
   );
 }

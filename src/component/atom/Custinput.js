@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     width: 300,
     alignSelf: 'center',
     borderRadius: 7,
+    color: 'black',
   },
 });
 
@@ -68,10 +69,11 @@ const stylesPass = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 7,
     position: 'absolute',
+    color: 'black',
   },
   icon: {
     alignSelf: 'flex-end',
-    marginRight: 50,
+    marginRight: 70,
     marginTop: 25,
   },
 });
