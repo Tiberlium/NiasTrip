@@ -40,7 +40,7 @@ const ChangeEmail = ({Emailchange}) => {
       <Text style={styles.subtitle}>Password</Text>
       <TextInput
         placeholder="Masukkan Password"
-        placeholderTextColor="black"
+        placeholderTextColor="grey"
         secureTextEntry={true}
         style={styles.txtI}
         value={currentPass}
@@ -49,7 +49,7 @@ const ChangeEmail = ({Emailchange}) => {
       <Text style={styles.subtitle}>Email Baru</Text>
       <TextInput
         placeholder="Masukkan Email Baru"
-        placeholderTextColor="black"
+        placeholderTextColor="grey"
         style={styles.txtI}
         value={Email}
         onChangeText={setEmail}
@@ -78,7 +78,7 @@ const ChangePass = ({passchange}) => {
       <Text style={styles.subtitle}>Sandi Lama</Text>
       <TextInput
         placeholder="Masukkan Sandi Lama"
-        placeholderTextColor="black"
+        placeholderTextColor="grey"
         secureTextEntry={true}
         style={styles.txtI}
         value={currentPass}
@@ -87,7 +87,7 @@ const ChangePass = ({passchange}) => {
       <Text style={styles.subtitle}>Sandi Baru</Text>
       <TextInput
         placeholder="Masukkan Sandi Baru"
-        placeholderTextColor="black"
+        placeholderTextColor="grey"
         secureTextEntry={true}
         style={styles.txtI}
         value={newPass}
@@ -155,10 +155,10 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   txtI: {
-    borderWidth: 1,
+    borderWidth: 0.2,
     borderColor: 'black',
     margin: 10,
-    borderRadius: 10,
+    borderRadius: 5,
   },
   btn: {
     alignSelf: 'center',

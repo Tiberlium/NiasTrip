@@ -18,12 +18,11 @@ export default function Btnsubmit({title, onPress}) {
 const styles = StyleSheet.create({
   wrap: {
     height: hp(7),
-    width: wp(80),
+    width: 300,
     backgroundColor: '#FF5F7E',
     borderRadius: 10,
     alignSelf: 'center',
-    marginTop: hp(5),
-    marginBottom:10,
+    marginVertical:10,
   },
-  txt: {color: 'white', fontSize: 20, alignSelf: 'center', marginTop: 10},
+  txt: {color: 'white', fontSize: 18, alignSelf: 'center', marginVertical: 15},
 });

@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
-import {View, ScrollView, StyleSheet, ToastAndroid} from 'react-native';
+import {View, ScrollView, StyleSheet, ToastAndroid, Text} from 'react-native';
 import {Btnsubmit, Txtinput} from '../../component';
 import SelectDropdown from 'react-native-select-dropdown';
 import Auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {widthPercentageToDP} from 'react-native-responsive-screen';
 
 export default function Updateprofile({navigation}) {
   const user = Auth().currentUser;
@@ -63,16 +62,20 @@ export default function Updateprofile({navigation}) {
           onChangeText={setnama}
           value={nama}
         />
-        <SelectDropdown
-          data={gender}
-          defaultButtonText="Pilih jenis kelamin"
-          buttonStyle={styles.dropDown}
-          onSelect={selectedItem => setkelamin(selectedItem)}
-          renderDropdownIcon={() => (
-            <Icon name="chevron-down" size={25} color="#808080" />
-          )}
-          buttonTextStyle={styles.txtstyle}
-        />
+        <View style={styles.dropdownwrap}>
+          <Text style={styles.lbldropdown}>Jenis Kelamin</Text>
+          <SelectDropdown
+            data={gender}
+            defaultButtonText="Pilih jenis kelamin"
+            buttonStyle={styles.dropDown}
+            onSelect={selectedItem => setkelamin(selectedItem)}
+            renderDropdownIcon={() => (
+              <Icon name="chevron-down" size={25} color="#808080" />
+            )}
+            buttonTextStyle={styles.txtstyle}
+          />
+        </View>
+
         <Txtinput
           label="HP"
           placeholder="Masukkan HP disini"
@@ -81,7 +84,7 @@ export default function Updateprofile({navigation}) {
         />
         <Txtinput
           label="Email"
-          placeholder="Masukkan Email disini"
+          placeholder="Masukkan Email di sini"
           onChangeText={setEmail}
           value={email}
         />
@@ -114,14 +117,16 @@ export default function Updateprofile({navigation}) {
 
 const styles = StyleSheet.create({
   container: {backgroundColor: 'white'},
+  dropdownwrap: {alignSelf: 'center'},
   dropDown: {
     borderWidth: 0.5,
     borderColor: '#808080',
-    width: widthPercentageToDP(80),
+    width: 300,
     marginTop: 15,
     alignSelf: 'center',
     borderRadius: 10,
     backgroundColor: 'white',
   },
-  txtstyle:{fontWeight: '300', fontSize: 15}
+  lbldropdown: {color: 'black', fontWeight: 'bold', fontSize: 16},
+  txtstyle: {fontWeight: '300', fontSize: 15},
 });

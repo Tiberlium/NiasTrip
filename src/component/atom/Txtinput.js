@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default function Txtinput({
   label,
@@ -15,8 +14,10 @@ export default function Txtinput({
       <TextInput
         placeholder={placeholder}
         onChangeText={onChangeText}
+        placeholderTextColor="grey"
         value={value}
         secureTextEntry={secure}
+        style={styles.txtinput}
       />
     </View>
   );
@@ -26,9 +27,13 @@ const styles = StyleSheet.create({
   wrap: {
     alignSelf: 'center',
     width: 300,
-    borderBottomColor: 'black',
-    borderBottomWidth: 0.5,
-    marginTop: hp(5),
+    marginVertical:10
   },
-  label: {fontSize: 15, fontWeight: 'bold', color: 'black',},
+  label: {fontSize: 15, fontWeight: 'bold', color: 'black'},
+  txtinput: {
+    borderWidth: 0.2,
+    borderColor: 'black',
+    borderRadius: 5,
+    marginTop: 5,
+  },
 });
