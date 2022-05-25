@@ -1,11 +1,19 @@
 import React, {useState, useRef} from 'react';
-import {View, ScrollView, StyleSheet, ToastAndroid, Text} from 'react-native';
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  ToastAndroid,
+  Text,
+  PermissionsAndroid,
+} from 'react-native';
 import {
   Btnsubmit,
   Txtinput,
   Imageprofile,
   Btntext,
   Widebtntext,
+  Blankavatar,
 } from '../../component';
 import SelectDropdown from 'react-native-select-dropdown';
 import Auth from '@react-native-firebase/auth';
@@ -13,6 +21,7 @@ import firestore from '@react-native-firebase/firestore';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Storage from '@react-native-firebase/storage';
 import ActionSheet from 'react-native-actions-sheet';
+import ImagePicker from 'react-native-image-crop-picker';
 
 export default function Updateprofile({navigation}) {
   const user = Auth().currentUser;
@@ -60,6 +69,77 @@ export default function Updateprofile({navigation}) {
       </ActionSheet>
     );
   };
+
+  async function changeImageProfile(uri) {
+    user.updateProfile({
+      photoURL: uri,
+    });
+  }
+
+  async function choosePhotofromLibrary() {
+    ImagePicker.openPicker({
+      width: 100,
+      height: 100,
+      cropping: true,
+      compressImageQuality: 0.7,
+    })
+      .then(image => {
+        actionSheetRef.current?.hide();
+        const imageUri = image.path;
+        let filename = imageUri.substring(imageUri.lastIndexOf('/' + 1));
+        const storageRef = Storage().ref(`Profile/${filename}`);
+        storageRef.putFile(imageUri);
+        const task = storageRef.putFile(imageUri);
+
+        task.then(async () => {
+          await task;
+          let uri = await storageRef.getDownloadURL();
+          changeImageProfile(uri);
+        });
+      })
+      .catch(e => {
+        return null;
+      });
+  }
+
+  async function takePhotofromCamera() {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+          title: 'NiasTrip',
+          message: 'NiasTrip access to your camera',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        ImagePicker.openCamera({
+          compressImageMaxHeight: 300,
+          compressImageMaxWidth: 300,
+          cropping: true,
+          compressImageQuality: 0.7,
+        })
+          .then(image => {
+            const imageUri = image.path;
+            actionSheetRef.current?.hide();
+            let fileName = imageUri.substring(imageUri.lastIndexOf('/') + 1);
+            const storageRef = Storage().ref(`Profile/${fileName}`);
+            storageRef.putFile(imageUri);
+            const task = storageRef.putFile(imageUri);
+
+            task.then(async () => {
+              await task;
+              let uri = await storageRef.getDownloadURL();
+              changeImageProfile(uri);
+            });
+          })
+          .catch(e => console.log(e));
+      } else {
+        console.log('location Permisson denied');
+      }
+    } catch (e) {
+      return null;
+    }
+  }
 
   const optionalData = {
     img: user.photoURL,
