@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   sideWrap: {
-    marginRight: 10,
+    marginRight: 2,
     position: 'relative',
   },
   btnContainer: {

@@ -21,6 +21,7 @@ import firestore from '@react-native-firebase/firestore';
 
 export default function Home() {
   const [Data, setData] = useState([]);
+  const [Data2, setData2] = useState([]);
 
   const isMounted = useRef();
 
@@ -39,9 +40,34 @@ export default function Home() {
     if (isMounted.current) return setData(y);
   }
 
+  async function Get2() {
+    let x = [];
+
+    const docRef = await firestore()
+      .collection('Wisata')
+      .where('Rekomendasi', '==', 'true')
+      .limit(2)
+      .get();
+
+    docRef.docs.map(doc => {
+      x.push({
+        id: doc.id,
+        data: doc.data(),
+      });
+    });
+
+    if (isMounted.current) return setData2(x);
+  }
+
   useEffect(() => {
     isMounted.current = true;
     Get();
+    return () => (isMounted.current = false);
+  }, []);
+
+  useEffect(() => {
+    isMounted.current = true;
+    Get2();
     return () => (isMounted.current = false);
   }, []);
 
@@ -74,7 +100,7 @@ export default function Home() {
         <FlatList
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          data={Data}
+          data={Data2}
           renderItem={({item}) => (
             <Byeditorcard
               title={item.data.Nama}
