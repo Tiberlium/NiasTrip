@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, FlatList,SafeAreaView} from 'react-native';
+import {View, Text, StyleSheet, FlatList, SafeAreaView} from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import {Btnback, Allcard} from '../../component';
 import firestore from '@react-native-firebase/firestore';
@@ -33,16 +33,15 @@ export default function Eventgroup({navigation}) {
       </View>
       <FlatList
         data={Data}
+        contentContainerStyle={styles.container}
         renderItem={({item}) => (
-          <SafeAreaView style={styles.container}>
-            <Allcard
-              title={item.data.Nama}
-              gambar={item.data.Gambar}
-              kota={item.data.Kategori}
-              kabupaten={item.data.Kabupaten}
-              onPress={() => navigation.navigate('Eventdetail', {id: item.id})}
-            />
-          </SafeAreaView>
+          <Allcard
+            title={item.data.Nama}
+            gambar={item.data.Gambar}
+            kota={item.data.Kategori}
+            kabupaten={item.data.Kabupaten}
+            onPress={() => navigation.navigate('Eventdetail', {id: item.id})}
+          />
         )}
       />
     </View>
@@ -50,7 +49,7 @@ export default function Eventgroup({navigation}) {
 }
 
 const styles = StyleSheet.create({
-  container: {flex: 1},
+  container: {paddingBottom: 100},
   txt: {fontSize: 25, fontWeight: '500', color: 'black', marginTop: 15},
   inlineWrap: {display: 'flex', flexDirection: 'row'},
 });

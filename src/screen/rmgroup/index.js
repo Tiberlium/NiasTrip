@@ -34,6 +34,7 @@ export default function Rmgroup({navigation}) {
 
       <FlatList
         data={data}
+        contentContainerStyle={styles.container}
         renderItem={({item, index}) => (
           <View key={index}>
             <Allcard2
@@ -50,7 +51,7 @@ export default function Rmgroup({navigation}) {
 }
 
 const styles = StyleSheet.create({
-  container: {flex: 1},
+  container: {paddingBottom:100},
   txt: {fontSize: 25, fontWeight: '500', color: 'black', marginTop: 15},
   inlineWrap: {display: 'flex', flexDirection: 'row'},
 });

@@ -34,15 +34,14 @@ export default function Makanangroup({navigation}) {
       </View>
       <FlatList
         data={Data}
-        renderItem={({item, index}) => (
-          <SafeAreaView style={styles.container}>
-            <Allcard2
-              title={item.data.Nama}
-              gambar={item.data.Gambar}
-              kategori={item.data.Kategori}
-              onPress={() => navigation.navigate('Fooddetail', {id: item.id})}
-            />
-          </SafeAreaView>
+        contentContainerStyle={styles.container}
+        renderItem={({item}) => (
+          <Allcard2
+            title={item.data.Nama}
+            gambar={item.data.Gambar}
+            kategori={item.data.Kategori}
+            onPress={() => navigation.navigate('Fooddetail', {id: item.id})}
+          />
         )}
       />
     </View>
@@ -52,5 +51,5 @@ export default function Makanangroup({navigation}) {
 const styles = StyleSheet.create({
   txt: {fontSize: 25, fontWeight: '500', color: 'black', marginTop: 15},
   inlineWrap: {display: 'flex', flexDirection: 'row'},
-  container:{},
+  container: {paddingBottom: 100},
 });

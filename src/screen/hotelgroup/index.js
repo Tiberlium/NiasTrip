@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, FlatList, SafeAreaView} from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import {Btnback, Allcard} from '../../component';
 import Firestore from '@react-native-firebase/firestore';
@@ -34,16 +34,15 @@ export default function Hotelgroup({navigation}) {
       <FlatList
         keyExtractor={item => item.id}
         data={Data}
-        renderItem={({item, index}) => (
-          <SafeAreaView style={styles.container}>
-            <Allcard
-              title={item.data.Nama}
-              kota={item.data.Kabupaten}
-              kabupaten={item.data.Kategori}
-              gambar={item.data.Gambar}
-              onPress={() => navigation.navigate('Hoteldetail', {id: item.id})}
-            />
-          </SafeAreaView>
+        contentContainerStyle={styles.container}
+        renderItem={({item}) => (
+          <Allcard
+            title={item.data.Nama}
+            kota={item.data.Kabupaten}
+            kabupaten={item.data.Kategori}
+            gambar={item.data.Gambar}
+            onPress={() => navigation.navigate('Hoteldetail', {id: item.id})}
+          />
         )}
       />
     </View>
@@ -53,5 +52,5 @@ export default function Hotelgroup({navigation}) {
 const styles = StyleSheet.create({
   wrap: {display: 'flex', flexDirection: 'row'},
   txt: {fontSize: 25, fontWeight: '500', color: 'black', marginTop: 15},
-  container: {flex: 1},
+  container: {paddingBottom: 100},
 });
