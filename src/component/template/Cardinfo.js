@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     alignSelf: 'center',
     padding: 20,
-    marginTop: 20,
+    marginTop: 50,
   },
   wrap: {
     display: 'flex',
