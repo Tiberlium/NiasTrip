@@ -1,10 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {View, ScrollView, StyleSheet, ToastAndroid, Text} from 'react-native';
-import {Btnsubmit, Txtinput} from '../../component';
+import {
+  Btnsubmit,
+  Txtinput,
+  Imageprofile,
+  Btntext,
+  Widebtntext,
+} from '../../component';
 import SelectDropdown from 'react-native-select-dropdown';
 import Auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import Icon from 'react-native-vector-icons/Ionicons';
+import ActionSheet from 'react-native-actions-sheet';
 
 export default function Updateprofile({navigation}) {
   const user = Auth().currentUser;
@@ -17,6 +24,39 @@ export default function Updateprofile({navigation}) {
   const [kota, setkota] = useState(user.city || '');
   const [email, setEmail] = useState(user.email || '');
   const [Kewarganegaraan, setKewarganegaraan] = useState(user.nation || '');
+  const actionSheetRef = useRef();
+
+  const Avatar = () => {
+    return (
+      <View>
+        {user.photoURL ? (
+          <Imageprofile uri={user.photoURL} />
+        ) : (
+          <Blankavatar height={100} width={100} upDown={10} />
+        )}
+      </View>
+    );
+  };
+
+  const Sheet = ({refs}) => {
+    return (
+      <ActionSheet ref={refs} bounceOnOpen={true}>
+        <Text style={styles.sheetTitle}>Ubah foto profile</Text>
+        <Widebtntext
+          title="Buka dari Gallery"
+          onPress={() => choosePhotofromLibrary()}
+        />
+        <Widebtntext
+          title="Buka dari Camera"
+          onPress={() => takePhotofromCamera()}
+        />
+        <Widebtntext
+          title="Batal"
+          onPress={() => actionSheetRef.current?.hide()}
+        />
+      </ActionSheet>
+    );
+  };
 
   const optionalData = {
     img: user.photoURL,
@@ -56,6 +96,14 @@ export default function Updateprofile({navigation}) {
   return (
     <View style={styles.container}>
       <ScrollView>
+        <Avatar />
+        <View style={styles.btntext}>
+          <Btntext
+            title="Ubah foto profil"
+            color="#FF5F7E"
+            onPress={() => actionSheetRef.current?.show()}
+          />
+        </View>
         <Txtinput
           label="Nama"
           placeholder="Masukkan nama disini"
@@ -111,12 +159,14 @@ export default function Updateprofile({navigation}) {
           }}
         />
       </ScrollView>
+      <Sheet refs={actionSheetRef} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {backgroundColor: 'white'},
+  btntext: {alignSelf: 'center', marginTop: 10, marginBottom: 30},
   dropdownwrap: {alignSelf: 'center'},
   dropDown: {
     borderWidth: 0.5,
@@ -129,4 +179,11 @@ const styles = StyleSheet.create({
   },
   lbldropdown: {color: 'black', fontWeight: 'bold', fontSize: 16},
   txtstyle: {fontWeight: '300', fontSize: 15},
+  sheetTitle: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: 'black',
+    fontSize: 20,
+    marginVertical: 10,
+  },
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 
-export default function Widebtntext({onPress,title}) {
+export default function Widebtntext({onPress, title}) {
   return (
     <View>
       <TouchableOpacity style={styles.btn} onPress={onPress}>
@@ -14,17 +14,18 @@ export default function Widebtntext({onPress,title}) {
 const styles = StyleSheet.create({
   btn: {
     width: 350,
-    height: 50,
+    height: 40,
     backgroundColor: '#FF5F7E',
-    alignSelf:'center',
-    padding:6,
-    margin:10,
-    borderRadius:10,
+    alignSelf: 'center',
+    padding: 6,
+    margin: 10,
+    borderRadius: 10,
   },
-  txt:{
-    color:'white',
-    fontWeight:'bold',
-    fontSize:20,
-    textAlign:'center',
-  }
+  txt: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
+    textAlign: 'center',
+    marginVertical: 2,
+  },
 });
