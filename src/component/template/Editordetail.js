@@ -4,26 +4,24 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function Editordetail({url, title, desc, onPress}) {
   return (
-    <View style={{flex: 1}}>
-      <Pressable style={styles.container} onPress={onPress}>
-        <>
-          <View style={styles.inlineContainer}>
-            <Image source={{uri: url}} style={styles.img} />
-            <View>
-              <Text style={styles.title}>{title}</Text>
-              <View style={styles.wraplogo}>
-                <Icon name="flash" size={15} color="white" />
-                <Text style={styles.txticon}>By editor</Text>
-              </View>
+    <Pressable style={styles.container} onPress={onPress}>
+      <>
+        <View style={styles.inlineContainer}>
+          <Image source={{uri: url}} style={styles.img} />
+          <View>
+            <Text style={styles.title}>{title}</Text>
+            <View style={styles.wraplogo}>
+              <Icon name="flash" size={15} color="white" />
+              <Text style={styles.txticon}>By editor</Text>
             </View>
           </View>
-        </>
-        <>
-          <Text style={styles.subtitle}>Alasan Editor memilih ini :</Text>
-          <Text style={styles.caption}>{desc}</Text>
-        </>
-      </Pressable>
-    </View>
+        </View>
+      </>
+      <>
+        <Text style={styles.subtitle}>Alasan Editor memilih ini :</Text>
+        <Text style={styles.caption}>{desc}</Text>
+      </>
+    </Pressable>
   );
 }
 
@@ -34,7 +32,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.2,
     borderColor: 'grey',
     alignSelf: 'center',
-    borderRadius: 10,
+    borderRadius: 5,
     alignItems: 'baseline',
     display: 'flex',
     flexDirection: 'column',
