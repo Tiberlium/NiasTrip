@@ -240,6 +240,8 @@ export default function Updateprofile({navigation}) {
             handleChangeName();
             handleUpdateProfile();
           }}
+          top={10}
+          bottom={10}
         />
       </ScrollView>
       <Sheet refs={actionSheetRef} />
@@ -259,8 +261,14 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 10,
     backgroundColor: 'white',
+    marginVertical: 10,
   },
-  lbldropdown: {color: 'black', fontWeight: 'bold', fontSize: 16},
+  lbldropdown: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 16,
+    marginBottom: -5,
+  },
   txtstyle: {fontWeight: '300', fontSize: 15},
   sheetTitle: {
     textAlign: 'center',

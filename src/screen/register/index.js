@@ -100,7 +100,7 @@ export default function Register({navigation}) {
       <Horizontalline />
       <Custinput onChangeText={setEmail} value={Email} />
       <CustinputPass onChangeText={setPassword} value={Password} />
-      <Btnsubmit title="Register" onPress={Submit} />
+      <Btnsubmit title="Register" onPress={Submit} top={hp(10)}/>
       <Line />
       <View style={styles.wrapunregister}>
         <Text style={styles.register}>Have an Account ?</Text>

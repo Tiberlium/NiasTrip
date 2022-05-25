@@ -11,8 +11,8 @@ export default function Imageprofile({uri}) {
 
 const styles = StyleSheet.create({
   image: {
-    height: 100,
-    width: 100,
+    height: 80,
+    width: 80,
     borderRadius: 75,
     alignSelf: 'center',
     marginTop: 50,

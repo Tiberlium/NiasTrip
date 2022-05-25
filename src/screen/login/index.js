@@ -106,7 +106,7 @@ export default function Login({navigation}) {
       <Horizontalline />
       <Custinput onChangeText={setEmail} value={Email} />
       <CustinputPass onChangeText={setPassword} value={Password} />
-      <Btnsubmit title="Login" onPress={Submit} />
+      <Btnsubmit title="Login" onPress={Submit} top={hp(10)} />
       <View style={styles.forget}>
         <Btntext
           title="Forgot Password ?"

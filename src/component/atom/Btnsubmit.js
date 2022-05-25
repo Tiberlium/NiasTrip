@@ -5,10 +5,12 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 
-export default function Btnsubmit({title, onPress}) {
+export default function Btnsubmit({title, onPress, top, bottom}) {
   return (
     <View>
-      <TouchableOpacity style={styles.wrap} onPress={onPress}>
+      <TouchableOpacity
+        style={[styles.wrap, {marginTop: top, marginBottom: bottom}]}
+        onPress={onPress}>
         <Text style={styles.txt}>{title}</Text>
       </TouchableOpacity>
     </View>
@@ -22,7 +24,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF5F7E',
     borderRadius: 10,
     alignSelf: 'center',
-    marginTop: hp(5),
   },
   txt: {color: 'white', fontSize: 18, alignSelf: 'center', marginVertical: 15},
 });

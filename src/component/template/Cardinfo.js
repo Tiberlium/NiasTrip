@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     alignSelf: 'center',
     padding: 20,
+    marginTop: 20,
   },
   wrap: {
     display: 'flex',
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 10,
   },
-  txtProperty: {fontSize: 15, color: 'black',fontWeight:'300'},
+  txtProperty: {fontSize: 15, color: 'black', fontWeight: '300'},
   txtValue: {fontSize: 15, fontWeight: '500', color: 'black'},
   btn: {
     width: 300,
@@ -71,13 +72,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: '#FF5F7E',
     borderWidth: 1,
-    marginTop:20,
+    marginTop: 20,
   },
   btnicon: {margin: 5},
   txtbtn: {
     textAlign: 'center',
     color: '#FF5F7E',
     fontSize: 15,
-    marginTop:12,
+    marginTop: 12,
   },
 });
