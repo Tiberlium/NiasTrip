@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
     borderRadius: 5,
     height: 100,
+    paddingLeft: 10,
   },
   btn: {
     height: 40,
