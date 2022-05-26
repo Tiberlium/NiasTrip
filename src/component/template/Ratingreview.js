@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     marginVertical: 20,
     marginHorizontal: 30,
-    borderRadius: 10,
+    borderRadius: 5,
     height: 100,
   },
   btn: {
