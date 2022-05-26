@@ -1,5 +1,5 @@
 import {Text, StyleSheet, Pressable, TextInput, View} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import ActionSheet from 'react-native-actions-sheet';
 import {Rating} from 'react-native-ratings';
 
