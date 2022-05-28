@@ -11,7 +11,8 @@ import ActionSheet from 'react-native-actions-sheet';
 import {Rating} from 'react-native-ratings';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function Ratingreview({refs}) {
+export default function Ratingreview({refs, comment, edit, posting}) {
+  let data = comment;
   const Postreview = () => (
     <View>
       <Text style={styles.txt}>Berikan Ulasan anda</Text>
@@ -23,7 +24,7 @@ export default function Ratingreview({refs}) {
           multiline={true}
         />
       </View>
-      <Pressable style={styles.btn}>
+      <Pressable style={styles.btn} onPress={posting}>
         <Text style={styles.btntxt}>Posting</Text>
       </Pressable>
     </View>
@@ -51,14 +52,14 @@ export default function Ratingreview({refs}) {
         since the 1500s, when an unknown printer took a galley of type and
         scrambled it to make a type specimen book.
       </Text>
-      <Pressable>
+      <Pressable onPress={edit}>
         <Text style={styles2.txtbutton}>Edit ulasan</Text>
       </Pressable>
     </View>
   );
   return (
     <ActionSheet ref={refs}>
-      <Alterreview />
+      {data !== null ? <Postreview /> : <Alterreview />}
     </ActionSheet>
   );
 }

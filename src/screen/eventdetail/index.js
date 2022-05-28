@@ -70,6 +70,14 @@ export default function Eventdetail({navigation, route}) {
   function showFullDesc() {
     Alert.alert('Deskripsi', Data['Deskripsi']);
   }
+
+  function Postreview() {
+    alert('ini post comment');
+  }
+
+  function Editreview() {
+    alert('ini edit comment');
+  }
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -136,7 +144,7 @@ export default function Eventdetail({navigation, route}) {
           <Tiketpricelabel harga={Data.Harga} />
           <Btntiket onPress={() => alert('halo bangsat')} />
         </View>
-        <Ratingreview refs={isOpen} />
+        <Ratingreview refs={isOpen} edit={Editreview} posting={Postreview} />
       </>
     </View>
   );
