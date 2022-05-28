@@ -62,7 +62,7 @@ export default function Payment({route, navigation}) {
     docRef
       .get()
       .then(doc => {
-        if (doc.get('order') != null) {
+        if (doc.get('reservation') != null) {
           docRef.update({
             reservation: firestore.FieldValue.arrayUnion({
               orderId: Data.orderId,

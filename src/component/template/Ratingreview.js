@@ -8,23 +8,40 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import ActionSheet from 'react-native-actions-sheet';
-import {Rating} from 'react-native-ratings';
+import StarRating from 'react-native-star-rating';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function Ratingreview({refs, comment, edit, posting}) {
+  const [rating, setrating] = useState(0);
+  const [review, setreview] = useState('');
   let data = comment;
+
+  function post() {
+    posting(rating, review);
+    setrating(0);
+    setreview('');
+  }
   const Postreview = () => (
     <View>
       <Text style={styles.txt}>Berikan Ulasan anda</Text>
-      <Rating showRating imageSize={30} />
+      <StarRating
+        maxStars={5}
+        starSize={30}
+        rating={rating}
+        selectedStar={setrating}
+        containerStyle={styles.ratingContainer}
+      />
       <View style={styles.input}>
         <TextInput
           placeholder="Tuliskan Pengalaman anda"
           placeholderTextColor="grey"
           multiline={true}
+          value={review}
+          onChangeText={setreview}
+          style={{color: 'black'}}
         />
       </View>
-      <Pressable style={styles.btn} onPress={posting}>
+      <Pressable style={styles.btn} onPress={post}>
         <Text style={styles.btntxt}>Posting</Text>
       </Pressable>
     </View>
@@ -107,6 +124,7 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlign: 'center',
   },
+  ratingContainer: {paddingHorizontal: 70, paddingVertical: 10},
   input: {
     borderWidth: 0.2,
     borderColor: 'black',

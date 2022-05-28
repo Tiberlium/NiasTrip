@@ -11,6 +11,7 @@ import {
 import React, {useState, useEffect, useRef} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 import {
   Btnback,
   Btnbookmark2,
@@ -71,13 +72,43 @@ export default function Eventdetail({navigation, route}) {
     Alert.alert('Deskripsi', Data['Deskripsi']);
   }
 
-  function Postreview() {
-    alert('ini post comment');
+  async function Postreview(rating, review) {
+    const docRef = await firestore().collection('Event').doc(route.params.id);
+
+    docRef.get().then(doc => {
+      if (doc.get('Review') != null) {
+        docRef.update({
+          Review: firestore.FieldValue.arrayUnion({
+            Id: auth().currentUser.uid,
+            Image: auth().currentUser.photoURL,
+            Name: auth().currentUser.displayName,
+            Review: review,
+            Rating: rating,
+          }),
+        });
+      } else {
+        docRef.set(
+          {
+            Review: [
+              {
+                Id: auth().currentUser.uid,
+                Image: auth().currentUser.photoURL,
+                Name: auth().currentUser.displayName,
+                Review: review,
+                Rating: rating,
+              },
+            ],
+          },
+          {merge: true},
+        );
+      }
+    });
   }
 
   function Editreview() {
     alert('ini edit comment');
   }
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -144,7 +175,11 @@ export default function Eventdetail({navigation, route}) {
           <Tiketpricelabel harga={Data.Harga} />
           <Btntiket onPress={() => alert('halo bangsat')} />
         </View>
-        <Ratingreview refs={isOpen} edit={Editreview} posting={Postreview} />
+        <Ratingreview
+          refs={isOpen}
+          edit={Editreview}
+          posting={(rating, review) => Postreview(rating, review)}
+        />
       </>
     </View>
   );
