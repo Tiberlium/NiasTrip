@@ -109,10 +109,7 @@ export default function Eventdetail({navigation, route}) {
     Get();
   }
 
-  function Editreview() {
-    alert('ini edit comment');
-  }
-
+  
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -181,7 +178,6 @@ export default function Eventdetail({navigation, route}) {
         </View>
         <Ratingreview
           refs={isOpen}
-          edit={Editreview}
           posting={(rating, review) => Postreview(rating, review)}
           ulasan={Ulasan}
         />

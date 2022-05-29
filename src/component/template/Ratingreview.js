@@ -6,17 +6,15 @@ import {
   View,
   Image,
 } from 'react-native';
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import ActionSheet from 'react-native-actions-sheet';
 import StarRating from 'react-native-star-rating';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Auth from '@react-native-firebase/auth';
 
-export default function Ratingreview({refs, ulasan, edit, posting}) {
+export default function Ratingreview({refs, ulasan, posting}) {
   const [rating, setrating] = useState(0);
   const [review, setreview] = useState('');
-  const mode = useRef();
-
   let rawdata = ulasan ?? false;
 
   let data = rawdata.filter(doc => doc.Id === Auth().currentUser.uid);
@@ -26,8 +24,10 @@ export default function Ratingreview({refs, ulasan, edit, posting}) {
     setrating(0);
     setreview('');
   }
+
+
   const Postreview = () => (
-    <View ref={(mode.current = false)}>
+    <View>
       <Text style={styles.txt}>Berikan Ulasan anda</Text>
       <StarRating
         maxStars={5}
