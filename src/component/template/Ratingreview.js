@@ -6,15 +6,20 @@ import {
   View,
   Image,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import ActionSheet from 'react-native-actions-sheet';
 import StarRating from 'react-native-star-rating';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Auth from '@react-native-firebase/auth';
 
-export default function Ratingreview({refs, comment, edit, posting}) {
+export default function Ratingreview({refs, ulasan, edit, posting}) {
   const [rating, setrating] = useState(0);
   const [review, setreview] = useState('');
-  let data = comment;
+  const mode = useRef();
+
+  let rawdata = ulasan ?? false;
+
+  let data = rawdata.filter(doc => doc.Id === Auth().currentUser.uid);
 
   function post() {
     posting(rating, review);
@@ -22,7 +27,7 @@ export default function Ratingreview({refs, comment, edit, posting}) {
     setreview('');
   }
   const Postreview = () => (
-    <View>
+    <View ref={(mode.current = false)}>
       <Text style={styles.txt}>Berikan Ulasan anda</Text>
       <StarRating
         maxStars={5}
@@ -51,32 +56,24 @@ export default function Ratingreview({refs, comment, edit, posting}) {
     <View>
       <Text style={styles2.title}>Ulasan Anda</Text>
       <View style={styles2.wrap}>
-        <Image
-          source={{uri: 'https://placeimg.com/640/480/any'}}
-          style={styles2.img}
-        />
+        <Image source={{uri: data[0]['Image']}} style={styles2.img} />
         <View>
-          <Text style={styles2.txt}>Razor</Text>
+          <Text style={styles2.txt}>{data[0]['Name']}</Text>
           <View style={styles2.inlineWrap}>
             <Icon name="star" color="orange" size={20} />
-            <Text style={styles2.icontxt}>5</Text>
+            <Text style={styles2.icontxt}>{data[0]['Rating']}</Text>
           </View>
         </View>
       </View>
-      <Text style={styles2.caption}>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
-      </Text>
+      <Text style={styles2.caption}>{data[0]['Review']}</Text>
       <Pressable onPress={edit}>
         <Text style={styles2.txtbutton}>Edit ulasan</Text>
       </Pressable>
     </View>
   );
   return (
-    <ActionSheet ref={refs}>
-      {data !== null ? <Postreview /> : <Alterreview />}
+    <ActionSheet ref={refs} keyboardDismissMode="on-drag">
+      {data === null ? <Postreview /> : <Alterreview />}
     </ActionSheet>
   );
 }

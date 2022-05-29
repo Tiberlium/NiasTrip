@@ -31,6 +31,7 @@ export default function Eventdetail({navigation, route}) {
   const [Data, setData] = useState({});
   const [Latitude, setLatitude] = useState(0);
   const [Longitude, setLongitude] = useState(0);
+  const [Ulasan, setUlasan] = useState([]);
   const isMounted = useRef();
   const isOpen = useRef();
 
@@ -43,6 +44,7 @@ export default function Eventdetail({navigation, route}) {
       setData(docRef.data());
       setLatitude(docRef.data().Latitude);
       setLongitude(docRef.data().Longitude);
+      setUlasan(docRef.data().Review);
     }
   }
 
@@ -103,6 +105,8 @@ export default function Eventdetail({navigation, route}) {
         );
       }
     });
+    ToastAndroid.show('Ulasan anda berhasil di post', ToastAndroid.SHORT);
+    Get();
   }
 
   function Editreview() {
@@ -179,6 +183,7 @@ export default function Eventdetail({navigation, route}) {
           refs={isOpen}
           edit={Editreview}
           posting={(rating, review) => Postreview(rating, review)}
+          ulasan={Ulasan}
         />
       </>
     </View>
