@@ -12,7 +12,7 @@ import StarRating from 'react-native-star-rating';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Auth from '@react-native-firebase/auth';
 
-export default function Ratingreview({refs, ulasan, posting}) {
+export default function Ratingreview({refs, ulasan, posting,edit}) {
   const [rating, setrating] = useState(0);
   const [review, setreview] = useState('');
   let rawdata = ulasan ?? false;
