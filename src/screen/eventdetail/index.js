@@ -113,6 +113,7 @@ export default function Eventdetail({navigation, route}) {
 
     ToastAndroid.show('Ulasan anda berhasil di post', ToastAndroid.SHORT);
     Getyourcomment();
+    setisEdit(true);
   }
 
   async function Editreview() {
