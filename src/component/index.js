@@ -52,9 +52,10 @@ import ThumbRating from './atom/ThumbRating';
 import EditorCard from './atom/EditorCard';
 import Cardratingreview from './template/Cardratingreview';
 import {Byeditorcard} from './template/Thumbcard';
-import Ratingreview from './template/Ratingreview';
 import Comment from './template/Comment';
 import Editordetail from './template/Editordetail';
+import Postrating from './atom/Postrating';
+import Alterrating from './atom/Alterrating';
 export {
   BtnNext,
   Txtinput,
@@ -110,7 +111,8 @@ export {
   EditorCard,
   Cardratingreview,
   Byeditorcard,
-  Ratingreview,
   Comment,
   Editordetail,
+  Postrating,
+  Alterrating,
 };

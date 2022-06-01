@@ -12,6 +12,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
+import ActionSheet from 'react-native-actions-sheet';
 import {
   Btnback,
   Btnbookmark2,
@@ -19,7 +20,6 @@ import {
   Tiketpricelabel,
   ThumbRating,
   Cardratingreview,
-  Ratingreview,
 } from '../../component';
 import {
   heightPercentageToDP as hp,
@@ -44,14 +44,37 @@ export default function Eventdetail({navigation, route}) {
       setData(docRef.data());
       setLatitude(docRef.data().Latitude);
       setLongitude(docRef.data().Longitude);
-      setUlasan(docRef.data().Review);
     }
+  }
+
+  async function Getcomment() {
+    let x = [];
+    const docRef = await firestore()
+      .collection(`Event/${route.params.id}/Comment`)
+      .get();
+    docRef.docs.map(doc => {
+      if (doc.exists) {
+        x.push({
+          id: doc.id,
+          data: doc.data(),
+        });
+      } else {
+        return {};
+      }
+      if (isMounted.current) {
+        setUlasan(x);
+      }
+    });
   }
 
   useEffect(() => {
     isMounted.current = true;
     Get();
     return () => (isMounted.current = false);
+  }, []);
+
+  useEffect(() => {
+    Getcomment();
   }, []);
 
   function addBookmark() {
@@ -75,41 +98,23 @@ export default function Eventdetail({navigation, route}) {
   }
 
   async function Postreview(rating, review) {
-    const docRef = await firestore().collection('Event').doc(route.params.id);
+    const docRef = await firestore()
+      .collection('Event')
+      .doc(route.params.id)
+      .collection('Comment');
 
-    docRef.get().then(doc => {
-      if (doc.get('Review') != null) {
-        docRef.update({
-          Review: firestore.FieldValue.arrayUnion({
-            Id: auth().currentUser.uid,
-            Image: auth().currentUser.photoURL,
-            Name: auth().currentUser.displayName,
-            Review: review,
-            Rating: rating,
-          }),
-        });
-      } else {
-        docRef.set(
-          {
-            Review: [
-              {
-                Id: auth().currentUser.uid,
-                Image: auth().currentUser.photoURL,
-                Name: auth().currentUser.displayName,
-                Review: review,
-                Rating: rating,
-              },
-            ],
-          },
-          {merge: true},
-        );
-      }
+    docRef.add({
+      Id: auth().currentUser.uid,
+      Image: auth().currentUser.photoURL,
+      Name: auth().currentUser.displayName,
+      Review: review,
+      Rating: rating,
     });
+
     ToastAndroid.show('Ulasan anda berhasil di post', ToastAndroid.SHORT);
-    Get();
+    Getcomment();
   }
 
-  
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -176,11 +181,6 @@ export default function Eventdetail({navigation, route}) {
           <Tiketpricelabel harga={Data.Harga} />
           <Btntiket onPress={() => alert('halo bangsat')} />
         </View>
-        <Ratingreview
-          refs={isOpen}
-          posting={(rating, review) => Postreview(rating, review)}
-          ulasan={Ulasan}
-        />
       </>
     </View>
   );
