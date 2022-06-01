@@ -1,4 +1,5 @@
 import React from 'react';
+import {LogBox} from 'react-native';
 import Navigator from './src/navigator';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -40,6 +41,7 @@ const myTheme = {
 };
 
 export default function App() {
+   LogBox.ignoreLogs(["exported from 'deprecated-react-native-prop-types'."]);
   return (
     <NavigationContainer theme={myTheme}>
       <Tab.Navigator>

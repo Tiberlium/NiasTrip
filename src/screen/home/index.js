@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {Text, StyleSheet, FlatList, ScrollView} from 'react-native';
+import {Text, StyleSheet, FlatList, ScrollView, LogBox} from 'react-native';
 import {
   EditorCard,
   Listcategory,
@@ -20,6 +20,7 @@ import {
 import firestore from '@react-native-firebase/firestore';
 
 export default function Home() {
+  LogBox.ignoreLogs(["exported from 'deprecated-react-native-prop-types'."]);
   const [Data, setData] = useState([]);
   const [Data2, setData2] = useState([]);
 

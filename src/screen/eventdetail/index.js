@@ -36,14 +36,14 @@ export default function Eventdetail({navigation, route}) {
   const [Ulasan, setUlasan] = useState({});
   const [rating, setrating] = useState(0);
   const [review, setreview] = useState('');
+  const [isEdit, setisEdit] = useState(false);
   const isMounted = useRef();
   const isOpen = useRef();
+  const id = route.params.id;
+  const uid = auth().currentUser.uid;
 
   async function Get() {
-    const docRef = await firestore()
-      .collection('Event')
-      .doc(route.params.id)
-      .get();
+    const docRef = await firestore().collection('Event').doc(id).get();
     if (isMounted.current) {
       setData(docRef.data());
       setLatitude(docRef.data().Latitude);
@@ -54,12 +54,18 @@ export default function Eventdetail({navigation, route}) {
   async function Getyourcomment() {
     const docRef = await firestore()
       .collection('Event')
-      .doc(route.params.id)
+      .doc(id)
       .collection('Comment')
-      .doc(auth().currentUser.uid)
+      .doc(uid)
       .get();
 
-    docRef.exists ? setUlasan(docRef.data()) : {};
+    if (docRef.exists) {
+      setisEdit(true);
+      setUlasan(docRef.data());
+    } else {
+      setisEdit(false);
+      return {};
+    }
   }
 
   useEffect(() => {
@@ -110,7 +116,9 @@ export default function Eventdetail({navigation, route}) {
   }
 
   async function Editreview() {
-    alert('hallo edit');
+    setisEdit(false);
+    setreview(Ulasan.Review);
+    setrating(Ulasan.Rating);
   }
 
   return (
@@ -180,7 +188,7 @@ export default function Eventdetail({navigation, route}) {
           <Btntiket onPress={() => alert('halo bangsat')} />
         </View>
         <ActionSheet ref={isOpen}>
-          {Ulasan === null ? (
+          {!isEdit ? (
             <Postrating
               rating={rating}
               selectrating={setrating}
@@ -193,7 +201,7 @@ export default function Eventdetail({navigation, route}) {
               img={Ulasan.Image}
               title={Ulasan.Name}
               rating={Ulasan.Rating}
-              caption={Ulasan.Rating}
+              caption={Ulasan.Review}
               edit={Editreview}
             />
           )}
