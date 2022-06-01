@@ -1,4 +1,4 @@
-import {View, Text, Image, Pressable} from 'react-native';
+import {View, Text, Image, Pressable, StyleSheet} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -23,3 +23,38 @@ export default function Alterrating({img, title, rating, caption, edit}) {
     </View>
   );
 }
+
+const styles2 = StyleSheet.create({
+  title: {
+    fontWeight: 'bold',
+    fontSize: 24,
+    textAlign: 'center',
+    color: 'black',
+  },
+  wrap: {display: 'flex', flexDirection: 'row'},
+  img: {
+    height: 60,
+    width: 60,
+    marginLeft: 15,
+    borderRadius: 40,
+    marginTop: 10,
+    marginBottom: 10,
+    marginRight: 10,
+  },
+  txt: {fontWeight: 'bold', color: 'black', fontSize: 18, marginTop: 15},
+  icontxt: {color: 'black', fontWeight: 'bold', marginLeft: 5},
+  inlineWrap: {display: 'flex', flexDirection: 'row', marginTop: 5},
+  caption: {
+    fontWeight: '300',
+    color: 'black',
+    width: 400,
+    marginHorizontal: 20,
+  },
+  txtbutton: {
+    marginLeft: 20,
+    color: '#5E8AC6',
+    marginTop: 10,
+    marginBottom: 10,
+    textDecorationLine: 'underline',
+  },
+});

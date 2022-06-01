@@ -20,6 +20,8 @@ import {
   Tiketpricelabel,
   ThumbRating,
   Cardratingreview,
+  Postrating,
+  Alterrating,
 } from '../../component';
 import {
   heightPercentageToDP as hp,
@@ -31,7 +33,9 @@ export default function Eventdetail({navigation, route}) {
   const [Data, setData] = useState({});
   const [Latitude, setLatitude] = useState(0);
   const [Longitude, setLongitude] = useState(0);
-  const [Ulasan, setUlasan] = useState([]);
+  const [Ulasan, setUlasan] = useState({});
+  const [rating, setrating] = useState(0);
+  const [review, setreview] = useState('');
   const isMounted = useRef();
   const isOpen = useRef();
 
@@ -47,24 +51,15 @@ export default function Eventdetail({navigation, route}) {
     }
   }
 
-  async function Getcomment() {
-    let x = [];
+  async function Getyourcomment() {
     const docRef = await firestore()
-      .collection(`Event/${route.params.id}/Comment`)
+      .collection('Event')
+      .doc(route.params.id)
+      .collection('Comment')
+      .doc(auth().currentUser.uid)
       .get();
-    docRef.docs.map(doc => {
-      if (doc.exists) {
-        x.push({
-          id: doc.id,
-          data: doc.data(),
-        });
-      } else {
-        return {};
-      }
-      if (isMounted.current) {
-        setUlasan(x);
-      }
-    });
+
+    docRef.exists ? setUlasan(docRef.data()) : {};
   }
 
   useEffect(() => {
@@ -74,7 +69,7 @@ export default function Eventdetail({navigation, route}) {
   }, []);
 
   useEffect(() => {
-    Getcomment();
+    Getyourcomment();
   }, []);
 
   function addBookmark() {
@@ -97,14 +92,13 @@ export default function Eventdetail({navigation, route}) {
     Alert.alert('Deskripsi', Data['Deskripsi']);
   }
 
-  async function Postreview(rating, review) {
+  async function Postreview() {
     const docRef = await firestore()
       .collection('Event')
       .doc(route.params.id)
       .collection('Comment');
 
-    docRef.add({
-      Id: auth().currentUser.uid,
+    docRef.doc(auth().currentUser.uid).set({
       Image: auth().currentUser.photoURL,
       Name: auth().currentUser.displayName,
       Review: review,
@@ -112,7 +106,11 @@ export default function Eventdetail({navigation, route}) {
     });
 
     ToastAndroid.show('Ulasan anda berhasil di post', ToastAndroid.SHORT);
-    Getcomment();
+    Getyourcomment();
+  }
+
+  async function Editreview() {
+    alert('hallo edit');
   }
 
   return (
@@ -181,6 +179,25 @@ export default function Eventdetail({navigation, route}) {
           <Tiketpricelabel harga={Data.Harga} />
           <Btntiket onPress={() => alert('halo bangsat')} />
         </View>
+        <ActionSheet ref={isOpen}>
+          {Ulasan === null ? (
+            <Postrating
+              rating={rating}
+              selectrating={setrating}
+              review={review}
+              selectreview={setreview}
+              post={Postreview}
+            />
+          ) : (
+            <Alterrating
+              img={Ulasan.Image}
+              title={Ulasan.Name}
+              rating={Ulasan.Rating}
+              caption={Ulasan.Rating}
+              edit={Editreview}
+            />
+          )}
+        </ActionSheet>
       </>
     </View>
   );

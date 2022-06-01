@@ -4,9 +4,9 @@ import React from 'react';
 
 export default function Postrating({
   rating,
-  setrating,
+  selectrating,
   review,
-  setreview,
+  selectreview,
   post,
 }) {
   return (
@@ -16,7 +16,7 @@ export default function Postrating({
         maxStars={5}
         starSize={25}
         rating={rating}
-        selectedStar={setrating}
+        selectedStar={selectrating}
         containerStyle={styles.ratingContainer}
       />
       <View style={styles.input}>
@@ -25,12 +25,12 @@ export default function Postrating({
           placeholderTextColor="grey"
           multiline={true}
           value={review}
-          onChangeText={setreview}
+          onChangeText={selectreview}
           style={{color: 'black'}}
         />
       </View>
       <Pressable style={styles.btn} onPress={post}>
-        <Text style={styles.btntxt}>{btn}</Text>
+        <Text style={styles.btntxt}>Posting</Text>
       </Pressable>
     </View>
   );
