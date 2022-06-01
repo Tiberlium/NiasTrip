@@ -26,8 +26,8 @@ export default function Alterrating({img, title, rating, caption, edit}) {
 
 const styles2 = StyleSheet.create({
   title: {
-    fontWeight: 'bold',
-    fontSize: 24,
+    fontWeight: '500',
+    fontSize: 20,
     textAlign: 'center',
     color: 'black',
   },
@@ -41,7 +41,7 @@ const styles2 = StyleSheet.create({
     marginBottom: 10,
     marginRight: 10,
   },
-  txt: {fontWeight: 'bold', color: 'black', fontSize: 18, marginTop: 15},
+  txt: {fontWeight: '500', color: 'black', fontSize: 15, marginTop: 15},
   icontxt: {color: 'black', fontWeight: 'bold', marginLeft: 5},
   inlineWrap: {display: 'flex', flexDirection: 'row', marginTop: 5},
   caption: {
@@ -49,6 +49,7 @@ const styles2 = StyleSheet.create({
     color: 'black',
     width: 400,
     marginHorizontal: 20,
+    fontSize:14,
   },
   txtbutton: {
     marginLeft: 20,

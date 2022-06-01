@@ -60,8 +60,8 @@ export default function Eventdetail({navigation, route}) {
       .get();
 
     if (docRef.exists) {
-      setisEdit(true);
       setUlasan(docRef.data());
+      setisEdit(true);
     } else {
       setisEdit(false);
       return {};
