@@ -1,18 +1,65 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 import React from 'react';
-import {Btnback} from '../../component';
+import {Btnback, Comment} from '../../component';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import firestore from '@react-native-firebase/firestore';
 
-export default function Commentscreen({navigation}) {
+export default function Commentscreen({navigation, route}) {
+  const {collection, id} = route.params;
+  const [data, setdata] = React.useState([]);
+  const isMounted = React.useRef();
+
+  async function get() {
+    let x = [];
+    const docRef = await firestore()
+      .collection(collection)
+      .doc(id)
+      .collection('Comment')
+      .get();
+    docRef.docs.map(doc => {
+      doc.exists ? x.push({id: doc.id, data: doc.data()}) : {};
+    });
+    if (isMounted.current) return setdata(x);
+  }
+
+  const itemDivider = () => (
+    <View
+      style={{
+        height: 0.5,
+        width: '90%',
+        backgroundColor: '#607D8B',
+        alignSelf: 'center',
+      }}
+    />
+  );
+
+  React.useEffect(() => {
+    isMounted.current = true;
+    get();
+    return () => (isMounted.current = false);
+  }, []);
+
   return (
     <View>
       <View style={styles.wrap}>
         <Btnback onPress={() => navigation.goBack()} />
         <Text style={styles.headline}>Semua Komentar</Text>
       </View>
+      <FlatList
+        data={data}
+        ItemSeparatorComponent={itemDivider}
+        renderItem={({item}) => (
+          <Comment
+            photoURI={item.data.Image}
+            name={item.data.Name}
+            rating={item.data.Rating}
+            comment={item.data.Review}
+          />
+        )}
+      />
     </View>
   );
 }

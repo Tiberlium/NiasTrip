@@ -237,7 +237,7 @@ export default function Eventdetail({navigation, route}) {
           <Commentheader
             onPress={() => {
               isOpen.current?.hide();
-              navigation.navigate('Commentscreen');
+              navigation.navigate('Commentscreen', {collection: 'Event', id});
             }}
           />
           <View>
