@@ -29,6 +29,7 @@ import {
   Hotelgroup,
   Rmgroup,
   Byeditor,
+  Commentscreen,
 } from './src/screen';
 import {Btnhome, Btnhredirect} from './src/component';
 const Tab = createNativeStackNavigator();
@@ -41,7 +42,7 @@ const myTheme = {
 };
 
 export default function App() {
-   LogBox.ignoreLogs(["exported from 'deprecated-react-native-prop-types'."]);
+  LogBox.ignoreLogs(["exported from 'deprecated-react-native-prop-types'."]);
   return (
     <NavigationContainer theme={myTheme}>
       <Tab.Navigator>
@@ -163,6 +164,11 @@ export default function App() {
         <Tab.Screen
           name="Byeditor"
           component={Byeditor}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="Commentscreen"
+          component={Commentscreen}
           options={{headerShown: false}}
         />
         <Tab.Screen name="Rm" component={Rm} options={{headerShown: false}} />

@@ -28,6 +28,7 @@ import Rm from './rm';
 import Hotelgroup from './hotelgroup';
 import Rmgroup from './rmgroup';
 import Byeditor from './byeditor';
+import Commentscreen from './commentscreen';
 export {
   Splash,
   Intro,
@@ -59,4 +60,5 @@ export {
   Hotelgroup,
   Rmgroup,
   Byeditor,
+  Commentscreen,
 };

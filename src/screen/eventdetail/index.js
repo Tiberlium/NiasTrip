@@ -234,7 +234,12 @@ export default function Eventdetail({navigation, route}) {
               edit={Editreview}
             />
           )}
-          <Commentheader/>
+          <Commentheader
+            onPress={() => {
+              isOpen.current?.hide();
+              navigation.navigate('Commentscreen');
+            }}
+          />
           <View>
             <FlatList
               data={comments}
