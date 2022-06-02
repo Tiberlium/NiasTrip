@@ -56,6 +56,7 @@ import Comment from './template/Comment';
 import Editordetail from './template/Editordetail';
 import Postrating from './atom/Postrating';
 import Alterrating from './atom/Alterrating';
+import Commentheader from './atom/Commentheader';
 export {
   BtnNext,
   Txtinput,
@@ -115,4 +116,5 @@ export {
   Editordetail,
   Postrating,
   Alterrating,
+  Commentheader,
 };

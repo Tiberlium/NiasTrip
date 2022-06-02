@@ -7,6 +7,7 @@ import {
   Alert,
   Pressable,
   ScrollView,
+  FlatList,
 } from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -23,6 +24,7 @@ import {
   Postrating,
   Alterrating,
   Comment,
+  Commentheader,
 } from '../../component';
 import {
   heightPercentageToDP as hp,
@@ -38,6 +40,7 @@ export default function Eventdetail({navigation, route}) {
   const [rating, setrating] = useState(0);
   const [review, setreview] = useState('');
   const [isEdit, setisEdit] = useState(false);
+  const [comments, setcomments] = useState([]);
   const isMounted = useRef();
   const isOpen = useRef();
   const id = route.params.id;
@@ -69,6 +72,24 @@ export default function Eventdetail({navigation, route}) {
     }
   }
 
+  async function Getcomment() {
+    let x = [];
+    const docRef = await firestore()
+      .collection('Event')
+      .doc(id)
+      .collection('Comment')
+      .limit(2)
+      .get();
+
+    docRef.docs.map(doc => {
+      doc.exists ? x.push({id: doc.id, data: doc.data()}) : {};
+    });
+
+    if (isMounted.current) {
+      setcomments(x);
+    }
+  }
+
   useEffect(() => {
     isMounted.current = true;
     Get();
@@ -77,6 +98,12 @@ export default function Eventdetail({navigation, route}) {
 
   useEffect(() => {
     Getyourcomment();
+  }, []);
+
+  useEffect(() => {
+    isMounted.current = true;
+    Getcomment();
+    return () => (isMounted.current = false);
   }, []);
 
   function addBookmark() {
@@ -189,7 +216,7 @@ export default function Eventdetail({navigation, route}) {
           <Tiketpricelabel harga={Data.Harga} />
           <Btntiket onPress={() => alert('halo bangsat')} />
         </View>
-        <ActionSheet ref={isOpen}>
+        <ActionSheet ref={isOpen} gestureEnabled={true}>
           {!isEdit ? (
             <Postrating
               rating={rating}
@@ -207,13 +234,20 @@ export default function Eventdetail({navigation, route}) {
               edit={Editreview}
             />
           )}
-          <Text style={styles.lblcomment}>Semua Komentar</Text>
-          <Comment
-            photoURI={'https://ui-avatars.com/api/?background=0D8ABC&color=fff'}
-            name="jacker"
-            comment="is awesome"
-            rating={3}
-          />
+          <Commentheader/>
+          <View>
+            <FlatList
+              data={comments}
+              renderItem={({item}) => (
+                <Comment
+                  photoURI={item.data.Image}
+                  name={item.data.Name}
+                  comment={item.data.Review}
+                  rating={item.data.Rating}
+                />
+              )}
+            />
+          </View>
         </ActionSheet>
       </>
     </View>
@@ -277,12 +311,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignSelf: 'center',
-  },
-  lblcomment: {
-    color: 'black',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    fontWeight: 'bold',
-    fontSize: 15,
   },
 });
