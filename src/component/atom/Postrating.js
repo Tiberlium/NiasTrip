@@ -14,7 +14,7 @@ export default function Postrating({
       <Text style={styles.txt}>Berikan Ulasan anda</Text>
       <StarRating
         maxStars={5}
-        starSize={25}
+        starSize={20}
         rating={rating}
         selectedStar={selectrating}
         containerStyle={styles.ratingContainer}
@@ -44,14 +44,13 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlign: 'center',
   },
-  ratingContainer: {paddingHorizontal: 120, paddingVertical: 10},
+  ratingContainer: {paddingHorizontal: 140, paddingVertical: 10},
   input: {
     borderWidth: 0.2,
     borderColor: 'black',
     marginVertical: 20,
     marginHorizontal: 30,
     borderRadius: 5,
-    height: 50,
     paddingLeft: 10,
   },
   btn: {
