@@ -5,7 +5,7 @@ import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 export default function Comment({comment, photoURI, name, rating}) {
   return (
-    <View>
+    <View style={{marginVertical: 10}}>
       <View style={styles.container}>
         <Image source={{uri: photoURI}} style={styles.img} />
         <View>

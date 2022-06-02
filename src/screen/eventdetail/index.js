@@ -22,6 +22,7 @@ import {
   Cardratingreview,
   Postrating,
   Alterrating,
+  Comment,
 } from '../../component';
 import {
   heightPercentageToDP as hp,
@@ -206,17 +207,13 @@ export default function Eventdetail({navigation, route}) {
               edit={Editreview}
             />
           )}
-
-          <Text
-            style={{
-              color: 'black',
-              paddingHorizontal: 20,
-              paddingVertical: 10,
-              fontWeight: 'bold',
-              fontSize: 15,
-            }}>
-            Semua Komentar
-          </Text>
+          <Text style={styles.lblcomment}>Semua Komentar</Text>
+          <Comment
+            photoURI={'https://ui-avatars.com/api/?background=0D8ABC&color=fff'}
+            name="jacker"
+            comment="is awesome"
+            rating={3}
+          />
         </ActionSheet>
       </>
     </View>
@@ -280,5 +277,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignSelf: 'center',
+  },
+  lblcomment: {
+    color: 'black',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    fontWeight: 'bold',
+    fontSize: 15,
   },
 });
