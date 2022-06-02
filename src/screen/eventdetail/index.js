@@ -206,6 +206,17 @@ export default function Eventdetail({navigation, route}) {
               edit={Editreview}
             />
           )}
+
+          <Text
+            style={{
+              color: 'black',
+              paddingHorizontal: 20,
+              paddingVertical: 10,
+              fontWeight: 'bold',
+              fontSize: 15,
+            }}>
+            Semua Komentar
+          </Text>
         </ActionSheet>
       </>
     </View>
