@@ -25,29 +25,109 @@ import {
   Postrating,
   Alterrating,
   Comment,
+  Commentheader,
 } from '../../component';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Actionsheet from 'react-native-actions-sheet';
+import auth from '@react-native-firebase/auth';
 
 export default function Detail({route, navigation}) {
   const [visible, setvisible] = useState(false);
   const [Data, setData] = useState('');
   const [index, setindex] = useState(0);
+  const [Ulasan, setUlasan] = useState({});
+  const [rating, setrating] = useState(0);
+  const [review, setreview] = useState('');
+  const [comments, setcomments] = useState([]);
+  const [isEdit, setisEdit] = useState(false);
   const isMounted = useRef();
+  const isOpen = useRef();
+  const id = route.params.id;
+  const uid = auth().currentUser.uid;
 
   async function Get() {
+    const docRef = await firestore().collection('Wisata').doc(id).get();
+    if (isMounted.current) return setData(docRef.data());
+  }
+
+  async function Getcomment() {
+    let x = [];
     const docRef = await firestore()
       .collection('Wisata')
-      .doc(route.params.id)
+      .doc(id)
+      .collection('Comment')
+      .limit(2)
+      .get();
+    docRef.docs.map(doc => {
+      if (doc.exists) {
+        x.push({
+          id: doc.id,
+          data: doc.data(),
+        });
+      } else {
+        return {};
+      }
+    });
+    if (isMounted.current) return setcomments(x);
+  }
+
+  async function Getyourcomment() {
+    const docRef = await firestore()
+      .collection('Wisata')
+      .doc(id)
+      .collection('Comment')
+      .doc(uid)
       .get();
 
-    if (isMounted.current) return setData(docRef.data());
+    if (docRef.exists && isMounted.current) {
+      setUlasan(docRef.data());
+      setisEdit(true);
+    } else {
+      setisEdit(false);
+      return [];
+    }
+  }
+
+  async function Postcomment() {
+    const docRef = await firestore()
+      .collection('Wisata')
+      .doc(id)
+      .collection('Comment');
+
+    docRef.doc(uid).set({
+      Image: auth().currentUser.photoURL,
+      Name: auth().currentUser.displayName,
+      Review: review,
+      Rating: rating,
+    });
+
+    ToastAndroid.show('Ulasan anda berhasil di post', ToastAndroid.SHORT);
+    Getyourcomment();
+    setisEdit(true);
+  }
+
+  async function Editreview() {
+    setisEdit(false);
+    setreview(Ulasan.Review);
+    setrating(Ulasan.Rating);
   }
 
   useEffect(() => {
     isMounted.current = true;
     Get();
+    return () => (isMounted.current = false);
+  }, []);
+
+  useEffect(() => {
+    isMounted.current = true;
+    Getcomment();
+    return () => (isMounted.current = false);
+  }, []);
+
+  useEffect(() => {
+    isMounted.current = true;
+    Getyourcomment();
     return () => (isMounted.current = false);
   }, []);
 
@@ -99,7 +179,10 @@ export default function Detail({route, navigation}) {
             marginLeft={20}
             rating="4.3"
           />
-          <Cardratingreview onPress={() => alert('hallo')} marginTop={30} />
+          <Cardratingreview
+            onPress={() => isOpen.current?.show()}
+            marginTop={30}
+          />
           <Text style={styles.headline0}>Deskripsi</Text>
           <Pressable onPress={showFullDesc}>
             <Text
@@ -143,6 +226,44 @@ export default function Detail({route, navigation}) {
           />
           <Btnbookmark onPress={addBookmark} color="black" />
         </View>
+        <Actionsheet ref={isOpen} gestureEnabled={true}>
+          {!isEdit ? (
+            <Postrating
+              rating={rating}
+              selectrating={setrating}
+              review={review}
+              selectreview={setreview}
+              post={Postcomment}
+            />
+          ) : (
+            <Alterrating
+              img={Ulasan.Image}
+              title={Ulasan.Name}
+              rating={Ulasan.Rating}
+              caption={Ulasan.Review}
+              edit={Editreview}
+            />
+          )}
+          <Commentheader
+            onPress={() => {
+              isOpen.current?.hide();
+              navigation.navigate('Commentscreen', {collection: 'Wisata', id});
+            }}
+          />
+          <View>
+            <FlatList
+              data={comments}
+              renderItem={({item}) => (
+                <Comment
+                  photoURI={item.data.Image}
+                  name={item.data.Name}
+                  comment={item.data.Review}
+                  rating={item.data.Rating}
+                />
+              )}
+            />
+          </View>
+        </Actionsheet>
       </>
     </View>
   );

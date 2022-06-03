@@ -129,10 +129,10 @@ export default function Eventdetail({navigation, route}) {
   async function Postreview() {
     const docRef = await firestore()
       .collection('Event')
-      .doc(route.params.id)
+      .doc(id)
       .collection('Comment');
 
-    docRef.doc(auth().currentUser.uid).set({
+    docRef.doc(uid).set({
       Image: auth().currentUser.photoURL,
       Name: auth().currentUser.displayName,
       Review: review,
