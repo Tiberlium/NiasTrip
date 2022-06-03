@@ -22,22 +22,95 @@ import {
   Thumbgallery,
   ThumbRating,
   Cardratingreview,
+  Comment,
+  Commentheader,
+  Postrating,
+  Alterrating,
 } from '../../component';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import auth from '@react-native-firebase/auth';
+import ActionSheet from 'react-native-actions-sheet';
 
 export default function Fooddetail({navigation, route}) {
   const [visible, setvisible] = useState(false);
   const [index, setindex] = useState(0);
   const [Data, setData] = useState({});
+  const [Ulasan, setUlasan] = useState({});
+  const [rating, setrating] = useState(0);
+  const [review, setreview] = useState('');
+  const [comments, setcomments] = useState([]);
+  const [isEdit, setisEdit] = useState(false);
   const isMounted = useRef();
+  const isOpen = useRef();
+  const id = route.params.id;
+  const uid = auth().currentUser.uid;
 
   async function Get() {
-    const docRefFood = await firestore()
-      .collection('Makanan')
-      .doc(route.params.id)
-      .get();
+    const docRefFood = await firestore().collection('Makanan').doc(id).get();
     if (isMounted.current) return setData(docRefFood.data());
+  }
+
+  async function Getcomment() {
+    let x = [];
+    const docRef = await firestore()
+      .collection('Makanan')
+      .doc(id)
+      .collection('Comment')
+      .limit(2)
+      .get();
+    docRef.docs.map(doc => {
+      if (doc.exists) {
+        x.push({
+          id: doc.id,
+          data: doc.data(),
+        });
+      } else {
+        return {};
+      }
+    });
+    if (isMounted.current) return setcomments(x);
+  }
+
+  async function Getyourcomment() {
+    const docRef = await firestore()
+      .collection('Makanan')
+      .doc(id)
+      .collection('Comment')
+      .doc(uid)
+      .get();
+
+    if (docRef.exists && isMounted.current) {
+      setUlasan(docRef.data());
+      setisEdit(true);
+    } else {
+      setisEdit(false);
+      return [];
+    }
+  }
+
+  async function Postcomment() {
+    const docRef = await firestore()
+      .collection('Makanan')
+      .doc(id)
+      .collection('Comment');
+
+    docRef.doc(uid).set({
+      Image: auth().currentUser.photoURL,
+      Name: auth().currentUser.displayName,
+      Review: review,
+      Rating: rating,
+    });
+
+    ToastAndroid.show('Ulasan anda berhasil di post', ToastAndroid.SHORT);
+    Getyourcomment();
+    setisEdit(true);
+  }
+
+  async function Editreview() {
+    setisEdit(false);
+    setreview(Ulasan.Review);
+    setrating(Ulasan.Rating);
   }
 
   const galery = {...Data['Galery']};
@@ -51,6 +124,18 @@ export default function Fooddetail({navigation, route}) {
   useEffect(() => {
     isMounted.current = true;
     Get();
+    return () => (isMounted.current = false);
+  }, []);
+
+  useEffect(() => {
+    isMounted.current = true;
+    Getcomment();
+    return () => (isMounted.current = false);
+  }, []);
+
+  useEffect(() => {
+    isMounted.current = true;
+    Getyourcomment();
     return () => (isMounted.current = false);
   }, []);
 
@@ -90,7 +175,10 @@ export default function Fooddetail({navigation, route}) {
           marginLeft={20}
           marginTop={hp(54.5)}
         />
-        <Cardratingreview marginTop={30} />
+        <Cardratingreview
+          marginTop={30}
+          onPress={() => isOpen.current?.show()}
+        />
         <Text style={styles.headline0}>Deskripsi</Text>
         <Pressable onPress={showFullDesc}>
           <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
@@ -131,6 +219,47 @@ export default function Fooddetail({navigation, route}) {
           />
           <Btnbookmark onPress={addBookmark} color="black" />
         </View>
+        <ActionSheet ref={isOpen} gestureEnabled={true}>
+          {!isEdit ? (
+            <Postrating
+              rating={rating}
+              selectrating={setrating}
+              review={review}
+              selectreview={setreview}
+              post={Postcomment}
+            />
+          ) : (
+            <Alterrating
+              img={Ulasan.Image}
+              title={Ulasan.Name}
+              rating={Ulasan.Rating}
+              caption={Ulasan.Review}
+              edit={Editreview}
+            />
+          )}
+          <Commentheader
+            onPress={() => {
+              isOpen.current?.hide();
+              navigation.navigate('Commentscreen', {
+                collection: 'Makanan',
+                id,
+              });
+            }}
+          />
+          <View>
+            <FlatList
+              data={comments}
+              renderItem={({item}) => (
+                <Comment
+                  photoURI={item.data.Image}
+                  name={item.data.Name}
+                  comment={item.data.Review}
+                  rating={item.data.Rating}
+                />
+              )}
+            />
+          </View>
+        </ActionSheet>
       </>
     </View>
   );

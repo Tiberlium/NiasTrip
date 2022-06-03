@@ -25,30 +25,115 @@ import {
   Btnpesanslide,
   ThumbRating,
   Cardratingreview,
+  Comment,
+  Commentheader,
+  Alterrating,
+  Postrating,
 } from '../../component';
 
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import ActionSheet from 'react-native-actions-sheet';
+import auth from '@react-native-firebase/auth';
 
 export default function Hoteldetail({navigation, route}) {
   const [visible, setvisible] = useState(false);
   const [index, setindex] = useState(0);
-  const Actionref = useRef();
   const [Data, setData] = useState([]);
+  const [Ulasan, setUlasan] = useState({});
+  const [rating, setrating] = useState(0);
+  const [review, setreview] = useState('');
+  const [comments, setcomments] = useState([]);
+  const [isEdit, setisEdit] = useState(false);
   const isMounted = useRef();
+  const Actionref = useRef();
+  const isOpen = useRef();
+  const id = route.params.id;
+  const uid = auth().currentUser.uid;
 
   async function Get() {
-    const docRef = await firestore()
-      .collection('Staycation')
-      .doc(route.params.id)
-      .get();
+    const docRef = await firestore().collection('Staycation').doc(id).get();
 
     if (isMounted.current) return setData(docRef.data());
+  }
+
+  async function Getcomment() {
+    let x = [];
+    const docRef = await firestore()
+      .collection('Staycation')
+      .doc(id)
+      .collection('Comment')
+      .limit(2)
+      .get();
+    docRef.docs.map(doc => {
+      if (doc.exists) {
+        x.push({
+          id: doc.id,
+          data: doc.data(),
+        });
+      } else {
+        return {};
+      }
+    });
+    if (isMounted.current) return setcomments(x);
+  }
+
+  async function Getyourcomment() {
+    const docRef = await firestore()
+      .collection('Staycation')
+      .doc(id)
+      .collection('Comment')
+      .doc(uid)
+      .get();
+
+    if (docRef.exists && isMounted.current) {
+      setUlasan(docRef.data());
+      setisEdit(true);
+    } else {
+      setisEdit(false);
+      return [];
+    }
+  }
+
+  async function Postcomment() {
+    const docRef = await firestore()
+      .collection('Staycation')
+      .doc(id)
+      .collection('Comment');
+
+    docRef.doc(uid).set({
+      Image: auth().currentUser.photoURL,
+      Name: auth().currentUser.displayName,
+      Review: review,
+      Rating: rating,
+    });
+
+    ToastAndroid.show('Ulasan anda berhasil di post', ToastAndroid.SHORT);
+    Getyourcomment();
+    setisEdit(true);
+  }
+
+  async function Editreview() {
+    setisEdit(false);
+    setreview(Ulasan.Review);
+    setrating(Ulasan.Rating);
   }
 
   useEffect(() => {
     isMounted.current = true;
     Get();
+    return () => (isMounted.current = false);
+  }, []);
+
+  useEffect(() => {
+    isMounted.current = true;
+    Getyourcomment();
+    return () => (isMounted.current = false);
+  }, []);
+
+  useEffect(() => {
+    isMounted.current = true;
+    Getcomment();
     return () => (isMounted.current = false);
   }, []);
 
@@ -112,7 +197,10 @@ export default function Hoteldetail({navigation, route}) {
           marginLeft={20}
           rating={5}
         />
-        <Cardratingreview marginTop={37} />
+        <Cardratingreview
+          marginTop={37}
+          onPress={() => isOpen.current?.show()}
+        />
         <Text style={styles.headline1}>Deskripsi</Text>
         <TouchableOpacity onPress={showFullDesc}>
           <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
@@ -151,6 +239,47 @@ export default function Hoteldetail({navigation, route}) {
         <Btnbookmark onPress={addBookmark} />
         <Btnpesanslide onPress={() => Actionref.current?.show()} />
       </View>
+      <ActionSheet ref={isOpen} gestureEnabled={true}>
+        {!isEdit ? (
+          <Postrating
+            rating={rating}
+            selectrating={setrating}
+            review={review}
+            selectreview={setreview}
+            post={Postcomment}
+          />
+        ) : (
+          <Alterrating
+            img={Ulasan.Image}
+            title={Ulasan.Name}
+            rating={Ulasan.Rating}
+            caption={Ulasan.Review}
+            edit={Editreview}
+          />
+        )}
+        <Commentheader
+          onPress={() => {
+            isOpen.current?.hide();
+            navigation.navigate('Commentscreen', {
+              collection: 'Staycation',
+              id,
+            });
+          }}
+        />
+        <View>
+          <FlatList
+            data={comments}
+            renderItem={({item}) => (
+              <Comment
+                photoURI={item.data.Image}
+                name={item.data.Name}
+                comment={item.data.Review}
+                rating={item.data.Rating}
+              />
+            )}
+          />
+        </View>
+      </ActionSheet>
     </View>
   );
 }
