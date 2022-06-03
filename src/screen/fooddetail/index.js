@@ -26,6 +26,7 @@ import {
   Commentheader,
   Postrating,
   Alterrating,
+  Emptycomment,
 } from '../../component';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -247,17 +248,21 @@ export default function Fooddetail({navigation, route}) {
             }}
           />
           <View>
-            <FlatList
-              data={comments}
-              renderItem={({item}) => (
-                <Comment
-                  photoURI={item.data.Image}
-                  name={item.data.Name}
-                  comment={item.data.Review}
-                  rating={item.data.Rating}
-                />
-              )}
-            />
+            {comments === [] ? (
+              <Emptycomment />
+            ) : (
+              <FlatList
+                data={comments}
+                renderItem={({item}) => (
+                  <Comment
+                    photoURI={item.data.Image}
+                    name={item.data.Name}
+                    comment={item.data.Review}
+                    rating={item.data.Rating}
+                  />
+                )}
+              />
+            )}
           </View>
         </ActionSheet>
       </>
