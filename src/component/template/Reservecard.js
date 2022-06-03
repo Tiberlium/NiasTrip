@@ -17,10 +17,10 @@ export default function Reservecard({
           <Image source={{uri: img}} style={styles.img} />
           <Text style={styles.title}>{title}</Text>
         </View>
-        <Text>
-          {checkIn} / {CheckOut}
+        <Text style={styles.people}>
+          {checkIn} - {CheckOut}
         </Text>
-        <Text>{jumlah} orang</Text>
+        <Text style={styles.people}>{jumlah} orang</Text>
         <Text style={styles.price}>Rp {total}</Text>
         <Text style={styles.footer}>Selesai</Text>
       </TouchableOpacity>
@@ -63,6 +63,8 @@ const styles = StyleSheet.create({
   footer: {
     color: 'green',
     fontWeight: '300',
-    marginTop: -20,
+    marginTop: -15,
+    fontSize: 12,
   },
+  people: {color: 'grey'},
 });

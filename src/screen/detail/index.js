@@ -22,9 +22,13 @@ import {
   Thumbgallery,
   Cardratingreview,
   ThumbRating,
+  Postrating,
+  Alterrating,
+  Comment,
 } from '../../component';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Actionsheet from 'react-native-actions-sheet';
 
 export default function Detail({route, navigation}) {
   const [visible, setvisible] = useState(false);
