@@ -1,4 +1,4 @@
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
@@ -6,7 +6,7 @@ import {
   CollapseHeader,
   CollapseBody,
 } from 'accordion-collapse-react-native';
-import {Btnsubmit} from '../../component';
+import {Btnsubmit,Cardheaderreceipt} from '../../component';
 
 export default function Receipt({route}) {
   const {guest, name, qty, checkin, checkout, timetransaction, total, orderId} =
@@ -22,25 +22,16 @@ export default function Receipt({route}) {
       />
       <Text style={styles.txt}>Pembayaran Berhasil</Text>
       <Text style={styles.txtprice}>Rp100.000</Text>
-      <View style={styles.inlineContainer}>
-        <Image source={require('../../asset/Logo.png')} style={styles.img} />
-        <Text style={styles.txttitle}>Chipotle Grand Indonesia</Text>
-        <View style={styles.wrap}>
-          <Text style={styles.proptxt}>Nama Tamu</Text>
-          <Text style={styles.valuetxt}>Jarvis</Text>
-        </View>
-        <View style={styles.wrap}>
-          <Text style={styles.proptxt}>Pembayaran</Text>
-          <Text style={styles.valuetxt}>Tempat Menginap</Text>
-        </View>
-        <View style={styles.wrap}>
-          <Text style={styles.proptxt}>Order id</Text>
-          <Text style={styles.valuetxt}>xdgax0842xxjdm</Text>
-        </View>
-      </View>
+      <Cardheaderreceipt/>
       <Collapse style={styles.collapse}>
-        <CollapseHeader>
+        <CollapseHeader
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
           <Text style={styles.transacttitletxt}>Detail Transaksi</Text>
+          <Icon name="chevron-forward" size={20} color="black" />
         </CollapseHeader>
         <CollapseBody>
           <View style={styles.wrap2}>
@@ -71,13 +62,13 @@ export default function Receipt({route}) {
             <Text style={styles.proptxt}>Biaya per malam</Text>
             <Text style={styles.valuetxt}>Rp100.000</Text>
           </View>
-           <View style={styles.wrap3}>
+          <View style={styles.wrap3}>
             <Text style={styles.proptxt}>Total Pembayaran</Text>
             <Text style={styles.valuetxt}>Rp200.000</Text>
           </View>
         </CollapseBody>
       </Collapse>
-      <Btnsubmit title='Selesai' top={20}/>
+      <Btnsubmit title="Selesai" top={20} />
     </View>
   );
 }
@@ -98,7 +89,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 10,
   },
-  img: {height: 50, width: 50, alignSelf: 'center'},
   txttitle: {
     fontWeight: 'bold',
     fontSize: 18,
@@ -107,22 +97,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
   },
-  inlineContainer: {
-    marginTop: 20,
-    width: 350,
-    alignSelf: 'center',
-    backgroundColor: 'white',
-    elevation: 10,
-    borderRadius: 15,
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-  },
-  wrap: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 10,
-  },
   wrap2: {
     display: 'flex',
     flexDirection: 'row',
@@ -130,7 +104,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingHorizontal: 20,
   },
-   wrap3: {
+  wrap3: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -149,6 +123,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: 'white',
     elevation: 10,
-    paddingVertical:20,
+    paddingVertical: 20,
   },
 });

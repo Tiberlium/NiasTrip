@@ -58,6 +58,7 @@ import Postrating from './atom/Postrating';
 import Alterrating from './atom/Alterrating';
 import Commentheader from './atom/Commentheader';
 import Emptycomment from './atom/Emptycomment';
+import Cardheaderreceipt from './template/Cardheaderreceipt';
 export {
   BtnNext,
   Txtinput,
@@ -119,4 +120,5 @@ export {
   Alterrating,
   Commentheader,
   Emptycomment,
+  Cardheaderreceipt,
 };
