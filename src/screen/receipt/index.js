@@ -6,9 +6,10 @@ import {
   CollapseHeader,
   CollapseBody,
 } from 'accordion-collapse-react-native';
-import {Btnsubmit,Cardheaderreceipt} from '../../component';
+import {Btnsubmit, Cardheaderreceipt} from '../../component';
 
 export default function Receipt({route}) {
+  const [nameicon, setnameicon] = React.useState('chevron-forward');
   const {guest, name, qty, checkin, checkout, timetransaction, total, orderId} =
     route.params;
 
@@ -22,16 +23,22 @@ export default function Receipt({route}) {
       />
       <Text style={styles.txt}>Pembayaran Berhasil</Text>
       <Text style={styles.txtprice}>Rp100.000</Text>
-      <Cardheaderreceipt/>
-      <Collapse style={styles.collapse}>
-        <CollapseHeader
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}>
+      <Cardheaderreceipt />
+      <Collapse
+        style={styles.collapse}
+        onToggle={x =>
+          x !== true
+            ? setnameicon('chevron-forward')
+            : setnameicon('chevron-down')
+        }>
+        <CollapseHeader style={styles.collapseheader}>
           <Text style={styles.transacttitletxt}>Detail Transaksi</Text>
-          <Icon name="chevron-forward" size={20} color="black" />
+          <Icon
+            name={nameicon}
+            size={20}
+            color="black"
+            style={styles.iconcollapse}
+          />
         </CollapseHeader>
         <CollapseBody>
           <View style={styles.wrap2}>
@@ -89,6 +96,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 10,
   },
+  collapseheader: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  iconcollapse: {marginTop: 2, marginRight: 20},
   txttitle: {
     fontWeight: 'bold',
     fontSize: 18,
