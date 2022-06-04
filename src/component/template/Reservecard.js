@@ -66,5 +66,5 @@ const styles = StyleSheet.create({
     marginTop: -15,
     fontSize: 12,
   },
-  people: {color: 'grey'},
+  people: {color: 'grey', marginTop: 5},
 });

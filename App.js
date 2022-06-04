@@ -102,9 +102,7 @@ export default function App() {
         <Tab.Screen
           name="Receipt"
           component={Receipt}
-          options={{
-            headerLeft: () => <Btnhredirect />,
-          }}
+          options={{headerShown: false}}
         />
         <Tab.Screen
           name="Personinfo"

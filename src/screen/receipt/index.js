@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
@@ -8,19 +8,26 @@ import {
 } from 'accordion-collapse-react-native';
 import {Btnsubmit, Cardheaderreceipt, Cardcallcenter} from '../../component';
 
-export default function Receipt({route}) {
+export default function Receipt({navigation, route}) {
   const [nameicon, setnameicon] = React.useState('chevron-forward');
   const {guest, name, qty, checkin, checkout, timetransaction, total, orderId} =
     route.params;
 
   return (
     <View>
-      <Icon
-        name="checkmark-circle"
-        size={30}
-        color="#3EAF0A"
-        style={styles.icon}
-      />
+      <View style={styles.wrapiconheader}>
+        <Pressable
+          onPress={() => navigation.navigate('Log')}
+          style={styles.btnClose}>
+          <Icon name="close" size={30} color="grey" />
+        </Pressable>
+        <Icon
+          name="checkmark-circle"
+          size={30}
+          color="#3EAF0A"
+          style={styles.icon}
+        />
+      </View>
       <Text style={styles.txt}>Pembayaran Berhasil</Text>
       <Text style={styles.txtprice}>Rp100.000</Text>
       <Cardheaderreceipt />
@@ -76,13 +83,19 @@ export default function Receipt({route}) {
         </CollapseBody>
       </Collapse>
       <Cardcallcenter />
-      <Btnsubmit title="Selesai" top={20} />
+      <Btnsubmit
+        title="Selesai"
+        top={20}
+        onPress={() => navigation.navigate('Home')}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  icon: {alignSelf: 'center'},
+  wrapiconheader: {display: 'flex', flexDirection: 'row', marginTop: 10},
+  btnClose: {marginLeft: 20},
+  icon: {marginLeft: '35%'},
   txt: {
     color: '#3EAF0A',
     fontSize: 15,

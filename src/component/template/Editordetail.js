@@ -28,15 +28,14 @@ export default function Editordetail({url, title, desc, onPress}) {
 const styles = StyleSheet.create({
   container: {
     width: 350,
-    height: 250,
-    borderWidth: 0.2,
-    borderColor: 'grey',
     alignSelf: 'center',
     borderRadius: 5,
     alignItems: 'baseline',
     display: 'flex',
     flexDirection: 'column',
-    marginVertical: 10,
+    marginVertical: 15,
+    backgroundColor:'white',
+    elevation:5,
   },
   img: {height: 100, width: 150, borderRadius: 10, margin: 10},
   title: {color: 'black', fontWeight: 'bold', fontSize: 18, marginTop: 10},
@@ -57,6 +56,5 @@ const styles = StyleSheet.create({
     width: 350,
     fontSize: 13,
     padding: 10,
-    alignSelf: 'flex-start',
   },
 });

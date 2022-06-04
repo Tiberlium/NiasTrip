@@ -1,10 +1,7 @@
 import React from 'react';
 import {Home, Bookmark, Log, Account} from '../screen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP,
-} from 'react-native-responsive-screen';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Bottom = createBottomTabNavigator();
@@ -65,7 +62,7 @@ export default function Navigator() {
 
 const styles = {
   height: hp(9.5),
-  width: widthPercentageToDP(100),
+  width: '100%',
   backgroundColor: '#38393E',
   paddingBottom: 15,
 };
