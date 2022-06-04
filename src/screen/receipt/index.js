@@ -6,7 +6,7 @@ import {
   CollapseHeader,
   CollapseBody,
 } from 'accordion-collapse-react-native';
-import {Btnsubmit, Cardheaderreceipt} from '../../component';
+import {Btnsubmit, Cardheaderreceipt, Cardcallcenter} from '../../component';
 
 export default function Receipt({route}) {
   const [nameicon, setnameicon] = React.useState('chevron-forward');
@@ -75,6 +75,7 @@ export default function Receipt({route}) {
           </View>
         </CollapseBody>
       </Collapse>
+      <Cardcallcenter />
       <Btnsubmit title="Selesai" top={20} />
     </View>
   );
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
   collapse: {
     marginTop: 20,
     backgroundColor: 'white',
-    elevation: 10,
+    elevation: 5,
     paddingVertical: 20,
   },
 });

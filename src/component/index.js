@@ -59,6 +59,7 @@ import Alterrating from './atom/Alterrating';
 import Commentheader from './atom/Commentheader';
 import Emptycomment from './atom/Emptycomment';
 import Cardheaderreceipt from './template/Cardheaderreceipt';
+import Cardcallcenter from './template/Cardcallcenter';
 export {
   BtnNext,
   Txtinput,
@@ -121,4 +122,5 @@ export {
   Commentheader,
   Emptycomment,
   Cardheaderreceipt,
+  Cardcallcenter,
 };
