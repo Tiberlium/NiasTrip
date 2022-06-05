@@ -1,22 +1,22 @@
 import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
 
-export default function Cardheaderreceipt() {
+export default function Cardheaderreceipt({nama, tamu, jenis, orderid}) {
   return (
     <View style={styles.inlineContainer}>
       <Image source={require('../../asset/Logo.png')} style={styles.img} />
-      <Text style={styles.txttitle}>Chipotle Grand Indonesia</Text>
+      <Text style={styles.txttitle}>{nama}</Text>
       <View style={styles.wrap}>
         <Text style={styles.proptxt}>Nama Tamu</Text>
-        <Text style={styles.valuetxt}>Jarvis</Text>
+        <Text style={styles.valuetxt}>{tamu}</Text>
       </View>
       <View style={styles.wrap}>
         <Text style={styles.proptxt}>Pembayaran</Text>
-        <Text style={styles.valuetxt}>Tempat Menginap</Text>
+        <Text style={styles.valuetxt}>{jenis}</Text>
       </View>
       <View style={styles.wrap}>
         <Text style={styles.proptxt}>Order id</Text>
-        <Text style={styles.valuetxt}>xdgax0842xxjdm</Text>
+        <Text style={styles.valuetxt}>{orderid}</Text>
       </View>
     </View>
   );
