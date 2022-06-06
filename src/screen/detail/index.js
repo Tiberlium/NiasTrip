@@ -26,6 +26,7 @@ import {
   Alterrating,
   Comment,
   Commentheader,
+  Emptycomment,
 } from '../../component';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -66,7 +67,7 @@ export default function Detail({route, navigation}) {
           data: doc.data(),
         });
       } else {
-        return {};
+        return [];
       }
     });
     if (isMounted.current) return setcomments(x);
