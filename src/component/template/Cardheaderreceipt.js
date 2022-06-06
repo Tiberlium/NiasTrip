@@ -2,6 +2,9 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
 
 export default function Cardheaderreceipt({nama, tamu, jenis, orderid}) {
+  function trunctext(text) {
+    return text.length > 20 ? `${text.substr(0, 20)}...` : text;
+  }
   return (
     <View style={styles.inlineContainer}>
       <Image source={require('../../asset/Logo.png')} style={styles.img} />
@@ -16,7 +19,7 @@ export default function Cardheaderreceipt({nama, tamu, jenis, orderid}) {
       </View>
       <View style={styles.wrap}>
         <Text style={styles.proptxt}>Order id</Text>
-        <Text style={styles.valuetxt}>{orderid}</Text>
+        <Text style={styles.valuetxt}>{trunctext(orderid)}</Text>
       </View>
     </View>
   );
