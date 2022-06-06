@@ -23,7 +23,7 @@ import {
   Eventgroup,
   Fooddetail,
   Map,
-  Payment,
+  Paymenthotel,
   Receipt,
   Rm,
   Hotelgroup,
@@ -93,8 +93,8 @@ export default function App() {
         />
         <Tab.Screen name="Update profile" component={Updateprofile} />
         <Tab.Screen
-          name="Payment"
-          component={Payment}
+          name="Paymenthotel"
+          component={Paymenthotel}
           options={{
             headerLeft: () => <Btnhome />,
           }}

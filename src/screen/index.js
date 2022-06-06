@@ -22,7 +22,7 @@ import Hotelview from './hoteldetail';
 import Makanangroup from './makanangroup';
 import Eventgroup from './eventgroup';
 import Eventdetail from './eventdetail';
-import Payment from './payment';
+import Paymenthotel from './paymenthotel';
 import Receipt from './receipt';
 import Rm from './rm';
 import Hotelgroup from './hotelgroup';
@@ -54,7 +54,7 @@ export {
   Makanangroup,
   Eventgroup,
   Eventdetail,
-  Payment,
+  Paymenthotel,
   Receipt,
   Rm,
   Hotelgroup,

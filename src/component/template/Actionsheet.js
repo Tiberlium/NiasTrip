@@ -93,7 +93,7 @@ export default function Actionsheet({refs, data}) {
           Alert.alert('Pemberitahuan', 'Tempat ini telah selesai reservasi');
           return false;
         } else {
-          navigation.navigate('Payment', {
+          navigation.navigate('Paymenthotel', {
             Jenis: 'Tempat tinggal',
             Profile,
             orderId,

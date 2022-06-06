@@ -13,7 +13,7 @@ const width = Dimensions.get('window').width;
 
 const user = auth().currentUser;
 
-export default function Payment({route, navigation}) {
+export default function Paymenthotel({route, navigation}) {
   const [data, setdata] = React.useState({});
   const serverKey = 'SB-Mid-server-aOZTMq7MMpj0rwb4130chMv5:';
   const encodedKey = base64.encode(serverKey);
