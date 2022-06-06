@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   View,
   ScrollView,
@@ -26,14 +26,13 @@ import ImagePicker from 'react-native-image-crop-picker';
 export default function Updateprofile({navigation}) {
   const user = Auth().currentUser;
   const gender = ['Pria', 'Wanita'];
-
   const [nama, setnama] = useState(user.displayName || '');
   const [kelamin, setkelamin] = useState('Pria');
-  const [hp, sethp] = useState(user.phoneNumber || '');
-  const [address, setaddress] = useState(user.address || '');
-  const [kota, setkota] = useState(user.city || '');
+  const [hp, sethp] = useState('');
+  const [address, setaddress] = useState('');
+  const [kota, setkota] = useState('');
   const [email, setEmail] = useState(user.email || '');
-  const [Kewarganegaraan, setKewarganegaraan] = useState(user.nation || '');
+  const [Kewarganegaraan, setKewarganegaraan] = useState('');
   const actionSheetRef = useRef();
 
   const Avatar = () => {
@@ -47,6 +46,27 @@ export default function Updateprofile({navigation}) {
       </View>
     );
   };
+
+  const getprofile = async () => {
+    const docRef = await firestore().collection('Users').doc(user.uid).get();
+    if (docRef.exists) {
+      setkelamin(docRef.data().gender);
+      sethp(docRef.data().phoneNumber);
+      setkota(docRef.data().city);
+      setaddress(docRef.data().address);
+      setKewarganegaraan(docRef.data().nation);
+    } else {
+      setkelamin('Pria');
+      sethp('');
+      setkota('');
+      setaddress('');
+      setKewarganegaraan('');
+    }
+  };
+
+  useEffect(() => {
+    getprofile();
+  }, []);
 
   const Sheet = ({refs}) => {
     return (
@@ -225,16 +245,19 @@ export default function Updateprofile({navigation}) {
           label="Alamat"
           placeholder="Masukkan alamat disini"
           onChangeText={setaddress}
+          value={address}
         />
         <Txtinput
           label="Kota"
           placeholder="Masukkan Kota disini"
           onChangeText={setkota}
+          value={kota}
         />
         <Txtinput
           label="Kewarganegaraan"
           placeholder="Masukkan Kewarganegaraan disini"
           onChangeText={setKewarganegaraan}
+          value={Kewarganegaraan}
         />
         <Btnsubmit
           title="Update"
