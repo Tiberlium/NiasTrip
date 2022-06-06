@@ -36,6 +36,14 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 20,
   },
+  txttitle: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: 'black',
+    alignSelf: 'center',
+    marginTop: 20,
+    marginBottom: 20,
+  },
   img: {height: 50, width: 50, alignSelf: 'center'},
   wrap: {
     display: 'flex',

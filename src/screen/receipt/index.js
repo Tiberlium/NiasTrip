@@ -18,7 +18,7 @@ export default function Receipt({navigation, route}) {
   const [nameicon, setnameicon] = React.useState('chevron-forward');
   const {
     guest,
-    name,
+    nama,
     qty,
     checkin,
     checkout,
@@ -48,7 +48,7 @@ export default function Receipt({navigation, route}) {
       <Text style={styles.txt}>Pembayaran Berhasil</Text>
       <Text style={styles.txtprice}>Rp{total}</Text>
       <Cardheaderreceipt
-        name={name}
+        nama={nama}
         tamu={guest}
         jenis={jenis}
         orderid={orderid}
@@ -81,7 +81,11 @@ export default function Receipt({navigation, route}) {
               total={total}
             />
           ) : (
-            <Eventdetailtransact />
+            <Eventdetailtransact
+              metode={metode}
+              waktu={timetransaction}
+              total={total}
+            />
           )}
         </CollapseBody>
       </Collapse>

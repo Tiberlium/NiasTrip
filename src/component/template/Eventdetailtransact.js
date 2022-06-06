@@ -34,4 +34,11 @@ const styles = StyleSheet.create({
   },
   proptxt: {color: 'grey', fontSize: 13, fontWeight: '400'},
   valuetxt: {color: 'black', fontSize: 13, fontWeight: 'bold'},
+  wrap3: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
+    paddingHorizontal: 20,
+  },
 });

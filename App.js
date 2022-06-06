@@ -30,6 +30,7 @@ import {
   Rmgroup,
   Byeditor,
   Commentscreen,
+  Paymentevent,
 } from './src/screen';
 import {Btnhome, Btnhredirect} from './src/component';
 const Tab = createNativeStackNavigator();
@@ -95,6 +96,13 @@ export default function App() {
         <Tab.Screen
           name="Paymenthotel"
           component={Paymenthotel}
+          options={{
+            headerLeft: () => <Btnhome />,
+          }}
+        />
+        <Tab.Screen
+          name="Paymentevent"
+          component={Paymentevent}
           options={{
             headerLeft: () => <Btnhome />,
           }}

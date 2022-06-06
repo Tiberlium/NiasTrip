@@ -36,6 +36,7 @@ export default function Eventdetail({navigation, route}) {
   const [Data, setData] = useState({});
   const [Latitude, setLatitude] = useState(0);
   const [Longitude, setLongitude] = useState(0);
+  const [Profile, setProfile] = useState({});
   const [Ulasan, setUlasan] = useState({});
   const [rating, setrating] = useState(0);
   const [review, setreview] = useState('');
@@ -45,6 +46,7 @@ export default function Eventdetail({navigation, route}) {
   const isOpen = useRef();
   const id = route.params.id;
   const uid = auth().currentUser.uid;
+  const orderid = 'orderId' + uid + Date.now();
 
   async function Get() {
     const docRef = await firestore().collection('Event').doc(id).get();
@@ -52,6 +54,13 @@ export default function Eventdetail({navigation, route}) {
       setData(docRef.data());
       setLatitude(docRef.data().Latitude);
       setLongitude(docRef.data().Longitude);
+    }
+  }
+
+  async function Getuser() {
+    const docRef = await firestore().collection('Users').doc(uid).get();
+    if (isMounted.current) {
+      setProfile(docRef.data());
     }
   }
 
@@ -106,12 +115,19 @@ export default function Eventdetail({navigation, route}) {
     return () => (isMounted.current = false);
   }, []);
 
+  useEffect(() => {
+    isMounted.current = true;
+    Getuser();
+    return () => (isMounted.current = false);
+  }, []);
+
   function addBookmark() {
     const value = {
       id: route.params.id,
       title: Data['Nama'],
       gambar: Data['Gambar'],
       kategori: Data['Kategori'],
+      orderid,
     };
 
     AsyncStorage.getItem('Book').then(doc => {
@@ -214,7 +230,18 @@ export default function Eventdetail({navigation, route}) {
       <>
         <View style={styles.wrapBtn}>
           <Tiketpricelabel harga={Data.Harga} />
-          <Btntiket onPress={() => alert('halo bangsat')} />
+          <Btntiket
+            onPress={() =>
+              navigation.navigate('Paymentevent', {
+                Profile,
+                tarif: Number(Data['Harga']),
+                jenis: 'Event',
+                nama: Data['Nama'],
+                gambar: Data['Gambar'],
+                orderid,
+              })
+            }
+          />
         </View>
         <ActionSheet ref={isOpen} gestureEnabled={true}>
           {!isEdit ? (

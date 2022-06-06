@@ -1,5 +1,5 @@
-import {View, StyleSheet, Dimensions, LogBox, ToastAndroid} from 'react-native';
-import React, {useEffect} from 'react';
+import {View, Text, LogBox, ToastAndroid, StyleSheet} from 'react-native';
+import React from 'react';
 import axios from 'axios';
 import base64 from 'base-64';
 import {WebView} from 'react-native-webview';
@@ -8,41 +8,22 @@ import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const height = Dimensions.get('window').height;
-const width = Dimensions.get('window').width;
-
-const user = auth().currentUser;
-
-export default function Paymenthotel({route, navigation}) {
+export default function Paymentevent({navigation, route}) {
   const [data, setdata] = React.useState({});
   const serverKey = 'SB-Mid-server-aOZTMq7MMpj0rwb4130chMv5:';
   const encodedKey = base64.encode(serverKey);
+  const user = auth().currentUser;
+  const {tarif, jenis, nama, Profile, gambar, orderid} = route.params;
+  const fixedTarif = tarif + '000';
 
   LogBox.ignoreLogs([
     'Non-serializable values were found in the navigation state',
   ]);
 
-  const {
-    Jenis,
-    Profile,
-    orderId,
-    checkIN,
-    checkOUT,
-    jmlhOrg,
-    total,
-    nama,
-    gambar,
-    tarif,
-  } = route.params;
-
-  const fixedPrice = total.toFixed(3);
-
-  const totalprice = total + '000';
-
   const params = {
     transaction_details: {
-      order_id: orderId,
-      gross_amount: totalprice,
+      order_id: orderid,
+      gross_amount: fixedTarif,
     },
     credit_card: {
       secure: true,
@@ -76,15 +57,11 @@ export default function Paymenthotel({route, navigation}) {
         if (doc.get('reservation') != null) {
           docRef.update({
             reservation: firestore.FieldValue.arrayUnion({
-              checkin: checkIN,
-              checkout: checkOUT,
-              jumlah: jmlhOrg,
               time: time,
-              total: fixedPrice,
               guest: Profile.name,
               nama: nama,
-              orderid: orderId,
-              jenis: Jenis,
+              orderid: orderid,
+              jenis: jenis,
               gambar: gambar,
               tarif,
               metode,
@@ -95,15 +72,11 @@ export default function Paymenthotel({route, navigation}) {
             {
               reservation: [
                 {
-                  checkin: checkIN,
-                  checkout: checkOUT,
-                  jumlah: jmlhOrg,
-                  reservationTime: time,
-                  total: fixedPrice,
+                  time: time,
                   guest: Profile.name,
                   nama: nama,
-                  orderid: orderId,
-                  jenis: Jenis,
+                  orderid: orderid,
+                  jenis: jenis,
                   gambar: gambar,
                   tarif,
                   metode,
@@ -120,17 +93,13 @@ export default function Paymenthotel({route, navigation}) {
 
   function addOrder(time, metode) {
     const value = {
-      checkin: checkIN,
-      checkout: checkOUT,
-      jumlah: jmlhOrg,
       timetransaction: time,
-      total: fixedPrice,
       guest: Profile.name,
       nama: nama,
-      orderid: orderId,
-      jenis: Jenis,
+      orderid: orderid,
+      jenis: jenis,
       gambar: gambar,
-      tarif,
+      total: tarif,
       metode,
     };
 
@@ -143,7 +112,7 @@ export default function Paymenthotel({route, navigation}) {
 
   function checkstatus() {
     axios({
-      url: `https://api.sandbox.midtrans.com/v2/${orderId}/status`,
+      url: `https://api.sandbox.midtrans.com/v2/${orderid}/status`,
       method: 'get',
       headers: {
         Accept: 'application/json',
@@ -162,15 +131,11 @@ export default function Paymenthotel({route, navigation}) {
           navigation.navigate('Receipt', {
             guest: Profile.name,
             nama: nama,
-            qty: jmlhOrg,
-            checkin: checkIN,
-            checkout: checkOUT,
             timetransaction: result.data.settlement_time,
-            total: fixedPrice,
-            orderid: orderId,
+            orderid: orderid,
             metode: result.data.payment_type,
-            jenis: Jenis,
-            tarif,
+            jenis: jenis,
+            total: tarif,
           });
           updateToUser(result.data.settlement_time, result.data.payment_type);
           addOrder(result.data.settlement_time, result.data.payment_type);
@@ -179,7 +144,7 @@ export default function Paymenthotel({route, navigation}) {
       .catch(error => console.log(error));
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     midtrans();
   }, []);
 
@@ -194,8 +159,8 @@ export default function Paymenthotel({route, navigation}) {
 const styles = StyleSheet.create({
   container: {
     alignContent: 'center',
-    height: height,
-    width: width,
+    height: '100%',
+    width: '100%',
     flex: 1,
   },
 });

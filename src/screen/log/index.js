@@ -50,7 +50,7 @@ export default function Log() {
           onPress={() =>
             navigation.navigate('Receipt', {
               guest: item['guest'],
-              name: item['nama'],
+              nama: item['nama'],
               qty: item['jumlah'],
               checkin: item['checkin'],
               checkout: item['checkout'],
@@ -69,7 +69,7 @@ export default function Log() {
 
   return (
     <View>
-      <Text style={styles.title}>Reservation History</Text>
+      <Text style={styles.title}>Transaction log</Text>
       {data && data.length ? <Exist /> : <Empty />}
     </View>
   );

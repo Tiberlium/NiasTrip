@@ -1,15 +1,7 @@
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 
-export default function Reservecard({
-  img,
-  title,
-  checkIn,
-  CheckOut,
-  jumlah,
-  total,
-  onPress,
-}) {
+export default function Reservecard({img, title, total, onPress}) {
   return (
     <View>
       <TouchableOpacity style={styles.container} onPress={onPress}>
@@ -17,10 +9,7 @@ export default function Reservecard({
           <Image source={{uri: img}} style={styles.img} />
           <Text style={styles.title}>{title}</Text>
         </View>
-        <Text style={styles.people}>
-          {checkIn} - {CheckOut}
-        </Text>
-        <Text style={styles.people}>{jumlah} orang</Text>
+        <Text style={styles.type}>Event</Text>
         <Text style={styles.price}>Rp {total}</Text>
         <Text style={styles.footer}>Selesai</Text>
       </TouchableOpacity>
@@ -30,12 +19,12 @@ export default function Reservecard({
 
 const styles = StyleSheet.create({
   container: {
-    height: 150,
+    height: 120,
     width: 350,
     alignSelf: 'center',
     backgroundColor: 'white',
     elevetion: 20,
-    borderRadius: 15,
+    borderRadius: 10,
     padding: 15,
     margin: 10,
     elevation: 5,
@@ -63,8 +52,8 @@ const styles = StyleSheet.create({
   footer: {
     color: 'green',
     fontWeight: '300',
-    marginTop: -15,
+    marginTop: -13,
     fontSize: 12,
   },
-  people: {color: 'grey', marginTop: 5},
+  type: {color: 'grey', fontSize: 15, fontWeight: '700'},
 });
