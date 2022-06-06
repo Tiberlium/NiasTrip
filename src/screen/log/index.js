@@ -42,6 +42,7 @@ export default function Log() {
       renderItem={({item}) => (
         <Reservecard
           img={item['gambar']}
+          jenis={item['jenis']}
           title={item['nama']}
           checkIn={item['checkin']}
           CheckOut={item['checkout']}
