@@ -60,6 +60,9 @@ import Commentheader from './atom/Commentheader';
 import Emptycomment from './atom/Emptycomment';
 import Cardheaderreceipt from './template/Cardheaderreceipt';
 import Cardcallcenter from './template/Cardcallcenter';
+import Hoteldetailtransact from './template/Hoteldetailtransact';
+import Eventdetailtransact from './template/Eventdetailtransact';
+
 export {
   BtnNext,
   Txtinput,
@@ -123,4 +126,6 @@ export {
   Emptycomment,
   Cardheaderreceipt,
   Cardcallcenter,
+  Hoteldetailtransact,
+  Eventdetailtransact,
 };

@@ -6,78 +6,29 @@ import {
   CollapseHeader,
   CollapseBody,
 } from 'accordion-collapse-react-native';
-import {Btnsubmit, Cardheaderreceipt, Cardcallcenter} from '../../component';
-
-const Hoteltransact = ({
-  Metode,
-  checkin,
-  checkout,
-  waktu,
-  jumlahorang,
-  biaya,
-  total,
-}) => (
-  <View>
-    <View style={styles.wrap2}>
-      <Text style={styles.proptxt}>Metode Pembayaran</Text>
-      <Text style={styles.valuetxt}>{Metode}</Text>
-    </View>
-    <View style={styles.wrap2}>
-      <Text style={styles.proptxt}>Status</Text>
-      <Text style={styles.valuetxt}>Selesai</Text>
-    </View>
-    <View style={styles.wrap2}>
-      <Text style={styles.proptxt}>Check in</Text>
-      <Text style={styles.valuetxt}>{checkin}</Text>
-    </View>
-    <View style={styles.wrap2}>
-      <Text style={styles.proptxt}>Check out</Text>
-      <Text style={styles.valuetxt}>{checkout}</Text>
-    </View>
-    <View style={styles.wrap2}>
-      <Text style={styles.proptxt}>Waktu</Text>
-      <Text style={styles.valuetxt}>{waktu}</Text>
-    </View>
-    <View style={styles.wrap2}>
-      <Text style={styles.proptxt}>Jumlah orang</Text>
-      <Text style={styles.valuetxt}>{jumlahorang}</Text>
-    </View>
-    <View style={styles.wrap2}>
-      <Text style={styles.proptxt}>Biaya per malam</Text>
-      <Text style={styles.valuetxt}>Rp{biaya}</Text>
-    </View>
-    <View style={styles.wrap3}>
-      <Text style={styles.proptxt}>Total Pembayaran</Text>
-      <Text style={styles.valuetxt}>Rp{total}</Text>
-    </View>
-  </View>
-);
-
-const Eventtransact = ({metode, waktu, total}) => (
-  <View>
-    <View style={styles.wrap2}>
-      <Text style={styles.proptxt}>Metode Pembayaran</Text>
-      <Text style={styles.valuetxt}>{metode}</Text>
-    </View>
-    <View style={styles.wrap2}>
-      <Text style={styles.proptxt}>Status</Text>
-      <Text style={styles.valuetxt}>Selesai</Text>
-    </View>
-    <View style={styles.wrap2}>
-      <Text style={styles.proptxt}>Waktu</Text>
-      <Text style={styles.valuetxt}>{waktu}</Text>
-    </View>
-    <View style={styles.wrap3}>
-      <Text style={styles.proptxt}>Total Pembayaran</Text>
-      <Text style={styles.valuetxt}>Rp{total}</Text>
-    </View>
-  </View>
-);
+import {
+  Btnsubmit,
+  Cardheaderreceipt,
+  Cardcallcenter,
+  Eventdetailtransact,
+  Hoteldetailtransact,
+} from '../../component';
 
 export default function Receipt({navigation, route}) {
   const [nameicon, setnameicon] = React.useState('chevron-forward');
-  const {guest, name, qty, checkin, checkout, timetransaction, total, orderId} =
-    route.params;
+  const {
+    guest,
+    name,
+    qty,
+    checkin,
+    checkout,
+    timetransaction,
+    total,
+    orderid,
+    jenis,
+    metode,
+    tarif,
+  } = route.params;
 
   return (
     <View>
@@ -95,8 +46,13 @@ export default function Receipt({navigation, route}) {
         />
       </View>
       <Text style={styles.txt}>Pembayaran Berhasil</Text>
-      <Text style={styles.txtprice}>Rp100.000</Text>
-      <Cardheaderreceipt />
+      <Text style={styles.txtprice}>Rp{total}</Text>
+      <Cardheaderreceipt
+        name={name}
+        tamu={guest}
+        jenis={jenis}
+        orderid={orderid}
+      />
       <Collapse
         style={styles.collapse}
         onToggle={x =>
@@ -114,7 +70,19 @@ export default function Receipt({navigation, route}) {
           />
         </CollapseHeader>
         <CollapseBody>
-          <Eventtransact />
+          {jenis === 'Tempat tinggal' ? (
+            <Hoteldetailtransact
+              Metode={metode}
+              checkin={checkin}
+              checkout={checkout}
+              waktu={timetransaction}
+              jumlahorang={qty}
+              biaya={tarif}
+              total={total}
+            />
+          ) : (
+            <Eventdetailtransact />
+          )}
         </CollapseBody>
       </Collapse>
       <Cardcallcenter />

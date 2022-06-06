@@ -4,7 +4,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useIsFocused} from '@react-navigation/native';
 import {Reservecard} from '../../component';
 import {useNavigation} from '@react-navigation/native';
-import Auth from '@react-native-firebase/auth';
 
 function currencyFormater(harga) {
   harga.toLocaleString('id-ID', {
@@ -26,7 +25,6 @@ export default function Log() {
   const [data, setdata] = React.useState({});
   const isFocus = useIsFocused();
   const navigation = useNavigation();
-  const user = Auth().currentUser;
 
   async function Get() {
     await AsyncStorage.getItem('Order')
@@ -41,26 +39,29 @@ export default function Log() {
   const Exist = () => (
     <FlatList
       data={data}
-      renderItem={({item, index}) => (
+      renderItem={({item}) => (
         <Reservecard
-          img={item.Data.data.Gambar}
-          title={item.Data.data.Nama}
-          checkIn={item.Data.checkIN}
-          CheckOut={item.Data.checkOUT}
-          jumlah={item.Data.jmlhOrg}
-          total={item.total}
-          onPress={() => {
+          img={item['gambar']}
+          title={item['nama']}
+          checkIn={item['checkin']}
+          CheckOut={item['checkout']}
+          jumlah={item['jumlah']}
+          total={item['total']}
+          onPress={() =>
             navigation.navigate('Receipt', {
-              guest: item.Data.Profile.name,
-              name: item.Data.data.Nama,
-              qty: item.Data.jmlhOrg,
-              checkin: item.Data.checkOUT,
-              checkout: item.Data.checkOUT,
-              timetransaction: item.time,
-              total: item.total,
-              orderId: item.orderId,
-            });
-          }}
+              guest: item['guest'],
+              name: item['nama'],
+              qty: item['jumlah'],
+              checkin: item['checkin'],
+              checkout: item['checkout'],
+              timetransaction: item['timetransaction'],
+              total: item['total'],
+              orderid: item['orderid'],
+              jenis: item['jenis'],
+              metode: item['metode'],
+              tarif: item['tarif'],
+            })
+          }
         />
       )}
     />

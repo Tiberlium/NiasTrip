@@ -25,33 +25,25 @@ export default function Actionsheet({refs, data}) {
   const [Profile, setProfile] = useState({});
   const [jmlhOrg, setjmlhOrg] = useState(0);
   const currentUser = Auth().currentUser;
-
+  const isMounted = useRef();
   const serverKey = 'SB-Mid-server-aOZTMq7MMpj0rwb4130chMv5:';
   const encodedKey = base64.encode(serverKey);
-
-  const isMounted = useRef();
 
   let Today = new Date();
   let current =
     Today.getMonth() + Today.getDay() + Today.getHours() + Today.getSeconds();
-
   let orderId = 'Orderid' + currentUser.uid + current;
-
   let checkIN = checkin.toISOString().split('T')[0];
   let checkOUT = checkout.toISOString().split('T')[0];
-
   let countday = countDays(checkin, checkout);
+  let total = countday * Number(data['Harga']);
 
-  let total = countday * data['Harga'];
-
-  const paramsdata = {
-    data,
-    Profile,
-    orderId,
-    checkIN,
-    checkOUT,
-    jmlhOrg,
-    total,
+  const formatIDR = money => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+    }).format(money);
   };
 
   function onChange(event, value) {
@@ -101,7 +93,18 @@ export default function Actionsheet({refs, data}) {
           Alert.alert('Pemberitahuan', 'Tempat ini telah selesai reservasi');
           return false;
         } else {
-          navigation.navigate('Payment', {paramsdata});
+          navigation.navigate('Payment', {
+            Jenis: 'Tempat tinggal',
+            Profile,
+            orderId,
+            checkIN,
+            checkOUT,
+            jmlhOrg,
+            total,
+            gambar: data['Gambar'],
+            nama: data['Nama'],
+            tarif: data['Harga'],
+          });
         }
       })
       .catch(error => console.log(error));
@@ -173,7 +176,7 @@ export default function Actionsheet({refs, data}) {
             />
             <Text style={actionStyles.txt2}>Orang</Text>
           </View>
-          <Text style={actionStyles.totalTxt}>Rp {total.toFixed(3)}</Text>
+          <Text style={actionStyles.totalTxt}>{formatIDR(total) + '.000'}</Text>
         </View>
         <Btnbooking onPress={Book} />
       </View>

@@ -22,16 +22,27 @@ export default function Payment({route, navigation}) {
     'Non-serializable values were found in the navigation state',
   ]);
 
-  const Data = route.params.paramsdata;
+  const {
+    Jenis,
+    Profile,
+    orderId,
+    checkIN,
+    checkOUT,
+    jmlhOrg,
+    total,
+    nama,
+    gambar,
+    tarif,
+  } = route.params;
 
-  const fixedPrice = Data.total.toFixed(3);
+  const fixedPrice = total.toFixed(3);
 
-  const price = Data.total + '000';
+  const totalprice = total + '000';
 
   const params = {
     transaction_details: {
-      order_id: Data.orderId,
-      gross_amount: price,
+      order_id: orderId,
+      gross_amount: totalprice,
     },
     credit_card: {
       secure: true,
@@ -56,7 +67,7 @@ export default function Payment({route, navigation}) {
       .catch(err => console.log(err));
   }
 
-  async function updateToUser(time) {
+  async function updateToUser(time, metode) {
     let docRef = await firestore().collection('Users').doc(user.uid);
 
     docRef
@@ -65,13 +76,18 @@ export default function Payment({route, navigation}) {
         if (doc.get('reservation') != null) {
           docRef.update({
             reservation: firestore.FieldValue.arrayUnion({
-              orderId: Data.orderId,
-              nama: Data.data.Nama,
-              harga: fixedPrice,
-              checkIN: Data.checkIN,
-              checkOUT: Data.checkOUT,
-              jumlah: Data.jmlhOrg,
-              reservationTime: time,
+              checkin: checkIN,
+              checkout: checkOUT,
+              jumlah: jmlhOrg,
+              time: time,
+              total: fixedPrice,
+              guest: Profile.name,
+              nama: nama,
+              orderid: orderId,
+              jenis: Jenis,
+              gambar: gambar,
+              tarif,
+              metode,
             }),
           });
         } else {
@@ -79,13 +95,18 @@ export default function Payment({route, navigation}) {
             {
               reservation: [
                 {
-                  orderId: Data.orderId,
-                  nama: Data.data.Nama,
-                  harga: fixedPrice,
-                  checkIN: Data.checkIN,
-                  checkOUT: Data.checkOUT,
-                  jumlah: Data.jmlhOrg,
+                  checkin: checkIN,
+                  checkout: checkOUT,
+                  jumlah: jmlhOrg,
                   reservationTime: time,
+                  total: fixedPrice,
+                  guest: Profile.name,
+                  nama: nama,
+                  orderid: orderId,
+                  jenis: Jenis,
+                  gambar: gambar,
+                  tarif,
+                  metode,
                 },
               ],
             },
@@ -97,11 +118,20 @@ export default function Payment({route, navigation}) {
       .catch(error => console.log(error));
   }
 
-  function addOrder(time) {
+  function addOrder(time, metode) {
     const value = {
-      Data,
-      time: time,
+      checkin: checkIN,
+      checkout: checkOUT,
+      jumlah: jmlhOrg,
+      timetransaction: time,
       total: fixedPrice,
+      guest: Profile.name,
+      nama: nama,
+      orderid: orderId,
+      jenis: Jenis,
+      gambar: gambar,
+      tarif,
+      metode,
     };
 
     AsyncStorage.getItem('Order').then(doc => {
@@ -113,7 +143,7 @@ export default function Payment({route, navigation}) {
 
   function checkstatus() {
     axios({
-      url: `https://api.sandbox.midtrans.com/v2/${Data.orderId}/status`,
+      url: `https://api.sandbox.midtrans.com/v2/${orderId}/status`,
       method: 'get',
       headers: {
         Accept: 'application/json',
@@ -130,17 +160,20 @@ export default function Payment({route, navigation}) {
           return false;
         } else {
           navigation.navigate('Receipt', {
-            guest: Data.Profile.name,
-            name: Data.data.Nama,
-            qty: Data.jmlhOrg,
-            checkin: Data.checkIN,
-            checkout: Data.checkOUT,
+            guest: Profile.name,
+            name: nama,
+            qty: jmlhOrg,
+            checkin: checkIN,
+            checkout: checkOUT,
             timetransaction: result.data.settlement_time,
             total: fixedPrice,
-            orderid: Data.orderId,
+            orderid: orderId,
+            metode: result.data.payment_type,
+            jenis: Jenis,
+            tarif,
           });
-          updateToUser(result.data.settlement_time);
-          addOrder(result.data.settlement_time);
+          updateToUser(result.data.settlement_time, result.data.payment_type);
+          addOrder(result.data.settlement_time, result.data.payment_type);
         }
       })
       .catch(error => console.log(error));
