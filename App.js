@@ -106,7 +106,7 @@ export default function App() {
           component={Paymentevent}
           options={{
             headerLeft: () => <Btnhome />,
-            title: 'Pembayaran tiket',
+            title: 'Pembayaran tiket event',
           }}
         />
         <Tab.Screen
