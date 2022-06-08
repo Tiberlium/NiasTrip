@@ -33,8 +33,8 @@ function Byeditorcard({title, lokasi, gambar, onPress, rating}) {
       <TouchableOpacity onPress={onPress}>
         <Image source={{uri: gambar}} style={styles.img} />
         <View style={styles.badgeEditor}>
-          <Icon name="flash" color="blue" size={14} />
-          <Text style={styles.badgeText}>By editor</Text>
+          <Icon name="flash" color="orange" size={14} />
+          <Text style={styles.badgeText}>Oleh editor</Text>
         </View>
         <ThumbRating
           colorText="white"
@@ -48,7 +48,9 @@ function Byeditorcard({title, lokasi, gambar, onPress, rating}) {
         </Text>
         <View style={styles.inlineWrap}>
           <Icon name="location" size={15} color="#CB4335" />
-          <Text style={styles.caption}>{lokasi}</Text>
+          <Text style={styles.caption} numberOfLines={1}>
+            {lokasi}
+          </Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -79,11 +81,17 @@ const styles = StyleSheet.create({
     marginTop: 170,
     position: 'absolute',
   },
-  caption: {marginLeft: 5, color: 'white', fontSize: 12, fontWeight: '300'},
+  caption: {
+    marginLeft: 5,
+    color: 'white',
+    fontSize: 12,
+    fontWeight: '300',
+    alignSelf: 'flex-start',
+  },
   badgeEditor: {
     position: 'absolute',
     height: 25,
-    width: 70,
+    width: 80,
     backgroundColor: '#f5f5f5',
     display: 'flex',
     flexDirection: 'row',

@@ -12,7 +12,7 @@ export default function Editordetail({url, title, desc, onPress}) {
             <Text style={styles.title}>{title}</Text>
             <View style={styles.wraplogo}>
               <Icon name="flash" size={15} color="white" />
-              <Text style={styles.txticon}>By editor</Text>
+              <Text style={styles.txticon}>Oleh editor</Text>
             </View>
           </View>
         </View>
