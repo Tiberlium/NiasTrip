@@ -14,6 +14,10 @@ export default function Search({navigation}) {
   const [DataEvent, setDataEvent] = useState([]);
   const [Query, setQuery] = useState('');
 
+  const [chip1, setchip1] = useState({background: 'white', text: 'black'});
+  const [chip2, setchip2] = useState({background: 'white', text: 'black'});
+  const [chip3, setchip3] = useState({background: 'white', text: 'black'});
+
   const isMounted = useRef();
 
   async function Getwisata() {
@@ -123,9 +127,39 @@ export default function Search({navigation}) {
       <Searchbar onChangeText={setQuery} value={Query} />
       <Text style={styles.subtitle}>Rekomendasi</Text>
       <View style={styles.chipWrap}>
-        <Chip title="Lagundri" onPress={data => setQuery(data)} />
-        <Chip title="Surf" onPress={data => setQuery(data)} />
-        <Chip title="nititi" onPress={data => setQuery(data)} />
+        <Chip
+          title="Lagundri"
+          text={chip1.text}
+          background={chip1.background}
+          onPress={data => {
+            setQuery(data);
+            setchip1({background: 'black', text: 'white'});
+            setchip2({background: 'white', text: 'black'});
+            setchip3({background: 'white', text: 'black'});
+          }}
+        />
+        <Chip
+          title="Surf"
+          text={chip2.text}
+          background={chip2.background}
+          onPress={data => {
+            setQuery(data);
+            setchip2({background: 'black', text: 'white'});
+            setchip1({background: 'white', text: 'black'});
+            setchip3({background: 'white', text: 'black'});
+          }}
+        />
+        <Chip
+          title="nititi"
+          text={chip3.text}
+          background={chip3.background}
+          onPress={data => {
+            setQuery(data);
+            setchip3({background: 'black', text: 'white'});
+            setchip2({background: 'white', text: 'black'});
+            setchip1({background: 'white', text: 'black'});
+          }}
+        />
       </View>
       <FlatList
         data={filtered}
@@ -152,7 +186,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: 'black',
     marginLeft: '8%',
-    marginVertical:'5%',
+    marginVertical: '5%',
   },
   chipWrap: {
     display: 'flex',

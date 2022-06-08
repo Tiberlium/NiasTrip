@@ -1,22 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, Text, StyleSheet, Pressable} from 'react-native';
 
-export default function Chip({onPress, title}) {
-  const [background, setbackground] = useState('white');
-  const [text, settext] = useState('black');
+export default function Chip({onPress, title, text, background}) {
 
+  
   function press() {
-    if (background === 'grey') {
-      onPress('');
-      setbackground('white');
-      settext('black');
-    } else {
-      onPress(title);
-      setbackground('grey');
-      settext('white');
-    }
+    onPress(title);
   }
-
   return (
     <View style={[styles.container, {backgroundColor: background}]}>
       <Pressable onPress={() => press()}>
@@ -33,7 +23,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginLeft: 20,
     marginTop: 5,
-    elevation:3,
+    elevation: 3,
   },
   txt: {
     textAlign: 'center',
