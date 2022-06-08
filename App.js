@@ -98,6 +98,7 @@ export default function App() {
           component={Paymenthotel}
           options={{
             headerLeft: () => <Btnhome />,
+            title: 'Pembayaran hotel',
           }}
         />
         <Tab.Screen
@@ -105,6 +106,7 @@ export default function App() {
           component={Paymentevent}
           options={{
             headerLeft: () => <Btnhome />,
+            title: 'Pembayaran tiket',
           }}
         />
         <Tab.Screen

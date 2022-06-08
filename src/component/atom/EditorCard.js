@@ -12,7 +12,7 @@ export default function EditorCard({children, onPress}) {
         <View style={{display: 'flex', flexDirection: 'row'}}>
           <View style={styles.sideWrap}>
             <Text style={styles.title}>By Editor</Text>
-            <Text style={{width: 120, marginTop: 10}}>
+            <Text style={{width: 120, marginTop: 10, color: 'white'}}>
               Berbagai tempat yang di rekomendasikan oleh editor
             </Text>
             <Pressable style={styles.btnContainer} onPress={onPress}>
