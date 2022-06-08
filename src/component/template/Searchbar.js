@@ -12,6 +12,7 @@ export default function Searchbar({onChangeText, value}) {
           placeholderTextColor="#3E3338"
           onChangeText={onChangeText}
           value={value}
+          style={{color: 'black'}}
         />
       </View>
       <View style={styles.logoBtn}>
