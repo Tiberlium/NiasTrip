@@ -63,7 +63,7 @@ export default function Paymentevent({navigation, route}) {
               orderid: orderid,
               jenis: jenis,
               gambar: gambar,
-              tarif,
+              tarif: fixedTarif,
               metode,
             }),
           });
@@ -78,7 +78,7 @@ export default function Paymentevent({navigation, route}) {
                   orderid: orderid,
                   jenis: jenis,
                   gambar: gambar,
-                  tarif,
+                  tarif: fixedTarif,
                   metode,
                 },
               ],
@@ -99,7 +99,7 @@ export default function Paymentevent({navigation, route}) {
       orderid: orderid,
       jenis: jenis,
       gambar: gambar,
-      total: tarif,
+      total: fixedTarif,
       metode,
     };
 
@@ -135,7 +135,7 @@ export default function Paymentevent({navigation, route}) {
             orderid: orderid,
             metode: result.data.payment_type,
             jenis: jenis,
-            total: tarif,
+            total: fixedTarif,
           });
           updateToUser(result.data.settlement_time, result.data.payment_type);
           addOrder(result.data.settlement_time, result.data.payment_type);
