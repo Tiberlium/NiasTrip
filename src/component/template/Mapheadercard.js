@@ -12,16 +12,6 @@ export default function Mapheadercard({onPress, onChange, value, onFocus}) {
           <Icon name="arrow-back-outline" size={25} color="black" />
         </Pressable>
         <Text style={styles.txt}>Di Sekitar</Text>
-        <View style={styles.wrap}>
-          <Icon
-            name="md-sunny-outline"
-            size={15}
-            style={styles.icon}
-            color="#808080"
-          />
-          <Switch trackColor={color} onValueChange={onChange} value={value} />
-          <Icon name="md-moon" size={15} style={styles.icon} color="black" />
-        </View>
       </View>
       <Btnfocus onPress={onFocus} />
     </View>
@@ -53,13 +43,6 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     color: 'black',
     marginTop: 13,
-  },
-  wrap: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginRight: 10,
-  },
-  icon: {
-    marginTop: 16,
+    marginRight: '35%',
   },
 });
