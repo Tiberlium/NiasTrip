@@ -3,6 +3,10 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ThumbRating from '../atom/ThumbRating';
 
+function trunctext(text) {
+  return text.length > 13 ? `${text.substr(0, 13)}...` : text;
+}
+
 function Thumbcard({title, lokasi, gambar, onPress, rating}) {
   return (
     <View style={styles.container}>
@@ -48,9 +52,7 @@ function Byeditorcard({title, lokasi, gambar, onPress, rating}) {
         </Text>
         <View style={styles.inlineWrap}>
           <Icon name="location" size={15} color="#CB4335" />
-          <Text style={styles.caption} numberOfLines={1}>
-            {lokasi}
-          </Text>
+          <Text style={styles.caption}>{trunctext(lokasi)}</Text>
         </View>
       </TouchableOpacity>
     </View>
