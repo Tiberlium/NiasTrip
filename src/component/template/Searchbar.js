@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
   logoBtn: {
     alignSelf: 'flex-end',
-    marginRight: 20,
-    marginTop: -47,
+    marginRight: '10%',
+    marginTop: '-11.5%',
   },
 });

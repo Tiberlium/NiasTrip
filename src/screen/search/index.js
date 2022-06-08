@@ -151,12 +151,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 15,
     color: 'black',
-    margin: 20,
+    marginLeft: '8%',
+    marginVertical:'5%',
   },
   chipWrap: {
     display: 'flex',
     flexDirection: 'row',
     marginBottom: 15,
+    alignSelf: 'center',
   },
   contentContainer: {alignSelf: 'center'},
 });
