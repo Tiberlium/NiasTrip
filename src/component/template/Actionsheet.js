@@ -111,14 +111,9 @@ export default function Actionsheet({refs, data}) {
   }
 
   function Book() {
-    if (
-      !Profile.gender &&
-      !Profile.city &&
-      !Profile.nation &&
-      !Profile.email &&
-      !Profile.phoneNumber
-    ) {
+    if (Profile === null) {
       Alert.alert('Pemberitahuan', 'Lengkapi data diri anda');
+      return false;
     }
     checkstatus();
   }
