@@ -11,7 +11,7 @@ export default function EditorCard({children, onPress}) {
         style={styles.inlineContainer}>
         <View style={{display: 'flex', flexDirection: 'row'}}>
           <View style={styles.sideWrap}>
-            <Text style={styles.title}>By Editor</Text>
+            <Text style={styles.title}>Oleh Editor</Text>
             <Text style={{width: 120, marginTop: 10, color: 'white'}}>
               Berbagai tempat yang di rekomendasikan oleh editor
             </Text>
