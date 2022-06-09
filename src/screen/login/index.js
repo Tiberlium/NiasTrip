@@ -81,13 +81,13 @@ export default function Login({navigation}) {
 
   return (
     <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={0}>
-      <Text style={styles.title}>Sign In to NiasTrip</Text>
+      <Text style={styles.title}>Masuk ke NiasTrip</Text>
       <Image source={require('../../asset/Logo.png')} style={styles.logo} />
       <Btnsocial
         source={require('../../asset/facebook.png')}
         background="#4267B2"
         txtcolor="white"
-        label="Continue With Facebook"
+        label="Lanjutkan dengan Facebook"
         onPress={() =>
           onFacebookPress()
             .then(() => navigation.navigate('Navigator'))
@@ -98,7 +98,7 @@ export default function Login({navigation}) {
         source={require('../../asset/google.png')}
         background="white"
         txtcolor="black"
-        label="Continue With Google"
+        label="Lanjutkan dengan Google"
         onPress={() =>
           onGooglePress().then(() => navigation.navigate('Navigator'))
         }
@@ -106,19 +106,19 @@ export default function Login({navigation}) {
       <Horizontalline />
       <Custinput onChangeText={setEmail} value={Email} />
       <CustinputPass onChangeText={setPassword} value={Password} />
-      <Btnsubmit title="Login" onPress={Submit} top={hp(10)} />
+      <Btnsubmit title="Masuk" onPress={Submit} top={hp(10)} />
       <View style={styles.forget}>
         <Btntext
-          title="Forgot Password ?"
+          title="Lupa Password ?"
           color="red"
           onPress={() => navigation.navigate('Recovery')}
         />
       </View>
       <Line />
       <View style={styles.wrapunregister}>
-        <Text style={styles.unregister}>New Member ?</Text>
+        <Text style={styles.unregister}>Belum terdaftar ?</Text>
         <Btntext
-          title="Create Account"
+          title="Buat akun"
           color="red"
           onPress={() => navigation.navigate('Register')}
         />

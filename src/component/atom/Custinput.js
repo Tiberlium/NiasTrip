@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 7,
     color: 'black',
+    paddingHorizontal: 20,
   },
 });
 
@@ -70,7 +71,7 @@ const stylesPass = StyleSheet.create({
     borderRadius: 7,
     position: 'absolute',
     color: 'black',
-    paddingLeft:20,
+    paddingLeft: 20,
   },
   icon: {
     alignSelf: 'flex-end',

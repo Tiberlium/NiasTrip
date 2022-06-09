@@ -92,7 +92,7 @@ export default function App() {
           component={Recovery}
           options={{headerShown: false}}
         />
-        <Tab.Screen name="Update profile" component={Updateprofile} />
+        <Tab.Screen name="Update profile" component={Updateprofile} options={{title:'Perbarui profil'}} />
         <Tab.Screen
           name="Paymenthotel"
           component={Paymenthotel}

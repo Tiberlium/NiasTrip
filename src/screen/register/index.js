@@ -73,13 +73,13 @@ export default function Register({navigation}) {
 
   return (
     <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={0}>
-      <Text style={styles.title}>Join NiasTrip</Text>
+      <Text style={styles.title}>Gabung ke NiasTrip</Text>
       <Image source={require('../../asset/Logo.png')} style={styles.logo} />
       <Btnsocial
         source={require('../../asset/facebook.png')}
         background="#4267B2"
         txtcolor="white"
-        label="Continue With Facebook"
+        label="Lanjutkan dengan Facebook"
         onPress={() =>
           onFacebookPress()
             .then(() => navigation.navigate('Navigator'))
@@ -92,7 +92,7 @@ export default function Register({navigation}) {
         source={require('../../asset/google.png')}
         background="white"
         txtcolor="black"
-        label="Continue With Google"
+        label="Lanjutkan dengan Google"
         onPress={() =>
           onGooglePress().then(() => navigation.navigate('Navigator'))
         }
@@ -100,12 +100,12 @@ export default function Register({navigation}) {
       <Horizontalline />
       <Custinput onChangeText={setEmail} value={Email} />
       <CustinputPass onChangeText={setPassword} value={Password} />
-      <Btnsubmit title="Register" onPress={Submit} top={hp(10)}/>
+      <Btnsubmit title="Daftar" onPress={Submit} top={hp(10)}/>
       <Line />
       <View style={styles.wrapunregister}>
-        <Text style={styles.register}>Have an Account ?</Text>
+        <Text style={styles.register}>Sudah punya akun ?</Text>
         <Btntext
-          title="Sign in"
+          title="Masuk"
           color="red"
           onPress={() => navigation.navigate('Login')}
         />

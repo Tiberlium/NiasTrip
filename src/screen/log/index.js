@@ -70,7 +70,7 @@ export default function Log() {
 
   return (
     <View>
-      <Text style={styles.title}>Transaction log</Text>
+      <Text style={styles.title}>Log transaksi</Text>
       {data && data.length ? <Exist /> : <Empty />}
     </View>
   );

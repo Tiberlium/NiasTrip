@@ -260,7 +260,7 @@ export default function Updateprofile({navigation}) {
           value={Kewarganegaraan}
         />
         <Btnsubmit
-          title="Update"
+          title="Perbarui"
           onPress={() => {
             handleChangeName();
             handleUpdateProfile();

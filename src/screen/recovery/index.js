@@ -28,9 +28,9 @@ export default function Recovery({navigation}) {
         <Image source={require('../../asset/Logo.png')} style={styles.img} />
         <Custinput onChangeText={setEmail} value={Email} />
         <Text style={styles.txt}>
-          Your confirmation link will be sent to your email address.
+          Link konfirmasi akan di kirimkan ke alamat email mu
         </Text>
-        <Btnsubmit title="Send" onPress={Submit} />
+        <Btnsubmit title="Kirim" onPress={Submit} />
       </View>
     </View>
   );
