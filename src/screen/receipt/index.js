@@ -70,7 +70,7 @@ export default function Receipt({navigation, route}) {
           />
         </CollapseHeader>
         <CollapseBody>
-          {jenis === 'Tempat tinggal' ? (
+          {jenis === 'Penginapan' ? (
             <Hoteldetailtransact
               Metode={metode}
               checkin={checkin}

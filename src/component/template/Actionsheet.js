@@ -94,7 +94,7 @@ export default function Actionsheet({refs, data}) {
           return false;
         } else {
           navigation.navigate('Paymenthotel', {
-            Jenis: 'Tempat tinggal',
+            Jenis: 'Penginapan',
             Profile,
             orderId,
             checkIN,
