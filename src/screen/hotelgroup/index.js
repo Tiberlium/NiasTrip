@@ -29,7 +29,7 @@ export default function Hotelgroup({navigation}) {
     <View>
       <View style={styles.wrap}>
         <Btnback onPress={() => navigation.goBack()} />
-        <Text style={styles.txt}>Homestay</Text>
+        <Text style={styles.txt}>Penginapan</Text>
       </View>
       <FlatList
         keyExtractor={item => item.id}

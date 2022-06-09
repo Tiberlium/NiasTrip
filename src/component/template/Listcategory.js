@@ -15,7 +15,7 @@ export default function ListCategory() {
       />
       <Btncategory
         name="bed"
-        label="Homestay"
+        label="Penginapan"
         color="blue"
         onPress={() => navigation.navigate('Hotelgroup')}
       />
