@@ -107,7 +107,7 @@ export default function Changesecurity({navigation}) {
   useEffect(() => {
     Alert.alert(
       'Perhatian',
-      'Opsi ini hanya berlaku dengan metode sign in menggunakan email dan password',
+      'Opsi ini hanya berlaku dengan metode masuk menggunakan email dan password',
     );
   }, []);
 
