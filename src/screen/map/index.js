@@ -4,7 +4,6 @@ import MapView, {Callout, Marker} from 'react-native-maps';
 import firestore from '@react-native-firebase/firestore';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {useTheme} from '@react-navigation/native';
-import darkMap from './darkMap.json';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -251,12 +250,7 @@ export default function Map({navigation, route}) {
         ))}
       </MapView>
       <View>
-        <Mapheadercard
-          onPress={() => navigation.goBack()}
-          value={Theme}
-          onChange={() => (Theme ? setTheme(false) : setTheme(true))}
-          onFocus={focus}
-        />
+        <Mapheadercard onPress={() => navigation.goBack()} onFocus={focus} />
         <View style={styles.itemSlider}>
           <Carousel
             ref={c => (carousel = c)}

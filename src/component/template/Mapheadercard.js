@@ -1,10 +1,9 @@
 import React from 'react';
-import {View, Text, Pressable, StyleSheet, Switch} from 'react-native';
+import {View, Text, Pressable, StyleSheet,} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Btnfocus from '../atom/Btnfocus';
 
-export default function Mapheadercard({onPress, onChange, value, onFocus}) {
-  const color = {true: 'blue', false: 'black'};
+export default function Mapheadercard({onPress, onFocus}) {
   return (
     <View style={styles.parentContainer}>
       <View style={styles.container}>
