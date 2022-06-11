@@ -166,6 +166,24 @@ export default function Eventdetail({navigation, route}) {
     setrating(Ulasan.Rating);
   }
 
+  async function pay() {
+    if (Profile === null) {
+      ToastAndroid.show(
+        'Lengkapi data diri anda terlebih dahulu',
+        ToastAndroid.SHORT,
+      );
+      return false;
+    } else {
+      navigation.navigate('Paymentevent', {
+        Profile,
+        tarif: Number(Data['Harga']),
+        jenis: 'Event',
+        nama: Data['Nama'],
+        gambar: Data['Gambar'],
+        orderid,
+      });
+    }
+  }
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -230,18 +248,7 @@ export default function Eventdetail({navigation, route}) {
       <>
         <View style={styles.wrapBtn}>
           <Tiketpricelabel harga={Data.Harga} />
-          <Btntiket
-            onPress={() =>
-              navigation.navigate('Paymentevent', {
-                Profile,
-                tarif: Number(Data['Harga']),
-                jenis: 'Event',
-                nama: Data['Nama'],
-                gambar: Data['Gambar'],
-                orderid,
-              })
-            }
-          />
+          <Btntiket onPress={pay} />
         </View>
         <ActionSheet ref={isOpen} gestureEnabled={true}>
           {!isEdit ? (
