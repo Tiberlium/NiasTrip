@@ -185,19 +185,23 @@ export default function Updateprofile({navigation}) {
   }
 
   async function handleUpdateProfile() {
-    if (
-      !nama.trim() &&
-      !gender.trim() &&
-      !hp.trim() &&
-      !address.trim() &&
-      !kota.trim() &&
-      !email.trim() &&
-      !Kewarganegaraan.trim()
-    ) {
-      ToastAndroid.show(
-        'Lengkapi data anda terlebih dahulu',
-        ToastAndroid.SHORT,
-      );
+    if (!nama.trim()) {
+      ToastAndroid.show('Lengkapi nama anda', ToastAndroid.SHORT);
+      return false;
+    } else if (!hp.trim()) {
+      ToastAndroid.show('Lengkapi no hp anda', ToastAndroid.SHORT);
+      return false;
+    } else if (!address.trim()) {
+      ToastAndroid.show('Lengkapi alamat anda', ToastAndroid.SHORT);
+      return false;
+    } else if (!kota.trim()) {
+      ToastAndroid.show('Lengkapi kota anda', ToastAndroid.SHORT);
+      return false;
+    } else if (!email.trim()) {
+      ToastAndroid.show('Lengkapi email anda', ToastAndroid.SHORT);
+      return false;
+    } else if (!Kewarganegaraan.trim()) {
+      ToastAndroid.show('Lengkapi kewarganegaraan anda', ToastAndroid.SHORT);
       return false;
     } else {
       await firestore()
