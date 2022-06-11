@@ -112,10 +112,14 @@ export default function Actionsheet({refs, data}) {
 
   function Book() {
     if (Profile === null) {
-      Alert.alert('Pemberitahuan', 'Lengkapi data diri anda');
+      ToastAndroid.show(
+        'Lengkapi terlebih dahulu profile anda',
+        ToastAndroid.SHORT,
+      );
       return false;
+    } else {
+      checkstatus();
     }
-    checkstatus();
   }
 
   return (
