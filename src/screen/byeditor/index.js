@@ -12,7 +12,7 @@ export default function Byeditor({navigation}) {
 
     const docRef = await firestore()
       .collection('Wisata')
-      .where('Rekomendasi', '==', 'true')
+      .where('Rekomendasi', '==', true)
       .get();
 
     docRef.docs.map(doc => {

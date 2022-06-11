@@ -46,7 +46,7 @@ export default function Home() {
 
     const docRef = await firestore()
       .collection('Wisata')
-      .where('Rekomendasi', '==', 'true')
+      .where('Rekomendasi', '==', true)
       .limit(2)
       .get();
 

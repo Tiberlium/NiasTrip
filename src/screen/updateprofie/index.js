@@ -185,15 +185,32 @@ export default function Updateprofile({navigation}) {
   }
 
   async function handleUpdateProfile() {
-    await firestore()
-      .collection('Users')
-      .doc(user.uid)
-      .set(optionalData)
-      .then(() => {
-        ToastAndroid.show('User di update', ToastAndroid.SHORT);
-        navigation.navigate('Personinfo');
-      })
-      .catch(e => console.log(e));
+    if (
+      !nama.trim() &&
+      !gender.trim() &&
+      !hp.trim() &&
+      !address.trim() &&
+      !kota.trim() &&
+      !email.trim() &&
+      !Kewarganegaraan.trim()
+    ) {
+      ToastAndroid.show(
+        'Lengkapi data anda terlebih dahulu',
+        ToastAndroid.SHORT,
+      );
+      return false;
+    } else {
+      await firestore()
+        .collection('Users')
+        .doc(user.uid)
+        .set(optionalData)
+        .then(() => {
+          ToastAndroid.show('User di update', ToastAndroid.SHORT);
+          navigation.navigate('Personinfo');
+        })
+        .then(() => handleChangeName())
+        .catch(e => console.log(e));
+    }
   }
 
   return (
@@ -261,10 +278,7 @@ export default function Updateprofile({navigation}) {
         />
         <Btnsubmit
           title="Perbarui"
-          onPress={() => {
-            handleChangeName();
-            handleUpdateProfile();
-          }}
+          onPress={handleUpdateProfile}
           top={10}
           bottom={10}
         />
