@@ -110,6 +110,29 @@ export default function Paymentevent({navigation, route}) {
     });
   }
 
+  async function addTransaction(data) {
+    await firestore()
+      .collection('Transaksi')
+      .add({
+        approvallcode: data.approval_code,
+        currency: data.currency,
+        amount: data.gross_amount,
+        merchantid: data.merchant_id,
+        orderid,
+        metode: data.payment_type,
+        transactiontime: data.transaction_time,
+        settlement: data.settlement_time,
+        transactionid: data.transaction_id,
+        customerid: user.uid,
+        customername: Profile.name,
+        customerphone: Profile.hp,
+        customeremail: Profile.email,
+        customeraddress: Profile.address,
+      })
+      .then(() => console.log('berhasil ditambahkan'))
+      .catch(err => console.error(err));
+  }
+
   function checkstatus() {
     axios({
       url: `https://api.sandbox.midtrans.com/v2/${orderid}/status`,
@@ -139,6 +162,7 @@ export default function Paymentevent({navigation, route}) {
           });
           updateToUser(result.data.settlement_time, result.data.payment_type);
           addOrder(result.data.settlement_time, result.data.payment_type);
+          addTransaction(result.data);
         }
       })
       .catch(error => console.log(error));
