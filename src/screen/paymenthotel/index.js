@@ -85,7 +85,6 @@ export default function Paymenthotel({route, navigation}) {
               nama: nama,
               orderid: orderId,
               jenis: Jenis,
-              gambar: gambar,
               tarif,
               metode,
             }),
@@ -104,7 +103,6 @@ export default function Paymenthotel({route, navigation}) {
                   nama: nama,
                   orderid: orderId,
                   jenis: Jenis,
-                  gambar: gambar,
                   tarif,
                   metode,
                 },
@@ -126,7 +124,7 @@ export default function Paymenthotel({route, navigation}) {
         currency: data.currency,
         amount: data.gross_amount,
         merchantid: data.merchant_id,
-        orderid,
+        orderid: orderId,
         metode: data.payment_type,
         transactiontime: data.transaction_time,
         signaturekey: data.signature_key,
@@ -137,6 +135,8 @@ export default function Paymenthotel({route, navigation}) {
         customerphone: Profile.phoneNumber,
         customeremail: Profile.email,
         customeraddress: Profile.address,
+        nama,
+        jenis: Jenis,
       })
       .then(() => console.log('berhasil ditambahkan'))
       .catch(err => console.error(err));

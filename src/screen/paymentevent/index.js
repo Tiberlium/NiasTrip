@@ -54,15 +54,14 @@ export default function Paymentevent({navigation, route}) {
     docRef
       .get()
       .then(doc => {
-        if (doc.get('reservation') != null) {
+        if (doc.get('tiket') != null) {
           docRef.update({
-            reservation: firestore.FieldValue.arrayUnion({
+            tiket: firestore.FieldValue.arrayUnion({
               time: time,
               guest: Profile.name,
               nama: nama,
               orderid: orderid,
               jenis: jenis,
-              gambar: gambar,
               tarif: fixedTarif,
               metode,
             }),
@@ -70,14 +69,13 @@ export default function Paymentevent({navigation, route}) {
         } else {
           docRef.set(
             {
-              reservation: [
+              tiket: [
                 {
                   time: time,
                   guest: Profile.name,
                   nama: nama,
                   orderid: orderid,
                   jenis: jenis,
-                  gambar: gambar,
                   tarif: fixedTarif,
                   metode,
                 },
@@ -121,14 +119,16 @@ export default function Paymentevent({navigation, route}) {
         orderid,
         metode: data.payment_type,
         transactiontime: data.transaction_time,
-        signaturekey:data.signature_key,
+        signaturekey: data.signature_key,
         settlement: data.settlement_time,
         transactionid: data.transaction_id,
-        customerid: user.uid, 
+        customerid: user.uid,
         customername: user.displayName,
         customerphone: Profile.phoneNumber,
         customeremail: Profile.email,
         customeraddress: Profile.address,
+        jenis,
+        nama,
       })
       .then(() => console.log('berhasil ditambahkan'))
       .catch(err => console.error(err));
