@@ -167,6 +167,18 @@ export default function Fooddetail({navigation, route}) {
     Alert.alert('Deskripsi', Data['Deskripsi']);
   }
 
+  async function redirect(name) {
+    let x = [];
+    const docRef = await firestore()
+      .collection('Rm')
+      .where('Nama', '==', name)
+      .get();
+    docRef.docs.map(doc => {
+      x.push({id: doc.id});
+    });
+    navigation.navigate('Rm', {id: x[0]['id']});
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -230,8 +242,12 @@ export default function Fooddetail({navigation, route}) {
             />
           </CollapseHeader>
           <CollapseBody>
-            {Data['Tersedia'].map((doc, index) => (
-              <Listcardresto nama={doc} key={index} />
+            {Data['Tersedia']?.map((doc, index) => (
+              <Listcardresto
+                nama={doc}
+                key={index}
+                onPress={() => redirect(doc)}
+              />
             ))}
           </CollapseBody>
         </Collapse>
