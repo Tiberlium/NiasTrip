@@ -230,12 +230,12 @@ export default function Updateprofile({navigation}) {
         </View>
         <Txtinput
           label="Nama"
-          placeholder="Masukkan nama disini"
+          placeholder="Masukkan nama anda disini"
           onChangeText={setnama}
           value={nama}
         />
         <View style={styles.dropdownwrap}>
-          <Text style={styles.lbldropdown}>Jenis Kelamin</Text>
+          <Text style={styles.lbldropdown}>Jenis Kelamin anda</Text>
           <SelectDropdown
             data={gender}
             defaultButtonText="Pilih jenis kelamin"
@@ -252,31 +252,31 @@ export default function Updateprofile({navigation}) {
 
         <Txtinput
           label="HP"
-          placeholder="Masukkan HP disini"
+          placeholder="Masukkan no hp anda disini"
           onChangeText={sethp}
           value={hp}
         />
         <Txtinput
           label="Email"
-          placeholder="Masukkan Email di sini"
+          placeholder="Masukkan Email anda di sini"
           onChangeText={setEmail}
           value={email}
         />
         <Txtinput
           label="Alamat"
-          placeholder="Masukkan alamat disini"
+          placeholder="Masukkan alamat anda disini"
           onChangeText={setaddress}
           value={address}
         />
         <Txtinput
           label="Kota"
-          placeholder="Masukkan Kota disini"
+          placeholder="Masukkan Kota anda disini"
           onChangeText={setkota}
           value={kota}
         />
         <Txtinput
           label="Kewarganegaraan"
-          placeholder="Masukkan Kewarganegaraan disini"
+          placeholder="Masukkan Kewarganegaraan anda disini"
           onChangeText={setKewarganegaraan}
           value={Kewarganegaraan}
         />

@@ -39,6 +39,7 @@ export default function Log() {
   const Exist = () => (
     <FlatList
       data={data}
+      contentContainerStyle={styles.container}
       renderItem={({item}) => (
         <Reservecard
           img={item['gambar']}
@@ -77,6 +78,7 @@ export default function Log() {
 }
 
 const styles = StyleSheet.create({
+  container: {paddingBottom: 100},
   title: {fontWeight: '500', fontSize: 25, color: 'black', padding: 20},
   img: {
     height: 250,

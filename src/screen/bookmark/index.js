@@ -50,6 +50,7 @@ export default function Bookmark({navigation}) {
     return (
       <FlatList
         data={Data}
+        contentContainerStyle={styles.container}
         renderItem={({item}) => (
           <Bookmarkcard
             title={item.title}
@@ -72,6 +73,7 @@ export default function Bookmark({navigation}) {
 }
 
 const styles = StyleSheet.create({
+  container: {paddingBottom: 100},
   title: {fontWeight: '500', fontSize: 25, color: 'black', padding: 20},
   img: {
     height: 250,
