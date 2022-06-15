@@ -31,6 +31,7 @@ import {
   Postrating,
   Alterrating,
   Emptycomment,
+  Listcardresto,
 } from '../../component';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -228,6 +229,11 @@ export default function Fooddetail({navigation, route}) {
               style={styles.iconcollapse}
             />
           </CollapseHeader>
+          <CollapseBody>
+            {Data['Tersedia'].map((doc, index) => (
+              <Listcardresto nama={doc} key={index} />
+            ))}
+          </CollapseBody>
         </Collapse>
       </ScrollView>
       <>

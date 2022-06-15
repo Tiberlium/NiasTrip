@@ -62,7 +62,7 @@ import Cardheaderreceipt from './template/Cardheaderreceipt';
 import Cardcallcenter from './template/Cardcallcenter';
 import Hoteldetailtransact from './template/Hoteldetailtransact';
 import Eventdetailtransact from './template/Eventdetailtransact';
-
+import Listcardresto from './template/Listcardresto';
 export {
   BtnNext,
   Txtinput,
@@ -128,4 +128,5 @@ export {
   Cardcallcenter,
   Hoteldetailtransact,
   Eventdetailtransact,
+  Listcardresto,
 };
