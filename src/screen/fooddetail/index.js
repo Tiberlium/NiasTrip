@@ -12,13 +12,17 @@ import {
 } from 'react-native';
 import ImageView from 'react-native-image-viewing';
 import {
+  Collapse,
+  CollapseHeader,
+  CollapseBody,
+} from 'accordion-collapse-react-native';
+import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {
   Btnback,
   Btnbookmark,
-  Btnnearby,
   Thumbgallery,
   ThumbRating,
   Cardratingreview,
@@ -32,8 +36,10 @@ import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import auth from '@react-native-firebase/auth';
 import ActionSheet from 'react-native-actions-sheet';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function Fooddetail({navigation, route}) {
+  const [nameicon, setnameicon] = useState('chevron-forward');
   const [visible, setvisible] = useState(false);
   const [index, setindex] = useState(0);
   const [Data, setData] = useState({});
@@ -205,19 +211,27 @@ export default function Fooddetail({navigation, route}) {
           imageIndex={index}
           onRequestClose={() => setvisible(false)}
         />
+
+        <Collapse
+          style={styles.collapse}
+          onToggle={x =>
+            x !== true
+              ? setnameicon('chevron-forward')
+              : setnameicon('chevron-down')
+          }>
+          <CollapseHeader style={styles.collapseheader}>
+            <Text style={styles.headline}>Tersedia di tempat</Text>
+            <Icon
+              name={nameicon}
+              size={20}
+              color="black"
+              style={styles.iconcollapse}
+            />
+          </CollapseHeader>
+        </Collapse>
       </ScrollView>
       <>
         <View style={styles.wrapBtn}>
-          <Btnnearby
-            title="Lokasi Penyedia"
-            onPress={() =>
-              navigation.navigate('Map', {
-                id: route.params.id,
-                latitude: Data['lat'],
-                longitude: Data['long'],
-              })
-            }
-          />
           <Btnbookmark onPress={addBookmark} color="black" />
         </View>
         <ActionSheet ref={isOpen} gestureEnabled={true}>
@@ -313,9 +327,18 @@ const styles = StyleSheet.create({
     paddingVertical: 7,
     borderTopColor: '#C8C8C8',
     width: wp(100),
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
     alignSelf: 'center',
   },
+  collapse: {
+    marginTop: 20,
+    backgroundColor: 'white',
+    elevation: 5,
+    paddingVertical: 10,
+  },
+  collapseheader: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  iconcollapse: {marginTop: '3%', marginRight: 30},
 });
