@@ -135,8 +135,8 @@ export default function Paymenthotel({route, navigation}) {
         customerphone: Profile.phoneNumber,
         customeremail: Profile.email,
         customeraddress: Profile.address,
-        nama,
         jenis: Jenis,
+        nama: nama,
       })
       .then(() => console.log('berhasil ditambahkan'))
       .catch(err => console.error(err));
