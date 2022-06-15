@@ -111,7 +111,7 @@ export default function Actionsheet({refs, data}) {
   }
 
   function Book() {
-    if (Profile === null) {
+    if (Object.keys(Profile).length == 0) {
       ToastAndroid.show(
         'Lengkapi terlebih dahulu profile anda',
         ToastAndroid.SHORT,

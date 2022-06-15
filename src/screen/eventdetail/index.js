@@ -56,11 +56,12 @@ export default function Eventdetail({navigation, route}) {
       setLongitude(docRef.data().Longitude);
     }
   }
-
   async function Getuser() {
     const docRef = await firestore().collection('Users').doc(uid).get();
-    if (isMounted.current) {
+    if (docRef.exists && isMounted.current) {
       setProfile(docRef.data());
+    } else {
+      setProfile({});
     }
   }
 
@@ -167,7 +168,7 @@ export default function Eventdetail({navigation, route}) {
   }
 
   async function pay() {
-    if (Profile === null) {
+    if (Object.keys(Profile).length == 0) {
       ToastAndroid.show(
         'Lengkapi data diri anda terlebih dahulu',
         ToastAndroid.SHORT,
