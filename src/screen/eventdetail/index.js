@@ -170,7 +170,7 @@ export default function Eventdetail({navigation, route}) {
   async function pay() {
     if (Object.keys(Profile).length == 0) {
       ToastAndroid.show(
-        'Lengkapi data diri anda terlebih dahulu',
+        'Lengkapi data diri anda terlebih dahulu sebelum melakukan pemesanan',
         ToastAndroid.SHORT,
       );
       return false;
