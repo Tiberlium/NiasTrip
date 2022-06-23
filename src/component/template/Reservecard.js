@@ -2,6 +2,13 @@ import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 
 export default function Reservecard({img, title, total, onPress, jenis}) {
+  function formatUang(uang) {
+    new Intl.NumberFormat('ID-id', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+    }).format(uang);
+  }
   return (
     <View>
       <TouchableOpacity style={styles.container} onPress={onPress}>
@@ -10,7 +17,7 @@ export default function Reservecard({img, title, total, onPress, jenis}) {
           <Text style={styles.title}>{title}</Text>
         </View>
         <Text style={styles.type}>{jenis}</Text>
-        <Text style={styles.price}>Rp {total}</Text>
+        <Text style={styles.price}>{formatUang(total)}</Text>
         <Text style={styles.footer}>Selesai</Text>
       </TouchableOpacity>
     </View>
