@@ -175,7 +175,7 @@ export default function Actionsheet({refs, data}) {
             />
             <Text style={actionStyles.txt2}>Orang</Text>
           </View>
-          <Text style={actionStyles.totalTxt}>{formatIDR(total) + '.000'}</Text>
+          <Text style={actionStyles.totalTxt}>{formatIDR(total)}</Text>
         </View>
         <Btnbooking onPress={Book} />
       </View>
