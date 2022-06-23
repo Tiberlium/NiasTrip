@@ -37,11 +37,11 @@ const Hoteldetailtransact = ({
     </View>
     <View style={styles.wrap2}>
       <Text style={styles.proptxt}>Biaya per malam</Text>
-      <Text style={styles.valuetxt}>Rp{biaya}</Text>
+      <Text style={styles.valuetxt}>{biaya}</Text>
     </View>
     <View style={styles.wrap3}>
       <Text style={styles.proptxt}>Total Pembayaran</Text>
-      <Text style={styles.valuetxt}>Rp{total}</Text>
+      <Text style={styles.valuetxt}>{total}</Text>
     </View>
   </View>
 );

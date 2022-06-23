@@ -30,6 +30,14 @@ export default function Receipt({navigation, route}) {
     tarif,
   } = route.params;
 
+  function formatRupiah(uang) {
+    return new Intl.NumberFormat('ID-id', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+    }).format(uang);
+  }
+
   return (
     <View>
       <View style={styles.wrapiconheader}>
@@ -46,7 +54,7 @@ export default function Receipt({navigation, route}) {
         />
       </View>
       <Text style={styles.txt}>Pembayaran Berhasil</Text>
-      <Text style={styles.txtprice}>Rp{total}</Text>
+      <Text style={styles.txtprice}>{formatRupiah(total)}</Text>
       <Cardheaderreceipt
         nama={nama}
         tamu={guest}

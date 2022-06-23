@@ -17,7 +17,7 @@ const Eventdetailtransact = ({metode, waktu, total}) => (
     </View>
     <View style={styles.wrap3}>
       <Text style={styles.proptxt}>Total Pembayaran</Text>
-      <Text style={styles.valuetxt}>Rp{total}</Text>
+      <Text style={styles.valuetxt}>{total}</Text>
     </View>
   </View>
 );
