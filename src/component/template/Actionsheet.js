@@ -11,6 +11,7 @@ import firestore from '@react-native-firebase/firestore';
 import axios from 'axios';
 import base64 from 'base-64';
 import {useNavigation} from '@react-navigation/native';
+import {uid} from 'uid';
 
 function countDays(days1, days2) {
   return Math.ceil((days2 - days1) / 8.64e7);
@@ -28,11 +29,8 @@ export default function Actionsheet({refs, data}) {
   const isMounted = useRef();
   const serverKey = 'SB-Mid-server-aOZTMq7MMpj0rwb4130chMv5:';
   const encodedKey = base64.encode(serverKey);
-
-  let Today = new Date();
-  let current =
-    Today.getMonth() + Today.getDay() + Today.getHours() + Today.getSeconds();
-  let orderId = 'Orderid' + currentUser.uid + current;
+  
+  let orderId = 'Orderid' + uid();
   let checkIN = checkin.toISOString().split('T')[0];
   let checkOUT = checkout.toISOString().split('T')[0];
   let countday = countDays(checkin, checkout);
@@ -109,7 +107,6 @@ export default function Actionsheet({refs, data}) {
       })
       .catch(error => console.log(error));
   }
-  
 
   function Book() {
     if (Object.keys(Profile).length == 0) {

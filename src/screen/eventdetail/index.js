@@ -31,6 +31,7 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import MapView, {Marker} from 'react-native-maps';
+import {uid} from 'uid';
 
 export default function Eventdetail({navigation, route}) {
   const [Data, setData] = useState({});
@@ -45,8 +46,8 @@ export default function Eventdetail({navigation, route}) {
   const isMounted = useRef();
   const isOpen = useRef();
   const id = route.params.id;
-  const uid = auth().currentUser.uid;
-  const orderid = 'orderId' + uid + Date.now();
+  const Uid = auth().currentUser.uid;
+  const orderid = 'orderId' + uid() + Date.now();
 
   async function Get() {
     const docRef = await firestore().collection('Event').doc(id).get();
@@ -57,7 +58,7 @@ export default function Eventdetail({navigation, route}) {
     }
   }
   async function Getuser() {
-    const docRef = await firestore().collection('Users').doc(uid).get();
+    const docRef = await firestore().collection('Users').doc(Uid).get();
     if (docRef.exists && isMounted.current) {
       setProfile(docRef.data());
     } else {
@@ -78,7 +79,7 @@ export default function Eventdetail({navigation, route}) {
       .collection('Event')
       .doc(id)
       .collection('Comment')
-      .doc(uid)
+      .doc(Uid)
       .get();
 
     if (docRef.exists) {
