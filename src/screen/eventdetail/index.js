@@ -67,7 +67,7 @@ export default function Eventdetail({navigation, route}) {
   }
 
   function formatRupiah(uang) {
-    new Intl.NumberFormat('ID-id', {
+   return new Intl.NumberFormat('ID-id', {
       style: 'currency',
       currency: 'IDR',
       minimumFractionDigits: 0,
@@ -258,7 +258,7 @@ export default function Eventdetail({navigation, route}) {
       </ScrollView>
       <>
         <View style={styles.wrapBtn}>
-          <Tiketpricelabel harga={Data['Harga']} />
+          <Tiketpricelabel harga={formatRupiah(Data['Harga'])} />
           <Btntiket onPress={pay} />
         </View>
         <ActionSheet ref={isOpen} gestureEnabled={true}>

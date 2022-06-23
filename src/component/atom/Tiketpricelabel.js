@@ -5,7 +5,7 @@ export default function Tiketpricelabel({harga}) {
   return (
     <View>
       <Text style={styles.caption}>Harga tiket</Text>
-      <Text style={styles.mainFont}>Rp {harga}</Text>
+      <Text style={styles.mainFont}>{harga}</Text>
     </View>
   );
 }
