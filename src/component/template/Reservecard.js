@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Reservecard({img, title, total, onPress, jenis}) {
   function formatUang(uang) {
-    new Intl.NumberFormat('ID-id', {
+   return new Intl.NumberFormat('ID-id', {
       style: 'currency',
       currency: 'IDR',
       minimumFractionDigits: 0,
