@@ -96,7 +96,7 @@ export default function Paymentevent({navigation, route}) {
       orderid: orderid,
       jenis: jenis,
       gambar: gambar,
-      total,
+      total:tarif,
       metode,
     };
 
