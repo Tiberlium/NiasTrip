@@ -65,6 +65,14 @@ export default function Eventdetail({navigation, route}) {
     }
   }
 
+  function formatRupiah(uang) {
+    new Intl.NumberFormat('ID-id', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+    }).format(uang);
+  }
+
   async function Getyourcomment() {
     const docRef = await firestore()
       .collection('Event')
@@ -177,7 +185,7 @@ export default function Eventdetail({navigation, route}) {
     } else {
       navigation.navigate('Paymentevent', {
         Profile,
-        tarif: Number(Data['Harga']),
+        tarif: Data['Harga'],
         jenis: 'Event',
         nama: Data['Nama'],
         gambar: Data['Gambar'],
@@ -185,6 +193,7 @@ export default function Eventdetail({navigation, route}) {
       });
     }
   }
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -248,7 +257,7 @@ export default function Eventdetail({navigation, route}) {
       </ScrollView>
       <>
         <View style={styles.wrapBtn}>
-          <Tiketpricelabel harga={Data.Harga} />
+          <Tiketpricelabel harga={Data['Harga']} />
           <Btntiket onPress={pay} />
         </View>
         <ActionSheet ref={isOpen} gestureEnabled={true}>
