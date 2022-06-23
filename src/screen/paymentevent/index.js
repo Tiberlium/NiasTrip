@@ -14,7 +14,6 @@ export default function Paymentevent({navigation, route}) {
   const encodedKey = base64.encode(serverKey);
   const user = auth().currentUser;
   const {tarif, jenis, nama, Profile, gambar, orderid} = route.params;
-  const fixedTarif = tarif + '000';
 
   LogBox.ignoreLogs([
     'Non-serializable values were found in the navigation state',
@@ -23,7 +22,7 @@ export default function Paymentevent({navigation, route}) {
   const params = {
     transaction_details: {
       order_id: orderid,
-      gross_amount: fixedTarif,
+      gross_amount: tarif,
     },
     credit_card: {
       secure: true,
@@ -62,7 +61,7 @@ export default function Paymentevent({navigation, route}) {
               nama: nama,
               orderid: orderid,
               jenis: jenis,
-              tarif: fixedTarif,
+              tarif,
               metode,
             }),
           });
@@ -76,7 +75,7 @@ export default function Paymentevent({navigation, route}) {
                   nama: nama,
                   orderid: orderid,
                   jenis: jenis,
-                  tarif: fixedTarif,
+                  tarif,
                   metode,
                 },
               ],
@@ -97,7 +96,7 @@ export default function Paymentevent({navigation, route}) {
       orderid: orderid,
       jenis: jenis,
       gambar: gambar,
-      total: fixedTarif,
+      total,
       metode,
     };
 
@@ -159,7 +158,7 @@ export default function Paymentevent({navigation, route}) {
             orderid: orderid,
             metode: result.data.payment_type,
             jenis: jenis,
-            total: fixedTarif,
+            total: tarif,
           });
           updateToUser(result.data.settlement_time, result.data.payment_type);
           addOrder(result.data.settlement_time, result.data.payment_type);
