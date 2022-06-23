@@ -57,6 +57,14 @@ export default function Hoteldetail({navigation, route}) {
     if (isMounted.current) return setData(docRef.data());
   }
 
+  function formatRupiah(uang) {
+    return new Intl.NumberFormat('ID-id', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+    }).format(uang);
+  }
+
   async function Getcomment() {
     let x = [];
     const docRef = await firestore()
@@ -187,7 +195,7 @@ export default function Hoteldetail({navigation, route}) {
           />
         </View>
         <View style={styles.containerPrice}>
-          <Text style={styles.pricetext}>Rp {Data['Harga']}/</Text>
+          <Text style={styles.pricetext}>{formatRupiah(Data['Harga'])}/</Text>
           <Text style={styles.pricetext2}>malam</Text>
         </View>
         <ThumbRating
