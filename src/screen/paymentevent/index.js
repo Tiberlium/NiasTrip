@@ -96,7 +96,7 @@ export default function Paymentevent({navigation, route}) {
       orderid: orderid,
       jenis: jenis,
       gambar: gambar,
-      total:tarif,
+      total: tarif,
       metode,
     };
 
@@ -111,14 +111,11 @@ export default function Paymentevent({navigation, route}) {
     await firestore()
       .collection('Transaksi')
       .add({
-        approvallcode: data.approval_code,
         currency: data.currency,
         amount: data.gross_amount,
-        merchantid: data.merchant_id,
         orderid,
         metode: data.payment_type,
         transactiontime: data.transaction_time,
-        signaturekey: data.signature_key,
         settlement: data.settlement_time,
         transactionid: data.transaction_id,
         customerid: user.uid,

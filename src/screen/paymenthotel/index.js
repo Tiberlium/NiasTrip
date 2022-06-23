@@ -116,14 +116,11 @@ export default function Paymenthotel({route, navigation}) {
     await firestore()
       .collection('Transaksi')
       .add({
-        approvallcode: data.approval_code,
         currency: data.currency,
         amount: data.gross_amount,
-        merchantid: data.merchant_id,
         orderid: orderId,
         metode: data.payment_type,
         transactiontime: data.transaction_time,
-        signaturekey: data.signature_key,
         settlement: data.settlement_time,
         transactionid: data.transaction_id,
         customerid: user.uid,
