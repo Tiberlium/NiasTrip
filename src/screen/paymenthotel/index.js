@@ -35,14 +35,10 @@ export default function Paymenthotel({route, navigation}) {
     tarif,
   } = route.params;
 
-  const fixedPrice = total.toFixed(3);
-
-  const totalprice = total + '000';
-
   const params = {
     transaction_details: {
       order_id: orderId,
-      gross_amount: totalprice,
+      gross_amount: total,
     },
     credit_card: {
       secure: true,
@@ -80,7 +76,7 @@ export default function Paymenthotel({route, navigation}) {
               checkout: checkOUT,
               jumlah: jmlhOrg,
               time: time,
-              total: fixedPrice,
+              total,
               guest: Profile.name,
               nama: nama,
               orderid: orderId,
@@ -98,7 +94,7 @@ export default function Paymenthotel({route, navigation}) {
                   checkout: checkOUT,
                   jumlah: jmlhOrg,
                   reservationTime: time,
-                  total: fixedPrice,
+                  total,
                   guest: Profile.name,
                   nama: nama,
                   orderid: orderId,
@@ -148,7 +144,7 @@ export default function Paymenthotel({route, navigation}) {
       checkout: checkOUT,
       jumlah: jmlhOrg,
       timetransaction: time,
-      total: fixedPrice,
+      total,
       guest: Profile.name,
       nama: nama,
       orderid: orderId,
@@ -190,7 +186,7 @@ export default function Paymenthotel({route, navigation}) {
             checkin: checkIN,
             checkout: checkOUT,
             timetransaction: result.data.settlement_time,
-            total: fixedPrice,
+            total,
             orderid: orderId,
             metode: result.data.payment_type,
             jenis: Jenis,
