@@ -85,14 +85,14 @@ export default function Receipt({navigation, route}) {
               checkout={checkout}
               waktu={timetransaction}
               jumlahorang={qty}
-              biaya={tarif}
-              total={total}
+              biaya={formatRupiah(tarif)}
+              total={formatRupiah(total)}
             />
           ) : (
             <Eventdetailtransact
               metode={metode}
               waktu={timetransaction}
-              total={total}
+              total={formatRupiah(total)}
             />
           )}
         </CollapseBody>
