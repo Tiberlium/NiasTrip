@@ -122,7 +122,7 @@ export default function Rm({navigation, route}) {
     Getcomment();
     return () => (isMounted.current = false);
   }, []);
-  
+
   useEffect(() => {
     isMounted.current = true;
     Getyourcomment();
@@ -137,7 +137,7 @@ export default function Rm({navigation, route}) {
       kategori: Data['Kategori'],
     };
 
-    AsyncStorage.getItem('Book').then(doc => {
+    AsyncStorage.getItem(`Book-${uid}`).then(doc => {
       doc = doc === null ? [] : JSON.parse(doc);
       doc.push(value);
       return AsyncStorage.setItem('Book', JSON.stringify(doc));

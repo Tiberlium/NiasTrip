@@ -155,7 +155,7 @@ export default function Fooddetail({navigation, route}) {
       kategori: Data['Kategori'],
     };
 
-    AsyncStorage.getItem('Book').then(doc => {
+    AsyncStorage.getItem(`Book-${uid}`).then(doc => {
       doc = doc === null ? [] : JSON.parse(doc);
       doc.push(value);
       return AsyncStorage.setItem('Book', JSON.stringify(doc));

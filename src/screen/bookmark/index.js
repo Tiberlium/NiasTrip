@@ -3,6 +3,7 @@ import {View, Image, StyleSheet, Text, FlatList} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useIsFocused} from '@react-navigation/native';
 import {Bookmarkcard} from '../../component';
+import auth from '@react-native-firebase/auth';
 
 const Empty = () => {
   return (
@@ -16,9 +17,10 @@ const Empty = () => {
 export default function Bookmark({navigation}) {
   const isFocus = useIsFocused();
   const [Data, setData] = useState();
+  const user = auth().currentUser;
 
   async function Get() {
-    await AsyncStorage.getItem('Book')
+    await AsyncStorage.getItem(`Book-${user.uid}`)
       .then(docs => (docs != null ? setData(JSON.parse(docs)) : null))
       .catch(e => console.log(e));
   }

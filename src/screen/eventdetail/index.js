@@ -67,7 +67,7 @@ export default function Eventdetail({navigation, route}) {
   }
 
   function formatRupiah(uang) {
-   return new Intl.NumberFormat('ID-id', {
+    return new Intl.NumberFormat('ID-id', {
       style: 'currency',
       currency: 'IDR',
       minimumFractionDigits: 0,
@@ -140,7 +140,7 @@ export default function Eventdetail({navigation, route}) {
       orderid,
     };
 
-    AsyncStorage.getItem('Book').then(doc => {
+    AsyncStorage.getItem(`Book-${Uid}`).then(doc => {
       doc = doc === null ? [] : JSON.parse(doc);
       doc.push(value);
       return AsyncStorage.setItem('Book', JSON.stringify(doc));
