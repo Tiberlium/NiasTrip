@@ -151,7 +151,7 @@ export default function Paymenthotel({route, navigation}) {
       metode,
     };
 
-    AsyncStorage.getItem('Order').then(doc => {
+    AsyncStorage.getItem(`Order-${user.uid}`).then(doc => {
       doc = doc === null ? [] : JSON.parse(doc);
       doc.push(value);
       return AsyncStorage.setItem('Order', JSON.stringify(doc));

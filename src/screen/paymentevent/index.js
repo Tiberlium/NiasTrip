@@ -1,4 +1,4 @@
-import {View, Text, LogBox, ToastAndroid, StyleSheet} from 'react-native';
+import {View, LogBox, ToastAndroid, StyleSheet} from 'react-native';
 import React from 'react';
 import axios from 'axios';
 import base64 from 'base-64';
@@ -100,7 +100,7 @@ export default function Paymentevent({navigation, route}) {
       metode,
     };
 
-    AsyncStorage.getItem('Order').then(doc => {
+    AsyncStorage.getItem(`Order-${user.uid}`).then(doc => {
       doc = doc === null ? [] : JSON.parse(doc);
       doc.push(value);
       return AsyncStorage.setItem('Order', JSON.stringify(doc));
