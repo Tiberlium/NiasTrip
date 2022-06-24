@@ -4,13 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useIsFocused} from '@react-navigation/native';
 import {Reservecard} from '../../component';
 import {useNavigation} from '@react-navigation/native';
-
-function currencyFormater(harga) {
-  harga.toLocaleString('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-  });
-}
+import auth from '@react-native-firebase/auth';
 
 const Empty = () => {
   return (
@@ -25,9 +19,10 @@ export default function Log() {
   const [data, setdata] = React.useState({});
   const isFocus = useIsFocused();
   const navigation = useNavigation();
+  const user = auth().currentUser;
 
   async function Get() {
-    await AsyncStorage.getItem('Order')
+    await AsyncStorage.getItem(`Order-${user.uid}`)
       .then(docs => (docs != null ? setdata(JSON.parse(docs)) : null))
       .catch(e => console.log(e));
   }
