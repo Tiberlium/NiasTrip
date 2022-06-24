@@ -158,7 +158,7 @@ export default function Fooddetail({navigation, route}) {
     AsyncStorage.getItem(`Book-${uid}`).then(doc => {
       doc = doc === null ? [] : JSON.parse(doc);
       doc.push(value);
-      return AsyncStorage.setItem('Book', JSON.stringify(doc));
+      return AsyncStorage.setItem(`Book-${uid}`, JSON.stringify(doc));
     });
     ToastAndroid.show('Ditambahkan ke Bookmark', ToastAndroid.SHORT);
   }

@@ -27,7 +27,7 @@ export default function Bookmark({navigation}) {
 
   async function Delete(id) {
     const arr = Data.filter(e => e.id != id);
-    await AsyncStorage.setItem('Book', JSON.stringify(arr))
+    await AsyncStorage.setItem(`Book-${user.uid}`, JSON.stringify(arr))
       .then(() => Get())
       .catch(e => console.log(e));
   }
