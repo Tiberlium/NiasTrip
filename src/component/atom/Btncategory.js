@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function Btncategory({onPress, color, background, name, label}) {
   return (
-    <View>
+    <View style={styles.container}>
       <TouchableOpacity onPress={onPress} style={styles.wrap}>
         <Icon
           name={name}
@@ -19,6 +19,7 @@ export default function Btncategory({onPress, color, background, name, label}) {
 }
 
 const styles = StyleSheet.create({
+  container: {width: 70},
   wrap: {
     height: 45,
     width: 45,
@@ -26,13 +27,14 @@ const styles = StyleSheet.create({
     elevation: 5,
     borderRadius: 10,
     marginTop: 10,
+    alignSelf: 'center',
   },
-  icon: {alignSelf: 'center', marginLeft: 5, marginTop: 10},
+  icon: {alignSelf: 'center', marginTop: 10},
   txt: {
     color: 'black',
     fontWeight: '300',
-    alignSelf: 'center',
     fontSize: 12,
     marginTop: 10,
+    textAlign: 'center',
   },
 });
