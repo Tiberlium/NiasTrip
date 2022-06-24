@@ -103,7 +103,7 @@ export default function Paymentevent({navigation, route}) {
     AsyncStorage.getItem(`Order-${user.uid}`).then(doc => {
       doc = doc === null ? [] : JSON.parse(doc);
       doc.push(value);
-      return AsyncStorage.setItem('Order', JSON.stringify(doc));
+      return AsyncStorage.setItem(`Order-${user.uid}`, JSON.stringify(doc));
     });
   }
 
