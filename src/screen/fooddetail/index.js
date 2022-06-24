@@ -189,7 +189,7 @@ export default function Fooddetail({navigation, route}) {
           <Text style={styles.caption}>{Data['Kategori']}</Text>
         </View>
         <ThumbRating
-          rating="5"
+          rating={Data['Rating']}
           colorText="black"
           colorIcon="orange"
           marginLeft={20}

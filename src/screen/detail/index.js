@@ -178,7 +178,7 @@ export default function Detail({route, navigation}) {
             colorIcon="orange"
             marginTop={hp(53)}
             marginLeft={20}
-            rating="4.3"
+            rating={Data['Rating']}
           />
           <Cardratingreview
             onPress={() => isOpen.current?.show()}

@@ -203,7 +203,7 @@ export default function Hoteldetail({navigation, route}) {
           colorText="black"
           marginTop={hp(56)}
           marginLeft={20}
-          rating={5}
+          rating={Data['Rating']}
         />
         <Cardratingreview
           marginTop={37}

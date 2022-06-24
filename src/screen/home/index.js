@@ -93,7 +93,7 @@ export default function Home() {
             lokasi={item.data.Kecamatan}
             gambar={item.data.Gambar}
             onPress={() => navigation.navigate('Detail', {id: item.id})}
-            rating={3}
+            rating={item['data']['Rating']}
           />
         )}
       />
@@ -107,7 +107,7 @@ export default function Home() {
               title={item.data.Nama}
               lokasi={item.data.Kecamatan}
               gambar={item.data.Gambar}
-              rating={4}
+              rating={item['data']['Rating']}
               onPress={() => navigation.navigate('Detail', {id: item.id})}
             />
           )}
