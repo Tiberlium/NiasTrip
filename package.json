@@ -21,7 +21,6 @@
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
     "accordion-collapse-react-native": "^1.1.1",
-    "average-rating": "^2.0.2",
     "axios": "^0.27.2",
     "base-64": "^1.0.0",
     "react": "18.1.0",
