@@ -1,17 +1,16 @@
 import {View, Text, Image, StyleSheet} from 'react-native';
 import React from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import StarRating from 'react-native-star-rating';
 
 export default function Comment({comment, photoURI, name, rating}) {
   return (
     <View style={styles.parentContainer}>
       <View style={styles.container}>
         <Image source={{uri: photoURI}} style={styles.img} />
-        <View>
+        <View style={styles.inlineContainer}>
           <Text style={styles.txt}>{name}</Text>
           <View style={styles.ratingwrap}>
-            <Icon name="star" color="orange" size={15} />
+            <StarRating starSize={10} rating={rating} />
             <Text style={styles.icontxt}>{rating}</Text>
           </View>
         </View>
@@ -37,11 +36,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
   },
-  img: {height: 50, width: 50, borderRadius: 25, marginRight: 10},
-  inlineContainer: {display: 'flex', flexDirection: 'row'},
+  img: {height: 40, width: 40, borderRadius: 25, marginRight: 10},
+  inlineContainer: {marginTop: -5},
   txt: {color: 'grey', fontSize: 15, fontWeight: 'bold', marginVertical: 5},
   ratingwrap: {display: 'flex', flexDirection: 'row'},
-  icontxt: {fontWeight: '500', fontSize: 12, color: 'black', marginLeft: 5},
+  icontxt: {
+    fontWeight: '500',
+    fontSize: 12,
+    color: 'black',
+    marginLeft: 5,
+    marginTop: -3,
+  },
   txtComment: {
     color: 'black',
     marginLeft: 24,
