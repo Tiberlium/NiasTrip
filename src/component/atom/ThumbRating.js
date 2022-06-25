@@ -20,16 +20,22 @@ export default function ThumbRating({
           marginBottom: marginBottom,
         },
       ]}>
-      <StarRating starSize={10} rating={rating} fullStarColor="orange" />
-      <Text style={[styles.txt, {color: colorText}]}>{rating}</Text>
+      {!rating ? (
+        <Text style={{color: 'black', fontStyle: 'italic'}}>
+          Belum ada rating
+        </Text>
+      ) : (
+        <View style={styles.inlineContainer}>
+          <StarRating starSize={10} rating={rating} fullStarColor="orange" />
+          <Text style={[styles.txt, {color: colorText}]}>{rating}</Text>
+        </View>
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
-    flexDirection: 'row',
     marginLeft: 10,
     position: 'absolute',
   },
@@ -39,4 +45,5 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: -3,
   },
+  inlineContainer: {display: 'flex', flexDirection: 'row'},
 });
