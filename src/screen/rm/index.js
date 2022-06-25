@@ -87,6 +87,41 @@ export default function Rm({navigation, route}) {
     }
   }
 
+   async function getrating() {
+    let x = [];
+
+    const docRef = await firestore()
+      .collection('Makanan')
+      .doc(id)
+      .collection('Comment')
+      .get();
+
+    const docRat = await firestore().collection('Makanan').doc(id);
+
+    docRef.docs.map(doc => {
+      doc.exists ? x.push({id: doc.id, data: doc.data()}) : [];
+    });
+
+    let _5star = x.filter(x => x.data.Rating === 5).length;
+    let _4star = x.filter(x => x.data.Rating === 4).length;
+    let _3star = x.filter(x => x.Rating === 3).length;
+    let _2star = x.filter(x => x.Rating === 2).length;
+    let _1star = x.filter(x => x.Rating === 1).length;
+
+    //jumlahkan bintang secara individual
+    let sumofrating = parseInt(_5star + _4star + _3star + _2star + _1star);
+
+    //jumlahkan total semua angka rating
+    let overalrating = parseInt(
+      5 * _5star + 4 * _4star + 3 * _3star + 2 * _2star + 1 * _1star,
+    );
+
+    //jumlahkan rata - rata
+    let average = parseInt(overalrating / sumofrating);
+
+    return docRat.update({Rating: average});
+  }
+
   async function Postcomment() {
     const docRef = await firestore()
       .collection('Rm')
@@ -103,6 +138,7 @@ export default function Rm({navigation, route}) {
     ToastAndroid.show('Ulasan anda berhasil di post', ToastAndroid.SHORT);
     Getyourcomment();
     setisEdit(true);
+    getrating();
   }
 
   async function Editreview() {
@@ -126,6 +162,12 @@ export default function Rm({navigation, route}) {
   useEffect(() => {
     isMounted.current = true;
     Getyourcomment();
+    return () => (isMounted.current = false);
+  }, []);
+
+   useEffect(() => {
+    isMounted.current = true;
+    getrating();
     return () => (isMounted.current = false);
   }, []);
 
