@@ -150,6 +150,18 @@ export default function Detail({route, navigation}) {
     setrating(Ulasan.Rating);
   }
 
+  async function Hapusreview() {
+    const docRef = await firestore()
+      .collection('Wisata')
+      .doc(id)
+      .collection('Comment')
+      .doc(uid);
+    docRef.delete().then(() => {
+      setisEdit(false);
+      Getcomment();
+    });
+  }
+
   useEffect(() => {
     isMounted.current = true;
     Get();
@@ -284,6 +296,7 @@ export default function Detail({route, navigation}) {
               rating={Ulasan.Rating}
               caption={Ulasan.Review}
               edit={Editreview}
+              hapus={Hapusreview}
             />
           )}
           <Commentheader
