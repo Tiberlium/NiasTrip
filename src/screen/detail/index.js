@@ -217,7 +217,7 @@ export default function Detail({route, navigation}) {
           </View>
           <ThumbRating
             colorText="black"
-            marginTop={hp(53)}
+            marginTop={hp(53.5)}
             marginLeft={20}
             rating={Number(Data['Rating']) || 0}
           />

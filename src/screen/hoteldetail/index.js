@@ -107,12 +107,12 @@ export default function Hoteldetail({navigation, route}) {
     let x = [];
 
     const docRef = await firestore()
-      .collection('Makanan')
+      .collection('Staycation')
       .doc(id)
       .collection('Comment')
       .get();
 
-    const docRat = await firestore().collection('Makanan').doc(id);
+    const docRat = await firestore().collection('Staycation').doc(id);
 
     docRef.docs.map(doc => {
       doc.exists ? x.push({id: doc.id, data: doc.data()}) : [];
@@ -242,7 +242,7 @@ export default function Hoteldetail({navigation, route}) {
         </View>
         <ThumbRating
           colorText="black"
-          marginTop={hp(56)}
+          marginTop={hp(57)}
           marginLeft={20}
           rating={Number(Data['Rating']) || 0}
         />

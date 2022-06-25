@@ -234,7 +234,7 @@ export default function Fooddetail({navigation, route}) {
           rating={Number(Data['Rating']) || 0}
           colorText="black"
           marginLeft={20}
-          marginTop={hp(54.5)}
+          marginTop={hp(55.5)}
         />
         <Cardratingreview
           marginTop={30}
