@@ -38,5 +38,8 @@ const styles = StyleSheet.create({
     marginLeft: 24,
     width: wp(90),
     fontWeight: '300',
+    backgroundColor: '#EEE0DD',
+    padding: 5,
+    borderRadius: 10,
   },
 });
