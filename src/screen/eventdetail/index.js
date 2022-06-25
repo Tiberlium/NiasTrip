@@ -144,6 +144,30 @@ export default function Eventdetail({navigation, route}) {
     }
   }
 
+  async function Postreview() {
+    const docRef = await firestore()
+      .collection('Event')
+      .doc(id)
+      .collection('Comment');
+
+    docRef.doc(Uid).set({
+      Image: auth().currentUser.photoURL,
+      Name: auth().currentUser.displayName,
+      Review: review,
+      Rating: rating,
+    });
+    ToastAndroid.show('Ulasan anda berhasil di post', ToastAndroid.SHORT);
+    Getyourcomment();
+    getrating();
+    setisEdit(true);
+  }
+
+  async function Editreview() {
+    setreview(Ulasan.Review);
+    setrating(Ulasan.Rating);
+    setisEdit(false);
+  }
+
   useEffect(() => {
     isMounted.current = true;
     Get();
@@ -191,31 +215,6 @@ export default function Eventdetail({navigation, route}) {
 
   function showFullDesc() {
     Alert.alert('Deskripsi', Data['Deskripsi']);
-  }
-
-  async function Postreview() {
-    const docRef = await firestore()
-      .collection('Event')
-      .doc(id)
-      .collection('Comment');
-
-    docRef.doc(uid).set({
-      Image: auth().currentUser.photoURL,
-      Name: auth().currentUser.displayName,
-      Review: review,
-      Rating: rating,
-    });
-
-    ToastAndroid.show('Ulasan anda berhasil di post', ToastAndroid.SHORT);
-    Getyourcomment();
-    setisEdit(true);
-    getrating();
-  }
-
-  async function Editreview() {
-    setisEdit(false);
-    setreview(Ulasan.Review);
-    setrating(Ulasan.Rating);
   }
 
   async function pay() {
