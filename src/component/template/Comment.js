@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   parentContainer: {
     marginVertical: 10,
     backgroundColor: 'white',
-    elevation: 5,
+    elevation: 4,
     width: '90%',
     alignSelf: 'center',
     padding: 5,
