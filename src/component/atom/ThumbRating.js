@@ -1,11 +1,11 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
+import StarRating from 'react-native-star-rating';
 
 export default function ThumbRating({
   colorText,
   marginTop,
-  colorIcon,
   marginLeft,
   rating,
   marginBottom,
@@ -20,7 +20,7 @@ export default function ThumbRating({
           marginBottom: marginBottom,
         },
       ]}>
-      <Icon name="star" size={15} color={colorIcon} />
+      <StarRating starSize={10} rating={rating} fullStarColor="orange" />
       <Text style={[styles.txt, {color: colorText}]}>{rating}</Text>
     </View>
   );
@@ -37,6 +37,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 12,
     marginLeft: 5,
-    marginTop: 1,
+    marginTop: -3,
   },
 });

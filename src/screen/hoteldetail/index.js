@@ -103,7 +103,6 @@ export default function Hoteldetail({navigation, route}) {
     }
   }
 
-  
   async function getrating() {
     let x = [];
 
@@ -242,11 +241,10 @@ export default function Hoteldetail({navigation, route}) {
           <Text style={styles.pricetext2}>malam</Text>
         </View>
         <ThumbRating
-          colorIcon="orange"
           colorText="black"
           marginTop={hp(56)}
           marginLeft={20}
-          rating={Data['Rating']}
+          rating={Number(Data['Rating']) || 0}
         />
         <Cardratingreview
           marginTop={37}

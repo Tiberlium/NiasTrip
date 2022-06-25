@@ -217,10 +217,9 @@ export default function Detail({route, navigation}) {
           </View>
           <ThumbRating
             colorText="black"
-            colorIcon="orange"
             marginTop={hp(53)}
             marginLeft={20}
-            rating={Data['Rating']}
+            rating={Number(Data['Rating']) || 0}
           />
           <Cardratingreview
             onPress={() => isOpen.current?.show()}

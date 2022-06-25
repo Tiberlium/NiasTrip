@@ -250,9 +250,8 @@ export default function Eventdetail({navigation, route}) {
         </View>
         <ThumbRating
           marginTop={hp(51)}
-          colorIcon="orange"
           colorText="black"
-          rating={Data['Rating'] || 0}
+          rating={Number(Data['Rating']) || 0}
           marginLeft={20}
         />
         <Cardratingreview

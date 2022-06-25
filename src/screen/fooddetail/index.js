@@ -209,8 +209,6 @@ export default function Fooddetail({navigation, route}) {
     Alert.alert('Deskripsi', Data['Deskripsi']);
   }
 
-
-
   async function redirect(name) {
     let x = [];
     const docRef = await firestore()
@@ -233,9 +231,8 @@ export default function Fooddetail({navigation, route}) {
           <Text style={styles.caption}>{Data['Kategori']}</Text>
         </View>
         <ThumbRating
-          rating={Data['Rating']}
+          rating={Number(Data['Rating']) || 0}
           colorText="black"
-          colorIcon="orange"
           marginLeft={20}
           marginTop={hp(54.5)}
         />

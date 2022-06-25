@@ -87,7 +87,7 @@ export default function Rm({navigation, route}) {
     }
   }
 
-   async function getrating() {
+  async function getrating() {
     let x = [];
 
     const docRef = await firestore()
@@ -165,7 +165,7 @@ export default function Rm({navigation, route}) {
     return () => (isMounted.current = false);
   }, []);
 
-   useEffect(() => {
+  useEffect(() => {
     isMounted.current = true;
     getrating();
     return () => (isMounted.current = false);
