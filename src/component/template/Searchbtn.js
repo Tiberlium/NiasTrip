@@ -16,7 +16,7 @@ export default function Searchbtn({onPress}) {
 
 const styles = StyleSheet.create({
   wrap: {
-    width: 350,
+    width: '90%',
     alignSelf: 'center',
     display: 'flex',
     flexDirection: 'row',
