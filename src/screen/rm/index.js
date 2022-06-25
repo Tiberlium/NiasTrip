@@ -143,6 +143,18 @@ export default function Rm({navigation, route}) {
     getrating();
   }
 
+  async function Hapusreview() {
+    const docRef = await firestore()
+      .collection('Rm')
+      .doc(id)
+      .collection('Comment')
+      .doc(uid);
+    docRef.delete().then(() => {
+      setisEdit(false);
+      Getcomment();
+    });
+  }
+
   async function Editreview() {
     setisEdit(false);
     setreview(Ulasan.Review);
@@ -278,6 +290,7 @@ export default function Rm({navigation, route}) {
             rating={Ulasan.Rating}
             caption={Ulasan.Review}
             edit={Editreview}
+            hapus={Hapusreview}
           />
         )}
         <Commentheader

@@ -157,6 +157,18 @@ export default function Fooddetail({navigation, route}) {
     setrating(Ulasan.Rating);
   }
 
+  async function Hapusreview() {
+    const docRef = await firestore()
+      .collection('Makanan')
+      .doc(id)
+      .collection('Comment')
+      .doc(uid);
+    docRef.delete().then(() => {
+      setisEdit(false);
+      Getcomment();
+    });
+  }
+
   const galery = {...Data['Galery']};
   let images = [];
   Object.keys(galery).map(doc => {
@@ -313,6 +325,7 @@ export default function Fooddetail({navigation, route}) {
               rating={Ulasan.Rating}
               caption={Ulasan.Review}
               edit={Editreview}
+              hapus={Hapusreview}
             />
           )}
           <Commentheader

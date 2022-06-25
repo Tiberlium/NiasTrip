@@ -168,6 +168,18 @@ export default function Eventdetail({navigation, route}) {
     setisEdit(false);
   }
 
+  async function Hapusreview() {
+    const docRef = await firestore()
+      .collection('Event')
+      .doc(id)
+      .collection('Comment')
+      .doc(Uid);
+    docRef.delete().then(() => {
+      setisEdit(false);
+      Getcomment();
+    });
+  }
+
   useEffect(() => {
     isMounted.current = true;
     Get();
@@ -317,6 +329,7 @@ export default function Eventdetail({navigation, route}) {
               rating={Ulasan.Rating}
               caption={Ulasan.Review}
               edit={Editreview}
+              hapus={Hapusreview}
             />
           )}
           <Commentheader

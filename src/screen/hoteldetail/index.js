@@ -157,6 +157,19 @@ export default function Hoteldetail({navigation, route}) {
     getrating();
   }
 
+  async function Hapusreview() {
+    const docRef = await firestore()
+      .collection('Staycation')
+      .doc(id)
+      .collection('Comment')
+      .doc(uid);
+      
+    docRef.delete().then(() => {
+      setisEdit(false);
+      Getcomment();
+    });
+  }
+
   async function Editreview() {
     setisEdit(false);
     setreview(Ulasan.Review);
@@ -304,6 +317,7 @@ export default function Hoteldetail({navigation, route}) {
             rating={Ulasan.Rating}
             caption={Ulasan.Review}
             edit={Editreview}
+            hapus={Hapusreview}
           />
         )}
         <Commentheader
