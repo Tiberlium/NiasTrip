@@ -20,6 +20,7 @@ import {
   Commentheader,
   Alterrating,
   Postrating,
+  ThumbRating,
 } from '../../component';
 import {
   heightPercentageToDP as hp,
@@ -29,6 +30,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import ImageView from 'react-native-image-viewing';
 import auth from '@react-native-firebase/auth';
 import ActionSheet from 'react-native-actions-sheet';
+import StarRating from 'react-native-star-rating';
 
 export default function Rm({navigation, route}) {
   const [Data, setData] = useState({});
@@ -91,12 +93,12 @@ export default function Rm({navigation, route}) {
     let x = [];
 
     const docRef = await firestore()
-      .collection('Makanan')
+      .collection('Rm')
       .doc(id)
       .collection('Comment')
       .get();
 
-    const docRat = await firestore().collection('Makanan').doc(id);
+    const docRat = await firestore().collection('Rm').doc(id);
 
     docRef.docs.map(doc => {
       doc.exists ? x.push({id: doc.id, data: doc.data()}) : [];
@@ -203,9 +205,12 @@ export default function Rm({navigation, route}) {
         <Btnback onPress={() => navigation.goBack()} />
         <View style={styles.inlineWrap}>
           <Text style={styles.title}>{Data.Nama}</Text>
-          <Icon name="star" color="#FFD700" size={18}>
-            <Text style={styles.caption}>{Data.Rating}</Text>
-          </Icon>
+          <View style={{marginBottom: '5%'}}>
+            <ThumbRating
+              colorText="black"
+              rating={Number(Data['Rating']) || 0}
+            />
+          </View>
         </View>
         <Cardratingreview onPress={() => isOpen.current?.show()} />
         <Text style={styles.headLine}>Deskripsi</Text>
