@@ -1,24 +1,24 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import ThumbRating from '../atom/ThumbRating';
 
 function trunctext(text) {
   return text.length > 13 ? `${text.substr(0, 13)}...` : text;
 }
+
+const Review = ({rating}) => (
+  <View style={styles.reviewcomp}>
+    <Icon name="star" color="orange" size={14} />
+    <Text style={{color: 'white', fontSize: 12, marginLeft: 5}}>{rating}</Text>
+  </View>
+);
 
 function Thumbcard({title, lokasi, gambar, onPress, rating}) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
         <Image source={{uri: gambar}} style={styles.img} />
-        <ThumbRating
-          colorText="white"
-          colorIcon="yellow"
-          marginTop={130}
-          marginLeft={10}
-          rating={rating}
-        />
+        <Review rating={rating} />
         <Text style={styles.title} numberOfLines={1}>
           {title}
         </Text>
@@ -40,13 +40,7 @@ function Byeditorcard({title, lokasi, gambar, onPress, rating}) {
           <Icon name="flash" color="orange" size={14} />
           <Text style={styles.badgeText}>Oleh editor</Text>
         </View>
-        <ThumbRating
-          colorText="white"
-          colorIcon="yellow"
-          marginTop={130}
-          marginLeft={10}
-          rating={rating}
-        />
+        <Review rating={rating}/>
         <Text style={styles.title} numberOfLines={1}>
           {title}
         </Text>
@@ -60,6 +54,7 @@ function Byeditorcard({title, lokasi, gambar, onPress, rating}) {
 }
 
 const styles = StyleSheet.create({
+  reviewcomp:{display: 'flex', flexDirection: 'row', position: 'absolute',marginTop:'110%',marginLeft:10},
   container: {paddingLeft: 10, paddingTop: 10},
   img: {
     height: 200,
