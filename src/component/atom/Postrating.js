@@ -18,6 +18,7 @@ export default function Postrating({
         rating={rating}
         selectedStar={selectrating}
         containerStyle={styles.ratingContainer}
+        fullStarColor='orange'
       />
       <View style={styles.input}>
         <TextInput

@@ -1,6 +1,7 @@
 import {View, Text, Image, Pressable, StyleSheet} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
+import StarRating from 'react-native-star-rating';
 
 export default function Alterrating({img, title, rating, caption, edit}) {
   return (
@@ -12,7 +13,11 @@ export default function Alterrating({img, title, rating, caption, edit}) {
           <View>
             <Text style={styles2.txt}>{title}</Text>
             <View style={styles2.inlineWrap}>
-              <Icon name="star" color="orange" size={15} />
+              <StarRating
+                starSize={10}
+                rating={rating}
+                fullStarColor="orange"
+              />
               <Text style={styles2.icontxt}>{rating}</Text>
             </View>
           </View>
@@ -55,7 +60,13 @@ const styles2 = StyleSheet.create({
     marginRight: 10,
   },
   txt: {fontWeight: '500', color: 'black', fontSize: 13, marginTop: 15},
-  icontxt: {color: 'black', fontWeight: 'bold', marginLeft: 5, fontSize: 12},
+  icontxt: {
+    color: 'black',
+    fontWeight: 'bold',
+    marginLeft: 5,
+    fontSize: 12,
+    marginTop: -3,
+  },
   inlineWrap: {display: 'flex', flexDirection: 'row', marginTop: 5},
   caption: {
     fontWeight: '300',

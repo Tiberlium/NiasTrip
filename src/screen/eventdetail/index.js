@@ -252,7 +252,7 @@ export default function Eventdetail({navigation, route}) {
           marginTop={hp(51)}
           colorIcon="orange"
           colorText="black"
-          rating={Data['Rating']}
+          rating={Data['Rating'] || 0}
           marginLeft={20}
         />
         <Cardratingreview

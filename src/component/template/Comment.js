@@ -10,7 +10,7 @@ export default function Comment({comment, photoURI, name, rating}) {
         <View style={styles.inlineContainer}>
           <Text style={styles.txt}>{name}</Text>
           <View style={styles.ratingwrap}>
-            <StarRating starSize={10} rating={rating} />
+            <StarRating starSize={10} rating={rating} fullStarColor="orange" />
             <Text style={styles.icontxt}>{rating}</Text>
           </View>
         </View>
