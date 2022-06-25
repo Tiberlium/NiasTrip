@@ -40,7 +40,7 @@ function Byeditorcard({title, lokasi, gambar, onPress, rating}) {
           <Icon name="flash" color="orange" size={14} />
           <Text style={styles.badgeText}>Oleh editor</Text>
         </View>
-        <Review rating={rating}/>
+        <Review rating={rating} />
         <Text style={styles.title} numberOfLines={1}>
           {title}
         </Text>
@@ -54,7 +54,13 @@ function Byeditorcard({title, lokasi, gambar, onPress, rating}) {
 }
 
 const styles = StyleSheet.create({
-  reviewcomp:{display: 'flex', flexDirection: 'row', position: 'absolute',marginTop:'110%',marginLeft:10},
+  reviewcomp: {
+    display: 'flex',
+    flexDirection: 'row',
+    position: 'absolute',
+    marginTop: '110%',
+    marginLeft: 10,
+  },
   container: {paddingLeft: 10, paddingTop: 10},
   img: {
     height: 200,
