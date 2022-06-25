@@ -11,12 +11,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
-const user = auth().currentUser;
-
 export default function Paymenthotel({route, navigation}) {
   const [data, setdata] = React.useState({});
   const serverKey = 'SB-Mid-server-aOZTMq7MMpj0rwb4130chMv5:';
   const encodedKey = base64.encode(serverKey);
+  const user = auth().currentUser;
 
   LogBox.ignoreLogs([
     'Non-serializable values were found in the navigation state',
