@@ -5,7 +5,7 @@ import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 export default function Comment({comment, photoURI, name, rating}) {
   return (
-    <View style={{marginVertical: 10}}>
+    <View style={styles.parentContainer}>
       <View style={styles.container}>
         <Image source={{uri: photoURI}} style={styles.img} />
         <View>
@@ -22,6 +22,15 @@ export default function Comment({comment, photoURI, name, rating}) {
 }
 
 const styles = StyleSheet.create({
+  parentContainer: {
+    marginVertical: 10,
+    backgroundColor: 'white',
+    elevation: 5,
+    width: '90%',
+    alignSelf: 'center',
+    padding: 5,
+    borderRadius: 10,
+  },
   container: {
     display: 'flex',
     flexDirection: 'row',
@@ -36,7 +45,7 @@ const styles = StyleSheet.create({
   txtComment: {
     color: 'black',
     marginLeft: 24,
-    width: wp(90),
+    width: '90%',
     fontWeight: '300',
     backgroundColor: '#EEE0DD',
     padding: 5,

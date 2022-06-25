@@ -25,17 +25,6 @@ export default function Commentscreen({navigation, route}) {
     if (isMounted.current) return setdata(x);
   }
 
-  const itemDivider = () => (
-    <View
-      style={{
-        height: 0.5,
-        width: '90%',
-        backgroundColor: '#607D8B',
-        alignSelf: 'center',
-      }}
-    />
-  );
-
   React.useEffect(() => {
     isMounted.current = true;
     get();
@@ -50,7 +39,6 @@ export default function Commentscreen({navigation, route}) {
       </View>
       <FlatList
         data={data}
-        ItemSeparatorComponent={itemDivider}
         renderItem={({item}) => (
           <Comment
             photoURI={item.data.Image}
