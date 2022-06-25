@@ -148,6 +148,9 @@ export default function Paymentevent({navigation, route}) {
           );
           return false;
         } else {
+          updateToUser(result.data.settlement_time, result.data.payment_type);
+          addOrder(result.data.settlement_time, result.data.payment_type);
+          addTransaction(result.data);
           navigation.navigate('Receipt', {
             guest: Profile.name,
             nama: nama,
@@ -157,9 +160,6 @@ export default function Paymentevent({navigation, route}) {
             jenis: jenis,
             total: tarif,
           });
-          updateToUser(result.data.settlement_time, result.data.payment_type);
-          addOrder(result.data.settlement_time, result.data.payment_type);
-          addTransaction(result.data);
         }
       })
       .catch(error => console.log(error));
