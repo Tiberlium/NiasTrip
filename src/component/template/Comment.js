@@ -15,7 +15,7 @@ export default function Comment({comment, photoURI, name, rating}) {
           </View>
         </View>
       </View>
-      <Text style={styles.txtComment}>{comment}</Text>
+      {!comment ? [] : <Text style={styles.txtComment}>{comment}</Text>}
     </View>
   );
 }
