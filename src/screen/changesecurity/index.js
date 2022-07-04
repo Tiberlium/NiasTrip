@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Pressable,
   Alert,
+  ToastAndroid,
 } from 'react-native';
 import {Btnback, Cardoptions} from '../../component';
 import Auth from '@react-native-firebase/auth';
@@ -159,6 +160,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     margin: 10,
     borderRadius: 5,
+    color:'black'
   },
   btn: {
     alignSelf: 'center',
