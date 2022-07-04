@@ -23,7 +23,6 @@ async function Reauthenticate(current) {
   return user.reauthenticateWithCredential(emailCred);
 }
 
-
 const ChangeEmail = ({Emailchange}) => {
   const [currentPass, setcurrentPass] = useState('');
   const [Email, setEmail] = useState('');
@@ -33,7 +32,10 @@ const ChangeEmail = ({Emailchange}) => {
       .then(async () => {
         await Auth().currentUser.updateEmail(Email);
       })
-      .catch(e => console.log(e));
+      .then(() =>
+        ToastAndroid.show('Email berhasil diubah', ToastAndroid.SHORT),
+      )
+      .catch(() => ToastAndroid.show('Email tidak valid', ToastAndroid.SHORT));
   }
   return (
     <ActionSheet ref={Emailchange}>
@@ -160,7 +162,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     margin: 10,
     borderRadius: 5,
-    color:'black'
+    color: 'black',
   },
   btn: {
     alignSelf: 'center',
