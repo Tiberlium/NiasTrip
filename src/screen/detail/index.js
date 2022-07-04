@@ -6,8 +6,6 @@ import {
   StyleSheet,
   FlatList,
   ToastAndroid,
-  Pressable,
-  Alert,
   ScrollView,
 } from 'react-native';
 import ImageView from 'react-native-image-viewing';
@@ -210,10 +208,6 @@ export default function Detail({route, navigation}) {
       uri: galery[x],
     });
   });
-
-  function showFullDesc() {
-    Alert.alert('Deskripsi', Data['Deskripsi']);
-  }
 
   return (
     <View style={styles.container}>
