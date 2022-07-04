@@ -26,12 +26,12 @@ import {
   Alterrating,
   Comment,
   Commentheader,
-  Emptycomment,
 } from '../../component';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Actionsheet from 'react-native-actions-sheet';
 import auth from '@react-native-firebase/auth';
+import ReadMore from '@fawazahmed/react-native-read-more';
 
 export default function Detail({route, navigation}) {
   const [visible, setvisible] = useState(false);
@@ -238,14 +238,11 @@ export default function Detail({route, navigation}) {
             marginTop={30}
           />
           <Text style={styles.headline0}>Deskripsi</Text>
-          <Pressable onPress={showFullDesc}>
-            <Text
-              style={styles.subtitle}
-              numberOfLines={5}
-              ellipsizeMode="tail">
-              {Data.Deskripsi}
-            </Text>
-          </Pressable>
+
+          <ReadMore style={styles.subtitle} numberOfLines={5}>
+            {Data.Deskripsi}
+          </ReadMore>
+
           <Text style={styles.headline}>Gallery</Text>
           <FlatList
             horizontal={true}
