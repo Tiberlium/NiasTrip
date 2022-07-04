@@ -73,7 +73,12 @@ const ChangePass = ({passchange}) => {
       .then(async () => {
         await Auth().currentUser.updatePassword(newPass);
       })
-      .catch(e => console.log(e));
+      .then(() =>
+        ToastAndroid.show('Password berhasil diubah', ToastAndroid.SHORT),
+      )
+      .catch(() =>
+        ToastAndroid.show('Password sekarang tidak valid', ToastAndroid.SHORT),
+      );
   }
   return (
     <ActionSheet ref={passchange}>
