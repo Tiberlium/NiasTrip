@@ -30,7 +30,7 @@ const style = StyleSheet.create({
     borderRadius: 5,
     paddingTop: '1.8%',
     marginTop: 10,
-    paddingHorizontal:20,
+    paddingHorizontal:25,
   },
   txt: {color: 'grey', fontSize: 14, marginTop: 2},
   icon2: {marginTop: 1.5},
