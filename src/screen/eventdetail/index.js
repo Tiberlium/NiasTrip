@@ -4,7 +4,6 @@ import {
   StyleSheet,
   ToastAndroid,
   Image,
-  Alert,
   Pressable,
   ScrollView,
   FlatList,
@@ -31,6 +30,7 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import MapView, {Marker} from 'react-native-maps';
+import ReadMore from '@fawazahmed/react-native-read-more';
 import {uid} from 'uid';
 
 export default function Eventdetail({navigation, route}) {
@@ -225,10 +225,6 @@ export default function Eventdetail({navigation, route}) {
     ToastAndroid.show('Ditambahkan ke Bookmark', ToastAndroid.SHORT);
   }
 
-  function showFullDesc() {
-    Alert.alert('Deskripsi', Data['Deskripsi']);
-  }
-
   async function pay() {
     if (Object.keys(Profile).length == 0) {
       ToastAndroid.show(
@@ -271,11 +267,9 @@ export default function Eventdetail({navigation, route}) {
           onPress={() => isOpen.current?.show()}
         />
         <Text style={styles.headline}>Deskripsi</Text>
-        <Pressable onPress={showFullDesc}>
-          <Text style={styles.subtitle} numberOfLines={3} ellipsizeMode="tail">
-            {Data.Deskripsi}
-          </Text>
-        </Pressable>
+        <ReadMore style={styles.subtitle} numberOfLines={3}>
+          {Data.Deskripsi}
+        </ReadMore>
         <View>
           <Text style={styles.mapTitle}>Lokasi</Text>
           <Pressable

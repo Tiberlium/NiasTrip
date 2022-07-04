@@ -38,6 +38,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import auth from '@react-native-firebase/auth';
 import ActionSheet from 'react-native-actions-sheet';
 import Icon from 'react-native-vector-icons/Ionicons';
+import ReadMore from '@fawazahmed/react-native-read-more';
 
 export default function Fooddetail({navigation, route}) {
   const [nameicon, setnameicon] = useState('chevron-forward');
@@ -217,10 +218,6 @@ export default function Fooddetail({navigation, route}) {
     ToastAndroid.show('Ditambahkan ke Bookmark', ToastAndroid.SHORT);
   }
 
-  function showFullDesc() {
-    Alert.alert('Deskripsi', Data['Deskripsi']);
-  }
-
   async function redirect(name) {
     let x = [];
     const docRef = await firestore()
@@ -253,11 +250,11 @@ export default function Fooddetail({navigation, route}) {
           onPress={() => isOpen.current?.show()}
         />
         <Text style={styles.headline0}>Deskripsi</Text>
-        <Pressable onPress={showFullDesc}>
-          <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
-            {Data['Deskripsi']}
-          </Text>
-        </Pressable>
+
+        <ReadMore style={styles.subtitle} numberOfLines={5}>
+          {Data['Deskripsi']}
+        </ReadMore>
+
         <Text style={styles.headline}>Galery</Text>
         <FlatList
           horizontal={true}

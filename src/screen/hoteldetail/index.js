@@ -35,6 +35,7 @@ import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ActionSheet from 'react-native-actions-sheet';
 import auth from '@react-native-firebase/auth';
+import ReadMore from '@fawazahmed/react-native-read-more';
 
 export default function Hoteldetail({navigation, route}) {
   const [visible, setvisible] = useState(false);
@@ -163,7 +164,7 @@ export default function Hoteldetail({navigation, route}) {
       .doc(id)
       .collection('Comment')
       .doc(uid);
-      
+
     docRef.delete().then(() => {
       setisEdit(false);
       Getcomment();
@@ -225,10 +226,6 @@ export default function Hoteldetail({navigation, route}) {
     ToastAndroid.show('Ditambahkan ke Bookmark', ToastAndroid.SHORT);
   }
 
-  function showFullDesc() {
-    Alert.alert('Deskripsi', Data['Deskripsi']);
-  }
-
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -264,11 +261,9 @@ export default function Hoteldetail({navigation, route}) {
           onPress={() => isOpen.current?.show()}
         />
         <Text style={styles.headline1}>Deskripsi</Text>
-        <TouchableOpacity onPress={showFullDesc}>
-          <Text style={styles.subtitle} numberOfLines={5} ellipsizeMode="tail">
-            {Data['Deskripsi']}
-          </Text>
-        </TouchableOpacity>
+        <ReadMore style={styles.subtitle} numberOfLines={4}>
+          {Data['Deskripsi']}
+        </ReadMore>
         <Text style={styles.headline1}>Fasilitas</Text>
         <FlatList
           horizontal={true}
@@ -401,7 +396,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   subtitle: {
-    paddingLeft: 20,
+    paddingHorizontal: 20,
     paddingTop: 10,
     color: 'black',
     fontWeight: '300',
