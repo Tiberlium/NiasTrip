@@ -64,8 +64,8 @@ export default function Register({navigation}) {
     } else if (!Email.trim()) {
       ToastAndroid.show('Lengkapi email anda', ToastAndroid.SHORT);
       return false;
-    } else if (!Password.trim()) {
-      ToastAndroid.show('Lengkapi password anda', ToastAndroid.SHORT);
+    } else if (!Password.trim() || Password.length < 6) {
+      ToastAndroid.show('Lengkapi password anda minimum 6 karakter', ToastAndroid.SHORT);
       return false;
     } else {
       Auth()
@@ -90,6 +90,7 @@ export default function Register({navigation}) {
           })
         })
         .catch(e => {
+          console.error(e);
           ToastAndroid.show('Register gagal', ToastAndroid.SHORT);
           setEmail('');
           setPassword('');
