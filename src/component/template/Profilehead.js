@@ -11,7 +11,7 @@ export default function Profilehead({name}) {
       {user.photoURL != null ? (
         <Profile source={{uri: user.photoURL}} />
       ) : (
-        <Blankavatar width={70} height={70} bottom={-30} />
+        <Blankavatar width={60} height={60} bottom={-30} />
       )}
       <View style={styles.inlineWrap}>
         <Text style={styles.txt1}>Hai, {name}</Text>
