@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
   Image,
   StyleSheet,
-  KeyboardAvoidingView,
   ToastAndroid,
   ScrollView,
 } from 'react-native';
@@ -22,6 +21,8 @@ import Auth from '@react-native-firebase/auth';
 import SelectDropdown from 'react-native-select-dropdown';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const Unregister = () => {
   const navigation = useNavigation();
@@ -39,25 +40,57 @@ const Unregister = () => {
 
 export default function Register({navigation}) {
   const [nama, setnama] = useState('');
-  const [kelamin, setkelamin] = useState([]);
+  const [kelamin, setkelamin] = useState('Pria');
   const [telepon, settelepon] = useState('');
   const [alamat, setalamat] = useState('');
+  const [kota, setkota] = useState('');
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
   const gender = ['Pria', 'Wanita'];
 
   const Submit = () => {
-    Auth()
-      .createUserWithEmailAndPassword(Email, Password)
-      .then(() => {
-        navigation.navigate('Login');
-        ToastAndroid.show('Pengguna telah terdaftar', ToastAndroid.SHORT);
-      })
-      .catch(() => {
-        ToastAndroid.show('Register gagal', ToastAndroid.SHORT);
-        setEmail('');
-        setPassword('');
-      });
+    if (!nama.trim()) {
+      ToastAndroid.show('lengkapi nama anda', ToastAndroid.SHORT);
+      return false;
+    } else if (!gender.length) {
+      ToastAndroid.show('lengkapi kelamin anda', ToastAndroid.SHORT);
+      return false;
+    } else if (!alamat.trim()) {
+      ToastAndroid.show('Lengkapi alamat anda', ToastAndroid.SHORT);
+      return false;
+    } else if (!telepon.trim()) {
+      ToastAndroid.show('Lengkapi no hp anda', ToastAndroid.SHORT);
+      return false;
+    } else if (!Email.trim()) {
+      ToastAndroid.show('Lengkapi email anda', ToastAndroid.SHORT);
+      return false;
+    } else if (!Password.trim()) {
+      ToastAndroid.show('Lengkapi password anda', ToastAndroid.SHORT);
+      return false;
+    } else {
+      Auth()
+        .createUserWithEmailAndPassword(Email, Password)
+        .then(async () => {
+          navigation.navigate('Login');
+          ToastAndroid.show('Pengguna telah terdaftar', ToastAndroid.SHORT);
+          const user = auth().currentUser.uid;
+          const docRef = await firestore().collection('Users').doc(user);
+          docRef.set({
+            id: user,
+            name: nama,
+            gender: kelamin,
+            phoneNumber: telepon,
+            address: alamat,
+            city: kota,
+            email: Email,
+          });
+        })
+        .catch(e => {
+          ToastAndroid.show('Register gagal', ToastAndroid.SHORT);
+          setEmail('');
+          setPassword('');
+        });
+    }
   };
 
   const onFacebookPress = async () => {
@@ -98,64 +131,57 @@ export default function Register({navigation}) {
   };
 
   return (
-    <ScrollView>
-      <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={0}>
-        <Text style={styles.title}>Gabung ke NiasTrip</Text>
-        <Image source={require('../../asset/Logo.png')} style={styles.logo} />
-        <Btnsocial
-          source={require('../../asset/facebook.png')}
-          background="#4267B2"
-          txtcolor="white"
-          label="Lanjutkan dengan Facebook"
-          onPress={() =>
-            onFacebookPress()
-              .then(() => navigation.navigate('Navigator'))
-              .catch(() =>
-                ToastAndroid.show('User canceled', ToastAndroid.SHORT),
-              )
-          }
-        />
-        <Btnsocial
-          source={require('../../asset/google.png')}
-          background="white"
-          txtcolor="black"
-          label="Lanjutkan dengan Google"
-          onPress={() =>
-            onGooglePress().then(() => navigation.navigate('Navigator'))
-          }
-        />
-        <Horizontalline />
-        <Custinput onChangeText={setnama} value={nama} placeholder="Nama" />
-        <SelectDropdown
-          data={gender}
-          defaultButtonText="Pilih jenis kelamin"
-          buttonStyle={styles.dropDown}
-          dropdownStyle={{borderRadius: 10}}
-          rowTextStyle={{fontSize: 15}}
-          onSelect={selectedItem => setkelamin(selectedItem)}
-          renderDropdownIcon={() => (
-            <Icon name="chevron-down" size={25} color="#808080" />
-          )}
-          buttonTextStyle={styles.txtstyle}
-        />
-        <Custinput
-          onChangeText={settelepon}
-          value={telepon}
-          placeholder="No hp"
-        />
-        <Custinput
-          onChangeText={setalamat}
-          value={alamat}
-          placeholder="Alamat"
-        />
-        <Custinput onChangeText={setEmail} value={Email} placeholder="Email" />
-        <View style={{marginTop: 10}}>
-          <CustinputPass onChangeText={setPassword} value={Password} />
-        </View>
-        <Btnsubmit title="Daftar" onPress={Submit} top={hp(10)} />
-        <Unregister />
-        <Line />
-      </KeyboardAvoidingView>
+    <ScrollView style={{flex: 1}}>
+      <Text style={styles.title}>Gabung ke NiasTrip</Text>
+      <Image source={require('../../asset/Logo.png')} style={styles.logo} />
+      <Btnsocial
+        source={require('../../asset/facebook.png')}
+        background="#4267B2"
+        txtcolor="white"
+        label="Lanjutkan dengan Facebook"
+        onPress={() =>
+          onFacebookPress()
+            .then(() => navigation.navigate('Navigator'))
+            .catch(() => ToastAndroid.show('User canceled', ToastAndroid.SHORT))
+        }
+      />
+      <Btnsocial
+        source={require('../../asset/google.png')}
+        background="white"
+        txtcolor="black"
+        label="Lanjutkan dengan Google"
+        onPress={() =>
+          onGooglePress().then(() => navigation.navigate('Navigator'))
+        }
+      />
+      <Horizontalline />
+      <Custinput onChangeText={setnama} value={nama} placeholder="Nama" />
+      <SelectDropdown
+        data={gender}
+        defaultButtonText="Pilih jenis kelamin"
+        buttonStyle={styles.dropDown}
+        dropdownStyle={{borderRadius: 10}}
+        rowTextStyle={{fontSize: 15}}
+        onSelect={selectedItem => setkelamin(selectedItem)}
+        renderDropdownIcon={() => (
+          <Icon name="chevron-down" size={25} color="#808080" />
+        )}
+        buttonTextStyle={styles.txtstyle}
+      />
+      <Custinput
+        onChangeText={settelepon}
+        value={telepon}
+        placeholder="No hp"
+      />
+      <Custinput onChangeText={setalamat} value={alamat} placeholder="Alamat" />
+      <Custinput onChangeText={setkota} value={kota} placeholder="Kota" />
+      <Custinput onChangeText={setEmail} value={Email} placeholder="Email" />
+      <View style={{marginTop: 10}}>
+        <CustinputPass onChangeText={setPassword} value={Password} />
+      </View>
+      <Btnsubmit title="Daftar" onPress={Submit} top={hp(10)} />
+      <Unregister />
+      <Line />
     </ScrollView>
   );
 }
@@ -197,6 +223,6 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     backgroundColor: 'white',
     marginBottom: -10,
-    height: '5%',
+    height: '4.5%',
   },
 });
