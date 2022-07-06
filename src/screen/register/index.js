@@ -22,6 +22,17 @@ import Auth from '@react-native-firebase/auth';
 import SelectDropdown from 'react-native-select-dropdown';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+const Unregister = ({navigation}) => (
+  <View style={styles.wrapunregister}>
+    <Text style={styles.register}>Sudah punya akun ?</Text>
+    <Btntext
+      title="Masuk"
+      color="red"
+      onPress={() => navigation.navigate('Login')}
+    />
+  </View>
+);
+
 export default function Register({navigation}) {
   const [nama, setnama] = useState('');
   const [kelamin, setkelamin] = useState([]);
@@ -43,6 +54,43 @@ export default function Register({navigation}) {
         setEmail('');
         setPassword('');
       });
+  };
+
+  const onFacebookPress = async () => {
+    const result = await LoginManager.logInWithPermissions([
+      'public_profile',
+      'email',
+    ]);
+
+    if (result.isCancelled) {
+      throw 'User cancelled the login process';
+    }
+
+    const data = await AccessToken.getCurrentAccessToken();
+
+    if (!data) {
+      throw 'Something went wrong obtaining access token';
+    }
+
+    const facebookCredential = Auth.FacebookAuthProvider.credential(
+      data.accessToken,
+    );
+
+    return Auth().signInWithCredential(facebookCredential);
+  };
+
+  const onGooglePress = async () => {
+    GoogleSignin.configure({
+      webClientId:
+        '630789254968-g8e5nijq82eird2ifitcokvis3o1luv9.apps.googleusercontent.com',
+    });
+    try {
+      const {idToken} = await GoogleSignin.signIn();
+      const googleCredential = Auth.GoogleAuthProvider.credential(idToken);
+      return Auth().signInWithCredential(googleCredential);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -101,15 +149,8 @@ export default function Register({navigation}) {
           <CustinputPass onChangeText={setPassword} value={Password} />
         </View>
         <Btnsubmit title="Daftar" onPress={Submit} top={hp(10)} />
+        <Unregister />
         <Line />
-        <View style={styles.wrapunregister}>
-          <Text style={styles.register}>Sudah punya akun ?</Text>
-          <Btntext
-            title="Masuk"
-            color="red"
-            onPress={() => navigation.navigate('Login')}
-          />
-        </View>
       </KeyboardAvoidingView>
     </ScrollView>
   );
@@ -134,7 +175,7 @@ const styles = StyleSheet.create({
   txtor: {fontWeight: '300', textAlign: 'center', marginVertical: hp(5)},
   wrap: {display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'},
   wrapunregister: {
-    flex: 1,
+    display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -152,6 +193,6 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     backgroundColor: 'white',
     marginBottom: -10,
-    height: '5.8%',
+    height: '5%',
   },
 });
