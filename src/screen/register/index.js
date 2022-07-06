@@ -14,6 +14,8 @@ import {
   Btnsubmit,
   CustinputPass,
   Line,
+  Btnsocial,
+  Horizontalline,
 } from '../../component';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Auth from '@react-native-firebase/auth';
@@ -48,6 +50,29 @@ export default function Register({navigation}) {
       <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={0}>
         <Text style={styles.title}>Gabung ke NiasTrip</Text>
         <Image source={require('../../asset/Logo.png')} style={styles.logo} />
+        <Btnsocial
+          source={require('../../asset/facebook.png')}
+          background="#4267B2"
+          txtcolor="white"
+          label="Lanjutkan dengan Facebook"
+          onPress={() =>
+            onFacebookPress()
+              .then(() => navigation.navigate('Navigator'))
+              .catch(() =>
+                ToastAndroid.show('User canceled', ToastAndroid.SHORT),
+              )
+          }
+        />
+        <Btnsocial
+          source={require('../../asset/google.png')}
+          background="white"
+          txtcolor="black"
+          label="Lanjutkan dengan Google"
+          onPress={() =>
+            onGooglePress().then(() => navigation.navigate('Navigator'))
+          }
+        />
+        <Horizontalline />
         <Custinput onChangeText={setnama} value={nama} placeholder="Nama" />
         <SelectDropdown
           data={gender}
