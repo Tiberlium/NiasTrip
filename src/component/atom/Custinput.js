@@ -2,11 +2,11 @@ import {View, TextInput, StyleSheet, Pressable} from 'react-native';
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function Custinput({onChangeText, value}) {
+export default function Custinput({onChangeText, value,placeholder}) {
   return (
     <View>
       <TextInput
-        placeholder="Email"
+        placeholder={placeholder}
         placeholderTextColor={'grey'}
         style={styles.txt}
         onChangeText={onChangeText}

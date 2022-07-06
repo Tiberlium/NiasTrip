@@ -104,7 +104,7 @@ export default function Login({navigation}) {
         }
       />
       <Horizontalline />
-      <Custinput onChangeText={setEmail} value={Email} />
+      <Custinput onChangeText={setEmail} value={Email} placeholder="Email" />
       <CustinputPass onChangeText={setPassword} value={Password} />
       <Btnsubmit title="Masuk" onPress={Submit} top={hp(10)} />
       <View style={styles.forget}>

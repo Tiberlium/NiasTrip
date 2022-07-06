@@ -9,7 +9,7 @@ export default function Horizontalline() {
         <View style={{flex: 1, height: 0.2, backgroundColor: 'grey'}} />
         <View>
           <Text style={{width: 50, textAlign: 'center', color: 'grey'}}>
-            Or
+            atau
           </Text>
         </View>
         <View style={{flex: 1, height: 0.2, backgroundColor: 'grey'}} />

@@ -11,17 +11,17 @@ import {
   Custinput,
   Btntext,
   Btnsubmit,
-  Btnsocial,
   CustinputPass,
   Line,
-  Horizontalline,
 } from '../../component';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import Auth from '@react-native-firebase/auth';
-import {LoginManager, AccessToken} from 'react-native-fbsdk-next';
 
 export default function Register({navigation}) {
+  const [nama, setnama] = useState('');
+  const [kelamin, setkelamin] = useState([]);
+  const [telepon, settelepon] = useState("");
+  const [alamat, setalamat] = useState('');
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
 
@@ -39,67 +39,18 @@ export default function Register({navigation}) {
       });
   };
 
-  const onFacebookPress = async () => {
-    const result = await LoginManager.logInWithPermissions([
-      'public_profile',
-      'email',
-    ]);
-
-    if (result.isCancelled) {
-      throw 'User cancelled the login process';
-    }
-
-    const data = await AccessToken.getCurrentAccessToken();
-
-    if (!data) {
-      throw 'Something went wrong obtaining access token';
-    }
-
-    const facebookCredential = Auth.FacebookAuthProvider.credential(
-      data.accessToken,
-    );
-
-    return Auth().signInWithCredential(facebookCredential);
-  };
-
-  const onGooglePress = async () => {
-    GoogleSignin.configure({
-      webClientId:
-        '630789254968-g8e5nijq82eird2ifitcokvis3o1luv9.apps.googleusercontent.com',
-    });
-    const {idToken} = await GoogleSignin.signIn();
-    const googleCredential = Auth.GoogleAuthProvider.credential(idToken);
-    return Auth().signInWithCredential(googleCredential);
-  };
-
   return (
     <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={0}>
       <Text style={styles.title}>Gabung ke NiasTrip</Text>
       <Image source={require('../../asset/Logo.png')} style={styles.logo} />
-      <Btnsocial
-        source={require('../../asset/facebook.png')}
-        background="#4267B2"
-        txtcolor="white"
-        label="Lanjutkan dengan Facebook"
-        onPress={() =>
-          onFacebookPress()
-            .then(() => navigation.navigate('Navigator'))
-            .catch(() => {
-              ToastAndroid.show('User Canceled', ToastAndroid.SHORT);
-            })
-        }
+      <Custinput onChangeText={setnama} value={nama} placeholder="Nama" />
+      <Custinput
+        onChangeText={settelepon}
+        value={telepon}
+        placeholder="No hp"
       />
-      <Btnsocial
-        source={require('../../asset/google.png')}
-        background="white"
-        txtcolor="black"
-        label="Lanjutkan dengan Google"
-        onPress={() =>
-          onGooglePress().then(() => navigation.navigate('Navigator'))
-        }
-      />
-      <Horizontalline />
-      <Custinput onChangeText={setEmail} value={Email} />
+      <Custinput onChangeText={setalamat} value={alamat} placeholder="Alamat" />
+      <Custinput onChangeText={setEmail} value={Email} placeholder="Email" />
       <CustinputPass onChangeText={setPassword} value={Password} />
       <Btnsubmit title="Daftar" onPress={Submit} top={hp(10)} />
       <Line />
