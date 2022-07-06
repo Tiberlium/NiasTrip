@@ -16,14 +16,17 @@ import {
 } from '../../component';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Auth from '@react-native-firebase/auth';
+import SelectDropdown from 'react-native-select-dropdown';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function Register({navigation}) {
   const [nama, setnama] = useState('');
   const [kelamin, setkelamin] = useState([]);
-  const [telepon, settelepon] = useState("");
+  const [telepon, settelepon] = useState('');
   const [alamat, setalamat] = useState('');
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
+  const gender = ['Pria', 'Wanita'];
 
   const Submit = () => {
     Auth()
@@ -44,6 +47,18 @@ export default function Register({navigation}) {
       <Text style={styles.title}>Gabung ke NiasTrip</Text>
       <Image source={require('../../asset/Logo.png')} style={styles.logo} />
       <Custinput onChangeText={setnama} value={nama} placeholder="Nama" />
+      <SelectDropdown
+        data={gender}
+        defaultButtonText="Pilih jenis kelamin"
+        buttonStyle={styles.dropDown}
+        dropdownStyle={{borderRadius: 10}}
+        rowTextStyle={{fontSize: 15}}
+        onSelect={selectedItem => setkelamin(selectedItem)}
+        renderDropdownIcon={() => (
+          <Icon name="chevron-down" size={25} color="#808080" />
+        )}
+        buttonTextStyle={styles.txtstyle}
+      />
       <Custinput
         onChangeText={settelepon}
         value={telepon}
@@ -51,7 +66,9 @@ export default function Register({navigation}) {
       />
       <Custinput onChangeText={setalamat} value={alamat} placeholder="Alamat" />
       <Custinput onChangeText={setEmail} value={Email} placeholder="Email" />
-      <CustinputPass onChangeText={setPassword} value={Password} />
+      <View style={{marginTop: 10}}>
+        <CustinputPass onChangeText={setPassword} value={Password} />
+      </View>
       <Btnsubmit title="Daftar" onPress={Submit} top={hp(10)} />
       <Line />
       <View style={styles.wrapunregister}>
@@ -81,6 +98,7 @@ const styles = StyleSheet.create({
     color: 'black',
     marginTop: hp(5),
   },
+  txtstyle: {fontWeight: '300', fontSize: 15, color: 'grey'},
   txtor: {fontWeight: '300', textAlign: 'center', marginVertical: hp(5)},
   wrap: {display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'},
   wrapunregister: {
@@ -92,5 +110,16 @@ const styles = StyleSheet.create({
   },
   register: {
     color: 'grey',
+  },
+  dropDown: {
+    borderWidth: 0.5,
+    borderColor: '#808080',
+    width: 300,
+    marginTop: '5%',
+    alignSelf: 'center',
+    borderRadius: 13,
+    backgroundColor: 'white',
+    marginBottom: -10,
+    height:'5.8%',
   },
 });
