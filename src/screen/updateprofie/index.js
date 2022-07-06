@@ -200,7 +200,7 @@ export default function Updateprofile({navigation}) {
     } else if (!email.trim()) {
       ToastAndroid.show('Lengkapi email anda', ToastAndroid.SHORT);
       return false;
-    } else if (!Kewarganegaraan.trim()) {
+    } else if (!Kewarganegaraan?.trim()) {
       ToastAndroid.show('Lengkapi kewarganegaraan anda', ToastAndroid.SHORT);
       return false;
     } else {
