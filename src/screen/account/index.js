@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, ScrollView} from 'react-native';
+import {StyleSheet, Text, ScrollView, Alert} from 'react-native';
 import {firebase} from '@react-native-firebase/auth';
 import {Accountprofile, Blankavatar, Btnlogout} from '../../component';
 import {Cardsectionlist} from '../../component';
@@ -16,6 +16,32 @@ export default function Account() {
       .then(() => navigation.navigate('Intro'))
       .catch(e => console.log(e));
   }
+
+  const Showalert = () =>
+    Alert.alert(
+      'Keluar',
+      'Apakah anda ingin keluar ?',
+      [
+        {
+          text: 'Batal',
+          onPress: () => {
+            return false;
+          },
+          style: 'cancel',
+        },
+        {
+          text: 'Ya',
+          onPress: () => signOut(),
+          style: 'default',
+        },
+      ],
+      {
+        cancelable: true,
+        onDismiss: () => {
+          return false;
+        },
+      },
+    );
 
   return (
     <ScrollView>
@@ -63,7 +89,7 @@ export default function Account() {
         icon="log-out"
         title="Log out"
         desc="Keluarkan akun dari aplikasi"
-        onPress={() => signOut()}
+        onPress={Showalert}
       />
     </ScrollView>
   );
