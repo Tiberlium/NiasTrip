@@ -21,17 +21,21 @@ import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Auth from '@react-native-firebase/auth';
 import SelectDropdown from 'react-native-select-dropdown';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useNavigation} from '@react-navigation/native';
 
-const Unregister = ({navigation}) => (
-  <View style={styles.wrapunregister}>
-    <Text style={styles.register}>Sudah punya akun ?</Text>
-    <Btntext
-      title="Masuk"
-      color="red"
-      onPress={() => navigation.navigate('Login')}
-    />
-  </View>
-);
+const Unregister = () => {
+  const navigation = useNavigation();
+  return (
+    <View style={styles.wrapunregister}>
+      <Text style={styles.register}>Sudah punya akun ?</Text>
+      <Btntext
+        title="Masuk"
+        color="red"
+        onPress={() => navigation.navigate('Login')}
+      />
+    </View>
+  );
+};
 
 export default function Register({navigation}) {
   const [nama, setnama] = useState('');
