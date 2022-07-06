@@ -305,7 +305,7 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     backgroundColor: 'white',
     marginBottom: -10,
-    height: '4.5%',
+    height: 50,
   },
   lbldropdown: {
     color: 'black',

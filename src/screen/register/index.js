@@ -73,17 +73,21 @@ export default function Register({navigation}) {
         .then(async () => {
           navigation.navigate('Login');
           ToastAndroid.show('Pengguna telah terdaftar', ToastAndroid.SHORT);
-          const user = auth().currentUser.uid;
-          const docRef = await firestore().collection('Users').doc(user);
+          const user = auth().currentUser;
+          const docRef = await firestore().collection('Users').doc(user.uid);
           docRef.set({
-            id: user,
+            id: user.uid,
             name: nama,
             gender: kelamin,
             phoneNumber: telepon,
             address: alamat,
             city: kota,
             email: Email,
-          });
+          }).then(async()=>{
+            await user.updateProfile({
+              displayName:nama,
+            })
+          })
         })
         .catch(e => {
           ToastAndroid.show('Register gagal', ToastAndroid.SHORT);
@@ -223,6 +227,6 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     backgroundColor: 'white',
     marginBottom: -10,
-    height: '4.5%',
+    height: 50,
   },
 });
