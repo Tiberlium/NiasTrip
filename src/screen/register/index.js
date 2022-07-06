@@ -6,6 +6,7 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   ToastAndroid,
+  ScrollView,
 } from 'react-native';
 import {
   Custinput,
@@ -43,43 +44,49 @@ export default function Register({navigation}) {
   };
 
   return (
-    <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={0}>
-      <Text style={styles.title}>Gabung ke NiasTrip</Text>
-      <Image source={require('../../asset/Logo.png')} style={styles.logo} />
-      <Custinput onChangeText={setnama} value={nama} placeholder="Nama" />
-      <SelectDropdown
-        data={gender}
-        defaultButtonText="Pilih jenis kelamin"
-        buttonStyle={styles.dropDown}
-        dropdownStyle={{borderRadius: 10}}
-        rowTextStyle={{fontSize: 15}}
-        onSelect={selectedItem => setkelamin(selectedItem)}
-        renderDropdownIcon={() => (
-          <Icon name="chevron-down" size={25} color="#808080" />
-        )}
-        buttonTextStyle={styles.txtstyle}
-      />
-      <Custinput
-        onChangeText={settelepon}
-        value={telepon}
-        placeholder="No hp"
-      />
-      <Custinput onChangeText={setalamat} value={alamat} placeholder="Alamat" />
-      <Custinput onChangeText={setEmail} value={Email} placeholder="Email" />
-      <View style={{marginTop: 10}}>
-        <CustinputPass onChangeText={setPassword} value={Password} />
-      </View>
-      <Btnsubmit title="Daftar" onPress={Submit} top={hp(10)} />
-      <Line />
-      <View style={styles.wrapunregister}>
-        <Text style={styles.register}>Sudah punya akun ?</Text>
-        <Btntext
-          title="Masuk"
-          color="red"
-          onPress={() => navigation.navigate('Login')}
+    <ScrollView>
+      <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={0}>
+        <Text style={styles.title}>Gabung ke NiasTrip</Text>
+        <Image source={require('../../asset/Logo.png')} style={styles.logo} />
+        <Custinput onChangeText={setnama} value={nama} placeholder="Nama" />
+        <SelectDropdown
+          data={gender}
+          defaultButtonText="Pilih jenis kelamin"
+          buttonStyle={styles.dropDown}
+          dropdownStyle={{borderRadius: 10}}
+          rowTextStyle={{fontSize: 15}}
+          onSelect={selectedItem => setkelamin(selectedItem)}
+          renderDropdownIcon={() => (
+            <Icon name="chevron-down" size={25} color="#808080" />
+          )}
+          buttonTextStyle={styles.txtstyle}
         />
-      </View>
-    </KeyboardAvoidingView>
+        <Custinput
+          onChangeText={settelepon}
+          value={telepon}
+          placeholder="No hp"
+        />
+        <Custinput
+          onChangeText={setalamat}
+          value={alamat}
+          placeholder="Alamat"
+        />
+        <Custinput onChangeText={setEmail} value={Email} placeholder="Email" />
+        <View style={{marginTop: 10}}>
+          <CustinputPass onChangeText={setPassword} value={Password} />
+        </View>
+        <Btnsubmit title="Daftar" onPress={Submit} top={hp(10)} />
+        <Line />
+        <View style={styles.wrapunregister}>
+          <Text style={styles.register}>Sudah punya akun ?</Text>
+          <Btntext
+            title="Masuk"
+            color="red"
+            onPress={() => navigation.navigate('Login')}
+          />
+        </View>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 }
 
@@ -120,6 +127,6 @@ const styles = StyleSheet.create({
     borderRadius: 13,
     backgroundColor: 'white',
     marginBottom: -10,
-    height:'5.8%',
+    height: '5.8%',
   },
 });
