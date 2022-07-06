@@ -30,6 +30,7 @@ export default function Register({navigation}) {
       .createUserWithEmailAndPassword(Email, Password)
       .then(() => {
         navigation.navigate('Login');
+        ToastAndroid.show('Pengguna telah terdaftar', ToastAndroid.SHORT);
       })
       .catch(() => {
         ToastAndroid.show('Register gagal', ToastAndroid.SHORT);
@@ -100,7 +101,7 @@ export default function Register({navigation}) {
       <Horizontalline />
       <Custinput onChangeText={setEmail} value={Email} />
       <CustinputPass onChangeText={setPassword} value={Password} />
-      <Btnsubmit title="Daftar" onPress={Submit} top={hp(10)}/>
+      <Btnsubmit title="Daftar" onPress={Submit} top={hp(10)} />
       <Line />
       <View style={styles.wrapunregister}>
         <Text style={styles.register}>Sudah punya akun ?</Text>
