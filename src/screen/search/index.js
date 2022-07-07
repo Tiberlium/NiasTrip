@@ -132,10 +132,17 @@ export default function Search({navigation}) {
           text={chip1.text}
           background={chip1.background}
           onPress={data => {
-            setQuery(data);
-            setchip1({background: 'black', text: 'white'});
-            setchip2({background: 'white', text: 'black'});
-            setchip3({background: 'white', text: 'black'});
+            if (chip1.background === 'black') {
+              setQuery('');
+              setchip1({background: 'white', text: 'black'});
+              setchip2({background: 'white', text: 'black'});
+              setchip3({background: 'white', text: 'black'});
+            } else {
+              setQuery(data);
+              setchip1({background: 'black', text: 'white'});
+              setchip2({background: 'white', text: 'black'});
+              setchip3({background: 'white', text: 'black'});
+            }
           }}
         />
         <Chip
@@ -143,10 +150,17 @@ export default function Search({navigation}) {
           text={chip2.text}
           background={chip2.background}
           onPress={data => {
-            setQuery(data);
-            setchip2({background: 'black', text: 'white'});
-            setchip1({background: 'white', text: 'black'});
-            setchip3({background: 'white', text: 'black'});
+            if (chip2.background === 'black') {
+              setQuery('');
+              setchip1({background: 'white', text: 'black'});
+              setchip2({background: 'white', text: 'black'});
+              setchip3({background: 'white', text: 'black'});
+            } else {
+              setQuery(data);
+              setchip2({background: 'black', text: 'white'});
+              setchip1({background: 'white', text: 'black'});
+              setchip3({background: 'white', text: 'black'});
+            }
           }}
         />
         <Chip
@@ -154,10 +168,17 @@ export default function Search({navigation}) {
           text={chip3.text}
           background={chip3.background}
           onPress={data => {
-            setQuery(data);
-            setchip3({background: 'black', text: 'white'});
-            setchip2({background: 'white', text: 'black'});
-            setchip1({background: 'white', text: 'black'});
+            if (chip3.background === 'black') {
+              setQuery('');
+              setchip1({background: 'white', text: 'black'});
+              setchip2({background: 'white', text: 'black'});
+              setchip3({background: 'white', text: 'black'});
+            } else {
+              setQuery(data);
+              setchip3({background: 'black', text: 'white'});
+              setchip2({background: 'white', text: 'black'});
+              setchip1({background: 'white', text: 'black'});
+            }
           }}
         />
       </View>
