@@ -23,6 +23,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {LoginManager, AccessToken} from 'react-native-fbsdk-next';
 
 const Unregister = () => {
   const navigation = useNavigation();
