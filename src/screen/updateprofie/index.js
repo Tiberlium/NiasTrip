@@ -242,6 +242,7 @@ export default function Updateprofile({navigation}) {
             buttonStyle={styles.dropDown}
             dropdownStyle={{borderRadius: 10}}
             rowTextStyle={{fontSize: 15}}
+            defaultValue={kelamin}
             onSelect={selectedItem => setkelamin(selectedItem)}
             renderDropdownIcon={() => (
               <Icon name="chevron-down" size={25} color="#808080" />
