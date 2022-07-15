@@ -27,8 +27,6 @@ export default function Actionsheet({refs, data}) {
   const [jmlhOrg, setjmlhOrg] = useState(0);
   const currentUser = Auth().currentUser;
   const isMounted = useRef();
-  const serverKey = 'SB-Mid-server-aOZTMq7MMpj0rwb4130chMv5:';
-  const encodedKey = base64.encode(serverKey);
 
   let orderId = 'Orderid' + uid();
   let checkIN = checkin.toISOString().split('T')[0];
@@ -71,41 +69,24 @@ export default function Actionsheet({refs, data}) {
     return () => (isMounted.current = false);
   }, []);
 
-  function checkstatus() {
-    axios({
-      url: `https://api.sandbox.midtrans.com/v2/${orderId}/status`,
-      method: 'get',
-      headers: {
-        Accept: 'application/json',
-        'content-type': 'application/json',
-        Authorization: 'Basic ' + encodedKey,
-      },
-    })
-      .then(result => {
-        if (
-          (result.status === 200 &&
-            result.data.transaction_status === 'capture') ||
-          (result.status === 200 &&
-            result.data.transaction_status === 'settlement')
-        ) {
-          Alert.alert('Pemberitahuan', 'Tempat ini telah selesai reservasi');
-          return false;
-        } else {
-          navigation.navigate('Paymenthotel', {
-            Jenis: 'Penginapan',
-            Profile,
-            orderId,
-            checkIN,
-            checkOUT,
-            jmlhOrg,
-            total,
-            gambar: data['Gambar'],
-            nama: data['Nama'],
-            tarif: data['Harga'],
-          });
-        }
-      })
-      .catch(error => console.log(error));
+  function pay() {
+    if (total !== null || total !== 0) {
+      navigation.navigate('Paymenthotel', {
+        Jenis: 'Penginapan',
+        Profile,
+        orderId,
+        checkIN,
+        checkOUT,
+        jmlhOrg,
+        total,
+        gambar: data['Gambar'],
+        nama: data['Nama'],
+        tarif: data['Harga'],
+      });
+    } else {
+      ToastAndroid.show('Silahkan tentukan kapan anda checkin dan checkout');
+      return false;
+    }
   }
 
   function Book() {
@@ -116,7 +97,7 @@ export default function Actionsheet({refs, data}) {
       );
       return false;
     } else {
-      checkstatus();
+      pay();
     }
   }
 
