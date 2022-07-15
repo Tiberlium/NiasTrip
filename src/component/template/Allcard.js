@@ -59,6 +59,40 @@ function Allcard2({title, rating, gambar, onPress, value}) {
   );
 }
 
+export function Allcard3({
+  title,
+  kota,
+  kabupaten,
+  gambar,
+  onPress,
+  rating,
+  value,
+}) {
+  return (
+    <View>
+      <TouchableOpacity onPress={onPress} style={styles.container}>
+        <Image source={{uri: gambar}} style={styles.img} />
+        <View style={styles.reviewcont2}>
+          <StarRating
+            rating={rating}
+            starSize={14}
+            fullStarColor={'orange'}
+            containerStyle={styles.ratingcont}
+            emptyStarColor={'grey'}
+          />
+          <Text style={{color: 'white', marginLeft: 5, marginTop: -4}}>
+            ({value})
+          </Text>
+        </View>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.caption}>
+          {kota}, {kabupaten}
+        </Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
 export {Allcard2};
 
 const styles = StyleSheet.create({

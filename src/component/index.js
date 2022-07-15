@@ -37,7 +37,7 @@ import Actionsheet from './template/Actionsheet';
 import Btncheckpayment from './atom/Btncheckpayment';
 import Btnhome from './atom/Btnhome';
 import Btnpesanslide from './atom/Btnpesanslide';
-import {Allcard2} from './template/Allcard';
+import {Allcard2,Allcard3} from './template/Allcard';
 import {Btnbookmark2} from './atom/Btnbookmark';
 import Btnfocus from './atom/Btnfocus';
 import Cardsectionlist from './template/Cardsectionlist';
@@ -63,6 +63,7 @@ import Cardcallcenter from './template/Cardcallcenter';
 import Hoteldetailtransact from './template/Hoteldetailtransact';
 import Eventdetailtransact from './template/Eventdetailtransact';
 import Listcardresto from './template/Listcardresto';
+
 export {
   BtnNext,
   Txtinput,
@@ -129,4 +130,5 @@ export {
   Hoteldetailtransact,
   Eventdetailtransact,
   Listcardresto,
+  Allcard3,
 };

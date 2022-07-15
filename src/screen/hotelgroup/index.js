@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
-import {Btnback, Allcard} from '../../component';
+import {Btnback, Allcard3} from '../../component';
 import Firestore from '@react-native-firebase/firestore';
 
 export default function Hotelgroup({navigation}) {
@@ -36,7 +36,7 @@ export default function Hotelgroup({navigation}) {
         data={Data}
         contentContainerStyle={styles.container}
         renderItem={({item}) => (
-          <Allcard
+          <Allcard3
             title={item.data.Nama}
             kota={item.data.Kabupaten}
             kabupaten={item.data.Kategori}

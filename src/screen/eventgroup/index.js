@@ -1,6 +1,6 @@
-import {View, Text, StyleSheet, FlatList, SafeAreaView} from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
-import {Btnback, Allcard} from '../../component';
+import {Btnback, Allcard3} from '../../component';
 import firestore from '@react-native-firebase/firestore';
 
 export default function Eventgroup({navigation}) {
@@ -35,7 +35,7 @@ export default function Eventgroup({navigation}) {
         data={Data}
         contentContainerStyle={styles.container}
         renderItem={({item}) => (
-          <Allcard
+          <Allcard3
             title={item.data.Nama}
             gambar={item.data.Gambar}
             kota={item.data.Kategori}
