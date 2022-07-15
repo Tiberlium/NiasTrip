@@ -17,7 +17,6 @@ import {
   Btnbookmark,
   Btntiket,
   Btnpesanslide,
-  Btnbooking,
   ThumbRating,
   Cardratingreview,
   Postrating,
@@ -31,6 +30,7 @@ import {
 } from 'react-native-responsive-screen';
 import MapView, {Marker} from 'react-native-maps';
 import ReadMore from '@fawazahmed/react-native-read-more';
+import NumericInput from 'react-native-numeric-input';
 import {uid} from 'uid';
 
 export default function Eventdetail({navigation, route}) {
@@ -43,6 +43,7 @@ export default function Eventdetail({navigation, route}) {
   const [review, setreview] = useState('');
   const [isEdit, setisEdit] = useState(false);
   const [comments, setcomments] = useState([]);
+  const [qty, setqty] = useState(0);
   const isMounted = useRef();
   const isOpen = useRef();
   const isVisible = useRef();
@@ -249,10 +250,42 @@ export default function Eventdetail({navigation, route}) {
   const Pesantiket = () => {
     return (
       <ActionSheet ref={isVisible} gestureEnabled={true}>
-        
+        <View style={tiketstyles.container}>
+          <Text style={tiketstyles.title}>Pemesanan Tiket</Text>
+          <View style={tiketstyles.inlinecontainer}>
+            <View>
+              <Text style={tiketstyles.txttitle}>Harga Tiket</Text>
+              <Text style={tiketstyles.txtprice}>
+                Rp 10000
+                <Text style={tiketstyles.txtmark}>/pcs</Text>
+              </Text>
+            </View>
+            <View>
+              <NumericInput
+                value={qty}
+                onChange={setqty}
+                totalHeight={40}
+                rounded
+                maxValue={5}
+                onLimitReached={() =>
+                  ToastAndroid.show('Maksimal 5 tiket', ToastAndroid.SHORT)
+                }
+                iconStyle={{color: 'black'}}
+              />
+            </View>
+          </View>
+          <View style={tiketstyles.totalwrap}>
+            <Text style={tiketstyles.txttotal}>Total</Text>
+            <Text style={tiketstyles.txttotalvalue}>Rp 500.000</Text>
+          </View>
+          <View style={tiketstyles.btnpesan}>
+            <Btntiket />
+          </View>
+        </View>
       </ActionSheet>
     );
   };
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -416,4 +449,51 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   mapContainer: {overflow: 'hidden', borderRadius: 20, alignSelf: 'center'},
+});
+
+const tiketstyles = StyleSheet.create({
+  container: {paddingTop: 5, paddingBottom: 10},
+  title: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 22,
+    color: 'black',
+    marginBottom: 20,
+  },
+  inlinecontainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  txttitle: {
+    color: 'black',
+    fontSize: 14,
+  },
+  txtprice: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+  btnpesan: {
+    alignSelf: 'center',
+  },
+  totalwrap: {
+    alignSelf: 'center',
+    marginTop: 20,
+  },
+  txttotal: {
+    fontWeight: '400',
+    fontSize: 12,
+    color: 'black',
+    textAlign: 'center',
+  },
+  txttotalvalue: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    color: 'black',
+  },
+  txtmark: {
+    fontSize: 12,
+    fontWeight: 'normal',
+  },
 });

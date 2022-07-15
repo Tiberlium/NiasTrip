@@ -8,14 +8,14 @@ import {
 export default function Btntiket({onPress}) {
   return (
     <Pressable style={styles.container} onPress={onPress}>
-      <Text style={styles.txt}>Dapatkan Sekarang</Text>
+      <Text style={styles.txt}>Dapatkan sekarang</Text>
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    height: hp(6),
+    height: hp(5),
     width: wp(45),
     backgroundColor: '#FF5F7E',
     alignItems: 'center',
@@ -24,6 +24,6 @@ const styles = StyleSheet.create({
   },
   txt: {
     color: 'white',
-    marginVertical: 15,
+    marginVertical: 9,
   },
 });
