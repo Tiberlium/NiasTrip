@@ -70,23 +70,18 @@ export default function Actionsheet({refs, data}) {
   }, []);
 
   function pay() {
-    if (total !== null || total !== 0) {
-      navigation.navigate('Paymenthotel', {
-        Jenis: 'Penginapan',
-        Profile,
-        orderId,
-        checkIN,
-        checkOUT,
-        jmlhOrg,
-        total,
-        gambar: data['Gambar'],
-        nama: data['Nama'],
-        tarif: data['Harga'],
-      });
-    } else {
-      ToastAndroid.show('Silahkan tentukan kapan anda checkin dan checkout');
-      return false;
-    }
+    navigation.navigate('Paymenthotel', {
+      Jenis: 'Penginapan',
+      Profile,
+      orderId,
+      checkIN,
+      checkOUT,
+      jmlhOrg,
+      total,
+      gambar: data['Gambar'],
+      nama: data['Nama'],
+      tarif: data['Harga'],
+    });
   }
 
   function Book() {
