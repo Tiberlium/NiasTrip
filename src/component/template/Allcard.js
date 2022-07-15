@@ -70,7 +70,7 @@ export function Allcard3({
 }) {
   return (
     <View>
-      <TouchableOpacity onPress={onPress} style={styles.container}>
+      <TouchableOpacity onPress={onPress} style={styles.container3}>
         <Image source={{uri: gambar}} style={styles.img} />
         <View style={styles.reviewcont2}>
           <StarRating
@@ -84,8 +84,11 @@ export function Allcard3({
             ({value})
           </Text>
         </View>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.caption}>
+        <Text style={{color: 'black', marginLeft: 10, marginVertical: 10,fontWeight:'600'}}>
+          Rp 20000
+        </Text>
+        <Text style={styles.title3}>{title}</Text>
+        <Text style={styles.caption3}>
           {kota}, {kabupaten}
         </Text>
       </TouchableOpacity>
@@ -105,6 +108,15 @@ const styles = StyleSheet.create({
     marginTop: 10,
     elevation: 4,
   },
+  container3: {
+    height: 225,
+    backgroundColor: 'white',
+    width: 350,
+    alignSelf: 'center',
+    borderRadius: 10,
+    marginTop: 10,
+    elevation: 4,
+  },
   img: {
     height: 140,
     width: 350,
@@ -116,7 +128,15 @@ const styles = StyleSheet.create({
   title: {
     position: 'absolute',
     color: 'black',
-    marginTop: 150,
+    marginTop: 156,
+    fontWeight: 'bold',
+    fontSize: 20,
+    marginLeft: 10,
+  },
+  title3: {
+    position: 'absolute',
+    color: 'black',
+    marginTop: 165,
     fontWeight: 'bold',
     fontSize: 20,
     marginLeft: 10,
@@ -125,6 +145,14 @@ const styles = StyleSheet.create({
     position: 'absolute',
     color: 'black',
     marginTop: 178,
+    fontWeight: '200',
+    fontSize: 15,
+    marginLeft: 10,
+  },
+  caption3: {
+    position: 'absolute',
+    color: 'black',
+    marginTop: 190,
     fontWeight: '200',
     fontSize: 15,
     marginLeft: 10,
