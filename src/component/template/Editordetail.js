@@ -8,7 +8,7 @@ export default function Editordetail({url, title, desc, onPress}) {
       <>
         <View style={styles.inlineContainer}>
           <Image source={{uri: url}} style={styles.img} />
-          <View>
+          <View style={styles.wrap}>
             <Text style={styles.title}>{title}</Text>
             <View style={styles.wraplogo}>
               <Icon name="flash" size={15} color="white" />
@@ -34,9 +34,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     marginVertical: 15,
-    backgroundColor:'white',
-    elevation:5,
+    backgroundColor: 'white',
+    elevation: 5,
   },
+  wrap: {width: '50%'},
   img: {height: 100, width: 150, borderRadius: 10, margin: 10},
   title: {color: 'black', fontWeight: 'bold', fontSize: 18, marginTop: 10},
   inlineContainer: {display: 'flex', flexDirection: 'row'},
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginTop: 10,
     paddingHorizontal: 15,
+    width: 120,
   },
   txticon: {color: 'white', marginLeft: 10, marginVertical: 2, fontSize: 12},
   subtitle: {color: 'black', marginLeft: 10, fontWeight: 'bold', fontSize: 15},
