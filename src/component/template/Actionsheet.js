@@ -133,6 +133,9 @@ export default function Actionsheet({refs, data}) {
             />
           </View>
         </View>
+        <View>
+          <Text style={actionStyles.txt3}>Tipe</Text>
+        </View>
         <Text style={actionStyles.txt3}>Jumlah</Text>
         <View style={actionStyles.parentcontainer}>
           <View style={actionStyles.inlineContainer2}>

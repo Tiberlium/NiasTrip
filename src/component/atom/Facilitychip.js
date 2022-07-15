@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 export default function Facilitychip({name}) {
   return (
     <View style={styles.container}>
-      <Icon name={name} size={20} color="gray" />
+      <Icon name={name} size={20} color="red" />
     </View>
   );
 }
@@ -22,5 +22,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginLeft: 20,
     marginBottom:10,
+    borderColor:'red'
   },
 });
