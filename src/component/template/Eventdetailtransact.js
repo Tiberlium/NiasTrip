@@ -1,7 +1,7 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 
-const Eventdetailtransact = ({metode, waktu, total}) => (
+const Eventdetailtransact = ({metode, waktu, total, tarif, qty}) => (
   <View>
     <View style={styles.wrap2}>
       <Text style={styles.proptxt}>Metode Pembayaran</Text>
@@ -14,6 +14,14 @@ const Eventdetailtransact = ({metode, waktu, total}) => (
     <View style={styles.wrap2}>
       <Text style={styles.proptxt}>Waktu</Text>
       <Text style={styles.valuetxt}>{waktu}</Text>
+    </View>
+    <View style={styles.wrap2}>
+      <Text style={styles.proptxt}>Tarif dasar</Text>
+      <Text style={styles.valuetxt}>{tarif}</Text>
+    </View>
+    <View style={styles.wrap2}>
+      <Text style={styles.proptxt}>Qty</Text>
+      <Text style={styles.valuetxt}>{qty}</Text>
     </View>
     <View style={styles.wrap3}>
       <Text style={styles.proptxt}>Total Pembayaran</Text>

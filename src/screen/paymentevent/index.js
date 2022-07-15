@@ -165,7 +165,9 @@ export default function Paymentevent({navigation, route}) {
             orderid: orderid,
             metode: result.data.payment_type,
             jenis: jenis,
-            total: tarif,
+            total,
+            tarif,
+            qty,
           });
         }
       })

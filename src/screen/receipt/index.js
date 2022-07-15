@@ -92,6 +92,8 @@ export default function Receipt({navigation, route}) {
             <Eventdetailtransact
               metode={metode}
               waktu={timetransaction}
+              qty={qty}
+              tarif={tarif}
               total={formatRupiah(total)}
             />
           )}
