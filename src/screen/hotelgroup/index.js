@@ -41,6 +41,8 @@ export default function Hotelgroup({navigation}) {
             kota={item.data.Kabupaten}
             kabupaten={item.data.Kategori}
             gambar={item.data.Gambar}
+            rating={item.data.Rating}
+            value={item.data.Rating ? item.data.Rating : 0}
             onPress={() => navigation.navigate('Hoteldetail', {id: item.id})}
           />
         )}

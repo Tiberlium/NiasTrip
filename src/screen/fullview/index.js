@@ -42,6 +42,8 @@ export default function Fullview({navigation}) {
             kota={item.data.Kecamatan}
             kabupaten={item.data.Kabupaten}
             gambar={item.data.Gambar}
+            rating={item.data.Rating}
+            value={item.data.rating? item.data.Rating : 0}
             onPress={() => navigation.navigate('Detail', {id: item.id})}
           />
         )}
