@@ -48,6 +48,8 @@ export default function Eventgroup({navigation}) {
             gambar={item.data.Gambar}
             kota={item.data.Kategori}
             kabupaten={item.data.Kabupaten}
+            rating={item.data.Rating}
+            value={item.data.Rating ? item.data.Rating : 0}
             price={formatter(Number(item.data.Harga))}
             onPress={() => navigation.navigate('Eventdetail', {id: item.id})}
           />

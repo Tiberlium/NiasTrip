@@ -23,7 +23,7 @@ export default function Paymentevent({navigation, route}) {
   const params = {
     transaction_details: {
       order_id: orderid,
-      gross_amount: tarif,
+      gross_amount: total,
     },
     credit_card: {
       secure: true,

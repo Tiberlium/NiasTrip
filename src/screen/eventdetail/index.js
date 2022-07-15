@@ -283,7 +283,7 @@ export default function Eventdetail({navigation, route}) {
             <Text style={tiketstyles.txttotalvalue}>{formatRupiah(total)}</Text>
           </View>
           <View style={tiketstyles.btnpesan}>
-            <Btntiket />
+            <Btntiket onPress={pay} />
           </View>
         </View>
       </ActionSheet>
