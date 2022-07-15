@@ -41,6 +41,8 @@ export default function Rmgroup({navigation}) {
               title={item.data.Nama}
               kategori={item.data.Kategori}
               gambar={item.data.Gambar}
+              rating={item.data.Rating}
+              value={item.data.Rating ? item.data.Rating : 0}
               onPress={() => navigation.navigate('Rm', {id: item.id})}
             />
           </View>
@@ -51,7 +53,7 @@ export default function Rmgroup({navigation}) {
 }
 
 const styles = StyleSheet.create({
-  container: {paddingBottom:100},
+  container: {paddingBottom: 100},
   txt: {fontSize: 25, fontWeight: '500', color: 'black', marginTop: 15},
   inlineWrap: {display: 'flex', flexDirection: 'row'},
 });

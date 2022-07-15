@@ -16,7 +16,7 @@ export default function Allcard({title, kota, kabupaten, gambar, onPress}) {
   );
 }
 
-function Allcard2({title, kategori, gambar, onPress}) {
+function Allcard2({title, rating, gambar, onPress, value}) {
   return (
     <View>
       <TouchableOpacity onPress={onPress} style={styles.container}>
@@ -24,14 +24,14 @@ function Allcard2({title, kategori, gambar, onPress}) {
         <Text style={styles.title}>{title}</Text>
         <View style={styles.reviewcont}>
           <StarRating
-            rating={5}
+            rating={rating}
             starSize={15}
             fullStarColor={'orange'}
             containerStyle={styles.ratingcont}
             emptyStarColor={'grey'}
           />
           <Text style={{color: 'grey', marginLeft: 10, marginTop: -2}}>
-            (5)
+            ({value})
           </Text>
         </View>
       </TouchableOpacity>
