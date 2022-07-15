@@ -26,7 +26,7 @@ export default function ThumbRating({
         </Text>
       ) : (
         <View style={styles.inlineContainer}>
-          <StarRating starSize={10} rating={rating} fullStarColor="orange" />
+          <StarRating starSize={15} rating={rating} fullStarColor="orange" />
           <Text style={[styles.txt, {color: colorText}]}>{rating}</Text>
         </View>
       )}
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   txt: {
     fontWeight: 'bold',
-    fontSize: 12,
+    fontSize: 15,
     marginLeft: 5,
     marginTop: -3,
   },

@@ -21,7 +21,6 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {
-  Btnback,
   Btnbookmark,
   Thumbgallery,
   ThumbRating,
@@ -234,7 +233,6 @@ export default function Fooddetail({navigation, route}) {
     <View style={styles.container}>
       <ScrollView>
         <Image source={{uri: Data['Gambar']}} style={styles.img} />
-        <Btnback onPress={() => navigation.goBack()} />
         <View style={styles.inlineWrap}>
           <Text style={styles.title}>{Data['Nama']}</Text>
           <Text style={styles.caption}>{Data['Kategori']}</Text>
@@ -243,10 +241,10 @@ export default function Fooddetail({navigation, route}) {
           rating={Number(Data['Rating']) || 0}
           colorText="black"
           marginLeft={20}
-          marginTop={hp(55.5)}
+          marginTop={hp(46.5)}
         />
         <Cardratingreview
-          marginTop={30}
+          marginTop={40}
           onPress={() => isOpen.current?.show()}
         />
         <Text style={styles.headline0}>Deskripsi</Text>
@@ -374,8 +372,8 @@ const styles = StyleSheet.create({
     marginTop: hp(39),
     marginLeft: 20,
   },
-  title: {color: 'black', fontWeight: 'bold', fontSize: 25},
-  caption: {color: 'black', fontWeight: '300'},
+  title: {color: 'white', fontWeight: 'bold', fontSize: 25,marginTop:-10},
+  caption: {color: 'white', fontWeight: '300'},
   headline0: {
     color: '#808080',
     fontSize: 15,

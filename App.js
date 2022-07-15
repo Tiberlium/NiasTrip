@@ -147,7 +147,7 @@ export default function App() {
         <Tab.Screen
           name="Detail"
           component={Detail}
-          options={{headerShown: false}}
+          options={{title:'Detail Wisata'}}
         />
         <Tab.Screen
           name="Hoteldetail"
@@ -157,7 +157,7 @@ export default function App() {
         <Tab.Screen
           name="Fooddetail"
           component={Fooddetail}
-          options={{headerShown: false}}
+          options={{title:'Detail Makanan'}}
         />
         <Tab.Screen
           name="Eventdetail"
