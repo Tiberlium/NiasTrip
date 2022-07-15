@@ -10,7 +10,6 @@ import Profilehead from './template/Profilehead';
 import Listcategory from './template/Listcategory';
 import Thumbcard from './template/Thumbcard';
 import Allcard from './template/Allcard';
-import Btnnearby from './atom/Btnnearby';
 import Btntext from './atom/Btntext';
 import Mapcard from './template/Mapcard';
 import Mapheadercard from './template/Mapheadercard';
@@ -29,7 +28,6 @@ import Chip from './atom/Chip';
 import Thumbgallery from './atom/Thumbgallery';
 import Facilitychip from './atom/Facilitychip';
 import Btnbooking from './atom/Btnbooking';
-import Btnlocation from './atom/Btnlocation';
 import Btndate from './atom/Btndate';
 import Searchcard from './template/Searchcard';
 import Reservecard from './template/Reservecard';
@@ -77,7 +75,6 @@ export {
   Listcategory,
   Thumbcard,
   Allcard,
-  Btnnearby,
   Btntext,
   Mapcard,
   Mapheadercard,
@@ -96,7 +93,6 @@ export {
   Thumbgallery,
   Facilitychip,
   Btnbooking,
-  Btnlocation,
   Btndate,
   Searchcard,
   Reservecard,

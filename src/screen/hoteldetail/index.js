@@ -16,7 +16,6 @@ import {
 } from 'react-native-responsive-screen';
 import {
   Btnbookmark,
-  Btnlocation,
   Facilitychip,
   Thumbgallery,
   Actionsheet,

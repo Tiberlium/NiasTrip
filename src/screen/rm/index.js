@@ -13,8 +13,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import firestore from '@react-native-firebase/firestore';
 import MapView, {Marker} from 'react-native-maps';
 import {
-  Btnback,
-  Btnnearby,
   Btnbookmark,
   Thumbgallery,
   Cardratingreview,
