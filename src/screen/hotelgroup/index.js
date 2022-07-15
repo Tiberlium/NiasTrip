@@ -3,17 +3,18 @@ import React, {useState, useEffect, useRef} from 'react';
 import {Btnback, Allcard3} from '../../component';
 import Firestore from '@react-native-firebase/firestore';
 
+function formatter(uang) {
+  return Intl.NumberFormat('ID-id', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+  }).format(uang);
+}
+
 export default function Hotelgroup({navigation}) {
   const [Data, setData] = useState([]);
   const isMounted = useRef();
 
-  function formatter(money) {
-    return Intl.NumberFormat('ID-id', {
-      style: 'currency',
-      currency: 'IDR',
-      maximumFractionDigits: 0,
-    }).format(money);
-  }
   async function Get() {
     let x = [];
     const docRef = await Firestore().collection('Staycation').get();
