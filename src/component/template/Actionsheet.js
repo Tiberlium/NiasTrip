@@ -29,7 +29,7 @@ export default function Actionsheet({refs, data}) {
   const isMounted = useRef();
   const serverKey = 'SB-Mid-server-aOZTMq7MMpj0rwb4130chMv5:';
   const encodedKey = base64.encode(serverKey);
-  
+
   let orderId = 'Orderid' + uid();
   let checkIN = checkin.toISOString().split('T')[0];
   let checkOUT = checkout.toISOString().split('T')[0];
@@ -165,6 +165,7 @@ export default function Actionsheet({refs, data}) {
               value={jmlhOrg}
               totalHeight={40}
               rounded
+              containerStyle={actionStyles.nmrsinputst}
               maxValue={4}
               onLimitReached={() =>
                 ToastAndroid.show('Maksimal 4 orang', ToastAndroid.SHORT)
@@ -237,5 +238,8 @@ const actionStyles = StyleSheet.create({
     fontSize: 15,
     marginRight: 20,
     marginTop: 10,
+  },
+  nmrsinputst: {
+    marginLeft: 5,
   },
 });
