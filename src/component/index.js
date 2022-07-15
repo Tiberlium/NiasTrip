@@ -45,7 +45,6 @@ import Horizontalline from './atom/Horizontalline';
 import {CustinputPass} from './atom/Custinput';
 import Line from './atom/Line';
 import Btntiket from './atom/Btntiket';
-import Tiketpricelabel from './atom/Tiketpricelabel';
 import ThumbRating from './atom/ThumbRating';
 import EditorCard from './atom/EditorCard';
 import Cardratingreview from './template/Cardratingreview';
@@ -110,7 +109,6 @@ export {
   CustinputPass,
   Line,
   Btntiket,
-  Tiketpricelabel,
   ThumbRating,
   EditorCard,
   Cardratingreview,

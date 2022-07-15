@@ -16,7 +16,6 @@ import ActionSheet from 'react-native-actions-sheet';
 import {
   Btnbookmark,
   Btntiket,
-  Tiketpricelabel,
   Btnpesanslide,
   Btnbooking,
   ThumbRating,
@@ -46,6 +45,7 @@ export default function Eventdetail({navigation, route}) {
   const [comments, setcomments] = useState([]);
   const isMounted = useRef();
   const isOpen = useRef();
+  const isVisible = useRef();
   const id = route.params.id;
   const Uid = auth().currentUser.uid;
   const orderid = 'orderId' + uid() + Date.now();
@@ -58,6 +58,7 @@ export default function Eventdetail({navigation, route}) {
       setLongitude(docRef.data().Longitude);
     }
   }
+
   async function Getuser() {
     const docRef = await firestore().collection('Users').doc(Uid).get();
     if (docRef.exists && isMounted.current) {
@@ -245,6 +246,13 @@ export default function Eventdetail({navigation, route}) {
     }
   }
 
+  const Pesantiket = () => {
+    return (
+      <ActionSheet ref={isVisible} gestureEnabled={true}>
+        
+      </ActionSheet>
+    );
+  };
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -301,8 +309,8 @@ export default function Eventdetail({navigation, route}) {
       </ScrollView>
       <>
         <View style={styles.wrapBtn}>
-          <Btnbookmark onPress={addBookmark}/>
-          <Btnpesanslide/>
+          <Btnbookmark onPress={addBookmark} />
+          <Btnpesanslide onPress={() => isVisible.current?.show()} />
         </View>
         <ActionSheet ref={isOpen} gestureEnabled={true}>
           {!isEdit ? (
@@ -343,6 +351,7 @@ export default function Eventdetail({navigation, route}) {
             />
           </View>
         </ActionSheet>
+        <Pesantiket />
       </>
     </View>
   );
