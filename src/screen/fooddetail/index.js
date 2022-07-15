@@ -277,6 +277,7 @@ export default function Fooddetail({navigation, route}) {
 
         <Collapse
           style={styles.collapse}
+          isExpanded={true}
           onToggle={x =>
             x !== true
               ? setnameicon('chevron-forward')
