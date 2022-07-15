@@ -7,6 +7,18 @@ export default function Allcard({title, kota, kabupaten, gambar, onPress}) {
     <View>
       <TouchableOpacity onPress={onPress} style={styles.container}>
         <Image source={{uri: gambar}} style={styles.img} />
+        <View style={styles.reviewcont2}>
+          <StarRating
+            rating={5}
+            starSize={14}
+            fullStarColor={'orange'}
+            containerStyle={styles.ratingcont}
+            emptyStarColor={'grey'}
+          />
+          <Text style={{color: 'white', marginLeft: 5, marginTop: -4}}>
+            ({5})
+          </Text>
+        </View>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.caption}>
           {kota}, {kabupaten}
@@ -83,5 +95,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 40,
     marginLeft: 11,
+  },
+  reviewcont2: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginLeft: 11,
+    marginTop: -20,
   },
 });
