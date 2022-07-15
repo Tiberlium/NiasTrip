@@ -5,10 +5,9 @@ import {
   Image,
   StyleSheet,
   FlatList,
-  TouchableOpacity,
   ToastAndroid,
-  Alert,
   ScrollView,
+  Pressable,
 } from 'react-native';
 import ImageView from 'react-native-image-viewing';
 import {
@@ -16,7 +15,6 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {
-  Btnback,
   Btnbookmark,
   Btnlocation,
   Facilitychip,
@@ -36,11 +34,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import ActionSheet from 'react-native-actions-sheet';
 import auth from '@react-native-firebase/auth';
 import ReadMore from '@fawazahmed/react-native-read-more';
+import MapView, {Marker} from 'react-native-maps';
 
 export default function Hoteldetail({navigation, route}) {
   const [visible, setvisible] = useState(false);
   const [index, setindex] = useState(0);
   const [Data, setData] = useState([]);
+  const [Latitude, setLatitude] = useState(0);
+  const [Longitude, setLongitude] = useState(0);
   const [Ulasan, setUlasan] = useState({});
   const [rating, setrating] = useState(0);
   const [review, setreview] = useState('');
@@ -55,7 +56,11 @@ export default function Hoteldetail({navigation, route}) {
   async function Get() {
     const docRef = await firestore().collection('Staycation').doc(id).get();
 
-    if (isMounted.current) return setData(docRef.data());
+    if (isMounted.current) {
+      setData(docRef.data());
+      setLatitude(docRef.data().Latitude);
+      setLongitude(docRef.data().Longitude);
+    }
   }
 
   function formatRupiah(uang) {
@@ -230,34 +235,24 @@ export default function Hoteldetail({navigation, route}) {
     <View style={styles.container}>
       <ScrollView>
         <Image source={{uri: Data['Gambar']}} style={styles.img} />
-        <Btnback onPress={() => navigation.goBack()} />
         <View style={styles.headerContainer2}>
           <View style={styles.inlineWrap}>
             <Text style={styles.title}>{Data.Nama}</Text>
             <Text style={styles.caption}>{Data.Kabupaten}</Text>
           </View>
-          <Btnlocation
-            onPress={() =>
-              navigation.navigate('Map', {
-                id: route.params.id,
-                latitude: Data['Latitude'],
-                longitude: Data['Longitude'],
-              })
-            }
-          />
         </View>
+        <ThumbRating
+          colorText="black"
+          marginTop={hp(44)}
+          marginLeft={20}
+          rating={Number(Data['Rating']) || 0}
+        />
         <View style={styles.containerPrice}>
           <Text style={styles.pricetext}>{formatRupiah(Data['Harga'])}/</Text>
           <Text style={styles.pricetext2}>malam</Text>
         </View>
-        <ThumbRating
-          colorText="black"
-          marginTop={hp(57)}
-          marginLeft={20}
-          rating={Number(Data['Rating']) || 0}
-        />
         <Cardratingreview
-          marginTop={37}
+          marginTop={20}
           onPress={() => isOpen.current?.show()}
         />
         <Text style={styles.headline1}>Deskripsi</Text>
@@ -290,6 +285,37 @@ export default function Hoteldetail({navigation, route}) {
           imageIndex={index}
           onRequestClose={() => setvisible(false)}
         />
+        <View>
+          <Text style={styles.headline2}>Lokasi</Text>
+          <Pressable
+            style={styles.mapContainer}
+            onPress={() =>
+              navigation.navigate('Map', {
+                id: route.params.id,
+                latitude: Data['Latitude'],
+                longitude: Data['Longitude'],
+              })
+            }>
+            <MapView
+              liteMode
+              loadingEnabled
+              loadingIndicatorColor="black"
+              style={styles.map}
+              region={{
+                latitude: parseFloat(Latitude),
+                longitude: parseFloat(Longitude),
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}>
+              <Marker
+                coordinate={{
+                  latitude: parseFloat(Latitude) ? parseFloat(Latitude) : 0,
+                  longitude: parseFloat(Longitude) ? parseFloat(Longitude) : 0,
+                }}
+              />
+            </MapView>
+          </Pressable>
+        </View>
         <Actionsheet refs={Actionref} data={Data} />
       </ScrollView>
       <View style={styles.footerContainer}>
@@ -371,14 +397,14 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     paddingLeft: 20,
-    paddingTop: 10,
+    paddingTop: 40,
   },
   inlineWrap: {
-    marginTop: hp(7),
+    marginTop: hp(6),
     marginLeft: 20,
   },
-  title: {color: 'black', fontWeight: 'bold', fontSize: 25},
-  caption: {color: 'black', fontWeight: '300'},
+  title: {color: 'white', fontWeight: 'bold', fontSize: 25},
+  caption: {color: 'white', fontWeight: '300'},
   pricetext: {fontSize: 15, fontWeight: 'bold', color: 'black'},
   pricetext2: {fontWeight: '300', fontSize: 13, color: 'black', marginTop: 2},
   headline1: {
@@ -410,5 +436,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignSelf: 'center',
+  },
+  mapContainer: {overflow: 'hidden', borderRadius: 20, alignSelf: 'center'},
+  map: {
+    height: hp(18),
+    width: wp(90),
   },
 });

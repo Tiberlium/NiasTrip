@@ -14,7 +14,6 @@ import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import ActionSheet from 'react-native-actions-sheet';
 import {
-  Btnback,
   Btnbookmark2,
   Btntiket,
   Tiketpricelabel,
@@ -248,22 +247,18 @@ export default function Eventdetail({navigation, route}) {
     <View style={styles.container}>
       <ScrollView>
         <Image source={{uri: Data.Gambar}} style={styles.img} />
-        <View style={styles.wrapHeader}>
-          <Btnback onPress={() => navigation.goBack()} />
-          <Btnbookmark2 onPress={addBookmark} />
-        </View>
         <View style={styles.inlineWrap}>
           <Text style={styles.title}>{Data.Nama}</Text>
           <Text style={styles.caption}>{Data.Kabupaten}</Text>
         </View>
         <ThumbRating
-          marginTop={hp(51)}
+          marginTop={hp(45)}
           colorText="black"
           rating={Number(Data['Rating']) || 0}
           marginLeft={20}
         />
         <Cardratingreview
-          marginTop={30}
+          marginTop={50}
           onPress={() => isOpen.current?.show()}
         />
         <Text style={styles.headline}>Deskripsi</Text>
@@ -409,4 +404,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignSelf: 'center',
   },
+  mapContainer: {overflow: 'hidden', borderRadius: 20, alignSelf: 'center'},
 });

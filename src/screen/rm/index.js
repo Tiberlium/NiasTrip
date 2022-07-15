@@ -6,10 +6,12 @@ import {
   Image,
   FlatList,
   ScrollView,
+  Pressable,
 } from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import firestore from '@react-native-firebase/firestore';
+import MapView, {Marker} from 'react-native-maps';
 import {
   Btnback,
   Btnnearby,
@@ -30,10 +32,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import ImageView from 'react-native-image-viewing';
 import auth from '@react-native-firebase/auth';
 import ActionSheet from 'react-native-actions-sheet';
-import StarRating from 'react-native-star-rating';
 
 export default function Rm({navigation, route}) {
   const [Data, setData] = useState({});
+  const [Latitude, setLatitude] = useState(0);
+  const [Longitude, setLongitude] = useState(0);
   const isMounted = useRef();
   const [index, setindex] = useState(0);
   const [visible, setvisible] = useState(false);
@@ -48,7 +51,11 @@ export default function Rm({navigation, route}) {
 
   async function Get() {
     const docRef = await firestore().collection('Rm').doc(id).get();
-    if (isMounted.current) return setData(docRef.data());
+    if (isMounted.current) {
+      setData(docRef.data());
+      setLatitude(docRef.data().Latitude);
+      setLongitude(docRef.data().Longitude);
+    }
   }
 
   async function Getcomment() {
@@ -261,18 +268,39 @@ export default function Rm({navigation, route}) {
           keyExtractor={item => item.id}
           onRequestClose={() => setvisible(false)}
         />
+        <View>
+          <Text style={styles.headLine}>Lokasi</Text>
+          <Pressable
+            style={styles.mapContainer}
+            onPress={() =>
+              navigation.navigate('Map', {
+                id: route.params.id,
+                latitude: Data['Latitude'],
+                longitude: Data['Longitude'],
+              })
+            }>
+            <MapView
+              liteMode
+              loadingEnabled
+              loadingIndicatorColor="black"
+              style={styles.map}
+              region={{
+                latitude: parseFloat(Latitude),
+                longitude: parseFloat(Longitude),
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}>
+              <Marker
+                coordinate={{
+                  latitude: parseFloat(Latitude) ? parseFloat(Latitude) : 0,
+                  longitude: parseFloat(Longitude) ? parseFloat(Longitude) : 0,
+                }}
+              />
+            </MapView>
+          </Pressable>
+        </View>
       </ScrollView>
       <View style={styles.wrapBtn}>
-        <Btnnearby
-          title="Jelajahi Sekitar"
-          onPress={() =>
-            navigation.navigate('Map', {
-              id: route.params.id,
-              latitude: Data['Latitude'],
-              longitude: Data['Longitude'],
-            })
-          }
-        />
         <Btnbookmark color="black" onPress={addBookmark} />
       </View>
       <ActionSheet ref={isOpen} gestureEnabled={true}>
@@ -378,6 +406,16 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     marginLeft: 20,
+    marginTop: 10,
+  },
+  map: {
+    height: hp(18),
+    width: wp(90),
+  },
+  mapContainer: {
+    overflow: 'hidden',
+    borderRadius: 20,
+    alignSelf: 'center',
     marginTop: 10,
   },
 });

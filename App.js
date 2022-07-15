@@ -92,7 +92,11 @@ export default function App() {
           component={Recovery}
           options={{headerShown: false}}
         />
-        <Tab.Screen name="Update profile" component={Updateprofile} options={{title:'Perbarui profil'}} />
+        <Tab.Screen
+          name="Update profile"
+          component={Updateprofile}
+          options={{title: 'Perbarui profil'}}
+        />
         <Tab.Screen
           name="Paymenthotel"
           component={Paymenthotel}
@@ -147,22 +151,22 @@ export default function App() {
         <Tab.Screen
           name="Detail"
           component={Detail}
-          options={{title:'Detail Wisata'}}
+          options={{title: 'Detail Wisata'}}
         />
         <Tab.Screen
           name="Hoteldetail"
           component={Hoteldetail}
-          options={{headerShown: false}}
+          options={{title: 'Detail Penginapan'}}
         />
         <Tab.Screen
           name="Fooddetail"
           component={Fooddetail}
-          options={{title:'Detail Makanan'}}
+          options={{title: 'Detail Makanan'}}
         />
         <Tab.Screen
           name="Eventdetail"
           component={Eventdetail}
-          options={{headerShown: false}}
+          options={{title: 'Detail Event'}}
         />
         <Tab.Screen
           name="Rmgroup"
@@ -179,7 +183,11 @@ export default function App() {
           component={Commentscreen}
           options={{headerShown: false}}
         />
-        <Tab.Screen name="Rm" component={Rm} options={{title:"Detail Restoran"}} />
+        <Tab.Screen
+          name="Rm"
+          component={Rm}
+          options={{title: 'Detail Restoran'}}
+        />
         <Tab.Screen name="Map" component={Map} options={{headerShown: false}} />
       </Tab.Navigator>
     </NavigationContainer>
