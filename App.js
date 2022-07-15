@@ -179,7 +179,7 @@ export default function App() {
           component={Commentscreen}
           options={{headerShown: false}}
         />
-        <Tab.Screen name="Rm" component={Rm} options={{headerShown: false}} />
+        <Tab.Screen name="Rm" component={Rm} options={{title:"Detail Restoran"}} />
         <Tab.Screen name="Map" component={Map} options={{headerShown: false}} />
       </Tab.Navigator>
     </NavigationContainer>

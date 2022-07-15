@@ -214,17 +214,18 @@ export default function Rm({navigation, route}) {
     <View style={styles.container}>
       <ScrollView>
         <Image source={{uri: Data.Gambar}} style={styles.img} />
-        <Btnback onPress={() => navigation.goBack()} />
         <View style={styles.inlineWrap}>
           <Text style={styles.title}>{Data.Nama}</Text>
-          <View style={{marginBottom: '5%'}}>
-            <ThumbRating
-              colorText="black"
-              rating={Number(Data['Rating']) || 0}
-            />
-          </View>
+          <ThumbRating
+            colorText="black"
+            rating={Number(Data['Rating']) || 0}
+            marginTop={60}
+          />
         </View>
-        <Cardratingreview onPress={() => isOpen.current?.show()} />
+        <Cardratingreview
+          onPress={() => isOpen.current?.show()}
+          marginTop={50}
+        />
         <Text style={styles.headLine}>Deskripsi</Text>
         <View style={styles.inlineWrap_1}>
           <Icon name="compass" color="black" size={20} />
@@ -338,11 +339,11 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 35,
   },
   inlineWrap: {
-    marginTop: hp(40),
+    marginTop: hp(42),
     marginLeft: 20,
   },
-  title: {color: 'black', fontWeight: 'bold', fontSize: 25},
-  caption: {color: 'black', fontWeight: '300', fontSize: 15},
+  title: {color: 'white', fontWeight: 'bold', fontSize: 25},
+  caption: {color: 'white', fontWeight: '300', fontSize: 15},
   caption_1: {
     color: 'black',
     fontWeight: '300',
