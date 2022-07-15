@@ -13,7 +13,8 @@ export default function Paymentevent({navigation, route}) {
   const serverKey = 'SB-Mid-server-aOZTMq7MMpj0rwb4130chMv5:';
   const encodedKey = base64.encode(serverKey);
   const user = auth().currentUser;
-  const {tarif, jenis, nama, Profile, gambar, orderid} = route.params;
+  const {tarif, jenis, nama, Profile, gambar, orderid, total, qty} =
+    route.params;
 
   LogBox.ignoreLogs([
     'Non-serializable values were found in the navigation state',
@@ -63,6 +64,8 @@ export default function Paymentevent({navigation, route}) {
               jenis: jenis,
               tarif,
               metode,
+              total,
+              qty,
             }),
           });
         } else {
@@ -77,6 +80,8 @@ export default function Paymentevent({navigation, route}) {
                   jenis: jenis,
                   tarif,
                   metode,
+                  total,
+                  qty,
                 },
               ],
             },
@@ -96,8 +101,10 @@ export default function Paymentevent({navigation, route}) {
       orderid: orderid,
       jenis: jenis,
       gambar: gambar,
-      total: tarif,
+      total,
       metode,
+      tarif,
+      qty,
     };
 
     AsyncStorage.getItem(`Order-${user.uid}`).then(doc => {

@@ -43,13 +43,15 @@ export default function Eventdetail({navigation, route}) {
   const [review, setreview] = useState('');
   const [isEdit, setisEdit] = useState(false);
   const [comments, setcomments] = useState([]);
-  const [qty, setqty] = useState(0);
+  const [qty, setqty] = useState(1);
   const isMounted = useRef();
   const isOpen = useRef();
   const isVisible = useRef();
   const id = route.params.id;
   const Uid = auth().currentUser.uid;
   const orderid = 'orderId' + uid() + Date.now();
+
+  let total = qty * Number(Data['Harga']);
 
   async function Get() {
     const docRef = await firestore().collection('Event').doc(id).get();
@@ -239,6 +241,8 @@ export default function Eventdetail({navigation, route}) {
       navigation.navigate('Paymentevent', {
         Profile,
         tarif: Data['Harga'],
+        qty: qty,
+        total,
         jenis: 'Event',
         nama: Data['Nama'],
         gambar: Data['Gambar'],
@@ -256,7 +260,7 @@ export default function Eventdetail({navigation, route}) {
             <View>
               <Text style={tiketstyles.txttitle}>Harga Tiket</Text>
               <Text style={tiketstyles.txtprice}>
-                Rp 10000
+                {formatRupiah(Number(Data['Harga']))}
                 <Text style={tiketstyles.txtmark}>/pcs</Text>
               </Text>
             </View>
@@ -276,7 +280,7 @@ export default function Eventdetail({navigation, route}) {
           </View>
           <View style={tiketstyles.totalwrap}>
             <Text style={tiketstyles.txttotal}>Total</Text>
-            <Text style={tiketstyles.txttotalvalue}>Rp 500.000</Text>
+            <Text style={tiketstyles.txttotalvalue}>{formatRupiah(total)}</Text>
           </View>
           <View style={tiketstyles.btnpesan}>
             <Btntiket />
