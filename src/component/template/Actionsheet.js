@@ -194,7 +194,7 @@ const actionStyles = StyleSheet.create({
     paddingBottom: 10,
     marginLeft: 10,
   },
-  checkIcon: {marginTop: hp(8.5)},
+  checkIcon: {marginTop: hp(7.8)},
   inlineContainer: {
     display: 'flex',
     flexDirection: 'row',
