@@ -2,21 +2,29 @@ import React from 'react';
 import {View, Image, TouchableOpacity, StyleSheet, Text} from 'react-native';
 import StarRating from 'react-native-star-rating';
 
-export default function Allcard({title, kota, kabupaten, gambar, onPress}) {
+export default function Allcard({
+  title,
+  kota,
+  kabupaten,
+  gambar,
+  onPress,
+  rating,
+  value,
+}) {
   return (
     <View>
       <TouchableOpacity onPress={onPress} style={styles.container}>
         <Image source={{uri: gambar}} style={styles.img} />
         <View style={styles.reviewcont2}>
           <StarRating
-            rating={5}
+            rating={rating}
             starSize={14}
             fullStarColor={'orange'}
             containerStyle={styles.ratingcont}
             emptyStarColor={'grey'}
           />
           <Text style={{color: 'white', marginLeft: 5, marginTop: -4}}>
-            ({5})
+            ({value})
           </Text>
         </View>
         <Text style={styles.title}>{title}</Text>
