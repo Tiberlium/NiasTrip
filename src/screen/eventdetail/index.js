@@ -14,9 +14,11 @@ import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import ActionSheet from 'react-native-actions-sheet';
 import {
-  Btnbookmark2,
+  Btnbookmark,
   Btntiket,
   Tiketpricelabel,
+  Btnpesanslide,
+  Btnbooking,
   ThumbRating,
   Cardratingreview,
   Postrating,
@@ -299,8 +301,8 @@ export default function Eventdetail({navigation, route}) {
       </ScrollView>
       <>
         <View style={styles.wrapBtn}>
-          <Tiketpricelabel harga={formatRupiah(Data['Harga'])} />
-          <Btntiket onPress={pay} />
+          <Btnbookmark onPress={addBookmark}/>
+          <Btnpesanslide/>
         </View>
         <ActionSheet ref={isOpen} gestureEnabled={true}>
           {!isEdit ? (
@@ -396,7 +398,7 @@ const styles = StyleSheet.create({
   },
   wrapBtn: {
     borderTopWidth: 1,
-    padding: 10,
+    padding: 1,
     borderTopColor: '#C8C8C8',
     width: wp(100),
     display: 'flex',
