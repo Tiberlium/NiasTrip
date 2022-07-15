@@ -67,6 +67,7 @@ export function Allcard3({
   onPress,
   rating,
   value,
+  price
 }) {
   return (
     <View>
@@ -85,7 +86,7 @@ export function Allcard3({
           </Text>
         </View>
         <Text style={{color: 'black', marginLeft: 10, marginVertical: 10,fontWeight:'600'}}>
-          Rp 20000
+          {price}
         </Text>
         <Text style={styles.title3}>{title}</Text>
         <Text style={styles.caption3}>

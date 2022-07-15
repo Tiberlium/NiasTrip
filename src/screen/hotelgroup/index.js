@@ -7,6 +7,13 @@ export default function Hotelgroup({navigation}) {
   const [Data, setData] = useState([]);
   const isMounted = useRef();
 
+  function formatter(money) {
+    return Intl.NumberFormat('ID-id', {
+      style: 'currency',
+      currency: 'IDR',
+      maximumFractionDigits: 0,
+    }).format(money);
+  }
   async function Get() {
     let x = [];
     const docRef = await Firestore().collection('Staycation').get();
@@ -42,6 +49,7 @@ export default function Hotelgroup({navigation}) {
             kabupaten={item.data.Kategori}
             gambar={item.data.Gambar}
             rating={item.data.Rating}
+            price={formatter(Number(item.data.Harga))}
             value={item.data.Rating ? item.data.Rating : 0}
             onPress={() => navigation.navigate('Hoteldetail', {id: item.id})}
           />

@@ -3,6 +3,14 @@ import React, {useState, useEffect, useRef} from 'react';
 import {Btnback, Allcard3} from '../../component';
 import firestore from '@react-native-firebase/firestore';
 
+function formatter(uang) {
+  return Intl.NumberFormat('ID-id', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+  }).format(uang);
+}
+
 export default function Eventgroup({navigation}) {
   const [Data, setData] = useState([]);
   const isMounted = useRef();
@@ -40,6 +48,7 @@ export default function Eventgroup({navigation}) {
             gambar={item.data.Gambar}
             kota={item.data.Kategori}
             kabupaten={item.data.Kabupaten}
+            price={formatter(Number(item.data.Harga))}
             onPress={() => navigation.navigate('Eventdetail', {id: item.id})}
           />
         )}
