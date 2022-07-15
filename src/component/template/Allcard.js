@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Image, TouchableOpacity, StyleSheet, Text} from 'react-native';
+import StarRating from 'react-native-star-rating';
 
 export default function Allcard({title, kota, kabupaten, gambar, onPress}) {
   return (
@@ -21,7 +22,18 @@ function Allcard2({title, kategori, gambar, onPress}) {
       <TouchableOpacity onPress={onPress} style={styles.container}>
         <Image source={{uri: gambar}} style={styles.img} />
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.caption}>{kategori}</Text>
+        <View style={styles.reviewcont}>
+          <StarRating
+            rating={5}
+            starSize={15}
+            fullStarColor={'orange'}
+            containerStyle={styles.ratingcont}
+            emptyStarColor={'grey'}
+          />
+          <Text style={{color: 'grey', marginLeft: 10, marginTop: -2}}>
+            (5)
+          </Text>
+        </View>
       </TouchableOpacity>
     </View>
   );
@@ -62,5 +74,14 @@ const styles = StyleSheet.create({
     fontWeight: '200',
     fontSize: 15,
     marginLeft: 10,
+  },
+  ratingcont: {
+    width: '20%',
+  },
+  reviewcont: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: 40,
+    marginLeft: 11,
   },
 });
