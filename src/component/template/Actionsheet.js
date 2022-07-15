@@ -1,15 +1,13 @@
-import {View, Text, Alert, ToastAndroid, StyleSheet} from 'react-native';
+import {View, Text, ToastAndroid, StyleSheet} from 'react-native';
 import React, {useState, useRef, useEffect} from 'react';
 import Auth from '@react-native-firebase/auth';
 import NumericInput from 'react-native-numeric-input';
 import ActionSheet from 'react-native-actions-sheet';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import {Btnbooking, Btndate} from '..';
+import {Btnbooking, Btndate, Chiptipe} from '..';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
-import axios from 'axios';
-import base64 from 'base-64';
 import {useNavigation} from '@react-navigation/native';
 import {uid} from 'uid';
 
@@ -133,8 +131,10 @@ export default function Actionsheet({refs, data}) {
             />
           </View>
         </View>
-        <View>
-          <Text style={actionStyles.txt3}>Tipe</Text>
+        <Text style={actionStyles.txt3}>Tipe</Text>
+        <View style={actionStyles.wrap}>
+          <Chiptipe title="Reguler" text="black" background="white" />
+          <Chiptipe title="Vip" text="black" background="white" />
         </View>
         <Text style={actionStyles.txt3}>Jumlah</Text>
         <View style={actionStyles.parentcontainer}>
@@ -220,5 +220,10 @@ const actionStyles = StyleSheet.create({
   },
   nmrsinputst: {
     marginLeft: 5,
+  },
+  wrap: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent:'space-around'
   },
 });

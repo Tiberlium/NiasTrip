@@ -60,6 +60,7 @@ import Cardcallcenter from './template/Cardcallcenter';
 import Hoteldetailtransact from './template/Hoteldetailtransact';
 import Eventdetailtransact from './template/Eventdetailtransact';
 import Listcardresto from './template/Listcardresto';
+import { Chiptipe } from './atom/Chip';
 
 export {
   BtnNext,
@@ -125,4 +126,5 @@ export {
   Eventdetailtransact,
   Listcardresto,
   Allcard3,
+  Chiptipe,
 };
