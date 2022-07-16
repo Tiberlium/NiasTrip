@@ -224,6 +224,7 @@ const actionStyles = StyleSheet.create({
   wrap: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
+    paddingHorizontal:15,
   },
 });
