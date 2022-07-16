@@ -31,6 +31,7 @@ import {
   Byeditor,
   Commentscreen,
   Paymentevent,
+  Coupon,
 } from './src/screen';
 import {Btnhome, Btnhredirect} from './src/component';
 const Tab = createNativeStackNavigator();
@@ -187,6 +188,11 @@ export default function App() {
           name="Rm"
           component={Rm}
           options={{title: 'Detail Restoran'}}
+        />
+         <Tab.Screen
+          name="Coupon"
+          component={Coupon}
+          options={{title: 'Kupon'}}
         />
         <Tab.Screen name="Map" component={Map} options={{headerShown: false}} />
       </Tab.Navigator>

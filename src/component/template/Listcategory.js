@@ -31,6 +31,12 @@ export default function ListCategory() {
         color="red"
         onPress={() => navigation.navigate('Rmgroup')}
       />
+      <Btncategory
+        name="ticket-percent"
+        label="Kupon"
+        color="black"
+        onPress={() => navigation.navigate('Coupon')}
+      />
     </View>
   );
 }

@@ -30,6 +30,7 @@ import Rmgroup from './rmgroup';
 import Byeditor from './byeditor';
 import Commentscreen from './commentscreen';
 import Paymentevent from './paymentevent';
+import Coupon from './coupon';
 export {
   Splash,
   Intro,
@@ -63,4 +64,5 @@ export {
   Byeditor,
   Commentscreen,
   Paymentevent,
+  Coupon,
 };
