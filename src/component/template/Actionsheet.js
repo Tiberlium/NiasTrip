@@ -145,9 +145,9 @@ export default function Actionsheet({refs, data}) {
               totalHeight={40}
               rounded
               containerStyle={actionStyles.nmrsinputst}
-              maxValue={4}
+              maxValue={3}
               onLimitReached={() =>
-                ToastAndroid.show('Maksimal 4 orang', ToastAndroid.SHORT)
+                ToastAndroid.show('Maksimal 3 orang', ToastAndroid.SHORT)
               }
               iconStyle={{color: 'black'}}
             />
