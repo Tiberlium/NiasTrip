@@ -7,7 +7,7 @@ export default function Coupon({navigation}) {
     <View>
       <View style={styles.inlineWrap}>
         <Btnback onPress={() => navigation.goBack()} />
-        <Text style={styles.txt}>Kupon</Text>
+        <Text style={styles.txt}>Promo</Text>
       </View>
     </View>
   );

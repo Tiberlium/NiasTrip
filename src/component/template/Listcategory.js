@@ -33,7 +33,7 @@ export default function ListCategory() {
       />
       <Btncategory
         name="ticket-percent"
-        label="Kupon"
+        label="Promo"
         color="black"
         onPress={() => navigation.navigate('Coupon')}
       />
