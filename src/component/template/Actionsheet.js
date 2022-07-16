@@ -4,7 +4,7 @@ import Auth from '@react-native-firebase/auth';
 import NumericInput from 'react-native-numeric-input';
 import ActionSheet from 'react-native-actions-sheet';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import {Btnbooking, Btndate, Chiptipe} from '..';
+import {Btnbooking, Btndate, Chiptipe, Btncoupon} from '..';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
@@ -155,6 +155,7 @@ export default function Actionsheet({refs, data}) {
           </View>
           <Text style={actionStyles.totalTxt}>{formatIDR(total)}</Text>
         </View>
+        <Btncoupon/>
         <Btnbooking onPress={Book} />
       </View>
       <View>
@@ -224,6 +225,6 @@ const actionStyles = StyleSheet.create({
   wrap: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent:'space-around'
+    justifyContent: 'space-around',
   },
 });
