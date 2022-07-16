@@ -26,6 +26,7 @@ import {
   Commentheader,
   Alterrating,
   Postrating,
+  Couponcard,
 } from '../../component';
 
 import firestore from '@react-native-firebase/firestore';
@@ -263,7 +264,6 @@ export default function Hoteldetail({navigation, route}) {
         />
         <Collapse
           style={styles.collapse}
-          isExpanded={true}
           onToggle={x =>
             x !== true
               ? setnameicon('chevron-forward')
@@ -278,6 +278,9 @@ export default function Hoteldetail({navigation, route}) {
               style={styles.iconcollapse}
             />
           </CollapseHeader>
+          <CollapseBody>
+            <Couponcard />
+          </CollapseBody>
         </Collapse>
         <Text style={styles.headline1}>Deskripsi</Text>
         <ReadMore style={styles.subtitle} numberOfLines={4}>
@@ -486,5 +489,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  iconcollapse: {marginRight: 30},
+  iconcollapse: {marginRight: 20},
 });
