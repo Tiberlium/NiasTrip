@@ -6,8 +6,6 @@ import {
   StyleSheet,
   FlatList,
   ToastAndroid,
-  Alert,
-  Pressable,
   ScrollView,
 } from 'react-native';
 import ImageView from 'react-native-image-viewing';

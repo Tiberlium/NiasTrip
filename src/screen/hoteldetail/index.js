@@ -34,6 +34,12 @@ import ActionSheet from 'react-native-actions-sheet';
 import auth from '@react-native-firebase/auth';
 import ReadMore from '@fawazahmed/react-native-read-more';
 import MapView, {Marker} from 'react-native-maps';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {
+  Collapse,
+  CollapseBody,
+  CollapseHeader,
+} from 'accordion-collapse-react-native';
 
 export default function Hoteldetail({navigation, route}) {
   const [visible, setvisible] = useState(false);
@@ -46,6 +52,7 @@ export default function Hoteldetail({navigation, route}) {
   const [review, setreview] = useState('');
   const [comments, setcomments] = useState([]);
   const [isEdit, setisEdit] = useState(false);
+  const [nameicon, setnameicon] = useState('chevron-forward');
   const isMounted = useRef();
   const Actionref = useRef();
   const isOpen = useRef();
@@ -254,6 +261,24 @@ export default function Hoteldetail({navigation, route}) {
           marginTop={20}
           onPress={() => isOpen.current?.show()}
         />
+        <Collapse
+          style={styles.collapse}
+          isExpanded={true}
+          onToggle={x =>
+            x !== true
+              ? setnameicon('chevron-forward')
+              : setnameicon('chevron-down')
+          }>
+          <CollapseHeader style={styles.collapseheader}>
+            <Text style={styles.headline}>Kupon promo</Text>
+            <Icon
+              name={nameicon}
+              size={20}
+              color="black"
+              style={styles.iconcollapse}
+            />
+          </CollapseHeader>
+        </Collapse>
         <Text style={styles.headline1}>Deskripsi</Text>
         <ReadMore style={styles.subtitle} numberOfLines={4}>
           {Data['Deskripsi']}
@@ -441,4 +466,25 @@ const styles = StyleSheet.create({
     height: hp(18),
     width: wp(90),
   },
+  headline: {
+    color: '#808080',
+    fontSize: 15,
+    marginLeft: 20,
+    fontWeight: 'bold',
+  },
+  collapse: {
+    marginTop: 20,
+    backgroundColor: 'white',
+    paddingVertical: 20,
+    borderWidth: 0.2,
+    width: '90%',
+    alignSelf: 'center',
+    borderRadius: 5,
+  },
+  collapseheader: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  iconcollapse: {marginRight: 30},
 });
