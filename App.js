@@ -189,10 +189,10 @@ export default function App() {
           component={Rm}
           options={{title: 'Detail Restoran'}}
         />
-         <Tab.Screen
+        <Tab.Screen
           name="Coupon"
           component={Coupon}
-          options={{title: 'Kupon'}}
+          options={{headerShown: false}}
         />
         <Tab.Screen name="Map" component={Map} options={{headerShown: false}} />
       </Tab.Navigator>
