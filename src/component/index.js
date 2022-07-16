@@ -61,7 +61,6 @@ import Hoteldetailtransact from './template/Hoteldetailtransact';
 import Eventdetailtransact from './template/Eventdetailtransact';
 import Listcardresto from './template/Listcardresto';
 import { Chiptipe } from './atom/Chip';
-import Btncoupon from './atom/Btncoupon';
 
 export {
   BtnNext,
@@ -128,5 +127,4 @@ export {
   Listcardresto,
   Allcard3,
   Chiptipe,
-  Btncoupon,
 };
