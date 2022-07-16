@@ -2,8 +2,6 @@ import React from 'react';
 import {View, Text, StyleSheet, Pressable} from 'react-native';
 
 export default function Chip({onPress, title, text, background}) {
-
-  
   function press() {
     onPress(title);
   }
@@ -16,12 +14,9 @@ export default function Chip({onPress, title, text, background}) {
   );
 }
 
-
-export function Chiptipe({onPress, title, text, background}) {
-
-  
+export function Chiptipe({onPress, value, text, background,title}) {
   function press() {
-    onPress(title);
+    onPress(value);
   }
   return (
     <View style={[styles.container2, {backgroundColor: background}]}>
@@ -43,10 +38,10 @@ const styles = StyleSheet.create({
   },
   container2: {
     width: 160,
-    borderRadius: 20,
+    borderRadius: 5,
     marginTop: 5,
-    padding:5,
-    borderWidth:0.2
+    padding: 5,
+    borderWidth: 0.2,
   },
   txt: {
     textAlign: 'center',

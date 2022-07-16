@@ -26,6 +26,9 @@ export default function Actionsheet({refs, data}) {
   const currentUser = Auth().currentUser;
   const isMounted = useRef();
 
+  const [chip1, setchip1] = useState({bg: 'white', txt: 'black'});
+  const [chip2, setchip2] = useState({bg: 'white', txt: 'black'});
+
   let orderId = 'Orderid' + uid();
   let checkIN = checkin.toISOString().split('T')[0];
   let checkOUT = checkout.toISOString().split('T')[0];
@@ -133,8 +136,24 @@ export default function Actionsheet({refs, data}) {
         </View>
         <Text style={actionStyles.txt3}>Tipe</Text>
         <View style={actionStyles.wrap}>
-          <Chiptipe title="Reguler" text="black" background="white" />
-          <Chiptipe title="Vip" text="black" background="white" />
+          <Chiptipe
+            title="Reguler"
+            text={chip1.txt}
+            background={chip1.bg}
+            onPress={() => {
+              setchip1({bg: '#F9937D', txt: 'white'});
+              setchip2({bg: 'white', txt: 'black'});
+            }}
+          />
+          <Chiptipe
+            title="Vip"
+            text={chip2.txt}
+            background={chip2.bg}
+            onPress={() => {
+              setchip2({bg: '#F9937D', txt: 'white'});
+              setchip1({bg: 'white', txt: 'black'});
+            }}
+          />
         </View>
         <Text style={actionStyles.txt3}>Jumlah</Text>
         <View style={actionStyles.parentcontainer}>
@@ -225,6 +244,6 @@ const actionStyles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal:15,
+    paddingHorizontal: 15,
   },
 });

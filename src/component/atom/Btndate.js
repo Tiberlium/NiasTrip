@@ -6,7 +6,7 @@ export default function Btndate({onPress, value}) {
   return (
     <View>
       <TouchableOpacity onPress={onPress} style={styles.container}>
-        <Icon name="calendar-outline" size={25} color="#FF5F7E" />
+        <Icon name="calendar-outline" size={25} color="black" />
         <Text style={styles.txt}>{value}</Text>
       </TouchableOpacity>
     </View>
@@ -15,19 +15,20 @@ export default function Btndate({onPress, value}) {
 
 const styles = StyleSheet.create({
   container: {
-    width: 150,
+    width: 160,
     height: 40,
     borderWidth: 0.2,
     borderColor: '#808080',
-    borderRadius: 10,
+    borderRadius: 5,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     padding: 5,
+    backgroundColor: '#F9937D',
   },
   txt: {
     fontWeight: '300',
-    color: 'black',
+    color: 'grey',
     marginTop: 4,
   },
 });

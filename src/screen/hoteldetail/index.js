@@ -279,7 +279,7 @@ export default function Hoteldetail({navigation, route}) {
             />
           </CollapseHeader>
           <CollapseBody>
-            <Couponcard />
+            <Couponcard value={2000} onpress={val => console.log(val)} />
           </CollapseBody>
         </Collapse>
         <Text style={styles.headline1}>Deskripsi</Text>
