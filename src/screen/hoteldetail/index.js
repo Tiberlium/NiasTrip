@@ -27,6 +27,7 @@ import {
   Alterrating,
   Postrating,
   Couponcard,
+  Emptycouponcard,
 } from '../../component';
 
 import firestore from '@react-native-firebase/firestore';
@@ -279,7 +280,7 @@ export default function Hoteldetail({navigation, route}) {
             />
           </CollapseHeader>
           <CollapseBody>
-            <Couponcard value={2000} onpress={val => console.log(val)} />
+            <Emptycouponcard/>
           </CollapseBody>
         </Collapse>
         <Text style={styles.headline1}>Deskripsi</Text>

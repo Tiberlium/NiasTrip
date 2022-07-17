@@ -63,6 +63,7 @@ import Listcardresto from './template/Listcardresto';
 import {Chiptipe} from './atom/Chip';
 import Couponcard from './template/Couponcard';
 import Promocard from './template/Promocard';
+import {Emptycouponcard} from './template/Couponcard';
 
 export {
   BtnNext,
@@ -131,4 +132,5 @@ export {
   Chiptipe,
   Couponcard,
   Promocard,
+  Emptycouponcard,
 };
