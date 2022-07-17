@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
-import {Btnback} from '../../component';
+import {Btnback,Promocard} from '../../component';
 
 export default function Coupon({navigation}) {
   return (
@@ -9,6 +9,7 @@ export default function Coupon({navigation}) {
         <Btnback onPress={() => navigation.goBack()} />
         <Text style={styles.txt}>Promo</Text>
       </View>
+      <Promocard/>
     </View>
   );
 }
