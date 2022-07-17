@@ -1,20 +1,21 @@
-import {View, Text, Pressable, StyleSheet} from 'react-native';
+import {View, Text, Pressable, StyleSheet, Image} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 
-export default function Promocard() {
+export default function Promocard({onpress, title, discount, validdate}) {
   return (
-    <Pressable style={styles.container}>
-      <Text style={styles.txt}>Pengguna pertama hari ini</Text>
+    <Pressable style={styles.container} onPress={onpress}>
+      <Image source={require('../../asset/discount.jpg')} style={styles.img} />
+      <Text style={styles.txt}>{title}</Text>
       <View style={styles.inlinewrap0}>
         <View style={styles.inlinewrap}>
           <Icon name="clock" color="red" size={25} style={styles.icon} />
           <View style={styles.wrap1}>
             <Text style={styles.txtmark}>Berlaku hingga</Text>
-            <Text style={styles.caption}>22 november 2018</Text>
+            <Text style={styles.caption}>{validdate}</Text>
           </View>
         </View>
-        <Text style={styles.subtitle}>Diskon 40%</Text>
+        <Text style={styles.subtitle}>Diskon {discount}%</Text>
       </View>
     </Pressable>
   );
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
   },
+  img: {height: 100, width: '90%'},
   txt: {
     color: 'black',
     fontSize: 18,
