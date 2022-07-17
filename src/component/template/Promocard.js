@@ -23,12 +23,13 @@ export default function Promocard({onpress, title, discount, validdate}) {
 
 const styles = StyleSheet.create({
   container: {
-    width: '90%',
+    width: '85%',
     elevation: 5,
     backgroundColor: 'white',
     alignSelf: 'center',
     padding: 20,
     borderRadius: 10,
+    marginTop:10,
   },
   img: {height: 100, width: '90%'},
   txt: {
