@@ -26,8 +26,6 @@ import {
   Commentheader,
   Alterrating,
   Postrating,
-  Couponcard,
-  Emptycouponcard,
 } from '../../component';
 
 import firestore from '@react-native-firebase/firestore';
@@ -36,15 +34,10 @@ import ActionSheet from 'react-native-actions-sheet';
 import auth from '@react-native-firebase/auth';
 import ReadMore from '@fawazahmed/react-native-read-more';
 import MapView, {Marker} from 'react-native-maps';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {
-  Collapse,
-  CollapseBody,
-  CollapseHeader,
-} from 'accordion-collapse-react-native';
 
 export default function Hoteldetail({navigation, route}) {
   const [visible, setvisible] = useState(false);
+  const [nama, setnama] = useState('');
   const [index, setindex] = useState(0);
   const [Data, setData] = useState([]);
   const [Latitude, setLatitude] = useState(0);
@@ -54,21 +47,26 @@ export default function Hoteldetail({navigation, route}) {
   const [review, setreview] = useState('');
   const [comments, setcomments] = useState([]);
   const [isEdit, setisEdit] = useState(false);
-  const [nameicon, setnameicon] = useState('chevron-forward');
   const isMounted = useRef();
   const Actionref = useRef();
   const isOpen = useRef();
-  const id = route.params.id;
+  const {id} = route.params;
   const uid = auth().currentUser.uid;
 
-  async function Get() {
-    const docRef = await firestore().collection('Staycation').doc(id).get();
+  const [promo, setpromo] = useState([]);
 
-    if (isMounted.current) {
-      setData(docRef.data());
-      setLatitude(docRef.data().Latitude);
-      setLongitude(docRef.data().Longitude);
-    }
+  async function Get() {
+    let x = [];
+    await firestore()
+      .collection('Staycation')
+      .doc(id)
+      .get()
+      .then(docRef => {
+        setData(docRef.data());
+        setnama(docRef.data().Nama);
+        setLatitude(docRef.data().Latitude);
+        setLongitude(docRef.data().Longitude);
+      });
   }
 
   function formatRupiah(uang) {
@@ -191,9 +189,7 @@ export default function Hoteldetail({navigation, route}) {
   }
 
   useEffect(() => {
-    isMounted.current = true;
     Get();
-    return () => (isMounted.current = false);
   }, []);
 
   useEffect(() => {
@@ -263,26 +259,6 @@ export default function Hoteldetail({navigation, route}) {
           marginTop={20}
           onPress={() => isOpen.current?.show()}
         />
-        <Collapse
-          style={styles.collapse}
-          onToggle={x =>
-            x !== true
-              ? setnameicon('chevron-forward')
-              : setnameicon('chevron-down')
-          }>
-          <CollapseHeader style={styles.collapseheader}>
-            <Text style={styles.headline}>Kupon promo</Text>
-            <Icon
-              name={nameicon}
-              size={20}
-              color="black"
-              style={styles.iconcollapse}
-            />
-          </CollapseHeader>
-          <CollapseBody>
-            <Emptycouponcard/>
-          </CollapseBody>
-        </Collapse>
         <Text style={styles.headline1}>Deskripsi</Text>
         <ReadMore style={styles.subtitle} numberOfLines={4}>
           {Data['Deskripsi']}

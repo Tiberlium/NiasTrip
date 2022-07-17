@@ -38,7 +38,9 @@ export default function Coupon({navigation}) {
       x.push({id: doc.id});
     });
 
-    navigation.navigate('Hoteldetail', {id: x[0]['id']});
+    navigation.navigate('Hoteldetail', {
+      id: x[0]['id'],
+    });
   }
   return (
     <View>
