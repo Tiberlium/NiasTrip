@@ -29,6 +29,7 @@ export default function Actionsheet({refs, data}) {
   const [kode, setkode] = useState('');
   const [promo, setpromo] = useState([]);
   const [diskon, setdiskon] = useState(0);
+  const [jeniskamar, setjeniskamar] = useState('');
 
   const [tipe, settipe] = useState(0);
 
@@ -110,6 +111,8 @@ export default function Actionsheet({refs, data}) {
       checkOUT,
       jmlhOrg,
       total,
+      jeniskamar,
+      diskon,
       gambar: data['Gambar'],
       nama: data['Nama'],
       tarif: data['Harga'],
@@ -174,6 +177,7 @@ export default function Actionsheet({refs, data}) {
             value={tipe}
             onPress={() => {
               settipe(0);
+              setjeniskamar('Reguler');
               setchip1({bg: '#FF5F7E', txt: 'white'});
               setchip2({bg: 'white', txt: 'black'});
             }}
@@ -185,6 +189,7 @@ export default function Actionsheet({refs, data}) {
             value={tipe}
             onPress={() => {
               settipe(250000);
+              setjeniskamar('Vip');
               setchip2({bg: '#FF5F7E', txt: 'white'});
               setchip1({bg: 'white', txt: 'black'});
             }}
