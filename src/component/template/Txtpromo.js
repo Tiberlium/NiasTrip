@@ -1,7 +1,7 @@
 import {View, Text, TextInput, Pressable, StyleSheet} from 'react-native';
 import React from 'react';
 
-export default function Txtpromo(onChangeText, value, onpress) {
+export default function Txtpromo({onChangeText, value, onpress}) {
   return (
     <View>
       <TextInput

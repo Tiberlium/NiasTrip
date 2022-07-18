@@ -26,6 +26,8 @@ export default function Actionsheet({refs, data}) {
   const currentUser = Auth().currentUser;
   const isMounted = useRef();
 
+  const [kode, setkode] = useState('');
+
   const [chip1, setchip1] = useState({bg: 'white', txt: 'black'});
   const [chip2, setchip2] = useState({bg: 'white', txt: 'black'});
 
@@ -156,7 +158,7 @@ export default function Actionsheet({refs, data}) {
           />
         </View>
         <Text style={actionStyles.txt3}>Kode promo</Text>
-        <Txtpromo />
+        <Txtpromo value={kode} onChangeText={setkode} />
         <Text style={actionStyles.txt3}>Jumlah</Text>
         <View style={actionStyles.parentcontainer}>
           <View style={actionStyles.inlineContainer2}>
