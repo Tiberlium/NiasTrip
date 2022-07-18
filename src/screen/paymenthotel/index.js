@@ -154,8 +154,8 @@ export default function Paymenthotel({route, navigation}) {
       gambar: gambar,
       tarif,
       metode,
-      jeniskamar,
       diskon,
+      jeniskamar,
     };
 
     AsyncStorage.getItem(`Order-${user.uid}`).then(doc => {

@@ -32,6 +32,8 @@ export default function Receipt({navigation, route}) {
     diskon,
   } = route.params;
 
+  console.log(diskon);
+
   function formatRupiah(uang) {
     return new Intl.NumberFormat('ID-id', {
       style: 'currency',
