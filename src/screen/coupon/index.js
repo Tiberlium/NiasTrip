@@ -54,8 +54,10 @@ export default function Coupon({navigation}) {
         renderItem={({item, index}) => (
           <Promocard
             title={item['data']['Nama']}
+            kode={item['data']['Kode']}
             discount={item['data']['Potongan']}
             validdate={item['data']['Waktu']}
+            tempat={item['data']['Tempat']}
             onpress={() => move(item['data']['Tempat'])}
           />
         )}
