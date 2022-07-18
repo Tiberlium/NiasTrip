@@ -27,15 +27,31 @@ export default function Actionsheet({refs, data}) {
   const isMounted = useRef();
 
   const [kode, setkode] = useState('');
+  const [promo, setpromo] = useState([]);
+  const [diskon, setdiskon] = useState(0);
+
+  const [tipe, settipe] = useState(0);
 
   const [chip1, setchip1] = useState({bg: 'white', txt: 'black'});
   const [chip2, setchip2] = useState({bg: 'white', txt: 'black'});
+
+  let total = 0;
 
   let orderId = 'Orderid' + uid();
   let checkIN = checkin.toISOString().split('T')[0];
   let checkOUT = checkout.toISOString().split('T')[0];
   let countday = countDays(checkin, checkout);
-  let total = countday * Number(data['Harga']);
+  let subtotal = countday * Number(data['Harga']) + tipe;
+
+  function discount() {
+    promo.map(doc => {
+      if (doc['data']['Kode'] === kode.toUpperCase()) {
+        setdiskon((total / 100) * Number(doc['data']['Potongan']));
+      }
+    });
+  }
+
+  total = subtotal - diskon;
 
   const formatIDR = money => {
     return new Intl.NumberFormat('id-ID', {
@@ -66,10 +82,23 @@ export default function Actionsheet({refs, data}) {
     isMounted.current && docRef.exists ? setProfile(docRef.data()) : {};
   }
 
+  async function getpromo() {
+    let x = [];
+    const docRef = await firestore().collection('Promo').get();
+    docRef.docs.map(doc => x.push({id: doc.id, data: doc.data()}));
+
+    const result = x.filter(doc => doc['data']['Tempat'] === data['Nama']);
+    setpromo(result);
+  }
+
   useEffect(() => {
     isMounted.current = true;
     getUserData();
     return () => (isMounted.current = false);
+  }, []);
+
+  useEffect(() => {
+    getpromo();
   }, []);
 
   function pay() {
@@ -142,7 +171,9 @@ export default function Actionsheet({refs, data}) {
             title="Reguler"
             text={chip1.txt}
             background={chip1.bg}
+            value={tipe}
             onPress={() => {
+              settipe(0);
               setchip1({bg: '#FF5F7E', txt: 'white'});
               setchip2({bg: 'white', txt: 'black'});
             }}
@@ -151,14 +182,16 @@ export default function Actionsheet({refs, data}) {
             title="Vip"
             text={chip2.txt}
             background={chip2.bg}
+            value={tipe}
             onPress={() => {
+              settipe(250000);
               setchip2({bg: '#FF5F7E', txt: 'white'});
               setchip1({bg: 'white', txt: 'black'});
             }}
           />
         </View>
         <Text style={actionStyles.txt3}>Kode promo</Text>
-        <Txtpromo value={kode} onChangeText={setkode} />
+        <Txtpromo value={kode} onChangeText={setkode} onpress={discount} />
         <Text style={actionStyles.txt3}>Jumlah</Text>
         <View style={actionStyles.parentcontainer}>
           <View style={actionStyles.inlineContainer2}>
