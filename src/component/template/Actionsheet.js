@@ -4,7 +4,7 @@ import Auth from '@react-native-firebase/auth';
 import NumericInput from 'react-native-numeric-input';
 import ActionSheet from 'react-native-actions-sheet';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import {Btnbooking, Btndate, Chiptipe} from '..';
+import {Btnbooking, Btndate, Chiptipe, Txtpromo} from '..';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
@@ -141,7 +141,7 @@ export default function Actionsheet({refs, data}) {
             text={chip1.txt}
             background={chip1.bg}
             onPress={() => {
-              setchip1({bg: '#F9937D', txt: 'white'});
+              setchip1({bg: '#FF5F7E', txt: 'white'});
               setchip2({bg: 'white', txt: 'black'});
             }}
           />
@@ -150,11 +150,13 @@ export default function Actionsheet({refs, data}) {
             text={chip2.txt}
             background={chip2.bg}
             onPress={() => {
-              setchip2({bg: '#F9937D', txt: 'white'});
+              setchip2({bg: '#FF5F7E', txt: 'white'});
               setchip1({bg: 'white', txt: 'black'});
             }}
           />
         </View>
+        <Text style={actionStyles.txt3}>Kode promo</Text>
+        <Txtpromo />
         <Text style={actionStyles.txt3}>Jumlah</Text>
         <View style={actionStyles.parentcontainer}>
           <View style={actionStyles.inlineContainer2}>

@@ -64,7 +64,7 @@ import {Chiptipe} from './atom/Chip';
 import Couponcard from './template/Couponcard';
 import Promocard from './template/Promocard';
 import {Emptycouponcard} from './template/Couponcard';
-
+import Txtpromo from './template/Txtpromo';
 export {
   BtnNext,
   Txtinput,
@@ -133,4 +133,5 @@ export {
   Couponcard,
   Promocard,
   Emptycouponcard,
+  Txtpromo,
 };
