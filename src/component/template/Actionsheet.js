@@ -36,23 +36,11 @@ export default function Actionsheet({refs, data}) {
   const [chip1, setchip1] = useState({bg: 'white', txt: 'black'});
   const [chip2, setchip2] = useState({bg: 'white', txt: 'black'});
 
-  let total = 0;
-
   let orderId = 'Orderid' + uid();
   let checkIN = checkin.toISOString().split('T')[0];
   let checkOUT = checkout.toISOString().split('T')[0];
   let countday = countDays(checkin, checkout);
-  let subtotal = countday * Number(data['Harga']) + tipe;
-
-  function discount() {
-    promo.map(doc => {
-      if (doc['data']['Kode'] === kode.toUpperCase()) {
-        setdiskon((total / 100) * Number(doc['data']['Potongan']));
-      }
-    });
-  }
-
-  total = subtotal - diskon;
+  let total = countday * Number(data['Harga']) + tipe - diskon;
 
   const formatIDR = money => {
     return new Intl.NumberFormat('id-ID', {
@@ -86,10 +74,13 @@ export default function Actionsheet({refs, data}) {
   async function getpromo() {
     let x = [];
     const docRef = await firestore().collection('Promo').get();
-    docRef.docs.map(doc => x.push({id: doc.id, data: doc.data()}));
-
-    const result = x.filter(doc => doc['data']['Tempat'] === data['Nama']);
-    setpromo(result);
+    docRef.docs.map(doc => {
+      x.push({
+        id: doc.id,
+        data: doc.data(),
+      });
+    });
+    setpromo(x);
   }
 
   useEffect(() => {
@@ -116,6 +107,15 @@ export default function Actionsheet({refs, data}) {
       gambar: data['Gambar'],
       nama: data['Nama'],
       tarif: data['Harga'],
+    });
+  }
+
+  function potonganharga() {
+    promo.map(doc => {
+      if (doc['data']['Kode'] === kode.toUpperCase()) {
+        let returned = (total * Number(doc['data']['Potongan'])) / 100;
+        setdiskon(returned);
+      }
     });
   }
 
@@ -196,7 +196,7 @@ export default function Actionsheet({refs, data}) {
           />
         </View>
         <Text style={actionStyles.txt3}>Kode promo</Text>
-        <Txtpromo value={kode} onChangeText={setkode} onpress={discount} />
+        <Txtpromo value={kode} onChangeText={setkode} onpress={potonganharga} />
         <Text style={actionStyles.txt3}>Jumlah</Text>
         <View style={actionStyles.parentcontainer}>
           <View style={actionStyles.inlineContainer2}>
