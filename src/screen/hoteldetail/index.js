@@ -26,7 +26,9 @@ import {
   Commentheader,
   Alterrating,
   Postrating,
+
 } from '../../component';
+
 
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -37,7 +39,6 @@ import MapView, {Marker} from 'react-native-maps';
 
 export default function Hoteldetail({navigation, route}) {
   const [visible, setvisible] = useState(false);
-  const [nama, setnama] = useState('');
   const [index, setindex] = useState(0);
   const [Data, setData] = useState([]);
   const [Latitude, setLatitude] = useState(0);
@@ -53,17 +54,13 @@ export default function Hoteldetail({navigation, route}) {
   const {id} = route.params;
   const uid = auth().currentUser.uid;
 
-  const [promo, setpromo] = useState([]);
-
   async function Get() {
-    let x = [];
     await firestore()
       .collection('Staycation')
       .doc(id)
       .get()
       .then(docRef => {
         setData(docRef.data());
-        setnama(docRef.data().Nama);
         setLatitude(docRef.data().Latitude);
         setLongitude(docRef.data().Longitude);
       });
