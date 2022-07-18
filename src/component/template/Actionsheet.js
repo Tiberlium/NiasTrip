@@ -26,6 +26,8 @@ export default function Actionsheet({refs, data}) {
   const currentUser = Auth().currentUser;
   const isMounted = useRef();
 
+  const [btnprop, setbtnprop] = useState({bg: '#FF5F7E', txt: 'gunakan'});
+
   const [kode, setkode] = useState('');
   const [promo, setpromo] = useState([]);
   const [diskon, setdiskon] = useState(0);
@@ -118,8 +120,9 @@ export default function Actionsheet({refs, data}) {
       ) {
         let returned = (total * Number(doc['data']['Potongan'])) / 100;
         setdiskon(returned);
+        setbtnprop({bg: 'grey', txt: 'digunakan'});
       } else {
-        ToastAndroid.show('Kode ini tidak berlaku disini', ToastAndroid.SHORT);
+        return false;
       }
     });
   }
@@ -205,7 +208,13 @@ export default function Actionsheet({refs, data}) {
           />
         </View>
         <Text style={actionStyles.txt3}>Kode promo</Text>
-        <Txtpromo value={kode} onChangeText={setkode} onpress={potonganharga} />
+        <Txtpromo
+          value={kode}
+          onChangeText={setkode}
+          onpress={potonganharga}
+          bg={btnprop.bg}
+          label={btnprop.txt}
+        />
         <Text style={actionStyles.txt3}>Jumlah</Text>
         <View style={actionStyles.parentcontainer}>
           <View style={actionStyles.inlineContainer2}>

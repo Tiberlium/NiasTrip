@@ -1,7 +1,7 @@
 import {View, Text, TextInput, Pressable, StyleSheet} from 'react-native';
 import React from 'react';
 
-export default function Txtpromo({onChangeText, value, onpress}) {
+export default function Txtpromo({onChangeText, value, onpress, bg, label}) {
   return (
     <View>
       <TextInput
@@ -11,8 +11,8 @@ export default function Txtpromo({onChangeText, value, onpress}) {
         onChangeText={onChangeText}
         value={value}
       />
-      <Pressable style={styles.btn} onPress={onpress}>
-        <Text style={styles.btnlbl}>Gunakan</Text>
+      <Pressable style={[styles.btn, {backgroundColor: bg}]} onPress={onpress}>
+        <Text style={styles.btnlbl}>{label}</Text>
       </Pressable>
     </View>
   );
@@ -27,10 +27,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingLeft: 10,
     position: 'absolute',
-    color:'black',
+    color: 'black',
   },
   btn: {
-    backgroundColor: '#FF5F7E',
     width: 100,
     padding: 8,
     borderRadius: 10,
@@ -38,5 +37,5 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     marginRight: 20,
   },
-  btnlbl: {color: 'white', textAlign: 'center'},
+  btnlbl: {textAlign: 'center', color: 'white'},
 });
