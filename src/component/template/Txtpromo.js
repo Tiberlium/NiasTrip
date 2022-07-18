@@ -1,34 +1,41 @@
-import {View, Text, TextInput, Pressable} from 'react-native';
+import {View, Text, TextInput, Pressable, StyleSheet} from 'react-native';
 import React from 'react';
 
-export default function Txtpromo() {
+export default function Txtpromo(onChangeText, value, onpress) {
   return (
     <View>
       <TextInput
         placeholder="Masukkan kode promo"
         placeholderTextColor="grey"
-        style={{
-          borderColor: 'black',
-          borderWidth: 0.2,
-          width: '95%',
-          alignSelf: 'center',
-          borderRadius: 5,
-          paddingLeft: 10,
-          position: 'absolute',
-        }}
+        style={styles.txt}
+        onChangeText={onChangeText}
+        value={value}
       />
-      <Pressable
-        style={{
-          backgroundColor: '#FF5F7E',
-          width: 100,
-          padding: 8,
-          borderRadius: 10,
-          marginTop: 5,
-          alignSelf: 'flex-end',
-          marginRight: 20,
-        }}>
-        <Text style={{color: 'white', textAlign: 'center'}}>Gunakan</Text>
+      <Pressable style={styles.btn} onPress={onpress}>
+        <Text style={styles.btnlbl}>Gunakan</Text>
       </Pressable>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  txt: {
+    borderColor: 'black',
+    borderWidth: 0.2,
+    width: '95%',
+    alignSelf: 'center',
+    borderRadius: 5,
+    paddingLeft: 10,
+    position: 'absolute',
+  },
+  btn: {
+    backgroundColor: '#FF5F7E',
+    width: 100,
+    padding: 8,
+    borderRadius: 10,
+    marginTop: 5,
+    alignSelf: 'flex-end',
+    marginRight: 20,
+  },
+  btnlbl: {color: 'white', textAlign: 'center'},
+});
