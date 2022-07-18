@@ -7,6 +7,7 @@ import {
   Pressable,
   ScrollView,
   FlatList,
+  Modal,
 } from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -43,16 +44,66 @@ export default function Eventdetail({navigation, route}) {
   const [review, setreview] = useState('');
   const [isEdit, setisEdit] = useState(false);
   const [comments, setcomments] = useState([]);
+  const [visible, setvisible] = useState(false);
   const [qty, setqty] = useState(1);
   const isMounted = useRef();
   const isOpen = useRef();
-  const isVisible = useRef();
   const id = route.params.id;
   const Uid = auth().currentUser.uid;
   const orderid = 'orderId' + uid() + Date.now();
 
   let total = qty * Number(Data['Harga']);
 
+  function formatRupiah(uang) {
+    return new Intl.NumberFormat('ID-id', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+    }).format(uang);
+  }
+
+  const Pesantiket = ({isvisible, close}) => {
+    return (
+      <View>
+        <Modal visible={isvisible} onRequestClose={close} transparent={true}>
+          <View style={tiketstyles.container}>
+            <Text style={tiketstyles.title}>Pemesanan Tiket</Text>
+            <View style={tiketstyles.inlinecontainer}>
+              <View>
+                <Text style={tiketstyles.txttitle}>Harga Tiket</Text>
+                <Text style={tiketstyles.txtprice}>
+                  {formatRupiah(Number(Data['Harga']))}
+                  <Text style={tiketstyles.txtmark}>/pcs</Text>
+                </Text>
+              </View>
+              <View>
+                <NumericInput
+                  value={qty}
+                  onChange={value => setqty(value)}
+                  totalHeight={40}
+                  rounded
+                  maxValue={5}
+                  onLimitReached={() =>
+                    ToastAndroid.show('Maksimal 5 tiket', ToastAndroid.SHORT)
+                  }
+                  iconStyle={{color: 'black'}}
+                />
+              </View>
+            </View>
+            <View style={tiketstyles.totalwrap}>
+              <Text style={tiketstyles.txttotal}>Total</Text>
+              <Text style={tiketstyles.txttotalvalue}>
+                {formatRupiah(total)}
+              </Text>
+            </View>
+            <View style={tiketstyles.btnpesan}>
+              <Btntiket onPress={pay} />
+            </View>
+          </View>
+        </Modal>
+      </View>
+    );
+  };
   async function Get() {
     const docRef = await firestore().collection('Event').doc(id).get();
     if (isMounted.current) {
@@ -69,14 +120,6 @@ export default function Eventdetail({navigation, route}) {
     } else {
       setProfile({});
     }
-  }
-
-  function formatRupiah(uang) {
-    return new Intl.NumberFormat('ID-id', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0,
-    }).format(uang);
   }
 
   async function getrating() {
@@ -251,45 +294,6 @@ export default function Eventdetail({navigation, route}) {
     }
   }
 
-  const Pesantiket = () => {
-    return (
-      <ActionSheet ref={isVisible} gestureEnabled={true}>
-        <View style={tiketstyles.container}>
-          <Text style={tiketstyles.title}>Pemesanan Tiket</Text>
-          <View style={tiketstyles.inlinecontainer}>
-            <View>
-              <Text style={tiketstyles.txttitle}>Harga Tiket</Text>
-              <Text style={tiketstyles.txtprice}>
-                {formatRupiah(Number(Data['Harga']))}
-                <Text style={tiketstyles.txtmark}>/pcs</Text>
-              </Text>
-            </View>
-            <View>
-              <NumericInput
-                value={qty}
-                onChange={setqty}
-                totalHeight={40}
-                rounded
-                maxValue={5}
-                onLimitReached={() =>
-                  ToastAndroid.show('Maksimal 5 tiket', ToastAndroid.SHORT)
-                }
-                iconStyle={{color: 'black'}}
-              />
-            </View>
-          </View>
-          <View style={tiketstyles.totalwrap}>
-            <Text style={tiketstyles.txttotal}>Total</Text>
-            <Text style={tiketstyles.txttotalvalue}>{formatRupiah(total)}</Text>
-          </View>
-          <View style={tiketstyles.btnpesan}>
-            <Btntiket onPress={pay} />
-          </View>
-        </View>
-      </ActionSheet>
-    );
-  };
-
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -347,7 +351,7 @@ export default function Eventdetail({navigation, route}) {
       <>
         <View style={styles.wrapBtn}>
           <Btnbookmark onPress={addBookmark} />
-          <Btnpesanslide onPress={() => isVisible.current?.show()} />
+          <Btnpesanslide onPress={() => setvisible(true)} />
         </View>
         <ActionSheet ref={isOpen} gestureEnabled={true}>
           {!isEdit ? (
@@ -388,8 +392,8 @@ export default function Eventdetail({navigation, route}) {
             />
           </View>
         </ActionSheet>
-        <Pesantiket />
       </>
+      <Pesantiket isvisible={visible} close={() => setvisible(false)} />
     </View>
   );
 }
@@ -456,7 +460,22 @@ const styles = StyleSheet.create({
 });
 
 const tiketstyles = StyleSheet.create({
-  container: {paddingTop: 5, paddingBottom: 10},
+  container: {
+    padding: 20,
+    marginTop: '90%',
+    backgroundColor: 'white',
+    width: '90%',
+    alignSelf: 'center',
+    borderRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 15,
+  },
   title: {
     textAlign: 'center',
     fontWeight: 'bold',
