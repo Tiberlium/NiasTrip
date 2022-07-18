@@ -9,6 +9,8 @@ const Hoteldetailtransact = ({
   jumlahorang,
   biaya,
   total,
+  jeniskamar,
+  diskon,
 }) => (
   <View>
     <View style={styles.wrap2}>
@@ -28,6 +30,10 @@ const Hoteldetailtransact = ({
       <Text style={styles.valuetxt}>{checkout}</Text>
     </View>
     <View style={styles.wrap2}>
+      <Text style={styles.proptxt}>Jenis kamar</Text>
+      <Text style={styles.valuetxt}>{jeniskamar}</Text>
+    </View>
+    <View style={styles.wrap2}>
       <Text style={styles.proptxt}>Waktu</Text>
       <Text style={styles.valuetxt}>{waktu}</Text>
     </View>
@@ -38,6 +44,10 @@ const Hoteldetailtransact = ({
     <View style={styles.wrap2}>
       <Text style={styles.proptxt}>Biaya per malam</Text>
       <Text style={styles.valuetxt}>{biaya}</Text>
+    </View>
+     <View style={styles.wrap2}>
+      <Text style={styles.proptxt}>Potongan harga</Text>
+      <Text style={styles.valuetxt}>{diskon}</Text>
     </View>
     <View style={styles.wrap3}>
       <Text style={styles.proptxt}>Total Pembayaran</Text>

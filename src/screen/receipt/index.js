@@ -28,6 +28,8 @@ export default function Receipt({navigation, route}) {
     jenis,
     metode,
     tarif,
+    jeniskamar,
+    diskon,
   } = route.params;
 
   function formatRupiah(uang) {
@@ -87,6 +89,8 @@ export default function Receipt({navigation, route}) {
               jumlahorang={qty}
               biaya={formatRupiah(tarif)}
               total={formatRupiah(total)}
+              jeniskamar={jeniskamar}
+              diskon={formatRupiah(diskon)}
             />
           ) : (
             <Eventdetailtransact

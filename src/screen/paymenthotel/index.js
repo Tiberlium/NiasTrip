@@ -154,6 +154,8 @@ export default function Paymenthotel({route, navigation}) {
       gambar: gambar,
       tarif,
       metode,
+      jeniskamar,
+      diskon,
     };
 
     AsyncStorage.getItem(`Order-${user.uid}`).then(doc => {
@@ -196,6 +198,8 @@ export default function Paymenthotel({route, navigation}) {
             metode: result.data.payment_type,
             jenis: Jenis,
             tarif,
+            jeniskamar,
+            diskon,
           });
         }
       })
