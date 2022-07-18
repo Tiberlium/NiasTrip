@@ -32,6 +32,8 @@ export default function Paymenthotel({route, navigation}) {
     nama,
     gambar,
     tarif,
+    jeniskamar,
+    diskon,
   } = route.params;
 
   const params = {
@@ -82,6 +84,8 @@ export default function Paymenthotel({route, navigation}) {
               jenis: Jenis,
               tarif,
               metode,
+              jeniskamar,
+              diskon,
             }),
           });
         } else {
@@ -100,6 +104,8 @@ export default function Paymenthotel({route, navigation}) {
                   jenis: Jenis,
                   tarif,
                   metode,
+                  jeniskamar,
+                  diskon,
                 },
               ],
             },
