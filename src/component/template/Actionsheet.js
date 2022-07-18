@@ -112,9 +112,14 @@ export default function Actionsheet({refs, data}) {
 
   function potonganharga() {
     promo.map(doc => {
-      if (doc['data']['Kode'] === kode.toUpperCase()) {
+      if (
+        doc['data']['Kode'] === kode.toUpperCase() &&
+        doc['data']['Tempat'] === data['Nama']
+      ) {
         let returned = (total * Number(doc['data']['Potongan'])) / 100;
         setdiskon(returned);
+      } else {
+        ToastAndroid.show('Kode ini tidak berlaku disini', ToastAndroid.SHORT);
       }
     });
   }
