@@ -139,10 +139,11 @@ export default function Register({navigation}) {
     try {
       const {idToken} = await GoogleSignin.signIn();
       const googleCredential = Auth.GoogleAuthProvider.credential(idToken);
-      return Auth().signInWithCredential(googleCredential);
+      return Auth()
+        .signInWithCredential(googleCredential)
+        .then(() => navigation.navigate('Navigator'));
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        ToastAndroid.show('dibatalkan',ToastAndroid.SHORT);
         return false;
       }
     }
@@ -168,9 +169,7 @@ export default function Register({navigation}) {
         background="white"
         txtcolor="black"
         label="Lanjutkan dengan Google"
-        onPress={() =>
-          onGooglePress().then(() => navigation.navigate('Navigator'))
-        }
+        onPress={() => onGooglePress()}
       />
       <Horizontalline />
       <Custinput onChangeText={setnama} value={nama} placeholder="Nama" />
