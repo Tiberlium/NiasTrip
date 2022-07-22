@@ -23,7 +23,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 import {LoginManager, AccessToken} from 'react-native-fbsdk-next';
 
 const Unregister = () => {
@@ -67,7 +70,10 @@ export default function Register({navigation}) {
       ToastAndroid.show('Lengkapi email anda', ToastAndroid.SHORT);
       return false;
     } else if (!Password.trim() || Password.length < 6) {
-      ToastAndroid.show('Lengkapi password anda minimum 6 karakter', ToastAndroid.SHORT);
+      ToastAndroid.show(
+        'Lengkapi password anda minimum 6 karakter',
+        ToastAndroid.SHORT,
+      );
       return false;
     } else {
       Auth()
@@ -77,19 +83,21 @@ export default function Register({navigation}) {
           ToastAndroid.show('Pengguna telah terdaftar', ToastAndroid.SHORT);
           const user = auth().currentUser;
           const docRef = await firestore().collection('Users').doc(user.uid);
-          docRef.set({
-            id: user.uid,
-            name: nama,
-            gender: kelamin,
-            phoneNumber: telepon,
-            address: alamat,
-            city: kota,
-            email: Email,
-          }).then(async()=>{
-            await user.updateProfile({
-              displayName:nama,
+          docRef
+            .set({
+              id: user.uid,
+              name: nama,
+              gender: kelamin,
+              phoneNumber: telepon,
+              address: alamat,
+              city: kota,
+              email: Email,
             })
-          })
+            .then(async () => {
+              await user.updateProfile({
+                displayName: nama,
+              });
+            });
         })
         .catch(e => {
           console.error(e);
@@ -133,7 +141,10 @@ export default function Register({navigation}) {
       const googleCredential = Auth.GoogleAuthProvider.credential(idToken);
       return Auth().signInWithCredential(googleCredential);
     } catch (error) {
-      console.error(error);
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        ToastAndroid.show('dibatalkan',ToastAndroid.SHORT);
+        return false;
+      }
     }
   };
 

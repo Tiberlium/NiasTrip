@@ -21,7 +21,10 @@ import {
   widthPercentageToDP,
 } from 'react-native-responsive-screen';
 import Auth from '@react-native-firebase/auth';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 
 import {LoginManager, AccessToken} from 'react-native-fbsdk-next';
 
@@ -75,7 +78,10 @@ export default function Login({navigation}) {
       const googleCredential = Auth.GoogleAuthProvider.credential(idToken);
       return Auth().signInWithCredential(googleCredential);
     } catch (error) {
-      console.error(error);
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        ToastAndroid.show('dibatalkan', ToastAndroid.SHORT);
+        return false;
+      }
     }
   };
 
