@@ -21,8 +21,6 @@ export default function Log() {
   const navigation = useNavigation();
   const user = auth().currentUser;
 
-  console.log(data);
-
   async function Get() {
     await AsyncStorage.getItem(`Order-${user.uid}`)
       .then(docs => (docs != null ? setdata(JSON.parse(docs)) : null))
