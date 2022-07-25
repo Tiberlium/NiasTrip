@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, Pressable} from 'react-native';
+import {View, Text, StyleSheet, Pressable, ScrollView} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
@@ -43,7 +43,7 @@ export default function Receipt({navigation, route}) {
   }
 
   return (
-    <View>
+    <ScrollView style={{flex: 1}}>
       <View style={styles.wrapiconheader}>
         <Pressable
           onPress={() => navigation.navigate('Log')}
@@ -111,7 +111,7 @@ export default function Receipt({navigation, route}) {
         top={20}
         onPress={() => navigation.navigate('Home')}
       />
-    </View>
+    </ScrollView>
   );
 }
 
