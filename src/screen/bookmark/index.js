@@ -39,7 +39,9 @@ export default function Bookmark({navigation}) {
       navigation.navigate('Fooddetail', {id});
     } else if (category === 'Penginapan') {
       navigation.navigate('Hoteldetail', {id});
-    } else {
+    }else if(category === 'Tempat Makan'){
+      navigation.navigate('Rm', {id});
+    }else {
       navigation.navigate('Eventdetail', {id});
     }
   }
@@ -47,6 +49,7 @@ export default function Bookmark({navigation}) {
   useEffect(() => {
     Get();
   }, [isFocus]);
+
 
   const Exist = () => {
     return (
